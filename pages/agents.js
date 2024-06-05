@@ -16,7 +16,7 @@ const agents = () => {
                     <h2>Find Your Agent To Find A Home Agents</h2>
                 </div>
                 <div className={styles.topIntroInnerBox2}>
-                    <Image width={500} height={500} src="/images/agent-vector.png" alt="" />
+                    <Image width={500} height={500} src="/images/agent-vector.png" alt="" priority={true} />
                 </div>
                 <div className={styles.searchBiggerBox}>
                     <div className={styles.formBox}>

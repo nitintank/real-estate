@@ -17,7 +17,7 @@ const projects = () => {
                     <h2>Explore Most Popular Areas</h2>
                 </div>
                 <div className={styles.topIntroInnerBox2}>
-                    <Image width={200} height={200} src="/images/new-building-png.png" alt="" />
+                    <Image width={200} height={200} src="/images/new-building-png.png" alt="" priority={true} />
                 </div>
                 <div className={styles.searchBiggerBox}>
                     <div className={styles.formBox}>

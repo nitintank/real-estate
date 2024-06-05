@@ -16,7 +16,7 @@ const rent = () => {
                     <p>Find the prefect property for rent</p>
                 </div>
                 <div className={styles.topIntroInnerBox2}>
-                    <Image width={200} height={200} src="/images/orange-house.png" alt="" />
+                    <Image width={200} height={200} src="/images/orange-house.png" alt="" priority={true} />
                 </div>
                 <div className={styles.searchBiggerBox}>
                     <div className={styles.formBox}>

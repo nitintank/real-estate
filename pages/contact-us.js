@@ -12,7 +12,7 @@ const contactUs = () => {
             <section className={styles.formSection}>
                 <div className={styles.formContentBigBox}>
                     <div className={styles.formContentBox1}>
-                        <Image width={200} height={200} src="/images/contact-us-house-img.png" alt="" />
+                        <Image width={200} height={200} src="/images/contact-us-house-img.png" priority={true} alt="" />
                     </div>
                     <div className={styles.formContentBox}>
                         <form action="">

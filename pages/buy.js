@@ -15,7 +15,7 @@ const buy = () => {
                     <p>Find the prefect property for sale</p>
                 </div>
                 <div className={styles.topIntroInnerBox2}>
-                    <Image width={200} height={200} src="/images/purple-building.png" alt="" />
+                    <Image width={200} height={200} src="/images/purple-building.png" alt="" priority={true} />
                 </div>
                 <div className={styles.searchBiggerBox}>
                     <div className={styles.formBox}>

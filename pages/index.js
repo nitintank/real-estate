@@ -17,7 +17,7 @@ const index = () => {
             or selling a home.</p>
         </div>
         <div className={styles.topIntroInnerBox2}>
-          <Image width={200} height={200} src="/images/house_png_2-e1646989822282.png" alt="" />
+          <Image width={200} height={200} src="/images/house_png_2-e1646989822282.png" alt="" priority={true} />
         </div>
         <div className={styles.searchBiggerBox}>
           <div className={styles.formBox}>
