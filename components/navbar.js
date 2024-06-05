@@ -17,9 +17,9 @@ const navbar = () => {
                     <Link href="/about-us"><li>About Us</li></Link>
                 </ul>
                 <div className={styles.navbarBox}>
-                    <button>Post Property</button>
+                    <Link href="/register"><button>Post Property</button></Link>
                     <p><i className="fa-solid fa-phone"></i>8000-300-725</p>
-                    <i className={`fa-solid fa-circle-user ${styles.userIcon}`}></i>
+                    <Link href="/login"><i className={`fa-solid fa-circle-user ${styles.userIcon}`}></i></Link>
                 </div>
             </nav>
         </>
