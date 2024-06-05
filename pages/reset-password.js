@@ -6,7 +6,7 @@ import styles from "../styles/ResetPassword.module.css";
 import Image from 'next/image';
 import Link from 'next/link';
 
-const resetPassword = () => {
+const ResetPassword = () => {
   const [phone_number, setPhoneNumber] = useState('')
   const [otp, setOtp] = useState('')
   const [new_password, setNewPassword] = useState('')
@@ -115,4 +115,4 @@ const resetPassword = () => {
   )
 }
 
-export default resetPassword
+export default ResetPassword

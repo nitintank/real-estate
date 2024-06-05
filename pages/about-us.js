@@ -12,7 +12,7 @@ const aboutUs = () => {
             <section className={styles.topIntroductionBox}>
                 <div className={styles.topIntroInnerBox1}>
                     <h2>OUR MISSION AND VISION</h2>
-                    <p>"Empowering dreams through personalized real estate experiences, where innovation meets integrity for a brighter tomorrow."</p>
+                    <p>{`"Empowering dreams through personalized real estate experiences, where innovation meets integrity for a brighter tomorrow."`}</p>
                 </div>
                 <div className={styles.topIntroInnerBox2}>
                     <Image width={500} height={500} src="/images/about-house.png" alt="" />

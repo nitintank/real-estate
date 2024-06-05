@@ -6,7 +6,7 @@ import styles from "../styles/Register.module.css";
 import Image from 'next/image';
 import Link from 'next/link';
 
-const register = () => {
+const Register = () => {
 
   const [username, setUserName] = useState('')
   const [phone_number, setPhoneNumber] = useState('')
@@ -127,4 +127,4 @@ const register = () => {
   )
 }
 
-export default register
+export default Register

@@ -6,7 +6,7 @@ import styles from "../styles/Login.module.css";
 import Image from 'next/image';
 import Link from 'next/link';
 
-const login = () => {
+const Login = () => {
     const [identifier, setIdentifier] = useState('')
     const [password, setPassword] = useState('')
 
@@ -53,7 +53,7 @@ const login = () => {
                         <input type="button" value="SUBMIT" />
                     </form>
                     <p><Link href="/reset-password">Forgot Password?</Link></p>
-                    <p>Don't Have An Account? <Link href="/register">Register Here</Link></p>
+                    <p>{`Don't Have An Account?`} <Link href="/register">Register Here</Link></p>
                 </div>
             </div>
             {/* Form Section */}
@@ -62,4 +62,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login

@@ -51,7 +51,7 @@ const index = () => {
       {/* <!-- Property Categories Section --> */}
 
       <section className={styles.propertyCategoriesSection}>
-        <h2>We've Got Properties In Dubai For Everyone</h2>
+        <h2>{`We've Got Properties In Dubai For Everyone`}</h2>
         <div className={styles.propertyCategoriesImagesBox}>
           <Image width={200} height={200} src="/images/house-card-1.png" alt="" />
           <Image width={200} height={200} src="/images/house-card-2.png" alt="" />
@@ -288,19 +288,19 @@ const index = () => {
           <div className={styles.testimonialBox}>
             <Image width={200} height={200} src="/images/contact-card.png" alt="" className={styles.testimonialUserImg} />
             <h3>Take The Keys</h3>
-            <p>Don't worry we have amazing agents, have high dedication to work. and uphold equality.</p>
+            <p>{`Don't worry we have amazing agents, have high dedication to work. and uphold equality.`}</p>
             <Image width={200} height={200} src="/images/star.png" alt="" className={styles.testimonialStarImg} />
           </div>
           <div className={`${styles.testimonialBox} ${styles.bgLightBrown}`}>
             <Image width={200} height={200} src="/images/contact-card.png" alt="" className={styles.testimonialUserImg} />
             <h3>Take The Keys</h3>
-            <p>Don't worry we have amazing agents, have high dedication to work. and uphold equality.</p>
+            <p>{`Don't worry we have amazing agents, have high dedication to work. and uphold equality.`}</p>
             <Image width={200} height={200} src="/images/star.png" alt="" className={styles.testimonialStarImg} />
           </div>
           <div className={styles.testimonialBox}>
             <Image width={200} height={200} src="/images/contact-card.png" alt="" className={styles.testimonialUserImg} />
             <h3>Take The Keys</h3>
-            <p>Don't worry we have amazing agents, have high dedication to work. and uphold equality.</p>
+            <p>{`Don't worry we have amazing agents, have high dedication to work. and uphold equality.`}</p>
             <Image width={200} height={200} src="/images/star.png" alt="" className={styles.testimonialStarImg} />
           </div>
         </div>
