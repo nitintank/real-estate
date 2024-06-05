@@ -1,0 +1,464 @@
+/* Top Introduction Box */
+
+.topIntroductionBox {
+    width: 95%;
+    height: auto;
+    background: rgb(91, 170, 228);
+    background: linear-gradient(270deg, rgba(91, 170, 228, 1) 0%, rgba(24, 47, 69, 1) 100%);
+    margin: 10px auto;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.topIntroInnerBox1 {
+    width: 50%;
+    height: 500px;
+    padding: 25px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.topIntroInnerBox1 h2 {
+    color: white;
+    font-size: 75px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.topIntroInnerBox1 p {
+    color: white;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.topIntroInnerBox2 {
+    width: 50%;
+    height: 500px;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 0px 0px 20px 0px;
+}
+
+.topIntroInnerBox2 img {
+    width: 100%;
+    height: auto;
+}
+
+.searchBiggerBox {
+    width: 90%;
+    height: 100px;
+    background-color: white;
+    position: absolute;
+    bottom: -50px;
+    left: 5%;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.searchBiggerBox .formBox {
+    width: 15%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.formBox label {
+    font-weight: 700;
+}
+
+.formBox input {
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.formBox select {
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.searchBiggerBox .flexEnd {
+    justify-content: flex-end;
+}
+
+.searchBiggerBox .formBox button {
+    width: 100%;
+    background-color: #452820;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+/* Main Section */
+
+.mainSection{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 70px 40px 20px 40px;
+}
+
+.mainSectionBox1{
+    width: 70%;
+    padding: 20px 20px 0px 20px;
+}
+
+.mainSectionBox1 h3{
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.mainSectionBox1 p{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.mainSectionBox2{
+    width: 30%;
+    padding: 20px 20px 0px 20px;
+}
+
+.mainSectionBox2 h3{
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.mainSectionBox2 p{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.mainSectionBox2 img{
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* Latest Properties Section */
+
+.latest-properties-section {
+    padding: 20px 80px;
+}
+
+.latest-properties-section p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.latest-properties-section h2 {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.latestPropertiesBigBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.latestPropertiesInnerBox {
+    width: 48%;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+
+.latestPropertiesInnerBox img {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.latestPropertiesContentBox {
+    padding: 10px 15px;
+}
+
+.latestPropertiesContentBox .miniText {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.latestPropertiesContentBox h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.latestPropertiesContentBox .priceText {
+    font-size: 20px;
+    color: #7E411F;
+}
+
+.latestPropertiesContentBox .propertyDescription {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5c727d;
+}
+
+.innerPropertyContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 5px;
+}
+
+.innerPropertyContent p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5c727d;
+}
+
+.innerButtonBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px 5px 0px;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.innerButtonBox button {
+    width: 100%;
+    padding: 5px 35px;
+    cursor: pointer;
+    border: 1px solid #F3EBE4;
+    color: #7E411F;
+    background-color: #F3EBE4;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.innerButtonBox button .fa-whatsapp {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+/* Download Android App Section */
+
+.downloadAndroidAppSection {
+    width: 98%;
+    height: auto;
+    margin: auto;
+    background: rgb(255, 217, 173);
+    background: linear-gradient(90deg, rgba(255, 217, 173, 1) 0%, rgba(255, 100, 12, 1) 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.downloadAndroidBox1{
+    width: 60%;
+    height: auto;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.downloadAndroidBox1 h3{
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.downloadAndroidBox1 p{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.downloadAndroidBox1 ul{
+    margin: 50px 0px;
+}
+
+.downloadAndroidBox1 ul li{
+    font-size: 20px;
+}
+
+.downloadAndroidBox1 img{
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+}
+
+.downloadAndroidBox2{
+    width: 40%;
+}
+
+.downloadAndroidBox2 img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Responsive Code */
+
+@media (max-width: 1190px){
+    /* Top Introduction Box */
+    .searchBiggerBox{
+        width: 98%;
+        left: 1%;
+        bottom: -80px;
+    }
+}
+
+@media (max-width: 1090px){
+    /* Latest Properties Section */
+    .latestPropertiesBigBox{
+        gap: 25px;
+    }
+    .latest-properties-section{
+        padding: 70px 20px 20px 20px;
+    }
+    .latestPropertiesInnerBox img{
+        height: 240px;
+    }
+}
+
+@media (max-width: 1030px){
+    .latestPropertiesInnerBox{
+        width: 100%;
+    }
+    .latestPropertiesInnerBox img{
+        height: 280px;
+    }
+}
+
+@media (max-width: 769px) {
+    /* Top Introduction Box */
+    .topIntroductionBox{
+        width: 98%;
+        flex-direction: column;
+        border-radius: 10px;
+    }
+    .topIntroInnerBox1{
+        width: 100%;
+        padding: 5px 15px;
+        align-items: center;
+    }
+    .topIntroInnerBox1 h2{
+        font-size: 45px;
+        text-align: center;
+    }
+    .topIntroInnerBox1 p{
+        font-size: 18px;
+        text-align: center;
+    }
+    .topIntroInnerBox2{
+        width: 100%;
+        border-radius: 0px 0px 20px 20px;
+    }
+    .topIntroInnerBox2 img{
+        border-radius: 0px 0px 20px 20px;
+    }
+
+    .searchBiggerBox {
+        width: 95%;
+        left: 2.5%;
+        flex-wrap: wrap;
+        height: auto;
+        gap: 20px;
+        bottom: -280px;
+    }
+
+    .searchBiggerBox .formBox {
+        width: 100%;
+    }
+
+    /* Latest Properties Section */
+
+    .latest-properties-section{
+        padding: 250px 10px 20px 10px;
+    }
+    .latestPropertiesBigBox{
+        gap: 20px;
+        padding: 10px 0px;
+    }
+    .latestPropertiesInnerBox{
+        width: 100%;
+    }
+    .latestPropertiesInnerBox img{
+        height: 250px;
+        border-radius: 5px 5px 0px 0px;
+    }
+    .innerButtonBox{
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .innerButtonBox button{
+        width: 100%;
+    }
+    .latestPropertiesContentBox h3{
+        font-size: 20px !important;
+    }
+
+    /* Main Section */
+
+    .mainSection{
+        padding: 270px 10px 20px 10px;
+    }
+    .mainSectionBox1{
+        width: 100%;
+        padding: 10px 0px 0px 0px;
+    }
+    .mainSectionBox2{
+        width: 100%;
+        padding: 0px;
+    }
+    .mainSectionBox1 h3{
+        font-size: 40px;
+    }
+    .mainSectionBox2 img{
+        margin-top: 10px;
+    }
+    /* Download Android App Section */
+    .downloadAndroidAppSection{
+        flex-wrap: wrap;
+    }
+    .download-android-box-1{
+        width: 100%;
+        padding: 10px 25px;
+    }
+    .download-android-box-1 h3{
+        font-size: 40px;
+    }
+    .downloadAndroidBox2 {
+        width: 100%;
+    }
+    .download-android-box-1 ul{
+        margin: 5px 0px;
+        margin-bottom: 10px;
+    }
+    .download-android-box-1 ul li{
+        font-size: 16px;
+    }
+    .download-android-box-1 img{
+        margin: auto;
+    }
+}
+
+@media (max-width: 500px){
+     /* Latest Properties Section */
+     .latestPropertiesInnerBox img{
+        height: 160px;
+        border-radius: 5px 5px 0px 0px;
+    }
+}

@@ -1,0 +1,164 @@
+.footerSection{
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+.footerContentUpperBigBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.footerContentBox{
+    width: 33%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footerContentBox .footerLogoImg{
+    width: 200px;
+    height: auto;
+}
+
+.footerContentBox p{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.footerContentBox ul{
+    font-size: 20px;
+    list-style: none;
+}
+
+.footerContentBox ul li{
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.socialMediaBox{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.socialMediaBox i{
+    color: #452820;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.bgFooterBuilding{
+    background-image: url('/images/footer-building.png');
+    background-size: cover;
+    padding-bottom: 100px;
+}
+
+.inputSearchBox{
+    width: 100%;
+    position: relative;
+}
+
+.inputSearchBox input{
+    width: 70%;
+    background-color: #F3EBE4;
+    border: none;
+    font-size: 18px;
+    padding: 5px 15px;
+    border-radius: 25px;
+}
+
+.inputSearchBox button{
+    background-color: #452820;
+    color: white;
+    font-size: 18px;
+    border-radius: 25px;
+    padding: 5px 15px;
+    cursor: pointer;
+    position: absolute;
+    right: 25%;
+    border: none;
+}
+
+.footerEmailText{
+    color: #452820;
+    font-size: 20px !important;
+}
+
+.footerBottomBox{
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contactDetailBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.contactDetailBox p{
+    font-size: 25px;
+    font-weight: 700;
+    color: #452820;
+}
+
+.contactDetailBox p i{
+    font-weight: 700;
+}
+
+/* Responsive Code */
+
+@media (max-width: 1090px){
+    /* Footer Section */
+    .inputSearchBox input{
+        width: 100%;
+    }
+    .inputSearchBox button{
+        right: 0%;
+    }
+}
+
+@media (max-width: 769px){
+    /* Footer */
+    .footerContentUpperBigBox{
+        flex-direction: column;
+    }
+    .footerContentBox{
+        width: 100%;
+        padding: 10px;
+        align-items: center;
+    }
+    .footerContentBox p{
+        text-align: center;
+    }
+    .footerContentBox ul li{
+        text-align: center;
+    }
+    .inputSearchBox input{
+        width: 100%;
+    }
+    .inputSearchBox button{
+        right: 0%;
+    }
+    .footerEmailText{
+        font-size: 18px !important;
+    }
+    .footerBottomBox{
+        flex-direction: column;
+        padding: 10px;
+    }
+    .footerBottomBox p{
+        font-size: 16px;
+    }
+    .contactDetailBox p{
+        font-size: 20px;
+    }
+}

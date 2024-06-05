@@ -1,0 +1,120 @@
+/* Form Section */
+
+.formSection{
+    width: 100%;
+    height: auto;
+}
+
+.formContentBigBox{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.formContentBox1{
+    width: 50%;
+}
+
+.formContentBox1 img{
+    width: 100%;
+    height: auto;
+}
+
+.formContentBox{
+    width: 50%;
+    position: relative;
+}
+
+.formContentBox h2{
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.1;
+}
+
+.formContentBox form{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #170C04E8;
+    padding: 25px 40px;
+    border-radius: 15px;
+    margin-top: 50px;
+    margin-left: -50px;
+}
+
+.formContentBox form label{
+    font-size: 18px;
+    color: white;
+}
+
+.formContentBox form input{
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 16px;
+}
+
+.formContentBox form textarea{
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 16px;
+}
+
+.formContentBox form input[type=button]{
+    padding: 10px 25px;
+    font-size: 18px;
+    background-color: #F3EBE4;
+    border-radius: 10px;
+    border: none;
+    color: black;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Responsive Code */
+
+@media (max-width: 1375px){
+    .formContentBox form{
+        margin-top: 10px;
+        padding: 15px 25px;
+    }
+    .formContentBox h2{
+        font-size: 30px;
+    }
+    .formContentBox form label{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 769px) {
+    /* Form Section */
+    .formContentBigBox{
+        flex-wrap: wrap;
+    }
+    .formContentBox{
+        width: 100%;
+        padding-bottom: 20px;
+        margin-top: -60px;
+    }
+    .formContentBox1{
+        width: 100%;
+    }
+    .formContentBox form{
+        width: 98%;
+        position: static;
+        margin: auto;
+        padding: 10px 15px;
+    }
+    .formContentBox h2{
+        font-size: 40px;
+        text-align: center;
+    }
+    .formContentBox form input{
+        border-radius: 5px;
+    }
+}

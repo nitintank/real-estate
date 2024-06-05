@@ -1,0 +1,294 @@
+/* Top Introduction Box */
+
+.topIntroductionBox {
+    width: 95%;
+    height: auto;
+    background: rgb(59, 66, 112);
+    background: linear-gradient(90deg, rgba(59, 66, 112, 1) 0%, rgba(238, 232, 232, 1) 100%);
+    margin: 10px auto;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.topIntroInnerBox1 {
+    width: 50%;
+    height: auto;
+    padding: 25px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.topIntroInnerBox1 h2 {
+    color: white;
+    font-size: 75px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.topIntroInnerBox1 p {
+    color: white;
+    font-size: 22px;
+    margin-top: 5px;
+}
+
+.topIntroInnerBox2 {
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 0px 0px 20px 0px;
+}
+
+.topIntroInnerBox2 img {
+    width: 100%;
+    height: auto;
+}
+
+/* Why Us Section */
+
+.whyUsSection{
+    width: 100%;
+    padding: 10px 40px;
+}
+
+.whyUsSection h2{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.whyUsSection p{
+    font-size: 20px;
+    width: 70%;
+}
+
+.whyCardsBigBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+
+.whyCardBox{
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F3EBE4;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.whyCardBox h4{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.whyCardBox p{
+    text-align: center;
+    font-size: 17px;
+}
+
+/* Our Story Section */
+
+.ourStorySection{
+    width: 100%;
+    padding: 10px 40px;
+}
+
+.ourStorySection h2{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.ourStoryBigBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.ourStoryContentBox{
+    width: 50%;
+    padding: 20px;
+}
+
+.ourStoryContentBox img{
+    width: 100%;
+    height: auto;
+}
+
+.ourStoryContentBox h3{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.ourStoryContentBox p{
+    font-size: 18px;
+}
+
+/* Our Value Section */
+
+.ourValueSection{
+    width: 100%;
+    background-color: #F3EBE4;
+    padding: 20px;
+}
+
+.ourValueSection h2{
+    font-size: 45px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.ourValueSection p{
+    width: 75%;
+    font-size: 18px;
+    margin: auto;
+    text-align: center;
+}
+
+.popularAreasImageBox {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 0px auto;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.popularAreasImage1 {
+    width: 70%;
+    height: 300px;
+    border-radius: 15px;
+}
+
+.popularAreasImage2 {
+    width: 29%;
+    height: 300px;
+    border-radius: 15px;
+}
+
+/* Responsive Code */
+
+@media (max-width: 1285px){
+    /* Our Value Section */
+    .popularAreasImageBox{
+        width: 100%;
+    }
+    .popularAreasImage1{
+        width: 100%;
+        height: 240px;
+    }
+    .popularAreasImage2{
+        width: 49%;
+        height: 240px;
+    }
+}
+
+@media (max-width: 769px) {
+
+    /* Top Introduction Box */
+    .topIntroductionBox{
+        width: 98%;
+        flex-direction: column;
+    }
+    .topIntroInnerBox1{
+        width: 100%;
+        padding: 15px;
+    }
+    .topIntroInnerBox1 h2{
+        font-size: 45px;
+        text-align: center;
+    }
+    .topIntroInnerBox1 p{
+        font-size: 18px;
+        text-align: center;
+    }
+    .topIntroInnerBox2{
+        width: 100%;
+        border-radius: 0px 0px 20px 20px;
+    }
+    .topIntroInnerBox2 img{
+        border-radius: 0px 0px 20px 20px;
+    }
+
+    /* Why Us Section */
+    .whyUsSection{
+        padding: 5px 10px;
+    }
+    .whyCardsBigBox{
+        flex-wrap: wrap;
+        padding: 10px 0px;
+        gap: 10px;
+    }
+    .whyUsSection h2{
+        text-align: center;
+    }
+    .whyUsSection p{
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+    }
+    .whyCardBox{
+        width: 48%;
+        padding: 10px;
+    }
+    .whyCardBox img{
+        width: 100px;
+    }
+    .whyCardBox h4{
+        font-size: 14px;
+    }
+    .whyCardBox p{
+        font-size: 12px;
+    }
+
+    /* Our Story Section */
+    .ourStorySection{
+        padding: 5px 10px;
+    }
+    .ourStorySection h2{
+        text-align: center;
+    }
+    .ourStoryBigBox{
+        flex-wrap: wrap;
+    }
+    .ourStoryContentBox{
+        width: 100%;
+        padding: 5px;
+    }
+    .orderM1{
+        order: 1;
+    }
+    .ourValueSection{
+       padding: 10px;
+    }
+    .ourValueSection p{
+        width: 100%;
+        font-size: 16px;
+    }
+    .popularAreasImageBox{
+        width: 100%;
+        margin: 10px auto 0px auto;
+    }
+    .popularAreasImage1{
+        width: 100%;
+        height: 170px;
+        border-radius: 10px;
+    }
+    .popularAreasImage2{
+        width: 48%;
+        height: 170px;
+        border-radius: 10px;
+    }
+}

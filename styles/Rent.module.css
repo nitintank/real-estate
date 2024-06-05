@@ -1,0 +1,426 @@
+/* Top Introduction Box */
+
+.topIntroductionBox {
+    width: 95%;
+    height: auto;
+    background: rgb(243, 128, 9);
+    background: linear-gradient(90deg, rgba(243, 128, 9, 1) 0%, rgba(255, 216, 175, 1) 100%);
+    margin: 10px auto;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.topIntroInnerBox1 {
+    width: 40%;
+    height: auto;
+    padding: 25px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.topIntroInnerBox1 h2 {
+    color: white;
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.topIntroInnerBox1 p {
+    color: white;
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+.topIntroInnerBox2 {
+    width: 60%;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 0px 0px 20px 0px;
+}
+
+.topIntroInnerBox2 img {
+    width: 100%;
+    height: auto;
+}
+
+.searchBiggerBox {
+    width: 90%;
+    height: 100px;
+    background-color: white;
+    position: absolute;
+    bottom: -50px;
+    left: 5%;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.searchBiggerBox .formBox {
+    width: 19%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.formBox label {
+    font-weight: 700;
+}
+
+.formBox input {
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.formBox select {
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.searchBiggerBox .flexEnd {
+    justify-content: flex-end;
+}
+
+.searchBiggerBox .formBox button {
+    width: 100%;
+    background-color: #452820;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+/* Latest Properties Section */
+
+.latestPropertiesSection {
+    padding: 70px 80px 20px 80px;
+}
+
+.latestPropertiesSection p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.latestPropertiesSection h2 {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.latestPropertiesBigBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.latestPropertiesInnerBox {
+    width: 48%;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+
+.latestPropertiesInnerBox img {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.latestPropertiesContentBox {
+    padding: 10px 15px;
+}
+
+.latestPropertiesContentBox .miniText {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.latestPropertiesContentBox h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.latestPropertiesContentBox .priceText {
+    font-size: 20px;
+    color: #7E411F;
+}
+
+.latestPropertiesContentBox .propertyDescription {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5c727d;
+}
+
+.innerPropertyContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 5px;
+}
+
+.innerPropertyContent p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5c727d;
+}
+
+.innerButtonBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px 5px 0px;
+}
+
+.innerButtonBox button {
+    padding: 5px 35px;
+    cursor: pointer;
+    border: 1px solid #F3EBE4;
+    color: #7E411F;
+    background-color: #F3EBE4;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.innerButtonBox button .fa-whatsapp {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+/* Footer Section */
+
+.footer-section {
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+.footer-content-upper-big-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.footer-content-box {
+    width: 33%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-content-box .footer-logo-img {
+    width: 200px;
+    height: auto;
+}
+
+.footer-content-box p {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.footer-content-box ul {
+    font-size: 20px;
+    list-style: none;
+}
+
+.footer-content-box ul li {
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.social-media-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-media-box i {
+    color: #452820;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.bg-footer-building {
+    background-image: url('/images/footer-building.png');
+    background-size: cover;
+    padding-bottom: 100px;
+}
+
+.input-search-box {
+    width: 100%;
+    position: relative;
+}
+
+.input-search-box input {
+    width: 70%;
+    background-color: #F3EBE4;
+    border: none;
+    font-size: 18px;
+    padding: 5px 15px;
+    border-radius: 25px;
+}
+
+.input-search-box button {
+    background-color: #452820;
+    color: white;
+    font-size: 18px;
+    border-radius: 25px;
+    padding: 5px 15px;
+    cursor: pointer;
+    position: absolute;
+    right: 25%;
+    border: none;
+}
+
+.footer-email-text {
+    color: #452820;
+    font-size: 20px !important;
+}
+
+.footer-bottom-box {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact-detail-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.contact-detail-box p {
+    font-size: 25px;
+    font-weight: 700;
+    color: #452820;
+}
+
+.contact-detail-box p i {
+    font-weight: 700;
+}
+
+/* Responsive Code */
+
+@media (max-width: 1190px){
+    /* Top Introduction Box */
+    .searchBiggerBox{
+        width: 98%;
+        left: 1%;
+    }
+}
+
+@media (max-width: 1090px){
+    /* Latest Properties Section */
+    .latestPropertiesBigBox{
+        gap: 25px;
+    }
+    .latestPropertiesSection{
+        padding: 70px 20px 20px 20px;
+    }
+    .latestPropertiesInnerBox img{
+        height: 240px;
+    }
+}
+
+@media (max-width: 995px){
+    /* Latest Properties Section */
+    .innerButtonBox{
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    .innerButtonBox button{
+        width: 100%;
+    }
+}
+
+@media (max-width: 769px) {
+    /* Top Introduction Box */
+    .topIntroductionBox{
+        width: 98%;
+        flex-direction: column;
+        border-radius: 10px;
+    }
+    .topIntroInnerBox1{
+        width: 100%;
+        padding: 15px;
+        align-items: center;
+    }
+    .topIntroInnerBox1 h2{
+        font-size: 45px;
+        text-align: center;
+    }
+    .topIntroInnerBox1 p{
+        font-size: 18px;
+        text-align: center;
+    }
+    .topIntroInnerBox2{
+        width: 100%;
+        border-radius: 0px 0px 20px 20px;
+    }
+    .topIntroInnerBox2 img{
+        border-radius: 0px 0px 20px 20px;
+    }
+    .searchBiggerBox{
+        width: 98%;
+        left: 1%;
+        flex-wrap: wrap;
+        gap: 20px;
+        height: auto;
+        bottom: -250px;
+    }
+    .searchBiggerBox .formBox{
+        width: 100%;
+    }
+
+    /* Latest Properties Section */
+
+    .latestPropertiesSection{
+        padding: 250px 10px 20px 10px;
+    }
+    .latestPropertiesBigBox{
+        gap: 20px;
+    }
+    .latestPropertiesInnerBox{
+        width: 100%;
+    }
+    .latestPropertiesInnerBox img{
+        height: 250px;
+        border-radius: 5px 5px 0px 0px;
+    }
+    .innerButtonBox{
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .innerButtonBox button{
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px){
+    /* Latest Properties Section */
+    .latestPropertiesInnerBox img{
+        height: 160px;
+        border-radius: 5px 5px 0px 0px;
+    }
+}
