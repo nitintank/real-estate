@@ -115,6 +115,16 @@
     right: 0px;
 }
 
+.redText{
+    color: red !important;
+    margin-top: 0px !important;
+}
+
+.greenText{
+    color: green !important;
+    margin-top: 0px !important;
+}
+
 /* Responsive Code */
 
 @media (max-width: 1020px){

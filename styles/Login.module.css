@@ -83,7 +83,7 @@
     font-size: 16px;
 }
 
-.registerContentBox2 form input[type=button] {
+.registerContentBox2 form input[type=submit] {
     padding: 10px 25px;
     font-size: 18px;
     background-color: #2F2217;
@@ -92,6 +92,11 @@
     color: white;
     cursor: pointer;
     margin-top: 15px;
+}
+
+.redText{
+    color: red !important;
+    margin-top: 0px !important;
 }
 
 /* Responsive Code */

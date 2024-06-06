@@ -1,0 +1,202 @@
+/* Main Content Big Box */
+
+.mainContentBigBox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    border-top: 1px solid #372415;
+}
+
+.mainSidebarBox {
+    width: 15%;
+    height: 91.9vh;
+    background-color: #372415;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    position: sticky;
+    top: 70px;
+}
+
+.mainSidebarBox a {
+    color: #F3EBE4;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+.mainSidebarBox .activeSelection {
+    background-color: #F3EBE4;
+    color: #372415;
+    border-radius: 10px;
+}
+
+.mainContentBox {
+    width: 85%;
+    height: auto;
+    padding: 10px 20px;
+}
+
+.mainContentBox h2 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.propertyListTable{
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.propertyList {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.propertyList td,
+.propertyList th {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.propertyList tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.propertyList tr:hover {
+    background-color: #ddd;
+}
+
+.propertyList th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #372415;
+    color: white;
+}
+
+.propertyList td .fa-pen-to-square, .propertyList td .fa-trash-can{
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.propertyDetailTableBox{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.propertyDetailTableBox img{
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+}
+
+.propertyDetailText h4{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.propertyDetailText .priceText{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.propertyMiniDetail{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.propertyMiniDetail i{
+    font-size: 14px;
+}
+
+.propertyMiniDetail p span{
+    font-size: 16px;
+}
+
+.apartmentText{
+    background-color: white;
+    padding: 2px 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+/* Responsive Code */
+
+@media (max-width: 1395px) {
+
+    /* Main Content Big Box */
+    .mainSidebarBox {
+        width: 17%;
+    }
+
+    .mainContentBox {
+        width: 83%;
+    }
+}
+
+@media (max-width: 1285px) {
+
+    /* Main Content Big Box */
+    .mainSidebarBox {
+        width: 19%;
+        top: 60px;
+    }
+
+    .mainContentBox {
+        width: 81%;
+    }
+}
+
+@media (max-width: 1100px){
+    /* Main Content Big Box */
+    .mainSidebarBox {
+        width: 25%;
+    }
+
+    .mainContentBox {
+        width: 75%;
+    }
+}
+
+@media (max-width: 769px) {
+
+    /* Main Content Big Box */
+
+    .mainSidebarBox {
+        display: none;
+    }
+
+    .mainContentBox {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .propertyList th{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding: 5px 10px;
+        white-space: nowrap;
+    }
+
+    .propertyDetailText h4{
+        white-space: nowrap;
+    }
+
+    .propertyDetailText .priceText{
+        white-space: nowrap;
+    }
+
+    .propertyMiniDetail{
+        flex-wrap: wrap;
+        gap: 5px;
+        font-size: 14px;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+}

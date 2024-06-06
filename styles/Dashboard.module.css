@@ -1,0 +1,164 @@
+/* Main Content Big Box */
+
+.mainContentBigBox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    border-top: 1px solid #372415;
+}
+
+.mainSidebarBox {
+    width: 15%;
+    height: 91.9vh;
+    background-color: #372415;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    position: sticky;
+    top: 70px;
+}
+
+.mainSidebarBox a {
+    color: #F3EBE4;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+.mainSidebarBox .activeSelection {
+    background-color: #F3EBE4;
+    color: #372415;
+    border-radius: 10px;
+}
+
+.mainContentBox {
+    width: 85%;
+    height: auto;
+    padding: 10px 20px;
+}
+
+.mainContentBox h2 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.gladPara {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.dashboardCardsBigBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboardCardsBox {
+    width: 22%;
+    background-color: #F3EBE4;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.dashboardCardsBox img {
+    width: 50px;
+    height: auto;
+}
+
+.dashboardCardsBox h3 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.statisticsBox {
+    width: 100%;
+    height: 400px;
+    background-color: #F3EBE4;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* Responsive Code */
+
+@media (max-width: 1395px) {
+
+    /* Main Content Big Box */
+    .mainSidebarBox {
+        width: 17%;
+    }
+
+    .mainContentBox {
+        width: 83%;
+    }
+}
+
+@media (max-width: 1285px) {
+
+    /* Main Content Big Box */
+    .mainSidebarBox {
+        width: 19%;
+        top: 60px;
+    }
+
+    .mainContentBox {
+        width: 81%;
+    }
+}
+
+@media (max-width: 1100px){
+    /* Main Content Big Box */
+    .mainSidebarBox {
+        width: 25%;
+    }
+
+    .mainContentBox {
+        width: 75%;
+    }
+}
+
+@media (max-width: 769px) {
+
+    /* Main Content Big Box */
+
+    .mainSidebarBox {
+        display: none;
+    }
+
+    .mainContentBox {
+        width: 100%;
+        padding: 5px 10px;
+    }
+
+    .mainContentBox h2 {
+        font-size: 25px;
+    }
+
+    .gladPara {
+        font-size: 16px;
+    }
+
+    .dashboardCardsBigBox {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .dashboardCardsBox {
+        width: 48%;
+        padding: 10px;
+    }
+
+    .dashboardCardsBox img {
+        width: 40px;
+    }
+
+    .dashboardCardsBox h3 {
+        font-size: 20px;
+    }
+}

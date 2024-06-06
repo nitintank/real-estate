@@ -14,6 +14,9 @@ const Register = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const role = 'user'
+  const [invalidOTP, setInvalidOTP] = useState(false)
+  const [otpSent, setotpSent] = useState(false)
+  const [userexist, setUserexist] = useState(false)
 
   const handleChange = (e) => {
     if (e.target.name == 'username') {
@@ -45,10 +48,16 @@ const Register = () => {
         body: JSON.stringify(data)
       })
       let response = await res.json()
-      console.log(response)
+      
+      if(response.message == "OTP sent to your phone number"){
+        setotpSent(true)
+      }
+      else if(response.error == "User with this phone number already exists"){
+        setUserexist(true)
+      }
     }
     else {
-      alert("Hello")
+      alert("Error Occured, Try Again!!")
     }
   }
 
@@ -63,35 +72,44 @@ const Register = () => {
       body: JSON.stringify(data)
     })
     let response = await res.json()
-    console.log(response)
+   
+    if(response.error == "Invalid OTP"){
+      setInvalidOTP(true)
+    }
+    else if(response.message == "User registered and OTP verified successfully"){
+      location.href = "/user-panel/dashboard"
+    }
   }
 
   return (
     <>
       <Navbar />
       {/* <!-- Register Big Box Section --> */}
-      <div class={styles.registerBigBox}>
-        <div class={styles.registerContentBox1}>
+      <div className={styles.registerBigBox}>
+        <div className={styles.registerContentBox1}>
           <h2>Connecting People & Property</h2>
           <p>Easy way to Buy/ Sell property</p>
           <Image width={200} height={200} src="/images/register-house.png" alt="" />
         </div>
-        <div class={styles.registerContentBox2}>
+        <div className={styles.registerContentBox2}>
           <h2>Register Here,</h2>
           <form method='POST' onSubmit={handleSubmit}>
-            <label for="">Enter Name</label>
+            <label htmlFor="">Enter Name</label>
             <input type="text" placeholder="Enter Name" name='username' value={username} onChange={handleChange} required />
             <div className={styles.sendOtpBox}>
-              <label for="">Enter Phone No.</label>
+              <label htmlFor="">Enter Phone No.</label>
               <input type="text" placeholder="Enter Phone No." name='phone_number' value={phone_number} onChange={handleChange} required />
               <button onClick={sendOTP}>Send OTP</button>
             </div>
-            <label for="">Enter OTP</label>
-            <input type="text" placeholder="Enter Phone No." name='otp' value={otp} onChange={handleChange} required />
-            <label for="">Enter Email</label>
+            {otpSent && <p className={styles.greenText}>OTP Sent To Your Number</p>}
+            {userexist && <p className={styles.redText}>User Already Exists, Try To Login</p>}
+            <label htmlFor="">Enter OTP</label>
+            <input type="text" placeholder="Enter OTP" name='otp' value={otp} onChange={handleChange} required />
+            {invalidOTP && <p className={styles.redText}>OTP Is Invalid</p>}
+            <label htmlFor="">Enter Email</label>
             <input type="text" placeholder="Enter Email" name='email' value={email} onChange={handleChange} required />
-            <label for="">Enter Password</label>
-            <input type="text" placeholder="Enter Password" name='password' value={password} onChange={handleChange} required />
+            <label htmlFor="">Enter Password</label>
+            <input type="password" placeholder="Enter Password" name='password' value={password} onChange={handleChange} required />
             <input type="submit" value="SUBMIT" />
           </form>
           <p>Already Have An Account? <Link href="/login">Login Here</Link></p>

@@ -7,7 +7,7 @@ const navbar = () => {
     return (
         <>
             <nav className={styles.nav}>
-                <Image width={200} height={200} src="/images/las-vegas.png" alt="" className={styles.logoImg} />
+                <Link href="/"><Image width={200} height={200} src="/images/las-vegas.png" alt="" className={styles.logoImg} /></Link>
                 <ul>
                     <Link href="/"><li>Home</li></Link>
                     <Link href="/projects"><li>Projects</li></Link>
@@ -18,7 +18,7 @@ const navbar = () => {
                 </ul>
                 <div className={styles.navbarBox}>
                     <Link href="/register"><button>Post Property</button></Link>
-                    <p><i className="fa-solid fa-phone"></i>8000-300-725</p>
+                    <Link href="/contact-us"><p><i className="fa-solid fa-phone"></i>8000-300-725</p></Link>
                     <Link href="/login"><i className={`fa-solid fa-circle-user ${styles.userIcon}`}></i></Link>
                 </div>
             </nav>

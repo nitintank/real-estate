@@ -59,6 +59,11 @@
     gap: 4px;
 }
 
+.navbarBox a{
+    text-decoration: none;
+    color: black;
+}
+
 .nav .navbarBox .userIcon {
     font-size: 28px !important;
 }
