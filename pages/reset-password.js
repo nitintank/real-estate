@@ -11,6 +11,8 @@ const ResetPassword = () => {
   const [otp, setOtp] = useState('')
   const [new_password, setNewPassword] = useState('')
   const [confirm_password, setConfirmPassword] = useState('')
+  const [showpassword, setShowpassword] = useState('password')
+  const [showpassword2, setShowpassword2] = useState('password')
 
   const handleChange = (e) => {
     if (e.target.name == 'phone_number') {
@@ -60,6 +62,24 @@ const ResetPassword = () => {
     console.log(response)
   }
 
+  const showPassword = () => {
+    if (showpassword == 'password') {
+      setShowpassword('text')
+    }
+    else {
+      setShowpassword('password')
+    }
+  }
+
+  const showPassword2 = () => {
+    if (showpassword2 == 'password') {
+      setShowpassword2('text')
+    }
+    else {
+      setShowpassword2('password')
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -80,10 +100,18 @@ const ResetPassword = () => {
             </div>
             <label for="">Enter OTP</label>
             <input type="text" placeholder="Enter OTP" name='otp' value={otp} onChange={handleChange} required />
-            <label for="">Enter Password</label>
-            <input type="text" placeholder="Enter Password" name='new_password' value={new_password} onChange={handleChange} required />
-            <label for="">Confirm Password</label>
-            <input type="text" placeholder="Enter Confirm Password" name='confirm_password' value={confirm_password} onChange={handleChange} required />
+            <div className={styles.sendOtpBox}>
+              <label for="">Enter Password</label>
+              <input type={showpassword} placeholder="Enter Password" name='new_password' value={new_password} onChange={handleChange} required />
+              {showpassword == 'password' && <Image width={50} height={50} src="/images/eye.png" alt="" className={styles.icon3} onClick={showPassword} />}
+              {showpassword == 'text' && <Image width={50} height={50} src="/images/eye-open-icon.png" alt="" className={styles.icon3} onClick={showPassword} />}
+            </div>
+            <div className={styles.sendOtpBox}>
+              <label for="">Confirm Password</label>
+              <input type={showpassword2} placeholder="Enter Confirm Password" name='confirm_password' value={confirm_password} onChange={handleChange} required />
+              {showpassword2 == 'password' && <Image width={50} height={50} src="/images/eye.png" alt="" className={styles.icon3} onClick={showPassword2} />}
+              {showpassword2 == 'text' && <Image width={50} height={50} src="/images/eye-open-icon.png" alt="" className={styles.icon3} onClick={showPassword2} />}
+            </div>
             <input type="submit" value="SUBMIT" />
           </form>
           <p>Already Have An Account? <Link href="/login">Login Here</Link></p>

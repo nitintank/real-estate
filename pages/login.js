@@ -10,6 +10,7 @@ const Login = () => {
     const [identifier, setIdentifier] = useState('')
     const [password, setPassword] = useState('')
     const [invalidLogin, setInvalidLogin] = useState(false)
+    const [showpassword, setShowpassword] = useState('password')
 
     const handleChange = (e) => {
         if (e.target.name == 'identifier') {
@@ -19,6 +20,15 @@ const Login = () => {
             setPassword(e.target.value)
         }
     }
+
+    const showPassword = () => {
+        if (showpassword == 'password') {
+          setShowpassword('text')
+        }
+        else {
+          setShowpassword('password')
+        }
+      }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -32,12 +42,12 @@ const Login = () => {
         })
         let response = await res.json()
 
-        if(response.error == "User not found or invalid credentials"){
+        if (response.error == "User not found or invalid credentials") {
             setInvalidLogin(true)
-          }
-          else if(response.role == "user"){
+        }
+        else if (response.role == "user") {
             location.href = "/user-panel/dashboard"
-          }
+        }
     }
 
     return (
@@ -55,8 +65,12 @@ const Login = () => {
                     <form method='POST' onSubmit={handleSubmit}>
                         <label htmlFor="">Enter Email or Phone No.</label>
                         <input type="text" placeholder="Enter Email or Phone No." name='identifier' value={identifier} onChange={handleChange} required />
-                        <label htmlFor="">Enter Password</label>
-                        <input type="password" placeholder="Enter Password" name='password' value={password} onChange={handleChange} required />
+                        <div className={styles.sendOtpBox}>
+                            <label htmlFor="">Enter Password</label>
+                            <input type={showpassword} placeholder="Enter Password" name='password' value={password} onChange={handleChange} required />
+                            {showpassword == 'password' && <Image width={50} height={50} src="/images/eye.png" alt="" className={styles.icon3} onClick={showPassword} />}
+                            {showpassword == 'text' && <Image width={50} height={50} src="/images/eye-open-icon.png" alt="" className={styles.icon3} onClick={showPassword} />}
+                        </div>
                         {invalidLogin && <p className={styles.redText}>Invalid Credentials, Try Again</p>}
                         <input type="submit" value="SUBMIT" />
                     </form>

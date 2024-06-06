@@ -17,6 +17,7 @@ const Register = () => {
   const [invalidOTP, setInvalidOTP] = useState(false)
   const [otpSent, setotpSent] = useState(false)
   const [userexist, setUserexist] = useState(false)
+  const [showpassword, setShowpassword] = useState('password')
 
   const handleChange = (e) => {
     if (e.target.name == 'username') {
@@ -48,11 +49,11 @@ const Register = () => {
         body: JSON.stringify(data)
       })
       let response = await res.json()
-      
-      if(response.message == "OTP sent to your phone number"){
+
+      if (response.message == "OTP sent to your phone number") {
         setotpSent(true)
       }
-      else if(response.error == "User with this phone number already exists"){
+      else if (response.error == "User with this phone number already exists") {
         setUserexist(true)
       }
     }
@@ -72,12 +73,21 @@ const Register = () => {
       body: JSON.stringify(data)
     })
     let response = await res.json()
-   
-    if(response.error == "Invalid OTP"){
+
+    if (response.error == "Invalid OTP") {
       setInvalidOTP(true)
     }
-    else if(response.message == "User registered and OTP verified successfully"){
+    else if (response.message == "User registered and OTP verified successfully") {
       location.href = "/user-panel/dashboard"
+    }
+  }
+
+  const showPassword = () => {
+    if (showpassword == 'password') {
+      setShowpassword('text')
+    }
+    else {
+      setShowpassword('password')
     }
   }
 
@@ -108,8 +118,12 @@ const Register = () => {
             {invalidOTP && <p className={styles.redText}>OTP Is Invalid</p>}
             <label htmlFor="">Enter Email</label>
             <input type="text" placeholder="Enter Email" name='email' value={email} onChange={handleChange} required />
-            <label htmlFor="">Enter Password</label>
-            <input type="password" placeholder="Enter Password" name='password' value={password} onChange={handleChange} required />
+            <div className={styles.sendOtpBox}>
+              <label htmlFor="">Enter Password</label>
+              <input type={showpassword} placeholder="Enter Password" name='password' value={password} onChange={handleChange} required />
+              {showpassword == 'password' && <Image width={50} height={50} src="/images/eye.png" alt="" className={styles.icon3} onClick={showPassword} />}
+              {showpassword == 'text' && <Image width={50} height={50} src="/images/eye-open-icon.png" alt="" className={styles.icon3} onClick={showPassword} />}
+            </div>
             <input type="submit" value="SUBMIT" />
           </form>
           <p>Already Have An Account? <Link href="/login">Login Here</Link></p>
@@ -117,30 +131,6 @@ const Register = () => {
       </div>
       {/* Footer Section */}
       <Footer />
-      {/* <form method='POST' onSubmit={handleSubmit}>
-        <label>Enter Name </label>
-        <input type="text" name='username' value={username} onChange={handleChange} required />
-        <br />
-        <br />
-        <label>Enter Phone Number </label>
-        <input type="text" name='phone_number' value={phone_number} onChange={handleChange} required />
-        <button onClick={sendOTP}>Send OTP</button>
-        <br />
-        <br />
-        <label>Enter OTP </label>
-        <input type="text" name='otp' value={otp} onChange={handleChange} required />
-        <br />
-        <br />
-        <label>Enter Email </label>
-        <input type="text" name='email' value={email} onChange={handleChange} required />
-        <br />
-        <br />
-        <label>Enter Password </label>
-        <input type="text" name='password' value={password} onChange={handleChange} required />
-        <br />
-        <br />
-        <input type="submit" value="SUBMIT" />
-      </form> */}
     </>
   )
 }
