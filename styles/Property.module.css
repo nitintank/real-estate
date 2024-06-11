@@ -1,0 +1,877 @@
+/* Property Images Section */
+
+.propertyImagesSection {
+    width: 100%;
+    height: auto;
+    padding: 5px 20px;
+}
+
+.mainHouseImg {
+    width: 98%;
+    height: auto;
+    display: block;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.propertyMoreImages {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.propertyMoreImages img {
+    width: 18%;
+    border-radius: 10px;
+    height: auto;
+}
+
+/* Property Title Content Box */
+
+.propertyTitleContentBox {
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentTitleContentBox1 {
+    width: 50%;
+}
+
+.contentTitleContentBox1 p {
+    font-size: 25px;
+}
+
+.contentTitleContentBox1 h2 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.contentTitleContentBox1 h4 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.contentTitleContentBox2 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.contentTitleContentBox2 h3 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.contentTitleContentBox2 button {
+    background-color: #452820;
+    border-radius: 10px;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* Amenities Content Box */
+
+.amenitiesContentBox {
+    width: 95%;
+    height: auto;
+    display: block;
+    margin: auto;
+    background-color: #F3EBE4;
+    border-radius: 20px;
+}
+
+.amenitiesContentBox ul {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+    padding: 5px 20px;
+}
+
+.amenitiesContentBox ul li {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.amenitiesContentBox ul .activeSelection {
+    border-bottom: 2px solid black;
+}
+
+.amenitiesCardsBigBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.aminitiesCardsBox {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.aminitiesCardsBox p {
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.aminitiesCardsBox p span {
+    background-color: #452820;
+    padding: 10px 14px;
+    border-radius: 50%;
+    color: #F3EBE4;
+}
+
+.aminitiesCardsBox p span i {
+    font-size: 16px;
+}
+
+/* Description Section */
+
+.descriptionContentBox {
+    width: 100%;
+    padding: 10px 40px;
+}
+
+.descriptionContentBox h3 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.descriptionContentBox p {
+    font-size: 18px;
+}
+
+/* Address Section */
+
+.addressSection {
+    width: 100%;
+    padding: 10px 40px;
+}
+
+.addressTopContent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addressTopContent h2 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.addressTopContent button {
+    background-color: #452820;
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.addressBottomContentBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addressBottomBox {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.addressBottomBox p {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(172, 172, 172);
+}
+
+.darkText {
+    font-weight: 700;
+}
+
+/* Floor Plan Section */
+
+.floorPlanSection {
+    width: 100%;
+    padding: 20px 40px;
+}
+
+.floorPlanSection h2 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.floorPlanSection img {
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+/* Google Maps Section */
+
+.googleMapsSection {
+    width: 100%;
+    padding: 20px 40px;
+}
+
+.googleMapsSection h2 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.googleMapsSection iframe {
+    width: 100%;
+}
+
+/* Owner Details Section */
+
+.ownerDetailsBox {
+    width: 100%;
+    padding: 20px 0px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.ownerDetailBox1 {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.ownerDetailBox1 h3 {
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.ownerDetailBox1 img {
+    width: 200px;
+    height: auto;
+}
+
+.ownerDetailBox1 h4 {
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.ownerDetailBox1 p {
+    font-size: 18px;
+}
+
+.ownerDetailBox1 button {
+    background-color: #452820;
+    color: white;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.ownerDetailBox2 {
+    width: 70%;
+}
+
+.ownerDetailBox2 h3 {
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.ownerDetailBox2 form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #F3EBE4;
+    padding: 20px;
+    border-radius: 20px 0px 0px 20px;
+}
+
+.radioBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ownerDetailBox2 form p {
+    font-size: 18px;
+    color: black;
+}
+
+.ownerDetailBox2 form label {
+    font-size: 18px;
+    color: black;
+}
+
+.ownerDetailBox2 form input[type=text] {
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 16px;
+}
+
+.ownerDetailBox2 form input[type=submit] {
+    padding: 10px 25px;
+    font-size: 18px;
+    background-color: #2F2217;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Reviews Section */
+
+.reviewsSection {
+    width: 100%;
+    padding: 20px 40px;
+}
+
+.reviewsSection h2 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.ratingsUpperContentBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ratingsUpperUserDetailBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ratingsBox {
+    width: 100%;
+    margin-top: 10px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.ratingsUpperUserDetailBox img {
+    width: 60px;
+    height: auto;
+}
+
+.ratingsUpperContent h4 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.ratingsUpperContent p {
+    font-size: 16px;
+}
+
+.reviewsPara {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.starImg {
+    width: auto;
+    height: 20px;
+}
+
+/* Leave A Review Section */
+
+.addCommentBox {
+    width: 100%;
+}
+
+.addCommentBox h3 {
+    font-size: 35px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.addCommentBox form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.addCommentBox form input[type=submit] {
+    padding: 10px 25px;
+    font-size: 18px;
+    background-color: #2F2217;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.addCommentBox form input[type=text] {
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 16px;
+    background-color: #F3EBE4;
+}
+
+.addCommentBox form textarea{
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 16px;
+    background-color: #F3EBE4;
+}
+
+.addCommentBox form .commentLabel{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.starRating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 2em;
+    justify-content: space-around;
+    text-align: center;
+    width: 200px;
+}
+
+.starRating input {
+    display: none;
+}
+
+.starRating label {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.starRating :checked~label {
+    color: #f90;
+}
+
+.starRating label:hover,
+.starRating label:hover~label {
+    color: #fc0;
+}
+
+/* Latest Properties Section */
+
+.latestPropertiesSection {
+    padding: 20px 40px;
+}
+
+.latestPropertiesSection h2 {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.latestPropertiesBigBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.latestPropertiesInnerBox {
+    width: 48%;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+
+.latestPropertiesInnerBox img {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.latestPropertiesContentBox {
+    padding: 10px 15px;
+}
+
+.latestPropertiesContentBox .miniText {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.latestPropertiesContentBox h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.latestPropertiesContentBox .priceText {
+    font-size: 20px;
+    color: #7E411F;
+}
+
+.latestPropertiesContentBox .propertyDescription {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5c727d;
+}
+
+.innerPropertyContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 5px;
+}
+
+.innerPropertyContent p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5c727d;
+}
+
+.innerButtonBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px 5px 0px;
+}
+
+.innerButtonBox button {
+    padding: 5px 35px;
+    cursor: pointer;
+    border: 1px solid #F3EBE4;
+    color: #7E411F;
+    background-color: #F3EBE4;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.innerButtonBox button .fa-whatsapp {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+/* Responsive Code */
+
+@media (max-width: 1090px){
+    /* Property Title Content Box */
+    .contentTitleContentBox1 p{
+        font-size: 21px;
+    }
+    .contentTitleContentBox1 h2{
+        font-size: 35px;
+    }
+    .contentTitleContentBox1 h4{
+        font-size: 25px;
+    }
+    .contentTitleContentBox1 p{
+        font-size: 18px;
+    }
+    /* Latest Properties Section */
+    .latestPropertiesBigBox {
+        gap: 25px;
+    }
+
+    .latestPropertiesSection {
+        padding: 70px 20px 20px 20px;
+    }
+
+    .latestPropertiesInnerBox img {
+        height: 240px;
+    }
+
+    /* Owner Details Section */
+
+    .ownerDetailBox1 h3{
+        font-size: 25px;
+    }
+    .ownerDetailBox2 h3{
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 995px) {
+
+    /* Latest Properties Section */
+    .innerButtonBox {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .innerButtonBox button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 769px) {
+
+    /* Latest Properties Section */
+
+    .latestPropertiesSection {
+        padding: 20px 10px 20px 10px;
+    }
+
+    .latestPropertiesSection h2{
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .latestPropertiesBigBox {
+        gap: 20px;
+    }
+
+    .latestPropertiesInnerBox {
+        width: 100%;
+    }
+
+    .latestPropertiesInnerBox img {
+        height: 250px;
+        border-radius: 5px 5px 0px 0px;
+    }
+
+    .innerButtonBox {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .innerButtonBox button {
+        width: 100%;
+    }
+
+    /* Property Images Section */
+
+    .propertyImagesSection{
+        padding: 5px;
+    }
+
+    .mainHouseImg{
+        border-radius: 10px;
+    }
+    .propertyMoreImages{
+        padding: 10px 5px;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+        gap: 5px;
+    }
+    .propertyMoreImages::-webkit-scrollbar {
+        display: none;
+      }
+    .propertyMoreImages img{
+        border-radius: 5px;
+        width: 30%;
+    }
+
+    /* Property Title Content Box */
+
+    .propertyTitleContentBox{
+        padding: 5px 10px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .contentTitleContentBox1{
+        width: 100%;
+    }
+    .contentTitleContentBox2{
+        width: 100%;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .contentTitleContentBox1 p{
+        font-size: 18px;
+    }
+    .contentTitleContentBox1 h2{
+        font-size: 25px;
+    }
+    .contentTitleContentBox1 h4{
+        font-size: 21px;
+    }
+    .contentTitleContentBox2 h3{
+        font-size: 25px;
+    }
+    .contentTitleContentBox2 button{
+        font-size: 20px;
+    }
+
+    /* Amenities Content Box */
+
+    .amenitiesContentBox{
+        width: 98%;
+    }
+
+    .amenitiesCardsBigBox{
+        flex-wrap: wrap;
+    }
+
+    .amenitiesContentBox ul{
+        gap: 20px;
+    }
+
+    .amenitiesContentBox ul li{
+        font-size: 16px;
+    }
+
+    .aminitiesCardsBox{
+        width: 49%;
+    }
+    .aminitiesCardsBox p{
+        font-size: 16px;
+        gap: 5px;
+    }
+    .aminitiesCardsBox p span{
+        padding: 5px 7px;
+    }
+    .aminitiesCardsBox p span i{
+        font-size: 14px;
+    }
+
+    /* Description Section */
+
+    .descriptionContentBox{
+        padding: 5px 10px;
+    }
+    .descriptionContentBox h3{
+        font-size: 35px;
+    }
+    .descriptionContentBox p{
+        font-size: 16px;
+    }
+
+    /* Address Section */
+
+    .addressSection{
+        padding: 10px;
+    }
+    .addressTopContent{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .addressTopContent h2{
+        font-size: 35px;
+        text-align: center;
+    }
+    .addressTopContent button{
+        font-size: 16px;
+        margin: auto;
+    }
+    .addressBottomContentBox{
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .addressBottomBox{
+        width: 100%;
+        gap: 10px;
+    }
+    .addressBottomBox p{
+        font-size: 17px;
+    }
+
+    /* Floor Plan Section */
+
+    .floorPlanSection{
+        padding: 10px;
+    }
+    .floorPlanSection h2{
+        font-size: 35px;
+    }
+    .floorPlanSection img{
+        width: 100%;
+    }
+
+    /* Google Maps Section */
+
+    .googleMapsSection{
+        padding: 10px;
+    }
+    .googleMapsSection h2{
+        font-size: 35px;
+    }
+
+    /* Owner Details Section */
+
+    .ownerDetailsBox{
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+
+    .ownerDetailBox1{
+        width: 100%;
+    }
+
+    .ownerDetailBox2{
+        width: 100%;
+    }
+
+    .ownerDetailBox1 img{
+        width: 100px;
+    }
+    .ownerDetailBox2 h3{
+        font-size: 28px;
+        text-align: center;
+        margin: 5px 0px;
+    }
+
+    .ownerDetailBox2 form{
+        border-radius: 15px;
+        padding: 10px;
+    }
+
+    /* Reviews Section */
+
+    .reviewsSection{
+        padding: 10px 15px;
+    }
+    .reviewsSection h2{
+        font-size: 30px;
+        text-align: center;
+    }
+    .ratingsUpperContentBox{
+        flex-wrap: wrap;
+    }
+    .reviewsPara{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px){
+    /* Latest Properties Section */
+    .latestPropertiesInnerBox img {
+        height: 160px;
+        border-radius: 5px 5px 0px 0px;
+    }
+}
