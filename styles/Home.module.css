@@ -3,7 +3,8 @@
 .topIntroductionBox {
     width: 95%;
     height: auto;
-    background-color: #f4ebe4;
+    background: rgb(16, 133, 255);
+    background: linear-gradient(90deg, rgba(16, 133, 255, 1) 0%, rgba(222, 238, 255, 1) 100%);
     margin: 10px auto;
     border-radius: 20px;
     display: flex;
@@ -25,11 +26,13 @@
     font-size: 60px;
     font-weight: 700;
     line-height: 1;
+    color: white;
 }
 
 .topIntroInnerBox1 p {
     font-size: 16px;
     margin-top: 5px;
+    color: white;
 }
 
 .topIntroInnerBox2 {
@@ -91,7 +94,7 @@
 
 .searchBiggerBox .formBox button {
     width: 100%;
-    background-color: #452820;
+    background-color: #1085FF;
     color: white;
     border: none;
     border-radius: 25px;
@@ -120,11 +123,37 @@
     margin-top: 10px;
 }
 
-.propertyCategoriesImagesBox img {
+.propertyCategoryImgBox{
     width: 24%;
+}
+
+.propertyCategoriesImagesBox img {
+    width: 100%;
+    height: auto;
+    max-height: 170px;
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
+.content {
+    background: rgba(255, 255, 255, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(255, 255, 255, .1) 40%, rgba(255, 255, 255, .5) 75%, rgb(142, 197, 255) 100%) repeat scroll 0 0;
+    position: relative;
+    margin-top: -186px;
+    height: 180px;
+    border-radius: 0px 0px 10px 10px;
+  }
+
+  .content p{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .content p span{
+    font-size: 17px;
+  }
 
 /* Latest Properties Section */
 
@@ -182,7 +211,7 @@
 
 .latestPropertiesContentBox .priceText {
     font-size: 20px;
-    color: #7E411F;
+    color: #1085FF;
 }
 
 .latestPropertiesContentBox .propertyDescription {
@@ -215,9 +244,9 @@
 .innerButtonBox button {
     padding: 5px 35px;
     cursor: pointer;
-    border: 1px solid #F3EBE4;
-    color: #7E411F;
-    background-color: #F3EBE4;
+    border: 1px solid #deeeff;
+    color: #1085FF;
+    background-color: #deeeff;
     border-radius: 5px;
     font-size: 15px;
 }
@@ -233,15 +262,15 @@
     width: 95%;
     height: auto;
     margin: auto;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
     border-radius: 20px 20px 0px 0px;
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     position: relative;
 }
 
 .popularAreasSection p {
-    color: #7E6951;
+    color: #1085FF;
     font-size: 22px;
     text-align: center;
 }
@@ -285,8 +314,9 @@
 
 .waveImg {
     width: 100%;
+    height: auto;
     position: absolute;
-    bottom: -150px;
+    bottom: -240px;
     left: 0px;
 }
 
@@ -336,7 +366,7 @@
     font-size: 18px;
 }
 
-.glideContentBox1 img{
+.glideContentBox1 img {
     width: 80px;
     height: auto;
 }
@@ -352,7 +382,7 @@
     font-size: 18px;
 }
 
-.glideContentBox2 img{
+.glideContentBox2 img {
     width: 80px;
     height: auto;
 }
@@ -368,7 +398,7 @@
     font-size: 18px;
 }
 
-.glideContentBox3 img{
+.glideContentBox3 img {
     width: 80px;
     height: auto;
 }
@@ -383,7 +413,7 @@
     font-size: 18px;
 }
 
-.glideContentBox4 img{
+.glideContentBox4 img {
     width: 80px;
     height: auto;
 }
@@ -441,7 +471,7 @@
 }
 
 .prefectHomeContentBox h3 span {
-    color: #FFBB55;
+    color: #1085FF;
     font-weight: 700;
 }
 
@@ -471,7 +501,7 @@
 .findPerfectHomeBox2 h2 span {
     font-size: 70px;
     font-weight: 700;
-    color: #FFBB55;
+    color: #1085FF;
 }
 
 /* Trusted Agents Section */
@@ -479,11 +509,12 @@
 .trustedAgentsSection {
     width: 100%;
     height: auto;
-    background-color: #f3ebe4;
+    background-color: #deeeff;
 }
 
 .trustedAgentsSection .wave2Img {
     width: 100%;
+    height: auto;
 }
 
 .trustedAgentsSection h2 {
@@ -495,7 +526,7 @@
 
 .trustedAgentsSection h2 span {
     font-weight: 700;
-    color: #452820;
+    color: #1085FF;
 }
 
 .agentsBigBox {
@@ -553,7 +584,7 @@
 }
 
 .totalPropertyContentBox h4 {
-    background-color: #452820;
+    background-color: #1085FF;
     padding: 5px 20px;
     color: white;
     border-radius: 5px;
@@ -566,8 +597,8 @@
     font-size: 20px;
     font-weight: 600;
     padding: 5px 15px;
-    background: rgb(251, 147, 89);
-    background: linear-gradient(90deg, rgba(251, 147, 89, 1) 0%, rgba(255, 100, 12, 1) 100%);
+    background: rgb(16, 133, 255);
+    background: linear-gradient(90deg, rgba(16, 133, 255, 1) 0%, rgb(109, 180, 255) 100%);
     border-radius: 10px;
     text-align: center;
     position: absolute;
@@ -603,7 +634,7 @@
 
 .testimonialBox {
     width: 32%;
-    background-color: #f7f7f7;
+    background-color: #deeeff;
     padding: 80px 20px 20px 20px;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -637,8 +668,16 @@
     height: 20px;
 }
 
-.bgLightBrown{
-    background-color: #f3ebe4;
+.bgLightBrown {
+    background-color: #1085FF;
+}
+
+.bgLightBrown h3 {
+    color: white;
+}
+
+.bgLightBrown p {
+    color: white;
 }
 
 /* Download Android App Section */
@@ -647,14 +686,14 @@
     width: 98%;
     height: auto;
     margin: auto;
-    background: rgb(255, 217, 173);
-    background: linear-gradient(90deg, rgba(255, 217, 173, 1) 0%, rgba(255, 100, 12, 1) 100%);
+    background: rgb(16, 133, 255);
+    background: linear-gradient(270deg, rgba(16, 133, 255, 1) 0%, rgba(222, 238, 255, 1) 100%);
     border-radius: 20px;
     display: flex;
     align-items: center;
 }
 
-.downloadAndroidBox1{
+.downloadAndroidBox1 {
     width: 60%;
     height: auto;
     padding: 40px;
@@ -663,35 +702,35 @@
     flex-direction: column;
 }
 
-.downloadAndroidBox1 h3{
+.downloadAndroidBox1 h3 {
     font-size: 50px;
     font-weight: 700;
 }
 
-.downloadAndroidBox1 p{
+.downloadAndroidBox1 p {
     font-size: 18px;
     font-weight: 700;
 }
 
-.downloadAndroidBox1 ul{
+.downloadAndroidBox1 ul {
     margin: 50px 0px;
 }
 
-.downloadAndroidBox1 ul li{
+.downloadAndroidBox1 ul li {
     font-size: 20px;
 }
 
-.downloadAndroidBox1 img{
+.downloadAndroidBox1 img {
     width: 200px;
     height: auto;
     cursor: pointer;
 }
 
-.downloadAndroidBox2{
+.downloadAndroidBox2 {
     width: 40%;
 }
 
-.downloadAndroidBox2 img{
+.downloadAndroidBox2 img {
     width: 100%;
     height: auto;
     border-radius: 10px;
@@ -699,12 +738,12 @@
 
 /* Upper Footer Section */
 
-.upperFooterSection{
+.upperFooterSection {
     width: 100%;
     padding: 20px 40px;
 }
 
-.footerPropertyAvailableBigBox{
+.footerPropertyAvailableBigBox {
     width: 100%;
     display: flex;
     align-items: center;
@@ -713,22 +752,22 @@
     gap: 40px;
 }
 
-.footerPropertyBox{
+.footerPropertyBox {
     width: 31%;
 }
 
-.footerPropertyAvailableBigBox h3{
+.footerPropertyAvailableBigBox h3 {
     font-size: 25px;
     font-weight: 700;
     margin-bottom: 10px;
 }
 
-.footerPropertyAvailableBigBox a{
+.footerPropertyAvailableBigBox a {
     font-size: 20px;
     font-weight: 600;
     text-decoration: none;
     display: block;
-    color: #452820;
+    color: #1085FF;
 }
 
 /* Radio Button */
@@ -780,7 +819,7 @@
 }
 
 .radioInput label:has(input:checked)~.selection {
-    background-color: #452820;
+    background-color: #1085FF;
     display: inline-block;
 }
 
@@ -795,6 +834,7 @@
 /* Responsive Code */
 
 @media (max-width: 1330px) {
+
     /* Trusted Agents Section */
     .housingExpertPara {
         font-size: 16px;
@@ -803,117 +843,143 @@
     }
 }
 
-@media (max-width: 1285px){
+@media (max-width: 1285px) {
+
     /* Trusted Agents Section */
     .housingExpertPara {
         left: 12%;
     }
+
     /* What Client Says Section */
-    .testimonialUserImg{
+    .testimonialUserImg {
         left: 33%;
     }
-    .testimonialBox h3{
+
+    .testimonialBox h3 {
         text-align: center;
     }
+
     /* Upper Footer Section */
-    .footerPropertyAvailableBigBox h3{
+    .footerPropertyAvailableBigBox h3 {
         font-size: 22px;
     }
-    .footerPropertyAvailableBigBox{
+
+    .footerPropertyAvailableBigBox {
         gap: 30px;
     }
 }
 
-@media (max-width: 1190px){
+@media (max-width: 1190px) {
+
     /* Top Introduction Box */
-    .searchBiggerBox{
+    .searchBiggerBox {
         width: 98%;
         left: 1%;
         bottom: -80px;
     }
-     /* Trusted Agents Section */
-     .housingExpertPara {
+
+    /* Trusted Agents Section */
+    .housingExpertPara {
         left: 9%;
     }
+
     /* Property Categories Section */
-    .propertyCategoriesSection{
+    .propertyCategoriesSection {
         margin-top: 60px;
         padding: 20px 50px;
     }
+
     /* Find Perfect Home Section */
-    .findPerfectHomeBox2 h2{
+    .findPerfectHomeBox2 h2 {
         font-size: 50px;
     }
-    .commentBoxImg{
+
+    .commentBoxImg {
         width: 150px;
         bottom: -60px;
         right: -60px;
     }
 }
 
-@media (max-width: 1094px){
+@media (max-width: 1094px) {
+
     /* Popular Areas Section */
-    .popularAreasImage1{
+    .popularAreasImage1 {
         width: 69%;
     }
-    .waveImg{
+
+    .waveImg {
         bottom: -100px;
     }
+
     /* Glide Support Section */
-    .glideSupportSection{
+    .glideSupportSection {
         margin-top: 70px;
     }
+
     /* Find Perfect Home Section */
-    .findPerfectHomeSection{
+    .findPerfectHomeSection {
         padding: 50px 0px;
     }
 }
 
-@media (max-width: 1090px){
+@media (max-width: 1090px) {
+
     /* Latest Properties Section */
-    .latestPropertiesBigBox{
+    .latestPropertiesBigBox {
         gap: 25px;
     }
-    .latestPropertiesSection{
+
+    .latestPropertiesSection {
         padding: 10px 20px 20px 20px;
     }
-    .latestPropertiesInnerBox img{
+
+    .latestPropertiesInnerBox img {
         height: 240px;
     }
+
     /* Trusted Agents Section */
-    .agentsBigBox{
+    .agentsBigBox {
         gap: 10px;
     }
-    .agentsCardsBox{
+
+    .agentsCardsBox {
         width: 48%;
     }
+
     .housingExpertPara {
         left: 30%;
     }
+
     /* Property Categories Section */
-    .propertyCategoriesSection{
+    .propertyCategoriesSection {
         margin-top: 60px;
         padding: 20px 30px;
     }
+
     /* Find Perfect Home Section */
-    .findPerfectHomeBox2 h2 span{
+    .findPerfectHomeBox2 h2 span {
         font-size: 55px;
     }
 }
 
-@media (max-width: 995px){
+@media (max-width: 995px) {
+
     /* Latest Properties Section */
-    .innerButtonBox{
+    .innerButtonBox {
         flex-wrap: wrap;
         gap: 5px;
     }
-    .innerButtonBox button{
+
+    .innerButtonBox button {
         width: 100%;
     }
+
     /* Find Perfect Home Section */
-    .findPerfectHomeBox2 h2 span{
+    .findPerfectHomeBox2 h2 span {
         font-size: 45px;
     }
+
     /* What Client Says Section */
     .testimonialUserImg {
         left: 27%;
@@ -923,29 +989,35 @@
 @media (max-width: 769px) {
 
     /* Top Introduction Box */
-    .topIntroductionBox{
+    .topIntroductionBox {
         width: 98%;
         flex-direction: column;
     }
-    .topIntroInnerBox1{
+
+    .topIntroInnerBox1 {
         width: 100%;
         padding: 15px;
     }
-    .topIntroInnerBox1 h2{
+
+    .topIntroInnerBox1 h2 {
         font-size: 40px;
         text-align: center;
     }
-    .topIntroInnerBox1 p{
+
+    .topIntroInnerBox1 p {
         font-size: 18px;
         text-align: center;
     }
-    .topIntroInnerBox2{
+
+    .topIntroInnerBox2 {
         width: 100%;
         border-radius: 0px 0px 20px 20px;
     }
-    .topIntroInnerBox2 img{
+
+    .topIntroInnerBox2 img {
         border-radius: 0px 0px 20px 20px;
     }
+
     .searchBiggerBox {
         width: 95%;
         left: 2.5%;
@@ -954,182 +1026,242 @@
         gap: 10px;
         bottom: -250px;
     }
+
     .searchBiggerBox .formBox {
         width: 100%;
         height: auto;
     }
+
     /* Property Categories Section */
-    .propertyCategoriesSection{
+    .propertyCategoriesSection {
         margin-top: 240px;
         padding: 10px;
     }
-    .propertyCategoriesImagesBox{
+
+    .propertyCategoriesImagesBox {
         flex-wrap: wrap;
     }
-    .propertyCategoriesImagesBox img{
+
+    .propertyCategoryImgBox{
         width: 48%;
-        border-radius: 5px;
     }
-    .propertyCategoriesSection h2{
+
+    .propertyCategoriesSection h2 {
         font-size: 25;
         font-weight: 700;
     }
-    /* Latest Properties Section */
-    .latestPropertiesSection h2{
-        font-size: 37px;
+
+    .propertyCategoryImgBox img{
+        max-height: 95px;
     }
-    .latestPropertiesSection p{
+
+    .content p{
         font-size: 18px;
+        line-height: 1;
     }
-    .innerPropertyContent p{
+    .content p span{
         font-size: 14px;
     }
-    .latestPropertiesSection{
+
+    /* Latest Properties Section */
+    .latestPropertiesSection h2 {
+        font-size: 37px;
+    }
+
+    .latestPropertiesSection p {
+        font-size: 18px;
+    }
+
+    .innerPropertyContent p {
+        font-size: 14px;
+    }
+
+    .latestPropertiesSection {
         padding: 5px 10px 10px 10px;
     }
-    .latestPropertiesBigBox{
+
+    .latestPropertiesBigBox {
         gap: 20px;
     }
-    .latestPropertiesInnerBox{
+
+    .latestPropertiesInnerBox {
         width: 100%;
     }
-    .latestPropertiesInnerBox img{
+
+    .latestPropertiesInnerBox img {
         height: 250px;
         border-radius: 5px 5px 0px 0px;
     }
-    .innerButtonBox{
+
+    .innerButtonBox {
         flex-wrap: wrap;
         gap: 10px;
     }
-    .innerButtonBox button{
+
+    .innerButtonBox button {
         width: 100%;
     }
+
     /* Popular Areas Section */
-    .popularAreasSection{
+    .popularAreasSection {
         padding: 10px;
         border-radius: 15px;
     }
-    .popularAreasImageBox{
+
+    .popularAreasImageBox {
         width: 100%;
         margin: 10px auto 0px auto;
     }
-    .popularAreasImage1{
+
+    .popularAreasImage1 {
         width: 100%;
         height: 170px;
         border-radius: 10px;
     }
-    .popularAreasImage2{
+
+    .popularAreasImage2 {
         width: 48%;
         height: 170px;
         border-radius: 10px;
     }
-    .popularAreasImage3{
+
+    .popularAreasImage3 {
         width: 48%;
         height: 170px;
         border-radius: 10px;
     }
-    .waveImg{
+
+    .waveImg {
         display: none;
     }
+
     /* Glide Support Section */
-    .glideSupportSection{
+    .glideSupportSection {
         margin-top: 0px;
         padding: 5px 10px;
         flex-wrap: wrap;
     }
-    .glideSupportBox1{
+
+    .glideSupportBox1 {
         width: 100%;
         order: 1;
         padding: 10px;
     }
-    .glideSupportBox2{
+
+    .glideSupportBox2 {
         width: 100%;
     }
-    .glideSupportBox2 h2{
+
+    .glideSupportBox2 h2 {
         font-size: 40px;
     }
-    .glideSupportBox2 p{
+
+    .glideSupportBox2 p {
         font-size: 18px;
     }
-    .glideContentBox1{
+
+    .glideContentBox1 {
         padding: 10px;
     }
-    .glideContentBox1 p{
+
+    .glideContentBox1 p {
         font-size: 16px;
     }
-    .glideContentBox2{
+
+    .glideContentBox2 {
         padding: 10px;
     }
-    .glideContentBox2 p{
+
+    .glideContentBox2 p {
         font-size: 16px;
     }
-    .glideContentBox3{
+
+    .glideContentBox3 {
         padding: 10px;
     }
-    .glideContentBox3 p{
+
+    .glideContentBox3 p {
         font-size: 16px;
     }
-    .glideContentBox4{
+
+    .glideContentBox4 {
         padding: 10px;
     }
-    .glideContentBox4 p{
+
+    .glideContentBox4 p {
         font-size: 16px;
     }
+
     /* Find Perfect Home Section */
-    .findPerfectHomeSection{
+    .findPerfectHomeSection {
         flex-wrap: wrap;
         padding: 0px 0px 10px 0px;
     }
-    .findPerfectHomeBox1{
+
+    .findPerfectHomeBox1 {
         width: 100%;
         margin-right: 0px;
         order: 1;
     }
-    .findPerfectHomeBox2{
+
+    .findPerfectHomeBox2 {
         width: 100%;
         padding: 5px;
     }
-    .findPerfectHomeBox2 p{
+
+    .findPerfectHomeBox2 p {
         font-size: 16px;
         text-align: center;
     }
-    .findPerfectHomeBox2 h2{
+
+    .findPerfectHomeBox2 h2 {
         font-size: 32px;
         text-align: center;
     }
-    .findPerfectHomeBox2 h2 span{
+
+    .findPerfectHomeBox2 h2 span {
         font-size: 32px;
     }
-    .commentBoxImg{
+
+    .commentBoxImg {
         display: none;
     }
-    .perfectHomeBox{
+
+    .perfectHomeBox {
         padding: 5px 10px;
     }
-    .perfectHomeBox img{
+
+    .perfectHomeBox img {
         width: 40px;
     }
-    .prefectHomeContentBox h3 span{
+
+    .prefectHomeContentBox h3 span {
         font-size: 25px;
     }
-    .prefectHomeContentBox p{
+
+    .prefectHomeContentBox p {
         font-size: 15px;
     }
+
     /* Trusted Agents Section */
     .trustedAgentsSection {
         padding: 0px 5px 0px 5px;
     }
+
     .trustedAgentsSection h2 {
         font-size: 32px;
     }
+
     .agentsBigBox {
         padding: 20px;
         flex-wrap: wrap;
         gap: 20px;
     }
+
     .agentsCardsBox {
         width: 100%;
     }
+
     .housingExpertPara {
         top: -15px;
         left: 35%;
@@ -1137,96 +1269,121 @@
         padding: 2px 15px;
         border-radius: 5px;
     }
+
     /* What Client Says Section */
-    .whatClientSaysSection{
+    .whatClientSaysSection {
         padding: 10px;
     }
-    .whatClientSaysSection h2{
+
+    .whatClientSaysSection h2 {
         font-size: 35px;
     }
-    .whatClientSaysSection hr{
+
+    .whatClientSaysSection hr {
         width: 75%;
     }
-    .testimonialBigBox{
+
+    .testimonialBigBox {
         flex-wrap: wrap;
         gap: 50px;
         padding: 50px 20px 10px 20px;
     }
-    .testimonialUserImg{
+
+    .testimonialUserImg {
         width: 100px;
         left: 42%;
     }
-    .testimonialBox{
+
+    .testimonialBox {
         width: 100%;
         padding: 60px 10px 10px 10px;
     }
-    .testimonialBox h3{
+
+    .testimonialBox h3 {
         font-size: 25px;
     }
-    .testimonialBox p{
+
+    .testimonialBox p {
         font-size: 14px;
     }
-    .testimonialStarImg{
+
+    .testimonialStarImg {
         height: 18px;
     }
+
     /* Download Android App Section */
-    .downloadAndroidAppSection{
+    .downloadAndroidAppSection {
         flex-wrap: wrap;
     }
-    .downloadAndroidBox1{
+
+    .downloadAndroidBox1 {
         width: 100%;
         padding: 10px 25px;
     }
-    .downloadAndroidBox1 h3{
+
+    .downloadAndroidBox1 h3 {
         font-size: 40px;
     }
+
     .downloadAndroidBox2 {
         width: 100%;
     }
-    .downloadAndroidBox1 ul{
+
+    .downloadAndroidBox1 ul {
         margin: 5px 0px;
         margin-bottom: 10px;
     }
-    .downloadAndroidBox1 ul li{
+
+    .downloadAndroidBox1 ul li {
         font-size: 16px;
     }
-    .downloadAndroidBox1 img{
+
+    .downloadAndroidBox1 img {
         margin: auto;
     }
+
     /* Upper Footer Section */
-    .upperFooterSection{
+    .upperFooterSection {
         padding: 10px;
     }
-    .radioInput{
+
+    .radioInput {
         margin: 10px auto;
     }
-    .footerPropertyBox{
+
+    .footerPropertyBox {
         width: 100%;
     }
-    .footerPropertyAvailableBigBox{
+
+    .footerPropertyAvailableBigBox {
         gap: 10px;
     }
-    .footerPropertyAvailableBigBox h3{
+
+    .footerPropertyAvailableBigBox h3 {
         margin-bottom: 5px;
         font-size: 22px;
         text-align: center;
     }
-    .footerPropertyAvailableBigBox a{
+
+    .footerPropertyAvailableBigBox a {
         font-size: 16px;
         text-align: center;
     }
 }
 
-@media (max-width: 500px){
+@media (max-width: 500px) {
+
     /* Latest Properties Section */
-    .latestPropertiesInnerBox img{
+    .latestPropertiesInnerBox img {
         height: 160px;
         border-radius: 5px 5px 0px 0px;
     }
+
     /* Trusted Agents Section */
     .housingExpertPara {
         left: 22%;
     }
+
     /* What Client Says Section */
     .testimonialUserImg {
         width: 100px;

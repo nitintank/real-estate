@@ -72,7 +72,7 @@
 }
 
 .contentTitleContentBox2 button {
-    background-color: #452820;
+    background-color: #1085FF;
     border-radius: 10px;
     color: white;
     padding: 5px 20px;
@@ -89,7 +89,7 @@
     height: auto;
     display: block;
     margin: auto;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
     border-radius: 20px;
 }
 
@@ -133,7 +133,7 @@
 }
 
 .aminitiesCardsBox p span {
-    background-color: #452820;
+    background-color: #1085FF;
     padding: 10px 14px;
     border-radius: 50%;
     color: #F3EBE4;
@@ -179,7 +179,7 @@
 }
 
 .addressTopContent button {
-    background-color: #452820;
+    background-color: #1085FF;
     color: white;
     padding: 5px 15px;
     border: none;
@@ -291,7 +291,7 @@
 }
 
 .ownerDetailBox1 button {
-    background-color: #452820;
+    background-color: #1085FF;
     color: white;
     padding: 5px 15px;
     border: none;
@@ -314,7 +314,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
     padding: 20px;
     border-radius: 20px 0px 0px 20px;
 }
@@ -346,7 +346,7 @@
 .ownerDetailBox2 form input[type=submit] {
     padding: 10px 25px;
     font-size: 18px;
-    background-color: #2F2217;
+    background-color: #1085FF;
     border-radius: 10px;
     border: none;
     color: white;
@@ -432,7 +432,7 @@
 .addCommentBox form input[type=submit] {
     padding: 10px 25px;
     font-size: 18px;
-    background-color: #2F2217;
+    background-color: #1085FF;
     border-radius: 10px;
     border: none;
     color: white;
@@ -446,7 +446,7 @@
     border: none;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-size: 16px;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
 }
 
 .addCommentBox form textarea{
@@ -455,7 +455,7 @@
     border: none;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-size: 16px;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
 }
 
 .addCommentBox form .commentLabel{
@@ -541,7 +541,7 @@
 
 .latestPropertiesContentBox .priceText {
     font-size: 20px;
-    color: #7E411F;
+    color: #1085FF;
 }
 
 .latestPropertiesContentBox .propertyDescription {
@@ -574,9 +574,9 @@
 .innerButtonBox button {
     padding: 5px 35px;
     cursor: pointer;
-    border: 1px solid #F3EBE4;
-    color: #7E411F;
-    background-color: #F3EBE4;
+    border: 1px solid #deeeff;
+    color: #1085FF;
+    background-color: #deeeff;
     border-radius: 5px;
     font-size: 15px;
 }

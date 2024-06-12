@@ -93,7 +93,7 @@
 
 .searchBiggerBox .formBox button {
     width: 100%;
-    background-color: #452820;
+    background-color: #1085FF;
     color: white;
     border: none;
     border-radius: 25px;
@@ -157,7 +157,7 @@
 
 .latestPropertiesContentBox .priceText {
     font-size: 20px;
-    color: #7E411F;
+    color: #1085FF;
 }
 
 .latestPropertiesContentBox .propertyDescription {
@@ -190,9 +190,9 @@
 .innerButtonBox button {
     padding: 5px 35px;
     cursor: pointer;
-    border: 1px solid #F3EBE4;
-    color: #7E411F;
-    background-color: #F3EBE4;
+    border: 1px solid #deeeff;
+    color: #1085FF;
+    background-color: #deeeff;
     border-radius: 5px;
     font-size: 15px;
 }

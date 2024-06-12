@@ -7,12 +7,12 @@ import Footer from '@/components/footer'
 const index = () => {
   return (
     <>
-      <Navbar/>
+      <Navbar />
       {/* <!-- Top Introduction Box --> */}
 
       <section className={styles.topIntroductionBox}>
         <div className={styles.topIntroInnerBox1}>
-          <h2>Find Your Next<br/>Real Estate In Dubai</h2>
+          <h2>Find Your Next<br />Real Estate In Dubai</h2>
           <p>Through our proprietary platform, We are changing how agents and clients navigate the process of finding
             or selling a home.</p>
         </div>
@@ -53,10 +53,30 @@ const index = () => {
       <section className={styles.propertyCategoriesSection}>
         <h2>{`We've Got Properties In Dubai For Everyone`}</h2>
         <div className={styles.propertyCategoriesImagesBox}>
-          <Image width={200} height={200} src="/images/house-card-1.png" alt="" />
-          <Image width={200} height={200} src="/images/house-card-2.png" alt="" />
-          <Image width={200} height={200} src="/images/house-card-1.png" alt="" />
-          <Image width={200} height={200} src="/images/house-card-2.png" alt="" />
+          <div className={styles.propertyCategoryImgBox}>
+            <Image width={200} height={200} src="/images/about-us-home-1.png" alt="" />
+            <div className={styles.content}>
+              <p>For Sale <span>Apartments, Sales</span></p>
+            </div>
+          </div>
+          <div className={styles.propertyCategoryImgBox}>
+            <Image width={200} height={200} src="/images/about-us-home-2.png" alt="" />
+            <div className={styles.content}>
+              <p>For Sale <span>Apartments, Sales</span></p>
+            </div>
+          </div>
+          <div className={styles.propertyCategoryImgBox}>
+            <Image width={200} height={200} src="/images/about-us-home-1.png" alt="" />
+            <div className={styles.content}>
+              <p>For Sale <span>Apartments, Sales</span></p>
+            </div>
+          </div>
+          <div className={styles.propertyCategoryImgBox}>
+            <Image width={200} height={200} src="/images/about-us-home-2.png" alt="" />
+            <div className={styles.content}>
+              <p>For Sale <span>Apartments, Sales</span></p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -126,7 +146,7 @@ const index = () => {
           <Image width={200} height={200} src="/images/property-3.webp" alt="" className={styles.popularAreasImage3} />
           <Image width={200} height={200} src="/images/property-1.webp" alt="" className={styles.popularAreasImage1} />
         </div>
-        <Image width={200} height={200} src="/images/wave.png" alt="" className={styles.waveImg} />
+        <Image width={200} height={200} src="/images/blue-wave.png" alt="" className={styles.waveImg} />
       </section>
 
       {/* <!-- Glide Support Section --> */}
@@ -196,12 +216,12 @@ const index = () => {
       {/* <!-- Trusted Agents Section --> */}
 
       <section className={styles.trustedAgentsSection}>
-        <Image width={200} height={200} src="/images/wave-2.png" alt="" className={styles.wave2Img} />
+        <Image width={200} height={200} src="/images/blue-wave-2.png" alt="" className={styles.wave2Img} />
         <h2>We Are Have <span>Trusted<br />Expert</span> Agent</h2>
         <div className={styles.agentsBigBox}>
           <div className={styles.agentsCardsBox}>
             <p className={styles.housingExpertPara}>Housing Expert Pro</p>
-            <Image width={200} height={200} src="/images/agent-img.png" alt="" />
+            <Image width={200} height={170} src="/images/agent-img.png" alt="" />
             <h3>KK Jaipur</h3>
             <hr />
             <ul>
@@ -319,7 +339,7 @@ const index = () => {
           <Image width={200} height={200} src="/images/android-apk.png" alt="" className={styles.androidDownloadBtn} />
         </div>
         <div className={styles.downloadAndroidBox2}>
-          <Image width={200} height={200} src="/images/android-phone.png" alt="" />
+          <Image width={200} height={200} src="/images/android-phone-blue.png" alt="" />
         </div>
       </section>
 
@@ -416,7 +436,7 @@ const index = () => {
 
       {/* <!-- Footer Section --> */}
       <Footer />
-      
+
     </>
   )
 }

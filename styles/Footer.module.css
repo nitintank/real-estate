@@ -46,7 +46,7 @@
 }
 
 .socialMediaBox i{
-    color: #452820;
+    color: #1085FF;
     font-size: 25px;
     cursor: pointer;
 }
@@ -64,7 +64,7 @@
 
 .inputSearchBox input{
     width: 70%;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
     border: none;
     font-size: 18px;
     padding: 5px 15px;
@@ -72,7 +72,7 @@
 }
 
 .inputSearchBox button{
-    background-color: #452820;
+    background-color: #1085FF;
     color: white;
     font-size: 18px;
     border-radius: 25px;
@@ -84,7 +84,7 @@
 }
 
 .footerEmailText{
-    color: #452820;
+    color: #1085FF;
     font-size: 20px !important;
 }
 
@@ -107,7 +107,7 @@
 .contactDetailBox p{
     font-size: 25px;
     font-weight: 700;
-    color: #452820;
+    color: #1085FF;
 }
 
 .contactDetailBox p i{

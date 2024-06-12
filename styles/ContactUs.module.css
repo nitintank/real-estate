@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    background-color: #170C04E8;
+    background-color:#1085FF;
     padding: 25px 40px;
     border-radius: 15px;
     margin-top: 50px;
@@ -68,7 +68,7 @@
 .formContentBox form input[type=button]{
     padding: 10px 25px;
     font-size: 18px;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
     border-radius: 10px;
     border: none;
     color: black;

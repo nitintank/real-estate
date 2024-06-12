@@ -185,7 +185,7 @@ const projects = () => {
                     <Image width={200} height={200} src="/images/android-apk.png" alt="" className={styles.androidDownloadBtn} />
                 </div>
                 <div className={styles.downloadAndroidBox2}>
-                    <Image width={200} height={200} src="/images/android-phone.png" alt="" />
+                    <Image width={200} height={200} src="/images/android-phone-blue.png" alt="" />
                 </div>
             </section>
 
