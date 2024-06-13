@@ -26,21 +26,84 @@ const index = () => {
           </div>
           <div className={styles.formBox}>
             <label for="">Type</label>
-            <select name="" id="">
+            {/* <select name="" id="">
               <option value="">Property Type</option>
               <option value="">Rentals</option>
               <option value="">Sales</option>
-            </select>
+            </select> */}
+            <div className={styles.selectBox}>
+              <div className={styles.selectBox__current} tabindex="1">
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="0" value="1" name="Ben" />
+                  <p className={styles.selectBox__inputText}>Rentals</p>
+                </div>
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="1" value="2" name="Ben" defaultChecked={true} />
+                  <p className={styles.selectBox__inputText}>Sales</p>
+                </div>
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="2" value="3" name="Ben" />
+                  <p className={styles.selectBox__inputText}>Sold</p>
+                </div>
+                <img className={styles.selectBox__icon} src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
+              </div>
+              <ul className={styles.selectBox__list}>
+                <li>
+                  <label className={styles.selectBox__option} for="0" aria-hidden="aria-hidden">Rentals</label>
+                </li>
+                <li>
+                  <label className={styles.selectBox__option} for="1" aria-hidden="aria-hidden">Sales</label>
+                </li>
+                <li>
+                  <label className={styles.selectBox__option} for="2" aria-hidden="aria-hidden">Sold</label>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className={styles.formBox}>
             <label for="">Category</label>
-            <select name="" id="">
+            {/* <select name="" id="">
               <option value="">Property Category</option>
               <option value="">Apartments</option>
               <option value="">Houses</option>
               <option value="">Villas</option>
               <option value="">Duplexes</option>
-            </select>
+            </select> */}
+            <div className={styles.selectBox}>
+              <div className={styles.selectBox__current} tabindex="1">
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="5" value="1" name="Ben1" />
+                  <p className={styles.selectBox__inputText}>Apartments</p>
+                </div>
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="6" value="2" name="Ben1" defaultChecked={true} />
+                  <p className={styles.selectBox__inputText}>Houses</p>
+                </div>
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="7" value="3" name="Ben1" />
+                  <p className={styles.selectBox__inputText}>Villas</p>
+                </div>
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="8" value="4" name="Ben1" />
+                  <p className={styles.selectBox__inputText}>Duplexes</p>
+                </div>
+                <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
+              </div>
+              <ul className={styles.selectBox__list}>
+                <li>
+                  <label className={styles.selectBox__option} for="5" aria-hidden="aria-hidden">Apartments</label>
+                </li>
+                <li>
+                  <label className={styles.selectBox__option} for="6" aria-hidden="aria-hidden">Houses</label>
+                </li>
+                <li>
+                  <label className={styles.selectBox__option} for="7" aria-hidden="aria-hidden">Villas</label>
+                </li>
+                <li>
+                  <label className={styles.selectBox__option} for="8" aria-hidden="aria-hidden">Duplexes</label>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className={`${styles.formBox} ${styles.flexEnd}`}>
             <button><i className="fa-solid fa-magnifying-glass"></i> Search</button>
