@@ -38,12 +38,12 @@
 }
 
 .mainContentBox h2 {
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .gladPara {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
 }
 
@@ -73,8 +73,8 @@
 }
 
 .dashboardCardsBox h3 {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .statisticsBox {

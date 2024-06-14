@@ -74,8 +74,8 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .allReviews td h4 img{
@@ -87,8 +87,8 @@
 }
 
 .replyText{
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
 }
 

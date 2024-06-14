@@ -33,13 +33,13 @@
 
 .agentDetailBox2 h3{
     line-height: 1;
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .agentDetailBox2 .agentAboutPara{
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 500;
 }
 
 .agentOtherDetailsBox p{
@@ -47,7 +47,7 @@
 }
 
 .agentOtherDetailsBox p span{
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .agentSocialMedia{
@@ -73,12 +73,12 @@
 }
 
 .agentAboutBox h3{
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .agentAboutBox p{
-    font-size: 18px;
+    font-size: 16px;
 }
 
 /* Track Record Section */
@@ -92,12 +92,12 @@
 }
 
 .trackRecordSection h3{
-    font-size: 35px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .trackRecordSection p{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .trackRecordContentBox{
@@ -116,14 +116,14 @@
 }
 
 .trackRecordContent h4{
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
     text-align: center;
 }
 
 .trackRecordContent h4 span{
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .trackRecordContent p{
@@ -137,8 +137,8 @@
 }
 
 .latestPropertiesSection h2 {
-    font-size: 50px;
-    font-weight: 800;
+    font-size: 30px;
+    font-weight: 600;
     line-height: 1;
 }
 
@@ -175,12 +175,13 @@
 }
 
 .latestPropertiesContentBox h3 {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .latestPropertiesContentBox .priceText {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 600;
     color: #1085FF;
 }
 
@@ -234,8 +235,8 @@
 }
 
 .contactMeSection h3{
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .contactMeFormBigBox{
@@ -291,7 +292,7 @@
     border-radius: 10px;
     border: none;
     color: white;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -308,8 +309,8 @@
 }
 
 .reviewsSection h2 {
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .ratingsUpperContentBox {
@@ -339,16 +340,16 @@
 }
 
 .ratingsUpperContent h4 {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .ratingsUpperContent p {
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .reviewsPara {
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 10px;
 }
 
@@ -364,8 +365,8 @@
 }
 
 .addCommentBox h3 {
-    font-size: 35px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
     margin-top: 10px;
 }
 

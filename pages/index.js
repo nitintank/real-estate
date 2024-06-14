@@ -206,10 +206,10 @@ const index = () => {
         <div className={styles.popularAreasImageBox}>
           <Image width={200} height={200} src="/images/property-5.jpeg" alt="" className={styles.popularAreasImage1} />
           <Image width={200} height={200} src="/images/property-2.webp" alt="" className={styles.popularAreasImage2} />
-          <Image width={200} height={200} src="/images/property-3.webp" alt="" className={styles.popularAreasImage3} />
+          <Image width={200} height={200} src="/images/property-3.webp" alt="" className={styles.popularAreasImage2} />
           <Image width={200} height={200} src="/images/property-1.webp" alt="" className={styles.popularAreasImage1} />
         </div>
-        <Image width={200} height={200} src="/images/blue-wave.png" alt="" className={styles.waveImg} />
+        {/* <Image width={200} height={200} src="/images/blue-wave.png" alt="" className={styles.waveImg} /> */}
       </section>
 
       {/* <!-- Glide Support Section --> */}
@@ -279,7 +279,7 @@ const index = () => {
       {/* <!-- Trusted Agents Section --> */}
 
       <section className={styles.trustedAgentsSection}>
-        <Image width={200} height={200} src="/images/blue-wave-2.png" alt="" className={styles.wave2Img} />
+        {/* <Image width={200} height={200} src="/images/blue-wave-2.png" alt="" className={styles.wave2Img} /> */}
         <h2>We Are Have <span>Trusted<br />Expert</span> Agent</h2>
         <div className={styles.agentsBigBox}>
           <div className={styles.agentsCardsBox}>

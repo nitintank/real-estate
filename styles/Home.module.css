@@ -24,7 +24,7 @@
 
 .topIntroInnerBox1 h2 {
     font-size: 60px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1;
     color: white;
 }
@@ -253,7 +253,8 @@
     bottom: 5px;
     left: 5px;
     font-size: 22px;
-    font-weight: 700;
+    font-weight: 500;
+    color: #3c3c3c;
   }
 
   .content p span{
@@ -267,13 +268,13 @@
 }
 
 .latestPropertiesSection p {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .latestPropertiesSection h2 {
-    font-size: 50px;
-    font-weight: 800;
+    font-size: 35px;
+    font-weight: 600;
     line-height: 1;
 }
 
@@ -311,11 +312,12 @@
 
 .latestPropertiesContentBox h3 {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .latestPropertiesContentBox .priceText {
     font-size: 20px;
+    font-weight: 600;
     color: #1085FF;
 }
 
@@ -368,21 +370,20 @@
     height: auto;
     margin: auto;
     background-color: #deeeff;
-    border-radius: 20px 20px 0px 0px;
-    margin-bottom: 20px;
-    padding: 20px 20px 0px 20px;
+    border-radius: 20px;
+    padding: 20px;
     position: relative;
 }
 
 .popularAreasSection p {
     color: #1085FF;
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
 }
 
 .popularAreasSection h2 {
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
     text-align: center;
     line-height: 1;
 }
@@ -411,26 +412,25 @@
     border-radius: 15px;
 }
 
-.popularAreasImage3 {
+/* .popularAreasImage3 {
     width: 29%;
     height: 400px;
     border-radius: 15px;
-}
+} */
 
-.waveImg {
+/* .waveImg {
     width: 100%;
     height: auto;
     position: absolute;
     bottom: -240px;
     left: 0px;
-}
+} */
 
 /* Glide Support Section */
 
 .glideSupportSection {
     width: 100%;
     height: auto;
-    margin-top: 125px;
     padding: 20px 40px;
     display: flex;
     align-items: center;
@@ -535,7 +535,7 @@
     align-items: center;
     justify-content: center;
     color: white;
-    padding: 150px 0px;
+    padding: 120px 0px;
 }
 
 .findPerfectHomeBox1 {
@@ -565,24 +565,24 @@
 }
 
 .perfectHomeBox img {
-    width: 60px;
+    width: 55px;
     height: auto;
 }
 
 .prefectHomeContentBox h3 {
     color: black;
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 27px;
+    font-weight: 600;
 }
 
 .prefectHomeContentBox h3 span {
     color: #1085FF;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .prefectHomeContentBox p {
     color: black;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .commentBoxImg {
@@ -594,18 +594,18 @@
 }
 
 .findPerfectHomeBox2 p {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .findPerfectHomeBox2 h2 {
-    font-size: 70px;
-    font-weight: 700;
+    font-size: 60px;
+    font-weight: 600;
 }
 
 .findPerfectHomeBox2 h2 span {
-    font-size: 70px;
-    font-weight: 700;
+    font-size: 60px;
+    font-weight: 600;
     color: #1085FF;
 }
 
@@ -615,22 +615,23 @@
     width: 100%;
     height: auto;
     background-color: #deeeff;
+    padding: 40px 0px;
 }
 
-.trustedAgentsSection .wave2Img {
+/* .trustedAgentsSection .wave2Img {
     width: 100%;
     height: auto;
-}
+} */
 
 .trustedAgentsSection h2 {
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.1;
 }
 
 .trustedAgentsSection h2 span {
-    font-weight: 700;
+    font-weight: 600;
     color: #1085FF;
 }
 
@@ -661,15 +662,15 @@
 }
 
 .agentsCardsBox h3 {
-    font-size: 35px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
     text-align: center;
 }
 
 .agentsCardsBox ul li {
     text-align: center;
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 500;
     list-style: none;
 }
 
@@ -693,14 +694,14 @@
     padding: 5px 20px;
     color: white;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 18px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .housingExpertPara {
     color: white;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     padding: 5px 15px;
     background: rgb(16, 133, 255);
     background: linear-gradient(90deg, rgba(16, 133, 255, 1) 0%, rgb(109, 180, 255) 100%);
@@ -720,12 +721,12 @@
 }
 
 .whatClientSaysSection h2 {
-    font-size: 50px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .whatClientSaysSection hr {
-    width: 30%;
+    width: 21%;
     border: 2px solid black;
 }
 
@@ -751,12 +752,12 @@
 }
 
 .testimonialBox h3 {
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 25px;
+    font-weight: 600;
 }
 
 .testimonialBox p {
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
 }
 
@@ -808,13 +809,13 @@
 }
 
 .downloadAndroidBox1 h3 {
-    font-size: 50px;
-    font-weight: 700;
+    font-size: 40px;
+    font-weight: 600;
 }
 
 .downloadAndroidBox1 p {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .downloadAndroidBox1 ul {
@@ -822,7 +823,7 @@
 }
 
 .downloadAndroidBox1 ul li {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .downloadAndroidBox1 img {
@@ -862,14 +863,14 @@
 }
 
 .footerPropertyAvailableBigBox h3 {
-    font-size: 25px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 600;
     margin-bottom: 10px;
 }
 
 .footerPropertyAvailableBigBox a {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
     text-decoration: none;
     display: block;
     color: #1085FF;

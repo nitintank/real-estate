@@ -38,12 +38,16 @@
 }
 
 .mainContentBox h2{
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .mainContentBox form{
     width: 100%;
+}
+
+.mainContentBox form label{
+    font-size: 16px;
 }
 
 .mainContentBox form input[type=text]{
@@ -80,14 +84,14 @@
 }
 
 .amenitiesText{
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 25px;
+    font-weight: 600;
     text-align: center;
     margin: 10px auto 0px auto;
 }
 
 .amenitiesNamesText{
-    font-size: 21px;
+    font-size: 18px;
     font-weight: 600;
     margin: 10px 0px;
 }

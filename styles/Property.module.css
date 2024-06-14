@@ -45,17 +45,17 @@
 }
 
 .contentTitleContentBox1 p {
-    font-size: 25px;
+    font-size: 18px;
 }
 
 .contentTitleContentBox1 h2 {
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .contentTitleContentBox1 h4 {
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 25px;
+    font-weight: 500;
 }
 
 .contentTitleContentBox2 {
@@ -102,7 +102,7 @@
 }
 
 .amenitiesContentBox ul li {
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
 }
 
@@ -125,8 +125,8 @@
 }
 
 .aminitiesCardsBox p {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -134,7 +134,7 @@
 
 .aminitiesCardsBox p span {
     background-color: #1085FF;
-    padding: 10px 14px;
+    padding: 7px 11px;
     border-radius: 50%;
     color: #F3EBE4;
 }
@@ -151,12 +151,12 @@
 }
 
 .descriptionContentBox h3 {
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .descriptionContentBox p {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 /* Address Section */
@@ -174,8 +174,8 @@
 }
 
 .addressTopContent h2 {
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .addressTopContent button {
@@ -184,7 +184,7 @@
     padding: 5px 15px;
     border: none;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -206,7 +206,7 @@
 }
 
 .addressBottomBox p {
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -214,7 +214,7 @@
 }
 
 .darkText {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 /* Floor Plan Section */
@@ -225,8 +225,8 @@
 }
 
 .floorPlanSection h2 {
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .floorPlanSection img {
@@ -244,8 +244,8 @@
 }
 
 .googleMapsSection h2 {
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .googleMapsSection iframe {
@@ -271,8 +271,8 @@
 }
 
 .ownerDetailBox1 h3 {
-    font-size: 35px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .ownerDetailBox1 img {
@@ -281,13 +281,13 @@
 }
 
 .ownerDetailBox1 h4 {
-    font-size: 35px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
     line-height: 1;
 }
 
 .ownerDetailBox1 p {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .ownerDetailBox1 button {
@@ -305,8 +305,8 @@
 }
 
 .ownerDetailBox2 h3 {
-    font-size: 35px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .ownerDetailBox2 form {
@@ -331,7 +331,7 @@
 }
 
 .ownerDetailBox2 form label {
-    font-size: 18px;
+    font-size: 16px;
     color: black;
 }
 
@@ -362,8 +362,8 @@
 }
 
 .reviewsSection h2 {
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .ratingsUpperContentBox {
@@ -393,16 +393,16 @@
 }
 
 .ratingsUpperContent h4 {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .ratingsUpperContent p {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .reviewsPara {
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 10px;
 }
 
@@ -418,8 +418,8 @@
 }
 
 .addCommentBox h3 {
-    font-size: 35px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
     margin-top: 10px;
 }
 
@@ -459,7 +459,7 @@
 }
 
 .addCommentBox form .commentLabel{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -497,8 +497,8 @@
 }
 
 .latestPropertiesSection h2 {
-    font-size: 50px;
-    font-weight: 800;
+    font-size: 35px;
+    font-weight: 600;
     line-height: 1;
 }
 
@@ -535,12 +535,13 @@
 }
 
 .latestPropertiesContentBox h3 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
 }
 
 .latestPropertiesContentBox .priceText {
     font-size: 20px;
+    font-weight: 600;
     color: #1085FF;
 }
 
