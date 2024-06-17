@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import Image from 'next/image';
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
+import Link from 'next/link';
 
 const index = () => {
   return (

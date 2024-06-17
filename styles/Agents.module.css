@@ -519,7 +519,7 @@
         flex-wrap: wrap;
         height: auto;
         gap: 20px;
-        bottom: -180px;
+        bottom: -250px;
     }
 
     .searchBiggerBox .formBox {
@@ -529,7 +529,7 @@
     /* Trusted Agents Section */
 
     .trustedAgentsSection {
-        padding: 180px 5px 0px 5px;
+        padding: 250px 5px 0px 5px;
     }
 
     .trustedAgentsSection h2 {
