@@ -9,12 +9,15 @@ const navbar = () => {
     useEffect(() => {
         // Check local storage if user is logged in
         const loggedInStatus = localStorage.getItem('isLoggedIn');
-        setIsLoggedIn(loggedInStatus === 'true');
+        if(loggedInStatus == 'true'){
+            setIsLoggedIn(true);
+        }
     }, []);
 
     const handleLogout = () => {
-        localStorage.setItem('isLoggedIn', 'false');
+        localStorage.clear()
         setIsLoggedIn(false);
+        location.href = "/"
     };
 
     function openNav() {
@@ -39,14 +42,17 @@ const navbar = () => {
                     <li><Link href="/about-us">About Us</Link></li>
                 </ul>
                 <div className={styles.navbarBox}>
-                    <Link href="/register"><button>Post Property</button></Link>
+                    {isLoggedIn ? (
+                       <Link href="/user-panel/add-property"><button>Post Property</button></Link>
+                    ) : (
+                        <Link href="/register"><button>Post Property</button></Link>
+                    )}
                     <Link href="/contact-us"><p><i className="fa-solid fa-phone"></i>8000-300-725</p></Link>
                     {isLoggedIn ? (
                         <button onClick={handleLogout}>Logout</button>
                     ) : (
                         <Link href="/login"><i className={`fa-solid fa-circle-user ${styles.userIcon}`}></i></Link>
                     )}
-                    <Link href="/login"><i className={`fa-solid fa-circle-user ${styles.userIcon}`}></i></Link>
                     <i className={`fa-solid fa-bars ${styles.sidebarNav}`} onClick={openNav}></i>
                 </div>
             </nav>

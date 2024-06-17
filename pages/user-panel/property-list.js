@@ -36,6 +36,12 @@ const propertylist = () => {
             }
         };
         fetchProperties();
+
+        // Check local storage if user is logged in
+        const loggedInStatus = localStorage.getItem('isLoggedIn');
+        if(loggedInStatus == null){
+            location.href = "/"
+        }
     }, []);
     
     const handleEditClick = (propertyId) => {

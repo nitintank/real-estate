@@ -46,11 +46,11 @@ const Login = () => {
             setInvalidLogin(true)
         }
         else if (response.role == "user") {
-
             localStorage.setItem('email', response.email);
             localStorage.setItem('accessToken', response.access_token);
             localStorage.setItem('username', response.username);
-            localStorage.setItem('userId', response.id);  
+            localStorage.setItem('userId', response.id);
+            localStorage.setItem('isLoggedIn', 'true');  
             location.href = "/user-panel/dashboard"
         }
     }

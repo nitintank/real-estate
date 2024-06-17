@@ -223,10 +223,8 @@ const buy = () => {
                     <p>DUBAI REAL ESTATE</p>
                     <h2>Latest Properties</h2>
                     <div className={styles.latestPropertiesBigBox}>
-                    
                         {properties.map((property, index)  => (
-                            <Link href={`/property?id=${property.id}`} key={index}>
-                            <div key={property.id} className={styles.latestPropertiesInnerBox}>
+                            <Link href={`/property?id=${property.id}`} key={index} className={styles.latestPropertiesInnerBox}>
                             <Image
                     width={600}
                     height={400}
@@ -236,16 +234,16 @@ const buy = () => {
                     className={styles.mainHouseImg}
                 />
                                 <div className={styles.latestPropertiesContentBox}>
-                                    <p className={styles.miniText}>{property.property_type}, {property.transaction_type}</p>
-                                    <h3>{property.title}</h3>
+                                    <p className={styles.miniText}>{property.property_type}</p>
+                                    <h3>{property.property_name}</h3>
                                     <p className={styles.priceText}>{property.price}</p>
-                                    <p className={styles.propertyDescription}>{property.description}</p>
+                                    <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
                                     <div className={styles.innerPropertyContent}>
                                         <p><i className="fa-solid fa-bed"></i> {property.bedrooms}</p>
                                         <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
-                                        <p><i className="fa-solid fa-maximize"></i> {property.area}ft</p>
-                                        <p><i className="fa-solid fa-car"></i> {property.parking_spaces} Cars</p>
-                                        <p><i className="fa-solid fa-up-right-from-square"></i> {property.lot_area}ft</p>
+                                        <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
+                                        <p><i className="fa-solid fa-car"></i> {property.parking_spaces}</p>
+                                        <p><i className="fa-solid fa-up-right-from-square"></i> {property.lot_area}</p>
                                     </div>
                                     <hr />
                                     <div className={styles.innerButtonBox}>
@@ -254,7 +252,6 @@ const buy = () => {
                                         <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
                                     </div>
                                 </div>
-                            </div>
                             </Link>
                         ))}
                         

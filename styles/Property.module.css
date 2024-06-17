@@ -9,6 +9,7 @@
 .mainHouseImg {
     width: 98%;
     height: auto;
+    max-height: 400px;
     display: block;
     margin: auto;
     border-radius: 20px;

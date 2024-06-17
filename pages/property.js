@@ -29,7 +29,6 @@ const property = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log("=================>",data)
                 setPropertyDetails(data);
                 setLoading(false);
             } else {
@@ -89,17 +88,11 @@ const property = () => {
         }
     };
 
-
-    
-
-
-
     return (
         <>
             <Navbar />
             <section className={styles.propertyImagesSection}>
                 {/* Main property image */}
-                {console.log("======>",propertyDetails.image_path)}
                 <Image
                     width={600}
                     height={400}
@@ -109,7 +102,7 @@ const property = () => {
                     className={styles.mainHouseImg}
                 />
                 {/* Additional property images */}
-                <div className={styles.propertyMoreImages}>
+                {/* <div className={styles.propertyMoreImages}>
                     {propertyDetails.media_paths && propertyDetails.media_paths.map((path, index) => (
                         <Image
                             key={index}
@@ -119,12 +112,12 @@ const property = () => {
                             alt={`Property Image ${index + 1}`}
                         />
                     ))}
-                </div>
+                </div> */}
             </section>
 
             <section className={styles.propertyTitleContentBox}>
                 <div className={styles.contentTitleContentBox1}>
-                    <p>Publish on {propertyDetails.publish_date}</p>
+                    <p>Publish on {propertyDetails.created_at}</p>
                     <h2>{propertyDetails.property_name}</h2>
                     <h4>{propertyDetails.location}</h4>
                     <p>{propertyDetails.property_type}</p>

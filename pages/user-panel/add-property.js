@@ -28,6 +28,11 @@ const addProperty = () => {
         if (storedToken) {
             setToken(storedToken);
         }
+        // Check local storage if user is logged in
+        const loggedInStatus = localStorage.getItem('isLoggedIn');
+        if (loggedInStatus == null) {
+            location.href = "/"
+        }
     }, []);
 
     const handlePropertyTypeChange = (e) => {
@@ -144,105 +149,103 @@ const addProperty = () => {
                 <div className={styles.mainContentBox}>
                     <h2>Add New Property</h2>
                     <form onSubmit={handleSubmit}>
-                        <label>Title</label>
-                        <input
-                            type="text"
-                            value={propertyName}
-                            onChange={(e) => setPropertyName(e.target.value)}
-                            placeholder="Add Property Title"
-                        />
-                        <label>Description</label>
-                        <input
-                            type="text"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            placeholder="Add Property Description"
-                        />
-                        <label>Map Tour Images</label>
-                        <input type="file" onChange={(e) => setImagePath(e.target.files[0])} />
-                        <label>Add Property Images</label>
-                        <input type="file" onChange={(e) => setMediaPaths(Array.from(e.target.files))} multiple />
-                        <h3 className={styles.amenitiesText}>Select Amenities For This Property</h3>
-                        <h4 className={styles.amenitiesNamesText}>Recreation And Family</h4>
-                        <div className={styles.checkBoxBigBox}>
-                            {amenityCheckbox('recreationAndFamily', 'barbeque area')}
-                            {amenityCheckbox('recreationAndFamily', 'day care center')}
-                            {amenityCheckbox('recreationAndFamily', 'kids play area')}
-                            {amenityCheckbox('recreationAndFamily', 'lawn or garden')}
-                            {amenityCheckbox('recreationAndFamily', 'cafeteria or canteen')}
+                        {!propertyType && <div className={styles.propertyTypeBox}>
+                            <h3>Property Type</h3>
+                            <input type="radio" value="Residential" id="Residential" name='property_type' onChange={handlePropertyTypeChange} />
+                            <label for="Residential">Residential</label>
+                            <input type="radio" value="Commercial" id="Commercial" name='property_type' onChange={handlePropertyTypeChange} />
+                            <label for="Commercial">Commercial</label>
+                            <input type="radio" value="Land" id="Land" name='property_type' onChange={handlePropertyTypeChange} />
+                            <label for="Land">Land</label>
+                            <input type="radio" value="MultipleUnits" id="MultipleUnits" name='property_type' onChange={handlePropertyTypeChange} />
+                            <label for="MultipleUnits">MultipleUnits</label>
                         </div>
-                        <h4 className={styles.amenitiesNamesText}>Health And Fitness</h4>
-                        <div className={styles.checkBoxBigBox}>
-                            {amenityCheckbox('healthAndFitness', 'first aid medical center')}
-                            {amenityCheckbox('healthAndFitness', 'gym or health club')}
-                            {amenityCheckbox('healthAndFitness', 'jacuzzi')}
-                            {amenityCheckbox('healthAndFitness', 'sauna')}
-                            {amenityCheckbox('healthAndFitness', 'steam room')}
-                            {amenityCheckbox('healthAndFitness', 'swimming pool')}
-                        </div>
-                        <h4 className={styles.amenitiesNamesText}>Features</h4>
-                        <div className={styles.checkBoxBigBox}>
-                            {amenityCheckbox('features', 'double glazed windows')}
-                            {amenityCheckbox('features', 'centrally air conditioned')}
-                            {amenityCheckbox('features', 'central heating')}
-                        </div>
-                        <h4 className={styles.amenitiesNamesText}>Cleaning And Maintenance</h4>
-                        <div className={styles.checkBoxBigBox}>
-                            {amenityCheckbox('cleaningAndMaintenance', 'waste disposal')}
-                            {amenityCheckbox('cleaningAndMaintenance', 'maintenance staff')}
-                            {amenityCheckbox('cleaningAndMaintenance', 'cleaning services')}
-                        </div>
-                        <label>Property Type</label>
-                        <select value={propertyType} onChange={handlePropertyTypeChange}>
-                            <option value="">Select Property Type</option>
-                            <option value="Residential">Residential</option>
-                            <option value="Commercial">Commercial</option>
-                            <option value="Land">Land</option>
-                            <option value="MultipleUnits">Multiple Units</option>
-                        </select>
+                        }
 
-                        {propertyType && (
-                            <div>
-                                <label>Property Category</label>
-                                <select
-                                    value={propertySubtype}
-                                    onChange={(e) => setPropertySubtype(e.target.value)}
-                                >
-                                    <option value="">Select Subtype</option>
-                                    {propertyCategories[propertyType].map((subtype, index) => (
-                                        <option key={index} value={subtype}>
-                                            {subtype}
-                                        </option>
-                                    ))}
-                                </select>
+                        {propertyType && !propertySubtype && (
+                            <div className={styles.propertyTypeBox}>
+                                <h3>Property Category</h3>
+                                {propertyCategories[propertyType].map((subtype, index) => (
+                                    <>
+                                        <input key={index} type="radio" value={subtype} id={subtype} name='property_category' onChange={(e) => setPropertySubtype(e.target.value)} />
+                                        <label for={subtype}>{subtype}</label>
+                                    </>
+                                ))}
                             </div>
                         )}
-
-                        <br />
-                        <label>Price</label>
-                        <input
-                            type="text"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            placeholder="Add Price"
-                        />
-                        <label>Listing Type</label>
-                        <select value={saleOrRent} onChange={(e) => setSaleOrRent(e.target.value)}>
-                            <option value="">Select Listing Type</option>
-                            <option value="Rent">For Rent</option>
-                            <option value="buy">For Buy</option>
-                        </select>
-                        <br/>
-
-
-                        <label>Location</label>
-                        <input
-                            type="text"
-                            value={location}
-                            onChange={(e) => setLocation(e.target.value)}
-                            placeholder="Add Location"
-                        />
-                        <button type="submit">Add Property</button>
+                        {propertySubtype &&
+                            <>
+                                <label>Title</label>
+                                <input
+                                    type="text"
+                                    value={propertyName}
+                                    onChange={(e) => setPropertyName(e.target.value)}
+                                    placeholder="Add Property Title"
+                                />
+                                <label>Description</label>
+                                <input
+                                    type="text"
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    placeholder="Add Property Description"
+                                />
+                                <label>Price</label>
+                                <input
+                                    type="text"
+                                    value={price}
+                                    onChange={(e) => setPrice(e.target.value)}
+                                    placeholder="Add Price"
+                                />
+                                <label>Location</label>
+                                <input
+                                    type="text"
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                    placeholder="Add Location"
+                                />
+                                <label>Listing Type</label><br/>
+                                <select value={saleOrRent} onChange={(e) => setSaleOrRent(e.target.value)}>
+                                    <option value="">Select Listing Type</option>
+                                    <option value="Rent">For Rent</option>
+                                    <option value="Sale">For Sale</option>
+                                </select><br/>
+                                <label>Add Property Images</label>
+                                <input type="file" onChange={(e) => setMediaPaths(Array.from(e.target.files))} multiple />
+                                <label>Floor Map Images</label>
+                                <input type="file" onChange={(e) => setImagePath(e.target.files[0])} />
+                                <h3 className={styles.amenitiesText}>Select Amenities For This Property</h3>
+                                <h4 className={styles.amenitiesNamesText}>Recreation And Family</h4>
+                                <div className={styles.checkBoxBigBox}>
+                                    {amenityCheckbox('recreationAndFamily', 'barbeque area')}
+                                    {amenityCheckbox('recreationAndFamily', 'day care center')}
+                                    {amenityCheckbox('recreationAndFamily', 'kids play area')}
+                                    {amenityCheckbox('recreationAndFamily', 'lawn or garden')}
+                                    {amenityCheckbox('recreationAndFamily', 'cafeteria or canteen')}
+                                </div>
+                                <h4 className={styles.amenitiesNamesText}>Health And Fitness</h4>
+                                <div className={styles.checkBoxBigBox}>
+                                    {amenityCheckbox('healthAndFitness', 'first aid medical center')}
+                                    {amenityCheckbox('healthAndFitness', 'gym or health club')}
+                                    {amenityCheckbox('healthAndFitness', 'jacuzzi')}
+                                    {amenityCheckbox('healthAndFitness', 'sauna')}
+                                    {amenityCheckbox('healthAndFitness', 'steam room')}
+                                    {amenityCheckbox('healthAndFitness', 'swimming pool')}
+                                </div>
+                                <h4 className={styles.amenitiesNamesText}>Features</h4>
+                                <div className={styles.checkBoxBigBox}>
+                                    {amenityCheckbox('features', 'double glazed windows')}
+                                    {amenityCheckbox('features', 'centrally air conditioned')}
+                                    {amenityCheckbox('features', 'central heating')}
+                                </div>
+                                <h4 className={styles.amenitiesNamesText}>Cleaning And Maintenance</h4>
+                                <div className={styles.checkBoxBigBox}>
+                                    {amenityCheckbox('cleaningAndMaintenance', 'waste disposal')}
+                                    {amenityCheckbox('cleaningAndMaintenance', 'maintenance staff')}
+                                    {amenityCheckbox('cleaningAndMaintenance', 'cleaning services')}
+                                </div>
+                                <br />
+                                <button type="submit">Add Property</button>
+                            </>}
                     </form>
                 </div>
             </section>

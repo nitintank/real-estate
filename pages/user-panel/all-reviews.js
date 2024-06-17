@@ -25,6 +25,12 @@ const allReviews = () => {
         };
 
         fetchReviews();
+
+        // Check local storage if user is logged in
+        const loggedInStatus = localStorage.getItem('isLoggedIn');
+        if(loggedInStatus == null){
+            location.href = "/"
+        }
     }, []);
 
     const handleReplyChange = (reviewId, value) => {

@@ -32,6 +32,12 @@ const editProperty = () => {
         if (id) {
             fetchPropertyDetails(id);
         }
+
+        // Check local storage if user is logged in
+        const loggedInStatus = localStorage.getItem('isLoggedIn');
+        if(loggedInStatus == null){
+            location.href = "/"
+        }
     }, [id]);
 
     const fetchPropertyDetails = async (propertyId) => {

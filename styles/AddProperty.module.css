@@ -189,3 +189,22 @@
     }
 
 }
+
+.propertyTypeBox{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.propertyTypeBox h3{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.propertyTypeBox input[type = radio]{
+    display: none;
+}
+
+.propertyTypeBox label{
+    cursor: pointer;
+}

@@ -80,6 +80,13 @@
     cursor: pointer;
 }
 
+.propertyList td img{
+    width: 120px;
+    height: auto;
+    margin: auto;
+    display: block;
+}
+
 .propertyDetailTableBox{
     display: flex;
     align-items: center;

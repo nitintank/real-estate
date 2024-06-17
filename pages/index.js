@@ -51,7 +51,7 @@ const index = () => {
       const propertyDate = new Date(property.created_at);
       return propertyDate >= oneWeekAgo;
     })
-    .slice(-3);
+    .slice(-2);
   return (
     <>
       <Navbar />
@@ -192,16 +192,15 @@ const index = () => {
 
       {/* <!-- Latest Properties Section --> */}
       <section className={styles.latestPropertiesSection}>
+      <p>DUBAI REAL ESTATE</p>
         <h2>Latest Properties</h2>
         <div className={styles.latestPropertiesBigBox}>
           {latestProperties.map((property, index) => (
-            <Link href={`/property?id=${property.id}`} key={index}>
-              <div className={styles.latestPropertiesInnerBox}>
+            <Link href={`/property?id=${property.id}`} key={index} className={styles.latestPropertiesInnerBox}>
               <Image
                     width={600}
                     height={400}
                     src={property.image_path ? `https://a.khelogame.xyz/${property.image_path}` : '/images/default-property.png'}
-                    
                     alt="Property Image"
                     className={styles.mainHouseImg}
                 />
@@ -211,7 +210,7 @@ const index = () => {
                   <p className={styles.miniText}>{property.property_type}</p>
                   <h3>{property.property_name}</h3>
                   <p className={styles.priceText}>{property.price}</p>
-                  <p className={styles.propertyDescription}>{property.description}</p>
+                  <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
                   <div className={styles.innerPropertyContent}>
                     <p><i className="fa-solid fa-bed"></i> {property.bedrooms}</p>
                     <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
@@ -226,7 +225,6 @@ const index = () => {
                     <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
                   </div>
                 </div>
-              </div>
             </Link>
           ))}
         </div>

@@ -232,6 +232,11 @@
     gap: 35px;
 }
 
+.latestPropertiesBigBox a{
+    text-decoration: none;
+    color: black;
+}
+
 .latestPropertiesInnerBox {
     width: 48%;
     background-color: white;

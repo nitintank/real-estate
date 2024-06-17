@@ -25,6 +25,12 @@ const dashboard = () => {
         };
 
         fetchPendingProperties();
+
+        // Check local storage if user is logged in
+        const loggedInStatus = localStorage.getItem('isLoggedIn');
+        if(loggedInStatus == null){
+            location.href = "/"
+        }
     }, []);
 
     return (
@@ -39,7 +45,7 @@ const dashboard = () => {
                     <Link href="/user-panel/all-reviews"><i className="fa-solid fa-comment"></i> All Reviews</Link>
                 </div>
                 <div className={styles.mainContentBox}>
-                    <h2>Hey Nitin,</h2>
+                    <h2>Hey User,</h2>
                     <p className={styles.gladPara}>We are glad to see you again!</p>
                     <div className={styles.dashboardCardsBigBox}>
                         <div className={styles.dashboardCardsBox}>
