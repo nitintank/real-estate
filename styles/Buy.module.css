@@ -24,14 +24,14 @@
 
 .topIntroInnerBox1 h2 {
     color: white;
-    font-size: 65px;
-    font-weight: 700;
+    font-size: 60px;
+    font-weight: 500;
     line-height: 1;
 }
 
 .topIntroInnerBox1 p {
     color: white;
-    font-size: 24px;
+    font-size: 16px;
     margin-top: 5px;
 }
 
@@ -93,13 +93,117 @@
 
 .searchBiggerBox .formBox button {
     width: 100%;
-    background-color: #452820;
+    background-color: #1085FF;
     color: white;
     border: none;
     border-radius: 25px;
     padding: 5px;
     font-size: 18px;
 }
+
+/* Select Box */
+
+.selectBox {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: 500;
+    color: #60666d;
+    border-bottom: 1px solid black;
+  }
+  .selectBox__current {
+    position: relative;
+    cursor: pointer;
+    outline: none;
+  }
+  .selectBox__current:focus + .selectBox__list {
+    opacity: 1;
+    -webkit-animation-name: none;
+            animation-name: none;
+  }
+  .selectBox__current:focus + .selectBox__list .selectBox__option {
+    cursor: pointer;
+  }
+  .selectBox__current:focus .selectBox__icon {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  .selectBox__list label{
+    font-weight: 500 !important;
+    font-size: 16px;
+  }
+  .selectBox__icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 20px;
+    opacity: 0.3;
+    transition: 0.2s ease;
+  }
+  .selectBox__value {
+    display: flex;
+  }
+  .selectBox__input {
+    display: none;
+  }
+  .selectBox__input:checked + .selectBox__inputText {
+    display: block;
+  }
+  .selectBox__inputText {
+    display: none;
+    width: 100%;
+    margin: 0;
+    padding: 0px 10px 1px 0px;
+    background-color: #fff;
+  }
+  .selectBox__list {
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    opacity: 0;
+    z-index: 100000;
+    -webkit-animation-name: HideList;
+            animation-name: HideList;
+    -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+    -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-animation-timing-function: step-start;
+            animation-timing-function: step-start;
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+  }
+  .selectBox__option {
+    display: block;
+    padding: 5px;
+    background-color: #fff;
+  }
+  .selectBox__option:hover, .selectBox__option:focus {
+    color: #546c84;
+    background-color: #fbfbfb;
+  }
+  
+  @-webkit-keyframes HideList {
+    from {
+      transform: scaleY(1);
+    }
+    to {
+      transform: scaleY(0);
+    }
+  }
+  
+  @keyframes HideList {
+    from {
+      transform: scaleY(1);
+    }
+    to {
+      transform: scaleY(0);
+    }
+  }
 
 /* Latest Properties Section */
 
@@ -108,13 +212,13 @@
 }
 
 .latestPropertiesSection p {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .latestPropertiesSection h2 {
-    font-size: 50px;
-    font-weight: 800;
+    font-size: 35px;
+    font-weight: 600;
     line-height: 1;
 }
 
@@ -151,13 +255,14 @@
 }
 
 .latestPropertiesContentBox h3 {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .latestPropertiesContentBox .priceText {
-    font-size: 20px;
-    color: #7E411F;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1085FF;
 }
 
 .latestPropertiesContentBox .propertyDescription {
@@ -190,9 +295,9 @@
 .innerButtonBox button {
     padding: 5px 35px;
     cursor: pointer;
-    border: 1px solid #F3EBE4;
-    color: #7E411F;
-    background-color: #F3EBE4;
+    border: 1px solid #deeeff;
+    color: #1085FF;
+    background-color: #deeeff;
     border-radius: 5px;
     font-size: 15px;
 }
@@ -269,7 +374,7 @@
         flex-wrap: wrap;
         gap: 20px;
         height: auto;
-        bottom: -250px;
+        bottom: -320px;
     }
     .searchBiggerBox .formBox{
         width: 100%;
@@ -278,7 +383,7 @@
     /* Latest Properties Section */
 
     .latestPropertiesSection{
-        padding: 250px 10px 20px 10px;
+        padding: 320px 10px 20px 10px;
     }
     .latestPropertiesBigBox{
         gap: 20px;

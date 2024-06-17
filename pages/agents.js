@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const agents = () => {
     return (
-        <>  
+        <>
             <Navbar />
             {/* <!-- Top Introduction Box --> */}
 
@@ -20,17 +20,48 @@ const agents = () => {
                 </div>
                 <div className={styles.searchBiggerBox}>
                     <div className={styles.formBox}>
+                        <label for="">Area</label>
                         <input type="text" placeholder="Enter An Address, City Or Zip Code" />
                     </div>
                     <div className={styles.formBox}>
+                        <label for="">Location</label>
                         <input type="text" placeholder="Enter Location" />
                     </div>
                     <div className={styles.formBox}>
-                        <select name="" id="">
+                        <label for="">Language</label>
+                        {/* <select name="" id="">
                             <option value="">Language</option>
                             <option value="">English</option>
                             <option value="">Hindi</option>
-                        </select>
+                        </select> */}
+                        <div className={styles.selectBox}>
+                            <div className={styles.selectBox__current} tabindex="1">
+                                <div className={styles.selectBox__value}>
+                                    <input className={styles.selectBox__input} type="radio" id="0" value="1" name="Ben" />
+                                    <p className={styles.selectBox__inputText}>Hindi</p>
+                                </div>
+                                <div className={styles.selectBox__value}>
+                                    <input className={styles.selectBox__input} type="radio" id="1" value="2" name="Ben" defaultChecked={true} />
+                                    <p className={styles.selectBox__inputText}>English</p>
+                                </div>
+                                <div className={styles.selectBox__value}>
+                                    <input className={styles.selectBox__input} type="radio" id="2" value="3" name="Ben" />
+                                    <p className={styles.selectBox__inputText}>Marathi</p>
+                                </div>
+                                <img className={styles.selectBox__icon} src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
+                            </div>
+                            <ul className={styles.selectBox__list}>
+                                <li>
+                                    <label className={styles.selectBox__option} for="0" aria-hidden="aria-hidden">Hindi</label>
+                                </li>
+                                <li>
+                                    <label className={styles.selectBox__option} for="1" aria-hidden="aria-hidden">English</label>
+                                </li>
+                                <li>
+                                    <label className={styles.selectBox__option} for="2" aria-hidden="aria-hidden">Marathi</label>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div className={`${styles.formBox} ${styles.flexEnd}`}>
                         <button><i className="fa-solid fa-magnifying-glass"></i> Search</button>

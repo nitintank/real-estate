@@ -185,7 +185,7 @@ const agentDetail = () => {
                             <input type="submit" value="Send Message" />
                         </form>
                     </div>
-                    <div className="contact-me-form-2">
+                    <div className={styles.contactMeForm2}>
                         <Image width={200} height={200} src="/images/agent-img.png" alt="" />
                         <button><i className="fa-solid fa-phone"></i> Call</button>
                         <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
@@ -196,64 +196,64 @@ const agentDetail = () => {
 
             {/* <!-- Reviews Section --> */}
 
-            <section className="reviews-section">
+            <section className={styles.reviewsSection}>
                 <h2>Property Reviews</h2>
-                <div className="ratings-box">
-                    <div className="ratings-upper-content-box">
-                        <div className="ratings-upper-user-detail-box">
+                <div className={styles.ratingsBox}>
+                    <div className={styles.ratingsUpperContentBox}>
+                        <div className={styles.ratingsUpperUserDetailBox}>
                             <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                            <div className="ratings-upper-content">
+                            <div className={styles.ratingsUpperContent}>
                                 <h4>Aman Sharma</h4>
                                 <p>Property Agent</p>
                             </div>
                         </div>
-                        <Image width={200} height={200} src="/images/star.png" alt="" className="star-img" />
+                        <Image width={200} height={200} src="/images/star.png" alt="" className={styles.starImg} />
                     </div>
-                    <p className="reviews-para">Enchanting three bedroom, three bath home with spacious one bedroom, one bath
+                    <p className={styles.reviewsPara}>Enchanting three bedroom, three bath home with spacious one bedroom, one bath
                         cabana, in-laws quarters. Charming living area features fireplace and fabulous art deco details. Formal
                         dining room. Enchanting three bedroom, three bath home with spacious one bedroom, one bath cabana,
                         in-laws quarters. Charming living area features fireplace and fabulous art deco details. Formal dining
                         room.</p>
                 </div>
-                <div className="ratings-box">
-                    <div className="ratings-upper-content-box">
-                        <div className="ratings-upper-user-detail-box">
+                <div className={styles.ratingsBox}>
+                    <div className={styles.ratingsUpperContentBox}>
+                        <div className={styles.ratingsUpperUserDetailBox}>
                             <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                            <div className="ratings-upper-content">
+                            <div className={styles.ratingsUpperContent}>
                                 <h4>Piyush Singh</h4>
                                 <p>Property Dealer</p>
                             </div>
                         </div>
-                        <Image width={200} height={200} src="/images/star.png" alt="" className="star-img" />
+                        <Image width={200} height={200} src="/images/star.png" alt="" className={styles.starImg} />
                     </div>
-                    <p className="reviews-para">Enchanting three bedroom, three bath home with spacious one bedroom, one bath
+                    <p className={styles.reviewsPara}>Enchanting three bedroom, three bath home with spacious one bedroom, one bath
                         cabana, in-laws quarters. Charming living area features fireplace and fabulous art deco details. Formal
                         dining room. Enchanting three bedroom, three bath home with spacious one bedroom, one bath cabana,
                         in-laws quarters. Charming living area features fireplace and fabulous art deco details. Formal dining
                         room.</p>
                 </div>
                 {/* <!-- Leave A Review Section --> */}
-                <div className="add-comment-box">
+                <div className={styles.addCommentBox}>
                     <h3>Leave A Review</h3>
                     <form action="">
-                        <label for="" className="comment-label">Your Rating</label>
-                        <div className="star-rating">
+                        <label for="" className={styles.commentLabel}>Your Rating</label>
+                        <div className={styles.starRating}>
                             <input type="radio" id="5-stars" name="rating" value="5" />
-                            <label for="5-stars" className="star">&#9733;</label>
+                            <label for="5-stars" className={styles.star}>&#9733;</label>
                             <input type="radio" id="4-stars" name="rating" value="4" />
-                            <label for="4-stars" className="star">&#9733;</label>
+                            <label for="4-stars" className={styles.star}>&#9733;</label>
                             <input type="radio" id="3-stars" name="rating" value="3" />
-                            <label for="3-stars" className="star">&#9733;</label>
+                            <label for="3-stars" className={styles.star}>&#9733;</label>
                             <input type="radio" id="2-stars" name="rating" value="2" />
-                            <label for="2-stars" className="star">&#9733;</label>
+                            <label for="2-stars" className={styles.star}>&#9733;</label>
                             <input type="radio" id="1-star" name="rating" value="1" />
-                            <label for="1-star" className="star">&#9733;</label>
+                            <label for="1-star" className={styles.star}>&#9733;</label>
                         </div>
-                        <label for="" className="comment-label">Your Comment</label>
+                        <label for="" className={styles.commentLabel}>Your Comment</label>
                         <textarea name="" id="" rows="6"></textarea>
-                        <label for="" className="comment-label">Your Name</label>
+                        <label for="" className={styles.commentLabel}>Your Name</label>
                         <input type="text" />
-                        <label for="" className="comment-label">Your Email</label>
+                        <label for="" className={styles.commentLabel}>Your Email</label>
                         <input type="text" />
                         <input type="submit" value="Submit Review" />
                     </form>

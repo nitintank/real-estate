@@ -25,12 +25,12 @@
 }
 
 .footerContentBox p{
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .footerContentBox ul{
-    font-size: 20px;
+    font-size: 18px;
     list-style: none;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .socialMediaBox i{
-    color: #452820;
+    color: #1085FF;
     font-size: 25px;
     cursor: pointer;
 }
@@ -64,7 +64,7 @@
 
 .inputSearchBox input{
     width: 70%;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
     border: none;
     font-size: 18px;
     padding: 5px 15px;
@@ -72,7 +72,7 @@
 }
 
 .inputSearchBox button{
-    background-color: #452820;
+    background-color: #1085FF;
     color: white;
     font-size: 18px;
     border-radius: 25px;
@@ -84,14 +84,14 @@
 }
 
 .footerEmailText{
-    color: #452820;
-    font-size: 20px !important;
+    color: #1085FF;
+    font-size: 18px !important;
 }
 
 .footerBottomBox{
     width: 100%;
     padding: 10px 20px;
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -105,9 +105,9 @@
 }
 
 .contactDetailBox p{
-    font-size: 25px;
-    font-weight: 700;
-    color: #452820;
+    font-size: 22px;
+    font-weight: 600;
+    color: #1085FF;
 }
 
 .contactDetailBox p i{

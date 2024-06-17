@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
     border-radius: 20px;
     padding: 40px;
     position: relative;
@@ -33,13 +33,13 @@
 
 .agentDetailBox2 h3{
     line-height: 1;
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .agentDetailBox2 .agentAboutPara{
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 500;
 }
 
 .agentOtherDetailsBox p{
@@ -47,7 +47,7 @@
 }
 
 .agentOtherDetailsBox p span{
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .agentSocialMedia{
@@ -62,6 +62,7 @@
 .agentSocialMedia i{
     font-size: 35px;
     cursor: pointer;
+    color: #1085FF;
 }
 
 /* About Agent Box */
@@ -72,12 +73,12 @@
 }
 
 .agentAboutBox h3{
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .agentAboutBox p{
-    font-size: 18px;
+    font-size: 16px;
 }
 
 /* Track Record Section */
@@ -85,18 +86,18 @@
 .trackRecordSection{
     width: 95%;
     margin: auto;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
     padding: 20px;
     border-radius: 20px;
 }
 
 .trackRecordSection h3{
-    font-size: 35px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .trackRecordSection p{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .trackRecordContentBox{
@@ -115,14 +116,14 @@
 }
 
 .trackRecordContent h4{
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
     text-align: center;
 }
 
 .trackRecordContent h4 span{
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .trackRecordContent p{
@@ -136,8 +137,8 @@
 }
 
 .latestPropertiesSection h2 {
-    font-size: 50px;
-    font-weight: 800;
+    font-size: 30px;
+    font-weight: 600;
     line-height: 1;
 }
 
@@ -174,13 +175,14 @@
 }
 
 .latestPropertiesContentBox h3 {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .latestPropertiesContentBox .priceText {
-    font-size: 20px;
-    color: #7E411F;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1085FF;
 }
 
 .latestPropertiesContentBox .propertyDescription {
@@ -213,9 +215,9 @@
 .innerButtonBox button {
     padding: 5px 35px;
     cursor: pointer;
-    border: 1px solid #F3EBE4;
-    color: #7E411F;
-    background-color: #F3EBE4;
+    border: 1px solid #deeeff;
+    color: #1085FF;
+    background-color: #deeeff;
     border-radius: 5px;
     font-size: 15px;
 }
@@ -233,15 +235,15 @@
 }
 
 .contactMeSection h3{
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .contactMeFormBigBox{
     width: 100%;
     display: flex;
     align-items: center;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
     padding: 20px;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -267,7 +269,7 @@
 .contactMeForm1 form input[type=submit] {
     padding: 10px 25px;
     font-size: 18px;
-    background-color: #2F2217;
+    background-color: #1085FF;
     border-radius: 10px;
     border: none;
     color: white;
@@ -275,7 +277,7 @@
     margin-top: 15px;
 }
 
-.contact-me-form-2{
+.contactMeForm2{
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -284,99 +286,100 @@
     gap: 10px;
 }
 
-.contact-me-form-2 button{
+.contactMeForm2 button{
     padding: 5px 15px;
-    background-color: #2F2217;
+    background-color: #1085FF;
     border-radius: 10px;
     border: none;
     color: white;
-    font-size: 22px;
+    font-size: 20px;
     cursor: pointer;
 }
 
-.contact-me-form-2 img{
+.contactMeForm2 img{
     width: 180px;
     height: auto;
 }
 
 /* Reviews Section */
 
-.reviews-section {
+.reviewsSection {
     width: 100%;
     padding: 20px 40px;
 }
 
-.reviews-section h2 {
-    font-size: 45px;
-    font-weight: 700;
+.reviewsSection h2 {
+    font-size: 35px;
+    font-weight: 600;
 }
 
-.ratings-upper-content-box {
+.ratingsUpperContentBox {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.ratings-upper-user-detail-box {
+.ratingsUpperUserDetailBox {
     width: 100%;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.ratings-box {
+.ratingsBox {
     width: 100%;
     margin-top: 10px;
     border-bottom: 1px solid black;
     padding-bottom: 10px;
 }
 
-.ratings-upper-user-detail-box img {
+.ratingsUpperUserDetailBox img {
     width: 60px;
+    height: auto;
 }
 
-.ratings-upper-content h4 {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.ratings-upper-content p {
-    font-size: 16px;
-}
-
-.reviews-para {
+.ratingsUpperContent h4 {
     font-size: 18px;
+    font-weight: 600;
+}
+
+.ratingsUpperContent p {
+    font-size: 15px;
+}
+
+.reviewsPara {
+    font-size: 16px;
     margin-top: 10px;
 }
 
-.star-img {
+.starImg {
     width: auto;
     height: 20px;
 }
 
 /* Leave A Review Section */
 
-.add-comment-box {
+.addCommentBox {
     width: 100%;
 }
 
-.add-comment-box h3 {
-    font-size: 35px;
-    font-weight: 700;
+.addCommentBox h3 {
+    font-size: 30px;
+    font-weight: 600;
     margin-top: 10px;
 }
 
-.add-comment-box form{
+.addCommentBox form{
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.add-comment-box form input[type=submit] {
+.addCommentBox form input[type=submit] {
     padding: 10px 25px;
     font-size: 18px;
-    background-color: #2F2217;
+    background-color: #1085FF;
     border-radius: 10px;
     border: none;
     color: white;
@@ -384,30 +387,30 @@
     margin-top: 15px;
 }
 
-.add-comment-box form input[type=text] {
+.addCommentBox form input[type=text] {
     padding: 10px 10px;
     border-radius: 5px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-size: 16px;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
 }
 
-.add-comment-box form textarea{
+.addCommentBox form textarea{
     padding: 10px 10px;
     border-radius: 5px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-size: 16px;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
 }
 
-.add-comment-box form .comment-label{
+.addCommentBox form .commentLabel{
     font-size: 18px;
     font-weight: 600;
 }
 
-.star-rating {
+.starRating {
     display: flex;
     flex-direction: row-reverse;
     font-size: 2em;
@@ -416,21 +419,21 @@
     width: 200px;
 }
 
-.star-rating input {
+.starRating input {
     display: none;
 }
 
-.star-rating label {
+.starRating label {
     color: #ccc;
     cursor: pointer;
 }
 
-.star-rating :checked~label {
+.starRating :checked~label {
     color: #f90;
 }
 
-.star-rating label:hover,
-.star-rating label:hover~label {
+.starRating label:hover,
+.starRating label:hover~label {
     color: #fc0;
 }
 
@@ -606,30 +609,30 @@
     .contactMeForm1{
         width: 100%;
     }
-    .contact-me-form-2{
+    .contactMeForm2{
         width: 100%;
     }
-    .contact-me-form-2 img{
+    .contactMeForm2 img{
         width: 150px;
     }
-    .contact-me-form-2 button{
+    .contactMeForm2 button{
         padding: 5px 20px;
         font-size: 18px;
     }
 
     /* Reviews Section */
 
-    .reviews-section{
+    .reviewsSection{
         padding: 10px 15px;
     }
-    .reviews-section h2{
+    .reviewsSection h2{
         font-size: 30px;
         text-align: center;
     }
-    .ratings-upper-content-box{
+    .ratingsUpperContentBox{
         flex-wrap: wrap;
     }
-    .reviews-para{
+    .reviewsPara{
         font-size: 16px;
     }
 }

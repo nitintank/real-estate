@@ -41,7 +41,7 @@
 .nav .navbarBox button {
     padding: 4px 20px;
     font-size: 15px;
-    background-color: #452820;
+    background-color: #1085FF;
     border-radius: 25px;
     border: none;
     color: white;
@@ -50,7 +50,7 @@
 
 .nav .navbarBox i {
     font-size: 22px;
-    color: #452820;
+    color: #1085FF;
 }
 
 .nav .navbarBox p {
@@ -62,10 +62,15 @@
 .navbarBox a{
     text-decoration: none;
     color: black;
+    display: flex;
 }
 
 .nav .navbarBox .userIcon {
-    font-size: 28px !important;
+    font-size: 24px !important;
+}
+
+.sidebarNav{
+    display: none;
 }
 
 /* Responsive Code */
@@ -103,16 +108,17 @@
         width: 120px;
     }
     .nav .navbarBox p{
-        font-size: 16px;
+        font-size: 14px;
     }
     .nav .navbarBox i{
         font-size: 18px;
     }
-    .nav .navbarBox .user-icon{
-        font-size: 25px !important;
-    }
     .nav .navbarBox{
         gap: 15px;
+    }
+    .sidebarNav{
+        font-size: 21px !important;
+        display: block !important;
     }
 }
 
@@ -120,5 +126,77 @@
     /* Navbar */
     .nav .navbarBox button{
         display: none;
+    }
+    .nav .navbarBox{
+        gap: 10px;
+    }
+}
+
+/* Mobile Sidebar */
+
+.sidebarLogoImg{
+    width: 100px;
+    height: auto;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0px;
+    position: fixed;
+    z-index: 100000;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.sidebarLogoImg {
+    width: 125px;
+    filter: invert(1);
+    margin-top: 18px;
+}
+
+.sidebar-open {
+    display: none !important;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+@media (max-width:900px) {
+    .sidebar-open {
+        display: block !important;
     }
 }

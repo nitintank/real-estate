@@ -17,6 +17,13 @@ const navbar = () => {
         setIsLoggedIn(false);
     };
 
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0px";
+    }
     return (
         <>
             <nav className={styles.nav}>
@@ -39,8 +46,22 @@ const navbar = () => {
                     ) : (
                         <Link href="/login"><i className={`fa-solid fa-circle-user ${styles.userIcon}`}></i></Link>
                     )}
+                    <Link href="/login"><i className={`fa-solid fa-circle-user ${styles.userIcon}`}></i></Link>
+                    <i className={`fa-solid fa-bars ${styles.sidebarNav}`} onClick={openNav}></i>
                 </div>
             </nav>
+
+            <div id="mySidenav" className={styles.sidenav}>
+                <Link href="" className={styles.closebtn} onClick={closeNav}>&times;</Link>
+                <Link href="/"><Image width={200} height={200} src="/images/las-vegas.png" alt="" className={styles.sidebarLogoImg} /></Link>
+                <Link href="/">Home</Link>
+                <Link href="/projects">Projects</Link>
+                <Link href="/buy">Buy</Link>
+                <Link href="/rent">Rent</Link>
+                <Link href="/agents">Agents</Link>
+                <Link href="/about-us">About Us</Link>
+                <Link href="/contact-us">Contact Us</Link>
+            </div>
         </>
     );
 };

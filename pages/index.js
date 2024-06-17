@@ -54,12 +54,12 @@ const index = () => {
     .slice(-3);
   return (
     <>
-      <Navbar/>
+      <Navbar />
       {/* <!-- Top Introduction Box --> */}
 
       <section className={styles.topIntroductionBox}>
         <div className={styles.topIntroInnerBox1}>
-          <h2>Find Your Next<br/>Real Estate In Dubai</h2>
+          <h2>Find Your Next<br />Real Estate In Dubai</h2>
           <p>Through our proprietary platform, We are changing how agents and clients navigate the process of finding
             or selling a home.</p>
         </div>
@@ -73,21 +73,84 @@ const index = () => {
           </div>
           <div className={styles.formBox}>
             <label for="">Type</label>
-            <select name="" id="">
+            {/* <select name="" id="">
               <option value="">Property Type</option>
               <option value="">Rentals</option>
               <option value="">Sales</option>
-            </select>
+            </select> */}
+            <div className={styles.selectBox}>
+              <div className={styles.selectBox__current} tabindex="1">
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="0" value="1" name="Ben" />
+                  <p className={styles.selectBox__inputText}>Rentals</p>
+                </div>
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="1" value="2" name="Ben" defaultChecked={true} />
+                  <p className={styles.selectBox__inputText}>Sales</p>
+                </div>
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="2" value="3" name="Ben" />
+                  <p className={styles.selectBox__inputText}>Sold</p>
+                </div>
+                <img className={styles.selectBox__icon} src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
+              </div>
+              <ul className={styles.selectBox__list}>
+                <li>
+                  <label className={styles.selectBox__option} for="0" aria-hidden="aria-hidden">Rentals</label>
+                </li>
+                <li>
+                  <label className={styles.selectBox__option} for="1" aria-hidden="aria-hidden">Sales</label>
+                </li>
+                <li>
+                  <label className={styles.selectBox__option} for="2" aria-hidden="aria-hidden">Sold</label>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className={styles.formBox}>
             <label for="">Category</label>
-            <select name="" id="">
+            {/* <select name="" id="">
               <option value="">Property Category</option>
               <option value="">Apartments</option>
               <option value="">Houses</option>
               <option value="">Villas</option>
               <option value="">Duplexes</option>
-            </select>
+            </select> */}
+            <div className={styles.selectBox}>
+              <div className={styles.selectBox__current} tabindex="1">
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="5" value="1" name="Ben1" />
+                  <p className={styles.selectBox__inputText}>Apartments</p>
+                </div>
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="6" value="2" name="Ben1" defaultChecked={true} />
+                  <p className={styles.selectBox__inputText}>Houses</p>
+                </div>
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="7" value="3" name="Ben1" />
+                  <p className={styles.selectBox__inputText}>Villas</p>
+                </div>
+                <div className={styles.selectBox__value}>
+                  <input className={styles.selectBox__input} type="radio" id="8" value="4" name="Ben1" />
+                  <p className={styles.selectBox__inputText}>Duplexes</p>
+                </div>
+                <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
+              </div>
+              <ul className={styles.selectBox__list}>
+                <li>
+                  <label className={styles.selectBox__option} for="5" aria-hidden="aria-hidden">Apartments</label>
+                </li>
+                <li>
+                  <label className={styles.selectBox__option} for="6" aria-hidden="aria-hidden">Houses</label>
+                </li>
+                <li>
+                  <label className={styles.selectBox__option} for="7" aria-hidden="aria-hidden">Villas</label>
+                </li>
+                <li>
+                  <label className={styles.selectBox__option} for="8" aria-hidden="aria-hidden">Duplexes</label>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className={`${styles.formBox} ${styles.flexEnd}`}>
             <button><i className="fa-solid fa-magnifying-glass"></i> Search</button>
@@ -100,10 +163,30 @@ const index = () => {
       <section className={styles.propertyCategoriesSection}>
         <h2>{`We've Got Properties In Dubai For Everyone`}</h2>
         <div className={styles.propertyCategoriesImagesBox}>
-          <Image width={200} height={200} src="/images/house-card-1.png" alt="" />
-          <Image width={200} height={200} src="/images/house-card-2.png" alt="" />
-          <Image width={200} height={200} src="/images/house-card-1.png" alt="" />
-          <Image width={200} height={200} src="/images/house-card-2.png" alt="" />
+          <div className={styles.propertyCategoryImgBox}>
+            <Image width={200} height={200} src="/images/about-us-home-1.png" alt="" />
+            <div className={styles.content}>
+              <p>For Sale <span>Apartments, Sales</span></p>
+            </div>
+          </div>
+          <div className={styles.propertyCategoryImgBox}>
+            <Image width={200} height={200} src="/images/about-us-home-2.png" alt="" />
+            <div className={styles.content}>
+              <p>For Sale <span>Apartments, Sales</span></p>
+            </div>
+          </div>
+          <div className={styles.propertyCategoryImgBox}>
+            <Image width={200} height={200} src="/images/about-us-home-1.png" alt="" />
+            <div className={styles.content}>
+              <p>For Sale <span>Apartments, Sales</span></p>
+            </div>
+          </div>
+          <div className={styles.propertyCategoryImgBox}>
+            <Image width={200} height={200} src="/images/about-us-home-2.png" alt="" />
+            <div className={styles.content}>
+              <p>For Sale <span>Apartments, Sales</span></p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -158,10 +241,10 @@ const index = () => {
         <div className={styles.popularAreasImageBox}>
           <Image width={200} height={200} src="/images/property-5.jpeg" alt="" className={styles.popularAreasImage1} />
           <Image width={200} height={200} src="/images/property-2.webp" alt="" className={styles.popularAreasImage2} />
-          <Image width={200} height={200} src="/images/property-3.webp" alt="" className={styles.popularAreasImage3} />
+          <Image width={200} height={200} src="/images/property-3.webp" alt="" className={styles.popularAreasImage2} />
           <Image width={200} height={200} src="/images/property-1.webp" alt="" className={styles.popularAreasImage1} />
         </div>
-        <Image width={200} height={200} src="/images/wave.png" alt="" className={styles.waveImg} />
+        {/* <Image width={200} height={200} src="/images/blue-wave.png" alt="" className={styles.waveImg} /> */}
       </section>
 
       {/* <!-- Glide Support Section --> */}
@@ -231,12 +314,12 @@ const index = () => {
       {/* <!-- Trusted Agents Section --> */}
 
       <section className={styles.trustedAgentsSection}>
-        <Image width={200} height={200} src="/images/wave-2.png" alt="" className={styles.wave2Img} />
+        {/* <Image width={200} height={200} src="/images/blue-wave-2.png" alt="" className={styles.wave2Img} /> */}
         <h2>We Are Have <span>Trusted<br />Expert</span> Agent</h2>
         <div className={styles.agentsBigBox}>
           <div className={styles.agentsCardsBox}>
             <p className={styles.housingExpertPara}>Housing Expert Pro</p>
-            <Image width={200} height={200} src="/images/agent-img.png" alt="" />
+            <Image width={200} height={170} src="/images/agent-img.png" alt="" />
             <h3>KK Jaipur</h3>
             <hr />
             <ul>
@@ -354,7 +437,7 @@ const index = () => {
           <Image width={200} height={200} src="/images/android-apk.png" alt="" className={styles.androidDownloadBtn} />
         </div>
         <div className={styles.downloadAndroidBox2}>
-          <Image width={200} height={200} src="/images/android-phone.png" alt="" />
+          <Image width={200} height={200} src="/images/android-phone-blue.png" alt="" />
         </div>
       </section>
 
@@ -451,7 +534,7 @@ const index = () => {
 
       {/* <!-- Footer Section --> */}
       <Footer />
-      
+
     </>
   )
 }

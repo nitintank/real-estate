@@ -4,13 +4,13 @@
     width: 100%;
     height: auto;
     display: flex;
-    border-top: 1px solid #372415;
+    border-top: 1px solid #1085FF;
 }
 
 .mainSidebarBox {
     width: 15%;
     height: 91.9vh;
-    background-color: #372415;
+    background-color: #1085FF;
     display: flex;
     flex-direction: column;
     padding: 5px;
@@ -19,15 +19,15 @@
 }
 
 .mainSidebarBox a {
-    color: #F3EBE4;
+    color: #deeeff;
     text-decoration: none;
     font-size: 20px;
     padding: 10px 20px;
 }
 
 .mainSidebarBox .activeSelection {
-    background-color: #F3EBE4;
-    color: #372415;
+    background-color: #deeeff;
+    color: #1085FF;
     border-radius: 10px;
 }
 
@@ -70,7 +70,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #372415;
+    background-color: #1085FF;
     color: white;
 }
 

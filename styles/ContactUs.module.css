@@ -26,8 +26,8 @@
 }
 
 .formContentBox h2{
-    font-size: 50px;
-    font-weight: 700;
+    font-size: 40px;
+    font-weight: 600;
     color: white;
     line-height: 1.1;
 }
@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    background-color: #170C04E8;
+    background-color:#1085FF;
     padding: 25px 40px;
     border-radius: 15px;
     margin-top: 50px;
@@ -65,15 +65,22 @@
     font-size: 16px;
 }
 
-.formContentBox form input[type=button]{
+.formContentBox form input[type=submit]{
     padding: 10px 25px;
     font-size: 18px;
-    background-color: #F3EBE4;
+    background-color: #deeeff;
     border-radius: 10px;
     border: none;
     color: black;
     cursor: pointer;
     margin-top: 15px;
+}
+
+.whiteText{
+    font-size: 25px !important;
+    font-weight: 600 !important;
+    color: white !important;
+    margin-top: 0px !important;
 }
 
 /* Responsive Code */
