@@ -4,8 +4,29 @@ import Footer from '@/components/footer'
 import styles from "@/styles/Dashboard.module.css";
 import Image from 'next/image';
 import Link from 'next/link';
+import  { useState, useEffect } from 'react';
+
 
 const dashboard = () => {
+    const [pendingCount, setPendingCount] = useState(0);
+
+    useEffect(() => {
+        const fetchPendingProperties = async () => {
+            try {
+                const response = await fetch('https://a.khelogame.xyz/get-properties');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setPendingCount(data.length);
+            } catch (error) {
+                console.error('Error fetching pending properties:', error);
+            }
+        };
+
+        fetchPendingProperties();
+    }, []);
+
     return (
         <>
             <Navbar />
@@ -33,7 +54,7 @@ const dashboard = () => {
                         </div>
                         <div className={styles.dashboardCardsBox}>
                             <Image width={200} height={200} src="/images/dashboard-icon-3.png" alt="" />
-                            <h3>12</h3>
+                            <h3>{pendingCount}</h3>
                             <p>Pending</p>
                         </div>
                         <div className={styles.dashboardCardsBox}>

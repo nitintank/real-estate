@@ -13,6 +13,10 @@ const ResetPassword = () => {
   const [confirm_password, setConfirmPassword] = useState('')
   const [showpassword, setShowpassword] = useState('password')
   const [showpassword2, setShowpassword2] = useState('password')
+  const [otpSent, setotpSent] = useState(false)
+  const [invalidOTP, setInvalidOTP] = useState(false)
+  const [changeComplete, setChangeComplete] = useState(false)
+  const [notMatch, setNotMatch] = useState(false)
 
   const handleChange = (e) => {
     if (e.target.name == 'phone_number') {
@@ -41,10 +45,13 @@ const ResetPassword = () => {
         body: JSON.stringify(data)
       })
       let response = await res.json()
-      console.log(response)
+
+      if (response.message == "OTP sent to your phone number") {
+        setotpSent(true)
+      }
     }
     else {
-      alert("Hello")
+      alert("Error Occured, Try Again!!")
     }
   }
 
@@ -59,7 +66,17 @@ const ResetPassword = () => {
       body: JSON.stringify(data)
     })
     let response = await res.json()
-    console.log(response)
+    
+    if (response.error == "Invalid OTP") {
+      setInvalidOTP(true)
+      setotpSent(false)
+    }
+    else if (response.message == "Password reset successfully") {
+      setChangeComplete(true)
+    }
+    else if (response.message == "Password and confirm password do not match") {
+      setNotMatch(true)
+    }
   }
 
   const showPassword = () => {
@@ -98,8 +115,10 @@ const ResetPassword = () => {
               <input type="text" placeholder="Enter Phone No." name='phone_number' value={phone_number} onChange={handleChange} required />
               <button onClick={sendOTP}>Send OTP</button>
             </div>
+            {otpSent && <p className={styles.greenText}>OTP Sent To Your Number</p>}
             <label for="">Enter OTP</label>
             <input type="text" placeholder="Enter OTP" name='otp' value={otp} onChange={handleChange} required />
+            {invalidOTP && <p className={styles.redText}>OTP Is Invalid</p>}
             <div className={styles.sendOtpBox}>
               <label for="">Enter Password</label>
               <input type={showpassword} placeholder="Enter Password" name='new_password' value={new_password} onChange={handleChange} required />
@@ -112,33 +131,15 @@ const ResetPassword = () => {
               {showpassword2 == 'password' && <Image width={50} height={50} src="/images/eye.png" alt="" className={styles.icon3} onClick={showPassword2} />}
               {showpassword2 == 'text' && <Image width={50} height={50} src="/images/eye-open-icon.png" alt="" className={styles.icon3} onClick={showPassword2} />}
             </div>
+            {notMatch && <p className={styles.redText}>Password & Confirm Password Is Not Same, Try Again</p>}
             <input type="submit" value="SUBMIT" />
+            {changeComplete && <p className={styles.redText}>Done, Password Changed Successfully</p>}
           </form>
           <p>Already Have An Account? <Link href="/login">Login Here</Link></p>
         </div>
       </div>
       {/* Footer Section */}
       <Footer />
-      {/* <form method='POST' onSubmit={handleSubmit}>
-                <label>Enter Phone Number </label>
-                <input type="text" name='phone_number' value={phone_number} onChange={handleChange} required />
-                <button onClick={sendOTP}>Send OTP</button>
-                <br />
-                <br />
-                <label>Enter OTP </label>
-                <input type="text" name='otp' value={otp} onChange={handleChange} required />
-                <br />
-                <br />
-                <label>Enter Password </label>
-                <input type="text" name='new_password' value={new_password} onChange={handleChange} required />
-                <br />
-                <br />
-                <label>Confirm Password </label>
-                <input type="text" name='confirm_password' value={confirm_password} onChange={handleChange} required />
-                <br />
-                <br />
-                <input type="submit" value="LOGIN" />
-            </form> */}
     </>
   )
 }

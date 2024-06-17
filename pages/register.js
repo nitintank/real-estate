@@ -76,6 +76,7 @@ const Register = () => {
 
     if (response.error == "Invalid OTP") {
       setInvalidOTP(true)
+      setotpSent(false)
     }
     else if (response.message == "User registered and OTP verified successfully") {
       location.href = "/user-panel/dashboard"

@@ -1,0 +1,643 @@
+/* Agent Card Box Section */
+
+.agentCardBox{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+.agentDetailBox1{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agentDetailBox1 img{
+    width: 250px;
+    height: auto;
+}
+
+.agentDetailBox2{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #F3EBE4;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+}
+
+.agentDetailBox2 h3{
+    line-height: 1;
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.agentDetailBox2 .agentAboutPara{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.agentOtherDetailsBox p{
+    font-size: 18px;
+}
+
+.agentOtherDetailsBox p span{
+    font-weight: 700;
+}
+
+.agentSocialMedia{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+}
+
+.agentSocialMedia i{
+    font-size: 35px;
+    cursor: pointer;
+}
+
+/* About Agent Box */
+
+.agentAboutBox{
+    width: 100%;
+    padding: 20px 40px;
+}
+
+.agentAboutBox h3{
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.agentAboutBox p{
+    font-size: 18px;
+}
+
+/* Track Record Section */
+
+.trackRecordSection{
+    width: 95%;
+    margin: auto;
+    background-color: #F3EBE4;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.trackRecordSection h3{
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.trackRecordSection p{
+    font-size: 20px;
+}
+
+.trackRecordContentBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.trackRecordContent{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+}
+
+.trackRecordContent h4{
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.trackRecordContent h4 span{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.trackRecordContent p{
+    text-align: center;
+}
+
+/* Latest Properties Section */
+
+.latestPropertiesSection {
+    padding: 20px 40px;
+}
+
+.latestPropertiesSection h2 {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.latestPropertiesBigBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.latestPropertiesInnerBox {
+    width: 48%;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+
+.latestPropertiesInnerBox img {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.latestPropertiesContentBox {
+    padding: 10px 15px;
+}
+
+.latestPropertiesContentBox .miniText {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.latestPropertiesContentBox h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.latestPropertiesContentBox .priceText {
+    font-size: 20px;
+    color: #7E411F;
+}
+
+.latestPropertiesContentBox .propertyDescription {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5c727d;
+}
+
+.innerPropertyContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 5px;
+}
+
+.innerPropertyContent p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5c727d;
+}
+
+.innerButtonBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px 5px 0px;
+}
+
+.innerButtonBox button {
+    padding: 5px 35px;
+    cursor: pointer;
+    border: 1px solid #F3EBE4;
+    color: #7E411F;
+    background-color: #F3EBE4;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.innerButtonBox button .fa-whatsapp {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+/* Contact Me Section */
+
+.contactMeSection{
+    width: 100%;
+    padding: 10px 40px;
+}
+
+.contactMeSection h3{
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.contactMeFormBigBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #F3EBE4;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.contactMeForm1{
+    width: 50%;
+}
+
+.contactMeForm1 form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contactMeForm1 form input{
+    border: none;
+    font-size: 18px;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+.contactMeForm1 form input[type=submit] {
+    padding: 10px 25px;
+    font-size: 18px;
+    background-color: #2F2217;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.contact-me-form-2{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact-me-form-2 button{
+    padding: 5px 15px;
+    background-color: #2F2217;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.contact-me-form-2 img{
+    width: 180px;
+    height: auto;
+}
+
+/* Reviews Section */
+
+.reviews-section {
+    width: 100%;
+    padding: 20px 40px;
+}
+
+.reviews-section h2 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.ratings-upper-content-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ratings-upper-user-detail-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ratings-box {
+    width: 100%;
+    margin-top: 10px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.ratings-upper-user-detail-box img {
+    width: 60px;
+}
+
+.ratings-upper-content h4 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.ratings-upper-content p {
+    font-size: 16px;
+}
+
+.reviews-para {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.star-img {
+    width: auto;
+    height: 20px;
+}
+
+/* Leave A Review Section */
+
+.add-comment-box {
+    width: 100%;
+}
+
+.add-comment-box h3 {
+    font-size: 35px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.add-comment-box form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.add-comment-box form input[type=submit] {
+    padding: 10px 25px;
+    font-size: 18px;
+    background-color: #2F2217;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.add-comment-box form input[type=text] {
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 16px;
+    background-color: #F3EBE4;
+}
+
+.add-comment-box form textarea{
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 16px;
+    background-color: #F3EBE4;
+}
+
+.add-comment-box form .comment-label{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 2em;
+    justify-content: space-around;
+    text-align: center;
+    width: 200px;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star-rating :checked~label {
+    color: #f90;
+}
+
+.star-rating label:hover,
+.star-rating label:hover~label {
+    color: #fc0;
+}
+
+/* Responsive Code */
+
+@media (max-width: 1090px){
+    /* Latest Properties Section */
+    .latestPropertiesBigBox{
+        gap: 25px;
+    }
+    .latestPropertiesSection{
+        padding: 70px 20px 20px 20px;
+    }
+    .latestPropertiesInnerBox img{
+        height: 240px;
+    }
+}
+
+@media (max-width: 995px) {
+
+    /* Agent Card Box Section */
+
+    .agentDetailBox2{
+        padding: 20px;
+    }
+    .agentDetailBox1 img{
+        width: 200px;
+    }
+    .agentSocialMedia i{
+        font-size: 25px;
+    }
+    .agentDetailBox2 h3{
+        font-size: 38px;
+    }
+    .agentDetailBox2 .agentAboutPara{
+        font-size: 22px;
+    }
+
+    /* Track Record Section */
+
+    .trackRecordContent h4{
+        font-size: 28px;
+    }
+    .trackRecordSection p{
+        font-size: 16px;
+    }
+
+    /* Latest Properties Section */
+    .innerButtonBox {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .innerButtonBox button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 769px) {
+    /* Agent Card Box Section */
+
+    .agentCardBox{
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    .agentDetailBox1{
+        width: 100%;
+    }
+    .agentDetailBox2{
+        width: 100%;
+        padding: 10px 15px;
+    }
+    .agentDetailBox1 img{
+        width: 180px;
+    }
+    .agentDetailBox2 h3{
+        font-size: 32px;
+        text-align: center;
+    }
+    .agentDetailBox2 .agentAboutPara{
+        font-size: 20px;
+        text-align: center;
+    }
+    .agentOtherDetailsBox p{
+        font-size: 16px;
+    }
+    .agentSocialMedia{
+        width: 100%;
+        position: static;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* About Agent Box */
+
+    .agentAboutBox{
+        padding: 10px 15px;
+    }
+
+    .agentAboutBox h3{
+        font-size: 35px;
+        text-align: center;
+    }
+
+    /* Track Record Section */
+
+    .trackRecordSection{
+        padding: 10px;
+    }
+
+    .trackRecordSection h3{
+        text-align: center;
+    }
+    .trackRecordSection p{
+        text-align: center;
+        font-size: 18px;
+    }
+    .trackRecordContentBox{
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .trackRecordContent{
+        width: 100%;
+    }
+    .trackRecordContent h4{
+        font-size: 32px;
+    }
+    .trackRecordContent p{
+        font-size: 20px;
+    }
+
+    /* Latest Properties Section */
+
+    .latestPropertiesSection {
+        padding: 20px 10px 0px 10px;
+    }
+
+    .latestPropertiesBigBox {
+        gap: 20px;
+    }
+
+    .latestPropertiesInnerBox {
+        width: 100%;
+    }
+
+    .latestPropertiesInnerBox img {
+        height: 250px;
+        border-radius: 5px 5px 0px 0px;
+    }
+
+    .innerButtonBox {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .innerButtonBox button {
+        width: 100%;
+    }
+
+    /* Contact Me Section */
+
+    .contactMeSection{
+        padding: 10px;
+    }
+    .contactMeSection h3{
+        text-align: center;
+    }
+    .contactMeFormBigBox{
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .contactMeForm1{
+        width: 100%;
+    }
+    .contact-me-form-2{
+        width: 100%;
+    }
+    .contact-me-form-2 img{
+        width: 150px;
+    }
+    .contact-me-form-2 button{
+        padding: 5px 20px;
+        font-size: 18px;
+    }
+
+    /* Reviews Section */
+
+    .reviews-section{
+        padding: 10px 15px;
+    }
+    .reviews-section h2{
+        font-size: 30px;
+        text-align: center;
+    }
+    .ratings-upper-content-box{
+        flex-wrap: wrap;
+    }
+    .reviews-para{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px){
+    /* Latest Properties Section */
+    .latestPropertiesInnerBox img {
+        height: 160px;
+        border-radius: 5px 5px 0px 0px;
+    }
+}

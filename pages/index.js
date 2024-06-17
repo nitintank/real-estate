@@ -1,10 +1,57 @@
 import React from 'react'
 import styles from "../styles/Home.module.css";
-import Image from 'next/image';
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Image from 'next/image';
+
 
 const index = () => {
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+      const fetchProperties = async () => {
+          try {
+              const response = await fetch('https://a.khelogame.xyz/get-properties');
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              const data = await response.json();
+              setProperties(data);
+          } catch (error) {
+              setError(error.message);
+          } finally {
+              setLoading(false);
+          }
+      };
+      fetchProperties();
+  }, []);
+
+
+
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  // const currentDate = new Date();
+  // const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000); // Calculate 7 days ago
+  // const latestProperties = properties.filter(property => {
+  //   const propertyDate = new Date(property.created_at);
+  //   return propertyDate >= oneWeekAgo;
+  // });
+  const currentDate = new Date();
+  const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000); // Calculate 7 days ago
+  const latestProperties = properties
+    .filter(property => {
+      const propertyDate = new Date(property.created_at);
+      return propertyDate >= oneWeekAgo;
+    })
+    .slice(-3);
   return (
     <>
       <Navbar/>
@@ -61,59 +108,47 @@ const index = () => {
       </section>
 
       {/* <!-- Latest Properties Section --> */}
-
       <section className={styles.latestPropertiesSection}>
-        <p>DUBAI REAL ESTATE</p>
         <h2>Latest Properties</h2>
         <div className={styles.latestPropertiesBigBox}>
-          <div className={styles.latestPropertiesInnerBox}>
-            <Image width={200} height={200} src="/images/property-1.webp" alt="" />
-            <div className={styles.latestPropertiesContentBox}>
-              <p className={styles.miniText}>Apartment, Sales</p>
-              <h3>Luxury 6 Bed Mansion In Jumeria</h3>
-              <p className={styles.priceText}>AED 10,0000</p>
-              <p className={styles.propertyDescription}>Beautiful, updated, ground floor Co-op apartment in the desirable
-                bay terrace neighborhood....</p>
-              <div className={styles.innerPropertyContent}>
-                <p><i className="fa-solid fa-bed"></i> 5</p>
-                <p><i className="fa-solid fa-shower"></i> 5</p>
-                <p><i className="fa-solid fa-maximize"></i> 29,000ft</p>
-                <p><i className="fa-solid fa-car"></i> 2 Cars</p>
-                <p><i className="fa-solid fa-up-right-from-square"></i> 600ft</p>
+          {latestProperties.map((property, index) => (
+            <Link href={`/property?id=${property.id}`} key={index}>
+              <div className={styles.latestPropertiesInnerBox}>
+              <Image
+                    width={600}
+                    height={400}
+                    src={property.image_path ? `https://a.khelogame.xyz/${property.image_path}` : '/images/default-property.png'}
+                    
+                    alt="Property Image"
+                    className={styles.mainHouseImg}
+                />
+                {/* <Image width={200} height={200} src={property.image} alt={property.property_name} /> */}
+                {/* <Image width={200} height={200} src="/images/property-1.webp" alt="" /> */}
+                <div className={styles.latestPropertiesContentBox}>
+                  <p className={styles.miniText}>{property.property_type}</p>
+                  <h3>{property.property_name}</h3>
+                  <p className={styles.priceText}>{property.price}</p>
+                  <p className={styles.propertyDescription}>{property.description}</p>
+                  <div className={styles.innerPropertyContent}>
+                    <p><i className="fa-solid fa-bed"></i> {property.bedrooms}</p>
+                    <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
+                    <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
+                    <p><i className="fa-solid fa-car"></i> {property.parking}</p>
+                    <p><i className="fa-solid fa-up-right-from-square"></i> {property.floor}</p>
+                  </div>
+                  <hr />
+                  <div className={styles.innerButtonBox}>
+                    <button><i className="fa-solid fa-phone"></i> Call</button>
+                    <button><i className="fa-solid fa-envelope"></i> Email</button>
+                    <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                  </div>
+                </div>
               </div>
-              <hr />
-              <div className={styles.innerButtonBox}>
-                <button><i className="fa-solid fa-phone"></i> Call</button>
-                <button><i className="fa-solid fa-envelope"></i> Email</button>
-                <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
-              </div>
-            </div>
-          </div>
-          <div className={styles.latestPropertiesInnerBox}>
-            <Image width={200} height={200} src="/images/property-2.webp" alt="" />
-            <div className={styles.latestPropertiesContentBox}>
-              <p className={styles.miniText}>Apartment, Sales</p>
-              <h3>Luxury 6 Bed Mansion In Jumeria</h3>
-              <p className={styles.priceText}>AED 10,0000</p>
-              <p className={styles.propertyDescription}>Beautiful, updated, ground floor Co-op apartment in the desirable
-                bay terrace neighborhood....</p>
-              <div className={styles.innerPropertyContent}>
-                <p><i className="fa-solid fa-bed"></i> 5</p>
-                <p><i className="fa-solid fa-shower"></i> 5</p>
-                <p><i className="fa-solid fa-maximize"></i> 29,000ft</p>
-                <p><i className="fa-solid fa-car"></i> 2 Cars</p>
-                <p><i className="fa-solid fa-up-right-from-square"></i> 600ft</p>
-              </div>
-              <hr />
-              <div className={styles.innerButtonBox}>
-                <button><i className="fa-solid fa-phone"></i> Call</button>
-                <button><i className="fa-solid fa-envelope"></i> Email</button>
-                <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
-              </div>
-            </div>
-          </div>
+            </Link>
+          ))}
         </div>
       </section>
+  
 
       {/* <!-- Popular Areas Section --> */}
 

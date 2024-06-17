@@ -4,12 +4,71 @@ import Image from 'next/image'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import styles from "@/styles/PropertyList.module.css";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
 
 const propertylist = () => {
+    const [properties, setProperties] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const router = useRouter();
+
+    useEffect(() => {
+        const fetchProperties = async () => {
+            try {
+                const userId = localStorage.getItem('userId'); 
+                if (!userId) {
+                    throw new Error('User ID not found');
+                }
+                const response = await fetch(`https://a.khelogame.xyz/get-properties-user/${userId}`);
+                if (!response.ok) {
+                    console.error('Network response status:', response.status, response.statusText);
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                setProperties(data);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProperties();
+    }, []);
+    
+    const handleEditClick = (propertyId) => {
+        router.push(`/user-panel/edit-property/${propertyId}`);
+    };
+
+    const handleDeleteClick = async (propertyId) => {
+        try {
+            const response = await fetch(`https://a.khelogame.xyz/property/${propertyId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
+
+            if (response.ok) {
+                setProperties(properties.filter(property => property.id !== propertyId));
+                console.log('Property deleted successfully');
+            } else {
+                const errorData = await response.json();
+                console.error('Error:', errorData);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
+
     return (
         <>
             <Navbar />
-            {/* <!-- Main Content Big Box --> */}
             <section className={styles.mainContentBigBox}>
                 <div className={styles.mainSidebarBox}>
                     <Link href="/user-panel/dashboard"><i className="fa-solid fa-chart-line"></i> Dashboard</Link>
@@ -22,50 +81,53 @@ const propertylist = () => {
                         <table className={styles.propertyList}>
                             <thead>
                                 <tr>
-                                    <th>Property Details</th>
-                                    <th>Category</th>
-                                    <th>Expiry/Renewal</th>
-                                    <th>Last Updated</th>
-                                    <th>Listing Owner</th>
-                                    <th>Total Views</th>
-                                    <th>Total Clicks</th>
+                                    <th>Property Name</th>
+                                    <th>Property Image</th>
+                                    <th>Property Type</th>
+                                    <th>Created At</th>
+                                    <th>Location</th>
+                                    <th>Price</th>
+                                    <th>Amenities</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div className={styles.propertyDetailTableBox}>
-                                            <Image width={200} height={200} src="/images/property-1.webp" alt="" />
-                                            <div className={styles.propertyDetailText}>
-                                                <h4>3 BHK Flat</h4>
-                                                <p className={styles.priceText}>AED 78,000</p>
-                                                <p className={styles.propertyMiniDetail}>
-                                                    <span><i className="fa-solid fa-bed"></i> 1</span>
-                                                    <span><i className="fa-solid fa-shower"></i> 6</span>
-                                                    <span><i className="fa-solid fa-table-cells-large"></i> 500sqft</span>
-                                                </p>
-                                                <p>5 Reviews</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><span className={styles.apartmentText}>Apartments</span></td>
-                                    <td>15 Feburary</td>
-                                    <td>3 Minutes Ago</td>
-                                    <td>Nitin Blanko</td>
-                                    <td>2,225</td>
-                                    <td>749</td>
-                                    <td><i className="fa-solid fa-pen-to-square"></i> <i className="fa-solid fa-trash-can"></i></td>
-                                </tr>
+                                {properties.map(property => (
+                                    <tr key={property.id}>
+                                        <td>{property.property_name}</td>
+                                        <td>
+                                            <Image
+                                                width={200}
+                                                height={200}
+                                                src={property.image_path ? `https://a.khelogame.xyz/${property.image_path}` : '/images/default-property.png'}
+                                                alt={property.property_name}
+                                            />
+                                        </td>
+                                        <td>{property.property_type}</td>
+                                        <td>{new Date(property.created_at).toLocaleDateString()}</td>
+                                        <td>{property.location}</td>
+                                        <td>{property.price}</td>
+                                        <td>
+                                            {(property.amenities || []).map((amenity, index) => (
+                                                <span key={index}>{amenity} </span>
+                                            ))}
+                                        </td>
+                                        <td>{property.status}</td>
+                                        <td>
+                                            <i className="fa-solid fa-pen-to-square" onClick={() => handleEditClick(property.id)}></i>
+                                            <i className="fa-solid fa-trash-can" onClick={() => handleDeleteClick(property.id)}></i>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </section>
-            {/* Footer Section */}
             <Footer />
         </>
-    )
+    );
 }
 
 export default propertylist
