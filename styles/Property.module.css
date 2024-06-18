@@ -94,6 +94,11 @@
     border-radius: 20px;
 }
 
+.amenitiesContentBox a{
+    text-decoration: none;
+    color: black;
+}
+
 .amenitiesContentBox ul {
     display: flex;
     align-items: center;
@@ -174,6 +179,10 @@
     justify-content: space-between;
 }
 
+.addressTopContent a{
+    text-decoration: none;
+}
+
 .addressTopContent h2 {
     font-size: 35px;
     font-weight: 600;
@@ -231,8 +240,8 @@
 }
 
 .floorPlanSection img {
-    width: 80%;
-    height: auto;
+    width: auto;
+    height: 400px;
     display: block;
     margin: auto;
 }

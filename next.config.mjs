@@ -5,14 +5,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'a.khelogame.xyz',
-        port: '',
-        pathname: '/property/**',
-      },
-    ],
+    domains: ['a.khelogame.xyz'],
   },
 };
 

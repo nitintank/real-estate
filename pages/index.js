@@ -200,7 +200,7 @@ const index = () => {
               <Image
                     width={600}
                     height={400}
-                    src={property.image_path ? `https://a.khelogame.xyz/${property.image_path}` : '/images/default-property.png'}
+                    src={`https://a.khelogame.xyz/${property.media_path}`}
                     alt="Property Image"
                     className={styles.mainHouseImg}
                 />
@@ -212,11 +212,11 @@ const index = () => {
                   <p className={styles.priceText}>{property.price}</p>
                   <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
                   <div className={styles.innerPropertyContent}>
-                    <p><i className="fa-solid fa-bed"></i> {property.bedrooms}</p>
+                    <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
                     <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
                     <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
-                    <p><i className="fa-solid fa-car"></i> {property.parking}</p>
-                    <p><i className="fa-solid fa-up-right-from-square"></i> {property.floor}</p>
+                    <p><i className="fa-solid fa-car"></i> {property.vehicle}</p>
+                    <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
                   </div>
                   <hr />
                   <div className={styles.innerButtonBox}>

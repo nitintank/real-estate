@@ -19,7 +19,7 @@ const buy = () => {
                 }
                 const data = await response.json();
                 // Assuming data is an array of properties
-                const rentProperties = data.filter(property => property.property_categories === 'buy');
+                const rentProperties = data.filter(property => property.property_categories === 'Sale');
                 setProperties(rentProperties);
             } catch (error) {
                 setError(error.message);
@@ -29,7 +29,7 @@ const buy = () => {
         };
         fetchProperties();
     }, []);
-    
+
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
@@ -48,7 +48,7 @@ const buy = () => {
                 </div>
                 <div className={styles.searchBiggerBox}>
                     <div className={styles.formBox}>
-                    <label for="">Type</label>
+                        <label for="">Type</label>
                         {/* <select name="" id="">
                             <option value="">Buy</option>
                             <option value="">Sell</option>
@@ -83,7 +83,7 @@ const buy = () => {
                         </div>
                     </div>
                     <div className={styles.formBox}>
-                    <label for="">Status</label>
+                        <label for="">Status</label>
                         {/* <select name="" id="">
                             <option value="">Property Type</option>
                             <option value="">Villa</option>
@@ -126,7 +126,7 @@ const buy = () => {
                         </div>
                     </div>
                     <div className={styles.formBox}>
-                    <label for="">Category</label>
+                        <label for="">Category</label>
                         {/* <select name="" id="">
                             <option value="">Beds</option>
                             <option value="">1+</option>
@@ -169,7 +169,7 @@ const buy = () => {
                         </div>
                     </div>
                     <div className={styles.formBox}>
-                    <label for="">Price</label>
+                        <label for="">Price</label>
                         {/* <select name="" id="">
                             <option value="">Price</option>
                             <option value="">10 Lakh</option>
@@ -220,43 +220,43 @@ const buy = () => {
             {/* <!-- Latest Properties Section --> */}
 
             <section className={styles.latestPropertiesSection}>
-                    <p>DUBAI REAL ESTATE</p>
-                    <h2>Latest Properties</h2>
-                    <div className={styles.latestPropertiesBigBox}>
-                        {properties.map((property, index)  => (
-                            <Link href={`/property?id=${property.id}`} key={index} className={styles.latestPropertiesInnerBox}>
+                <p>DUBAI REAL ESTATE</p>
+                <h2>Latest Properties</h2>
+                <div className={styles.latestPropertiesBigBox}>
+                    {properties.map((property, index) => (
+                        <Link href={`/property?id=${property.id}`} key={index} className={styles.latestPropertiesInnerBox}>
                             <Image
-                    width={600}
-                    height={400}
-                    src={property.image_path ? `https://a.khelogame.xyz/${property.image_path}` : '/images/default-property.png'}
-                    
-                    alt="Property Image"
-                    className={styles.mainHouseImg}
-                />
-                                <div className={styles.latestPropertiesContentBox}>
-                                    <p className={styles.miniText}>{property.property_type}</p>
-                                    <h3>{property.property_name}</h3>
-                                    <p className={styles.priceText}>{property.price}</p>
-                                    <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
-                                    <div className={styles.innerPropertyContent}>
-                                        <p><i className="fa-solid fa-bed"></i> {property.bedrooms}</p>
-                                        <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
-                                        <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
-                                        <p><i className="fa-solid fa-car"></i> {property.parking_spaces}</p>
-                                        <p><i className="fa-solid fa-up-right-from-square"></i> {property.lot_area}</p>
-                                    </div>
-                                    <hr />
-                                    <div className={styles.innerButtonBox}>
-                                        <button><i className="fa-solid fa-phone"></i> Call</button>
-                                        <button><i className="fa-solid fa-envelope"></i> Email</button>
-                                        <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
-                                    </div>
+                                width={600}
+                                height={400}
+                                src={`https://a.khelogame.xyz/${property.media_path}`}
+
+                                alt="Property Image"
+                                className={styles.mainHouseImg}
+                            />
+                            <div className={styles.latestPropertiesContentBox}>
+                                <p className={styles.miniText}>{property.property_type}</p>
+                                <h3>{property.property_name}</h3>
+                                <p className={styles.priceText}>{property.price}</p>
+                                <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
+                                <div className={styles.innerPropertyContent}>
+                                    <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
+                                    <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
+                                    <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
+                                    <p><i className="fa-solid fa-car"></i> {property.vehicle}</p>
+                                    <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
                                 </div>
-                            </Link>
-                        ))}
-                        
-                    </div>
-                </section>
+                                <hr />
+                                <div className={styles.innerButtonBox}>
+                                    <button><i className="fa-solid fa-phone"></i> Call</button>
+                                    <button><i className="fa-solid fa-envelope"></i> Email</button>
+                                    <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
+
+                </div>
+            </section>
 
             {/* Footer Section */}
             <Footer />

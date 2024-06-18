@@ -17,7 +17,7 @@ const propertylist = () => {
     useEffect(() => {
         const fetchProperties = async () => {
             try {
-                const userId = localStorage.getItem('userId'); 
+                const userId = localStorage.getItem('userId');
                 if (!userId) {
                     throw new Error('User ID not found');
                 }
@@ -36,14 +36,8 @@ const propertylist = () => {
             }
         };
         fetchProperties();
-
-        // Check local storage if user is logged in
-        const loggedInStatus = localStorage.getItem('isLoggedIn');
-        if(loggedInStatus == null){
-            location.href = "/"
-        }
     }, []);
-    
+
     const handleEditClick = (propertyId) => {
         router.push(`/user-panel/edit-property/${propertyId}`);
     };
@@ -81,6 +75,7 @@ const propertylist = () => {
                     <Link href="/user-panel/add-property"><i className="fa-solid fa-house-chimney"></i> Add Property</Link>
                     <Link href="/user-panel/property-list" className={styles.activeSelection}><i className="fa-solid fa-list"></i> Property List</Link>
                     <Link href="/user-panel/all-reviews"><i className="fa-solid fa-comment"></i> All Reviews</Link>
+                    <Link href="/user-panel/all-enquiry"><i className="fa-solid fa-comment"></i> All Enquiry</Link>
                 </div>
                 <div className={styles.mainContentBox}>
                     <div className={styles.propertyListTable}>
@@ -106,18 +101,24 @@ const propertylist = () => {
                                             <Image
                                                 width={200}
                                                 height={200}
-                                                src={property.image_path ? `https://a.khelogame.xyz/${property.image_path}` : '/images/default-property.png'}
+                                                src={`https://a.khelogame.xyz/${property.media_path}`}
                                                 alt={property.property_name}
                                             />
                                         </td>
                                         <td>{property.property_type}</td>
                                         <td>{new Date(property.created_at).toLocaleDateString()}</td>
-                                        <td>{property.location}</td>
+                                        <td>{property.address}</td>
                                         <td>{property.price}</td>
                                         <td>
-                                            {(property.amenities || []).map((amenity, index) => (
-                                                <span key={index}>{amenity} </span>
-                                            ))}
+                                            {property.amenities.length > 0 ? (
+                                                <ul>
+                                                    {property.amenities.map((amenity, index) => (
+                                                        <li key={index}>{`${amenity.category}: ${amenity.amenity}`}</li>
+                                                    ))}
+                                                </ul>
+                                            ) : (
+                                                <span>No amenities</span>
+                                            )}
                                         </td>
                                         <td>{property.status}</td>
                                         <td>

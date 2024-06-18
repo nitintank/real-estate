@@ -4,34 +4,51 @@ import Footer from '@/components/footer'
 import Link from 'next/link'
 import styles from "@/styles/AllReviews.module.css";
 
-
 const allReviews = () => {
     const [reviews, setReviews] = useState([]);
-    const [replyComments, setReplyComments] = useState({}); 
+    const [replyComments, setReplyComments] = useState({});
+    const [userId, setUserId] = useState(null);
+    const [accessToken, setAccessToken] = useState(null);
 
     useEffect(() => {
-        // Fetch reviews from the API
+        const userIdFromStorage = localStorage.getItem('userId');
+        const accessTokenFromStorage = localStorage.getItem('accessToken');
+        setUserId(userIdFromStorage);
+        setAccessToken(accessTokenFromStorage);
+    }, []);
+
+    useEffect(() => {
         const fetchReviews = async () => {
+            if (!userId) {
+                console.error('User ID is missing');
+                return;
+            }
+
+            const url = `https://a.khelogame.xyz/reviews?user_id=${userId}`;
+
             try {
-                const response = await fetch('https://a.khelogame.xyz/reviews'); 
+                const response = await fetch(url, {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                });
+
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
                 }
+
                 const data = await response.json();
+                console.log(data)
                 setReviews(data.reviews || []);
             } catch (error) {
-                console.error('Error fetching reviews:', error);
+                console.error('Error fetching reviews:', error.message);
             }
         };
 
-        fetchReviews();
-
-        // Check local storage if user is logged in
-        const loggedInStatus = localStorage.getItem('isLoggedIn');
-        if(loggedInStatus == null){
-            location.href = "/"
+        if (userId && accessToken) {
+            fetchReviews();
         }
-    }, []);
+    }, [userId, accessToken]);
 
     const handleReplyChange = (reviewId, value) => {
         setReplyComments({
@@ -41,22 +58,19 @@ const allReviews = () => {
     };
 
     const handleReplySubmit = async (propertyId, reviewId) => {
+        
         const replyComment = replyComments[reviewId];
         if (!replyComment) {
             alert('Reply comment cannot be empty');
             return;
         }
 
-        // Debugging: Ensure propertyId and reviewId are correct
-        console.log('Property ID:', propertyId);
-        console.log('Review ID:', reviewId);
-
         try {
             const response = await fetch(`https://a.khelogame.xyz/property/${propertyId}/review/${reviewId}/comment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    'Authorization': `Bearer ${accessToken}`
                 },
                 body: JSON.stringify({ reply_comment: replyComment }),
             });
@@ -69,7 +83,7 @@ const allReviews = () => {
             alert(data.message); // Notify user of success
 
             // Optionally, update the review list with the new reply
-            setReviews(reviews.map(review => 
+            setReviews(reviews.map(review =>
                 review.id === reviewId ? { ...review, reply_comment: replyComment } : review
             ));
         } catch (error) {
@@ -86,6 +100,7 @@ const allReviews = () => {
                     <Link href="/user-panel/add-property"><i className="fa-solid fa-house-chimney"></i> Add Property</Link>
                     <Link href="/user-panel/property-list"><i className="fa-solid fa-list"></i> Property List</Link>
                     <Link href="/user-panel/all-reviews" className={styles.activeSelection}><i className="fa-solid fa-comment"></i> All Reviews</Link>
+                    <Link href="/user-panel/all-enquiry"><i className="fa-solid fa-comment"></i> All Enquiry</Link>
                 </div>
                 <div className={styles.mainContentBox}>
                     <div className={styles.propertyListTable}>
@@ -113,19 +128,17 @@ const allReviews = () => {
                                                 />
                                                 <button onClick={() => handleReplySubmit(review.property_id, review.id)}>REPLY</button>
                                             </div>
-                                            {/* {review.reply_comment && <p className={styles.replyComment}>{review.reply_comment}</p>} */}
                                         </td>
                                         <td>
                                             <div className={styles.propertyDetailTableBox}>
-                                                <img src="/images/property-1.webp" alt="" />
+                                                {/* <img src="/images/property-1.webp" alt="" /> */}
                                                 <div className={styles.propertyDetailText}>
-                                                    <h4>3 BHK Flat</h4>
-                                                    <p className={styles.priceText}>AED 78,000</p>
-                                                    <p className={styles.propertyMiniDetail}>
-                                                        <span><i className="fa-solid fa-bed"></i> 1</span>
-                                                        <span><i className="fa-solid fa-shower"></i> 6</span>
-                                                        <span><i className="fa-solid fa-table-cells-large"></i> 500sqft</span>
-                                                    </p>
+                                                <h4>{review.property.property_name}</h4>
+                                                    <p className={styles.priceText}>{review.property.price}</p>
+                                                    {/* <p className={styles.propertyMiniDetail}>
+                                                        <span><i className="fa-solid fa-bed"></i>{review.property.bedroom}</span>
+                                                        <span><i className="fa-solid fa-table-cells-large"></i> {review.property.area}sqft</span>
+                                                    </p> */}
                                                 </div>
                                             </div>
                                         </td>

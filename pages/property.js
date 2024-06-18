@@ -4,7 +4,7 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import Image from 'next/image';
 import styles from "../styles/Property.module.css";
-
+import Link from 'next/link';
 
 const property = () => {
     const router = useRouter();
@@ -31,6 +31,8 @@ const property = () => {
                 const data = await response.json();
                 setPropertyDetails(data);
                 setLoading(false);
+                console.log(data)
+                console.log(data.media_path)
             } else {
                 const errorData = await response.json();
                 console.error('Error:', errorData);
@@ -96,7 +98,7 @@ const property = () => {
                 <Image
                     width={600}
                     height={400}
-                    src={propertyDetails.image_path ? `https://a.khelogame.xyz/${propertyDetails.image_path}` : '/images/default-property.png'}
+                    src={`https://a.khelogame.xyz/${propertyDetails.media_path}`}
                     
                     alt="Property Image"
                     className={styles.mainHouseImg}
@@ -117,10 +119,10 @@ const property = () => {
 
             <section className={styles.propertyTitleContentBox}>
                 <div className={styles.contentTitleContentBox1}>
-                    <p>Publish on {propertyDetails.created_at}</p>
+                    <p>Publish on {propertyDetails.created_at.substring(0, 10)}</p>
                     <h2>{propertyDetails.property_name}</h2>
-                    <h4>{propertyDetails.location}</h4>
-                    <p>{propertyDetails.property_type}</p>
+                    <h4>{propertyDetails.property_type}, {propertyDetails.property_categories}</h4>
+                    <p>{propertyDetails.city}</p>
                 </div>
                 <div className={styles.contentTitleContentBox2}>
                     <h3>{propertyDetails.price}</h3>
@@ -130,10 +132,10 @@ const property = () => {
 
             <section className={styles.amenitiesContentBox}>
                 <ul>
-                    <li className={styles.activeSelection}>Essential</li>
-                    <li>Map</li>
-                    <li>Visits</li>
-                    <li>Agency</li>
+                    <li className={styles.activeSelection}>Amenities</li>
+                    <Link href="#descriptionSection" scroll={false}><li>Description</li></Link>
+                    <Link href="#addressSection" scroll={false}><li>Address</li></Link>
+                    <Link href="#locationSection" scroll={false}><li>Location</li></Link>
                 </ul>
                 <div className={styles.amenitiesCardsBigBox}>
                     {propertyDetails.amenities && Object.keys(propertyDetails.amenities).map((category, index) => (
@@ -146,41 +148,36 @@ const property = () => {
                 </div>
             </section>
 
-            <section className={styles.descriptionContentBox}>
+            <section className={styles.descriptionContentBox} id='descriptionSection'>
                 <h3>Description</h3>
                 <p>{propertyDetails.description}</p>
             </section>
 
-            <section className={styles.addressSection}>
+            <section className={styles.addressSection} id='addressSection'>
                 <div className={styles.addressTopContent}>
                     <h2>Address</h2>
-                    <button className={styles.googleMapsBtn}><i className="fa-solid fa-location-dot"></i>Open On Google Maps</button>
+                    <Link href={propertyDetails.location}><button className={styles.googleMapsBtn}><i className="fa-solid fa-location-dot"></i>Open On Google Maps</button></Link>
                 </div>
                 <div className={styles.addressBottomContentBox}>
                     <div className={styles.addressBottomBox}>
                         <p><span className={styles.darkText}>Address</span><span>{propertyDetails.address}</span></p>
                         <p><span className={styles.darkText}>City</span><span>{propertyDetails.city}</span></p>
-                        <p><span className={styles.darkText}>State/Country</span><span>{propertyDetails.state}</span></p>
                     </div>
                     <div className={styles.addressBottomBox}>
-                        <p><span className={styles.darkText}>Zip/Postal Code</span><span>{propertyDetails.zip}</span></p>
-                        <p><span className={styles.darkText}>Area</span><span>{propertyDetails.area}</span></p>
-                        <p><span className={styles.darkText}>Country</span><span>{propertyDetails.country}</span></p>
+                        <p><span className={styles.darkText}>State/Country</span><span>{propertyDetails.state}</span></p>
+                        <p><span className={styles.darkText}>Zip/Postal Code</span><span>{propertyDetails.pincode}</span></p>
                     </div>
                 </div>
             </section>
 
             <section className={styles.floorPlanSection}>
                 <h2>Floor Plan</h2>
-                <Image width={600} height={400} src={propertyDetails.floor_plan || "/images/floor-plan-img.png"} alt="Floor Plan" />
+                <Image width={600} height={400} src={`https://a.khelogame.xyz/${propertyDetails.image_path}`} alt="Floor Plan" />
             </section>
 
-            <section className={styles.googleMapsSection}>
+            <section className={styles.googleMapsSection} id='locationSection'>
                 <h2>Location</h2>
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.1353252701656!2d75.77526107587087!3d26.962613576617418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42aef78fb948e4ab%3A0x1935463d9171cfa!2sSwipeconnect%20Cybersecurity!5e0!3m2!1sen!2sin!4v1717758451689!5m2!1sen!2sin"
-                    width="600" height="450" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.1353252701656!2d75.77526107587087!3d26.962613576617418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42aef78fb948e4ab%3A0x1935463d9171cfa!2sSwipeconnect%20Cybersecurity!5e0!3m2!1sen!2sin!4v1717758451689!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
 
             <section className={styles.ownerDetailsBox}>
