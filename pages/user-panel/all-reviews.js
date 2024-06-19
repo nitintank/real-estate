@@ -58,7 +58,7 @@ const allReviews = () => {
     };
 
     const handleReplySubmit = async (propertyId, reviewId) => {
-        
+
         const replyComment = replyComments[reviewId];
         if (!replyComment) {
             alert('Reply comment cannot be empty');
@@ -100,7 +100,8 @@ const allReviews = () => {
                     <Link href="/user-panel/add-property"><i className="fa-solid fa-house-chimney"></i> Add Property</Link>
                     <Link href="/user-panel/property-list"><i className="fa-solid fa-list"></i> Property List</Link>
                     <Link href="/user-panel/all-reviews" className={styles.activeSelection}><i className="fa-solid fa-comment"></i> All Reviews</Link>
-                    <Link href="/user-panel/all-enquiry"><i className="fa-solid fa-comment"></i> All Enquiry</Link>
+                    <Link href="/user-panel/all-enquiry"><i className="fa fa-question-circle"></i> All Enquiry</Link>
+                    <Link href="/user-panel/user-profile"><i className="fa-solid fa-user"></i> View Profile</Link>
                 </div>
                 <div className={styles.mainContentBox}>
                     <div className={styles.propertyListTable}>
@@ -133,7 +134,7 @@ const allReviews = () => {
                                             <div className={styles.propertyDetailTableBox}>
                                                 {/* <img src="/images/property-1.webp" alt="" /> */}
                                                 <div className={styles.propertyDetailText}>
-                                                <h4>{review.property.property_name}</h4>
+                                                    <h4>{review.property.property_name}</h4>
                                                     <p className={styles.priceText}>{review.property.price}</p>
                                                     {/* <p className={styles.propertyMiniDetail}>
                                                         <span><i className="fa-solid fa-bed"></i>{review.property.bedroom}</span>

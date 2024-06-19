@@ -153,7 +153,7 @@
 
 .descriptionContentBox {
     width: 100%;
-    padding: 10px 40px;
+    padding: 65px 40px 10px 40px;
 }
 
 .descriptionContentBox h3 {
@@ -169,7 +169,7 @@
 
 .addressSection {
     width: 100%;
-    padding: 10px 40px;
+    padding: 65px 40px 10px 40px;
 }
 
 .addressTopContent {
@@ -231,7 +231,7 @@
 
 .floorPlanSection {
     width: 100%;
-    padding: 20px 40px;
+    padding: 65px 40px 10px 40px;
 }
 
 .floorPlanSection h2 {
@@ -250,7 +250,7 @@
 
 .googleMapsSection {
     width: 100%;
-    padding: 20px 40px;
+    padding: 65px 40px 10px 40px;
 }
 
 .googleMapsSection h2 {

@@ -11,15 +11,24 @@ const property = () => {
     const { id } = router.query;
     const [propertyDetails, setPropertyDetails] = useState({});
     const [loading, setLoading] = useState(true);
+    const [reviews, setReviews] = useState([]);
+    const [error, setError] = useState('');
     const [reviewForm, setReviewForm] = useState({
         rating: '',
         comment: '',
         name: ''
     });
+    const [enquiryForm, setEnquiryForm] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        agentType: 'Individual'
+    });
 
     useEffect(() => {
         if (id) {
             fetchPropertyDetails(id);
+            fetchReviews(id);
         }
     }, [id]);
 
@@ -39,6 +48,22 @@ const property = () => {
             }
         } catch (error) {
             console.error('Error:', error);
+        }
+    };
+
+    const fetchReviews = async (propertyId) => {
+        try {
+            const response = await fetch(`https://a.khelogame.xyz/get_review?property_id=${propertyId}`);
+            if (response.ok) {
+                const data = await response.json();
+                setReviews(data.reviews);
+            } else {
+                const errorData = await response.json();
+                setError(errorData.error);
+            }
+        } catch (error) {
+            console.error('Error fetching reviews:', error);
+            setError('Failed to fetch reviews');
         }
     };
 
@@ -90,6 +115,45 @@ const property = () => {
         }
     };
 
+    const submitAgentEnquiry = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`https://a.khelogame.xyz/create-agent-inquiry/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: enquiryForm.name,
+                    email: enquiryForm.email,
+                    phone_number: enquiryForm.phone,
+                    agent_type: enquiryForm.agentType
+                }),
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Agent enquiry submitted successfully:', data);
+                setEnquiryForm({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    agentType: ''
+                });
+            } else {
+                const errorData = await response.json();
+                console.error('Error submitting agent enquiry:', errorData.error);
+                // Handle error (e.g., show error message to user)
+            }
+        } catch (error) {
+            console.error('Error submitting agent enquiry:', error);
+            // Handle error (e.g., show error message to user)
+        }
+    };
+    const handleEnquiryChange = (e) => {
+        const { name, value } = e.target;
+        setEnquiryForm({ ...enquiryForm, [name]: value });
+    };
+
     return (
         <>
             <Navbar />
@@ -99,7 +163,6 @@ const property = () => {
                     width={600}
                     height={400}
                     src={`https://a.khelogame.xyz/${propertyDetails.media_path}`}
-                    
                     alt="Property Image"
                     className={styles.mainHouseImg}
                 />
@@ -141,7 +204,7 @@ const property = () => {
                     {propertyDetails.amenities && Object.keys(propertyDetails.amenities).map((category, index) => (
                         <div key={index} className={styles.aminitiesCardsBox}>
                             {propertyDetails.amenities[category].map((amenity, idx) => (
-                                <p key={idx}><span><i className="fa-solid fa-bed"></i></span>{amenity}</p>
+                                <p key={idx}><span><i class="fa-solid fa-star"></i></span>{amenity}</p>
                             ))}
                         </div>
                     ))}
@@ -190,43 +253,70 @@ const property = () => {
                 </div>
                 <div className={styles.ownerDetailBox2}>
                     <h3>Send Enquiry To Agent</h3>
-                    <form>
-                        <div className={styles.radioBox}>
-                            <p>You Are</p>
-                            <input type="radio" name="dealer" id="individual" checked />
-                            <label htmlFor="individual">Individual</label>
-                            <input type="radio" name="dealer" id="dealer" />
-                            <label htmlFor="dealer">Dealer</label>
-                        </div>
-
-                        <label htmlFor="name">Your Name</label>
-                        <input type="text" id="name" placeholder="Enter Name" />
-                        <label htmlFor="email">Your Email</label>
-                        <input type="text" id="email" placeholder="Enter Email" />
-                        <label htmlFor="phone">Your Phone Number</label>
-                        <input type="text" id="phone" placeholder="Enter Phone Number" />
-                        <input type="submit" value="Submit" />
-                    </form>
+                    <form onSubmit={submitAgentEnquiry}>
+                    <div className={styles.radioBox}>
+                        <p>You Are</p>
+                        <input
+                            type="radio"
+                            name="agentType"
+                            id="individual"
+                            value="Individual"
+                            checked={enquiryForm.agentType === 'Individual'}
+                            onChange={handleEnquiryChange}
+                        />
+                        <label htmlFor="individual">Individual</label>
+                        <input
+                            type="radio"
+                            name="agentType"
+                            id="dealer"
+                            value="Dealer"
+                            checked={enquiryForm.agentType === 'Dealer'}
+                            onChange={handleEnquiryChange}
+                        />
+                        <label htmlFor="dealer">Dealer</label>
+                    </div>
+                    <label htmlFor="name">Your Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={enquiryForm.name}
+                        onChange={handleEnquiryChange}
+                        placeholder="Enter Name"
+                    />
+                    <label htmlFor="email">Your Email</label>
+                    <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        value={enquiryForm.email}
+                        onChange={handleEnquiryChange}
+                        placeholder="Enter Email"
+                    />
+                    <label htmlFor="phone">Your Phone Number</label>
+                    <input
+                        type="text"
+                        id="phone"
+                        name="phone"
+                        value={enquiryForm.phone}
+                        onChange={handleEnquiryChange}
+                        placeholder="Enter Phone Number"
+                    />
+                    <input type="submit" value="Submit" />
+                </form>
                 </div>
             </section>
 
             <section className={styles.reviewsSection}>
-                <h2>Property Reviews</h2>
-                {propertyDetails.reviews && propertyDetails.reviews.map((review, index) => (
+            <h2>Property Reviews</h2>
+                {reviews.length === 0 && <p>No reviews available</p>}
+                {reviews.map((review, index) => (
                     <div key={index} className={styles.ratingsBox}>
-                        <div className={styles.ratingsUpperContentBox}>
-                            <div className={styles.ratingsUpperUserDetailBox}>
-                                <Image width={200} height={200} src={review.user_image || "/images/agent-img.png"} alt="Reviewer" />
-                                <div className={styles.ratingsUpperContent}>
-                                    <h4>{review.user_name}</h4>
-                                    <p>{review.user_role}</p>
-                                </div>
-                            </div>
-                            <Image width={200} height={200} src="/images/star.png" alt="Star Rating" className={styles.starImg} />
-                        </div>
-                        <p className={styles.reviewsPara}>{review.comment}</p>
+                        <p>{review.comment}</p>
+                        <p>{review.name}</p>
                     </div>
                 ))}
+                {error && <p>{error}</p>}
             
                 <div className={styles.addCommentBox}>
                 <h3>Leave A Review</h3>

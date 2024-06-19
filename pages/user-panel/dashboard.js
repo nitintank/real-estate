@@ -4,7 +4,7 @@ import Footer from '@/components/footer'
 import styles from "@/styles/Dashboard.module.css";
 import Image from 'next/image';
 import Link from 'next/link';
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const dashboard = () => {
@@ -28,7 +28,7 @@ const dashboard = () => {
 
         // Check local storage if user is logged in
         const loggedInStatus = localStorage.getItem('isLoggedIn');
-        if(loggedInStatus == null){
+        if (loggedInStatus == null) {
             location.href = "/"
         }
     }, []);
@@ -39,11 +39,12 @@ const dashboard = () => {
             {/* <!-- Main Content Big Box --> */}
             <section className={styles.mainContentBigBox}>
                 <div className={styles.mainSidebarBox}>
-                <Link href="/user-panel/dashboard" className={styles.activeSelection}><i className="fa-solid fa-chart-line"></i> Dashboard</Link>
+                    <Link href="/user-panel/dashboard" className={styles.activeSelection}><i className="fa-solid fa-chart-line"></i> Dashboard</Link>
                     <Link href="/user-panel/add-property"><i className="fa-solid fa-house-chimney"></i> Add Property</Link>
                     <Link href="/user-panel/property-list"><i className="fa-solid fa-list"></i> Property List</Link>
                     <Link href="/user-panel/all-reviews"><i className="fa-solid fa-comment"></i> All Reviews</Link>
-                    <Link href="/user-panel/all-enquiry"><i className="fa-solid fa-comment"></i> All Enquiry</Link>
+                    <Link href="/user-panel/all-enquiry"><i className="fa fa-question-circle"></i> All Enquiry</Link>
+                    <Link href="/user-panel/user-profile"><i className="fa-solid fa-user"></i> View Profile</Link>
                 </div>
                 <div className={styles.mainContentBox}>
                     <h2>Hey User,</h2>
