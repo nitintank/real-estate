@@ -1,0 +1,121 @@
+/* Main Content Big Box */
+
+.mainContentBigBox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    border-top: 1px solid #1085FF;
+    background-color: #F9F9F9;
+}
+
+.mainSidebarBox {
+    width: 15%;
+    height: 91.9vh;
+    background-color: #1085FF;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    position: sticky;
+    top: 70px;
+}
+
+.mainSidebarBox a {
+    color: #deeeff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+.mainSidebarBox .activeSelection {
+    background-color: #deeeff;
+    color: #1085FF;
+    border-radius: 10px;
+}
+
+.mainContentBox {
+    width: 85%;
+    height: auto;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.mainContentBox h2 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.passwordBtn{
+    padding: 4px 10px;
+    font-size: 15px;
+    background-color: #1085FF;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.userProfileBox{
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #ebebeb;
+}
+
+.userProfileBox form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.formInnerBox1{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.userProfileBox input{
+    width: 49%;
+    border: 1px solid #ebebeb;
+    padding: 10px 15px;
+    color: black;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.userProfileBox input::placeholder{
+    color: black;
+}
+
+.userProfileBox button{
+    width: 125px;
+    padding: 6px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #1085FF;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.error{
+    color: red;
+}
+
+.success{
+    color: green;
+}

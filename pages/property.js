@@ -13,6 +13,8 @@ const property = () => {
     const [loading, setLoading] = useState(true);
     const [reviews, setReviews] = useState([]);
     const [error, setError] = useState('');
+    const [imagePaths, setImagePaths] = useState([]);
+    const [mediaPaths, setMediaPaths] = useState([]);
     const [reviewForm, setReviewForm] = useState({
         rating: '',
         comment: '',
@@ -38,10 +40,12 @@ const property = () => {
 
             if (response.ok) {
                 const data = await response.json();
+                const paths = data.media_path.split(',');
+                setImagePaths(paths);
+                const paths2 = data.image_path.split(',');
+                setMediaPaths(paths2);
                 setPropertyDetails(data);
                 setLoading(false);
-                console.log(data)
-                console.log(data.media_path)
             } else {
                 const errorData = await response.json();
                 console.error('Error:', errorData);
@@ -162,10 +166,15 @@ const property = () => {
                 <Image
                     width={600}
                     height={400}
-                    src={`https://a.khelogame.xyz/${propertyDetails.media_path}`}
+                    src={`https://a.khelogame.xyz/${imagePaths[0]}`}
                     alt="Property Image"
                     className={styles.mainHouseImg}
                 />
+                {/* {imagePaths.map((path, index) => (
+                    <div key={index}>
+                        <Image width={600} height={400} src={`https://a.khelogame.xyz/${path}`} alt={`Image ${index + 1}`} className={styles.mainHouseImg} />
+                    </div>
+                ))} */}
                 {/* Additional property images */}
                 {/* <div className={styles.propertyMoreImages}>
                     {propertyDetails.media_paths && propertyDetails.media_paths.map((path, index) => (
@@ -235,7 +244,7 @@ const property = () => {
 
             <section className={styles.floorPlanSection}>
                 <h2>Floor Plan</h2>
-                <Image width={600} height={400} src={`https://a.khelogame.xyz/${propertyDetails.image_path}`} alt="Floor Plan" />
+                <Image width={600} height={400} src={`https://a.khelogame.xyz/${mediaPaths[0]}`} alt="Floor Plan" />
             </section>
 
             <section className={styles.googleMapsSection} id='locationSection'>
@@ -254,61 +263,61 @@ const property = () => {
                 <div className={styles.ownerDetailBox2}>
                     <h3>Send Enquiry To Agent</h3>
                     <form onSubmit={submitAgentEnquiry}>
-                    <div className={styles.radioBox}>
-                        <p>You Are</p>
+                        <div className={styles.radioBox}>
+                            <p>You Are</p>
+                            <input
+                                type="radio"
+                                name="agentType"
+                                id="individual"
+                                value="Individual"
+                                checked={enquiryForm.agentType === 'Individual'}
+                                onChange={handleEnquiryChange}
+                            />
+                            <label htmlFor="individual">Individual</label>
+                            <input
+                                type="radio"
+                                name="agentType"
+                                id="dealer"
+                                value="Dealer"
+                                checked={enquiryForm.agentType === 'Dealer'}
+                                onChange={handleEnquiryChange}
+                            />
+                            <label htmlFor="dealer">Dealer</label>
+                        </div>
+                        <label htmlFor="name">Your Name</label>
                         <input
-                            type="radio"
-                            name="agentType"
-                            id="individual"
-                            value="Individual"
-                            checked={enquiryForm.agentType === 'Individual'}
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={enquiryForm.name}
                             onChange={handleEnquiryChange}
+                            placeholder="Enter Name"
                         />
-                        <label htmlFor="individual">Individual</label>
+                        <label htmlFor="email">Your Email</label>
                         <input
-                            type="radio"
-                            name="agentType"
-                            id="dealer"
-                            value="Dealer"
-                            checked={enquiryForm.agentType === 'Dealer'}
+                            type="text"
+                            id="email"
+                            name="email"
+                            value={enquiryForm.email}
                             onChange={handleEnquiryChange}
+                            placeholder="Enter Email"
                         />
-                        <label htmlFor="dealer">Dealer</label>
-                    </div>
-                    <label htmlFor="name">Your Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={enquiryForm.name}
-                        onChange={handleEnquiryChange}
-                        placeholder="Enter Name"
-                    />
-                    <label htmlFor="email">Your Email</label>
-                    <input
-                        type="text"
-                        id="email"
-                        name="email"
-                        value={enquiryForm.email}
-                        onChange={handleEnquiryChange}
-                        placeholder="Enter Email"
-                    />
-                    <label htmlFor="phone">Your Phone Number</label>
-                    <input
-                        type="text"
-                        id="phone"
-                        name="phone"
-                        value={enquiryForm.phone}
-                        onChange={handleEnquiryChange}
-                        placeholder="Enter Phone Number"
-                    />
-                    <input type="submit" value="Submit" />
-                </form>
+                        <label htmlFor="phone">Your Phone Number</label>
+                        <input
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            value={enquiryForm.phone}
+                            onChange={handleEnquiryChange}
+                            placeholder="Enter Phone Number"
+                        />
+                        <input type="submit" value="Submit" />
+                    </form>
                 </div>
             </section>
 
             <section className={styles.reviewsSection}>
-            <h2>Property Reviews</h2>
+                <h2>Property Reviews</h2>
                 {reviews.length === 0 && <p>No reviews available</p>}
                 {reviews.map((review, index) => (
                     <div key={index} className={styles.ratingsBox}>
@@ -317,46 +326,46 @@ const property = () => {
                     </div>
                 ))}
                 {error && <p>{error}</p>}
-            
+
                 <div className={styles.addCommentBox}>
-                <h3>Leave A Review</h3>
-                <form onSubmit={handleSubmitReview}>
-                    <label className={styles.commentLabel}>Your Rating</label>
-                    <div className={styles.starRating}>
-                        {[...Array(5)].map((_, index) => {
-                            const ratingValue = index + 1;
-                            return (
-                                <React.Fragment key={ratingValue}>
-                                    <input
-                                        type="radio"
-                                        id={`${ratingValue}-stars`}
-                                        name="rating"
-                                        value={ratingValue}
-                                        checked={reviewForm.rating === `${ratingValue}`}
-                                        onChange={handleInputChange}
-                                    />
-                                    <label htmlFor={`${ratingValue}-stars`} className={styles.star}>&#9733;</label>
-                                </React.Fragment>
-                            );
-                        })}
-                    </div>
-                    <label className={styles.commentLabel}>Your Comment</label>
-                    <textarea
-                        name="comment"
-                        value={reviewForm.comment}
-                        onChange={handleInputChange}
-                        rows="6"
-                    ></textarea>
-                    <label className={styles.commentLabel}>Your Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={reviewForm.name}
-                        onChange={handleInputChange}
-                    />
-                    <input type="submit" value="Submit Review" />
-                </form>
-            </div>
+                    <h3>Leave A Review</h3>
+                    <form onSubmit={handleSubmitReview}>
+                        <label className={styles.commentLabel}>Your Rating</label>
+                        <div className={styles.starRating}>
+                            {[...Array(5)].map((_, index) => {
+                                const ratingValue = index + 1;
+                                return (
+                                    <React.Fragment key={ratingValue}>
+                                        <input
+                                            type="radio"
+                                            id={`${ratingValue}-stars`}
+                                            name="rating"
+                                            value={ratingValue}
+                                            checked={reviewForm.rating === `${ratingValue}`}
+                                            onChange={handleInputChange}
+                                        />
+                                        <label htmlFor={`${ratingValue}-stars`} className={styles.star}>&#9733;</label>
+                                    </React.Fragment>
+                                );
+                            })}
+                        </div>
+                        <label className={styles.commentLabel}>Your Comment</label>
+                        <textarea
+                            name="comment"
+                            value={reviewForm.comment}
+                            onChange={handleInputChange}
+                            rows="6"
+                        ></textarea>
+                        <label className={styles.commentLabel}>Your Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={reviewForm.name}
+                            onChange={handleInputChange}
+                        />
+                        <input type="submit" value="Submit Review" />
+                    </form>
+                </div>
             </section>
 
             <Footer />

@@ -89,7 +89,6 @@ const propertylist = () => {
                                     <th>Created At</th>
                                     <th>Location</th>
                                     <th>Price</th>
-                                    <th>Amenities</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -110,17 +109,6 @@ const propertylist = () => {
                                         <td>{new Date(property.created_at).toLocaleDateString()}</td>
                                         <td>{property.address}</td>
                                         <td>{property.price}</td>
-                                        <td>
-                                            {property.amenities.length > 0 ? (
-                                                <ul>
-                                                    {property.amenities.map((amenity, index) => (
-                                                        <li key={index}>{`${amenity.category}: ${amenity.amenity}`}</li>
-                                                    ))}
-                                                </ul>
-                                            ) : (
-                                                <span>No amenities</span>
-                                            )}
-                                        </td>
                                         <td>{property.status}</td>
                                         <td>
                                             <i className="fa-solid fa-pen-to-square" onClick={() => handleEditClick(property.id)}></i>

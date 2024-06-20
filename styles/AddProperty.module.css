@@ -5,6 +5,7 @@
     height: auto;
     display: flex;
     border-top: 1px solid #1085FF;
+    background-color: #F9F9F9;
 }
 
 .mainSidebarBox{
@@ -43,18 +44,13 @@
 }
 
 .mainContentBox form{
-    width: 100%;
+    width: 80%;
+    margin: auto;
 }
 
 .mainContentBox form label{
     font-size: 16px;
-}
-
-.mainContentBox form input[type=text]{
-    width: 100%;
-    display: block;
-    padding: 5px 10px;
-    border-radius: 25px;
+    text-transform: capitalize;
 }
 
 .mainContentBox form input[type=file]{
@@ -69,31 +65,26 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 12px;
 }
 
 .checkBoxDiv{
-    width: 23%;
+    width: 31%;
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.checkBoxDiv input[type=checkbox]{
-    display: flex;
-}
+} 
 
 .amenitiesText{
     font-size: 25px;
     font-weight: 600;
     text-align: center;
-    margin: 10px auto 0px auto;
+    margin: auto;
 }
 
 .amenitiesNamesText{
     font-size: 18px;
     font-weight: 600;
-    margin: 10px 0px;
 }
 
 .dBlock{
@@ -166,15 +157,6 @@
         font-size: 30px;
         text-align: center;
     }
-    
-    .amenitiesText{
-        margin-top: 5px;
-        font-size: 25px;
-    }
-
-    .amenitiesNamesText {
-        margin: 5px 0px;
-    }
     .checkBoxBigBox{
         gap: 10px;
     }
@@ -191,13 +173,21 @@
 }
 
 .propertyTypeBox{
+    width: 40%;
+    margin: auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #ebebeb;
 }
 
 .propertyTypeBox h3{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
 }
 
@@ -207,4 +197,134 @@
 
 .propertyTypeBox label{
     cursor: pointer;
+}
+
+/* Property Form Box */
+
+.propertyFormBox{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #ebebeb;
+    margin-bottom: 10px;
+}
+
+.propertyFormBox input{
+    width: 100%;
+    border: 1px solid #ebebeb;
+    padding: 10px 15px;
+    color: black;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.propertyFormBox textarea{
+    width: 100%;
+    border: 1px solid #ebebeb;
+    padding: 10px 15px;
+    color: black;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.propertyFormBox select{
+    width: 100%;
+    border: 1px solid #ebebeb;
+    padding: 10px 15px;
+    color: black;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.propertyFormBox2{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #ebebeb;
+    margin-bottom: 10px;
+}
+
+.propertyFormBox2 h3{
+    width: 100%;
+}
+
+.propertyFormBox2 input{
+    width: 49%;
+    border: 1px solid #ebebeb;
+    padding: 10px 15px;
+    color: black;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.propertyFormBox2 input[type=checkbox]{
+    width: auto;
+    display: flex;
+}
+
+.submitBtn{
+    width: 250px;
+    padding: 6px 0px;
+    text-align: center;
+    margin: 10px auto;
+    font-size: 22px;
+    font-weight: 500;
+    background-color: #1085FF;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Responsive Code */
+
+@media (max-width: 1255px){
+    .propertyFormBox2{
+        gap: 10px;
+    }
+    .mainContentBox form{
+        width: 90%;
+    }
+}
+
+@media (max-width: 1255px){
+    .propertyFormBox2{
+        gap: 5px;
+    }
+}
+
+@media (max-width: 769px) {
+    .mainContentBox form{
+        width: 100%;
+    }
+    .propertyTypeBox{
+        width: 100%;
+    }
+    .propertyFormBox2 input{
+        width: 100%;
+    }
+    .checkBoxDiv{
+        width: 100%;
+    }
+    .amenitiesText{
+        font-size: 21px;
+    }
+    .submitBtn{
+        width: 220px;
+        font-size: 18px;
+    }
 }
