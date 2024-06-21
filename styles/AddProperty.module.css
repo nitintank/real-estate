@@ -176,7 +176,6 @@
     width: 40%;
     margin: auto;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -184,11 +183,14 @@
     padding: 10px 15px;
     border-radius: 10px;
     border: 1px solid #ebebeb;
+    flex-wrap: wrap;
 }
 
 .propertyTypeBox h3{
     font-size: 24px;
     font-weight: 600;
+    width: 100%;
+    text-align: center;
 }
 
 .propertyTypeBox input[type = radio]{
@@ -196,7 +198,48 @@
 }
 
 .propertyTypeBox label{
+    width: 48%;
     cursor: pointer;
+    border: 1px solid rgb(236, 236, 236);
+    border-radius: 10px;
+    padding: 10px 5px;
+    text-align: center;
+    background-color: #F9F9F9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px !important;
+    font-weight: 600;
+}
+
+.propertyTypeBox2{
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.propertyTypeBox2 h3{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.propertyTypeBox2 input[type = radio]{
+    display: none;
+}
+
+.propertyTypeBox2 label{
+    width: 100%;
+    cursor: pointer;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #ebebeb;
+    text-align: center;
 }
 
 /* Property Form Box */
@@ -312,6 +355,9 @@
         width: 100%;
     }
     .propertyTypeBox{
+        width: 100%;
+    }
+    .propertyTypeBox2{
         width: 100%;
     }
     .propertyFormBox2 input{

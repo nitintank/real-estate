@@ -7,43 +7,84 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 
-
 const index = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [propertyType, setPropertyType] = useState('Commercial');
+  const [Subtype, setSubtype] = useState('Sale');
   const router = useRouter();
+  const [location, setLocation] = useState('');
+
+
+  const fetchProperties = async (filters = {}) => {
+    // setLoading(true);
+    try {
+      const response = await fetch('https://a.khelogame.xyz/get-properties');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+
+      let filteredProperties = data;
+
+      // Filter by property type
+      if (filters.propertyType) {
+        filteredProperties = filteredProperties.filter((property) => {
+          return property.property_type === filters.propertyType;
+        });
+      }
+
+      // Filter by property subtype
+      if (filters.Subtype) {
+        filteredProperties = filteredProperties.filter((property) => {
+          return property.property_categories === filters.Subtype;
+        });
+      }
+
+      // Filter by location (city or address)
+      if (filters.location) {
+        const locationLower = filters.location.toLowerCase();
+        filteredProperties = filteredProperties.filter((property) => {
+          const cityLower = property.city.toLowerCase();
+          const addressLower = property.address.toLowerCase();
+          return cityLower.includes(locationLower) || addressLower.includes(locationLower);
+        });
+      }
+
+      console.log('Filtered properties:', filteredProperties);
+      setProperties(filteredProperties);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false); // Set loading to false after fetching data
+    }
+  };
+
+  const handlePropertyTypeChange = (e) => {
+    setPropertyType(e.target.value);
+  };
+
+  const handlePropertySubtypeChange = (e) => {
+    setSubtype(e.target.value);
+  };
+
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
+  };
+
+  const handleSearch = () => {
+    fetchProperties({ propertyType, Subtype, location });
+  };
 
   useEffect(() => {
-      const fetchProperties = async () => {
-          try {
-              const response = await fetch('https://a.khelogame.xyz/get-properties');
-              if (!response.ok) {
-                  throw new Error('Network response was not ok');
-              }
-              const data = await response.json();
-              setProperties(data);
-          } catch (error) {
-              setError(error.message);
-          } finally {
-              setLoading(false);
-          }
-      };
-      fetchProperties();
+    fetchProperties();
   }, []);
-
-
-
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  // const currentDate = new Date();
-  // const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000); // Calculate 7 days ago
-  // const latestProperties = properties.filter(property => {
-  //   const propertyDate = new Date(property.created_at);
-  //   return propertyDate >= oneWeekAgo;
-  // });
   const currentDate = new Date();
   const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000); // Calculate 7 days ago
   const latestProperties = properties
@@ -69,10 +110,11 @@ const index = () => {
         <div className={styles.searchBiggerBox}>
           <div className={styles.formBox}>
             <label for="">Location</label>
-            <input type="text" placeholder="Enter An Address, City Or Zip Code" />
+            <input type="text" placeholder="Enter An Address, City Or Zip Code" onChange={handleLocationChange}/>
+            {/* <input type="text" placeholder="Enter An Address, City Or Zip Code"  onChange={(e)=> setLocations(e.target.value)}/> */}
           </div>
           <div className={styles.formBox}>
-            <label for="">Type</label>
+            <label for="">Property Type</label>
             {/* <select name="" id="">
               <option value="">Property Type</option>
               <option value="">Rentals</option>
@@ -81,28 +123,21 @@ const index = () => {
             <div className={styles.selectBox}>
               <div className={styles.selectBox__current} tabindex="1">
                 <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="0" value="1" name="Ben" />
-                  <p className={styles.selectBox__inputText}>Rentals</p>
+                  <input className={styles.selectBox__input} type="radio" id="0" value="Rent" name="Housing" onChange={(e)=>handlePropertySubtypeChange(e)} />
+                  <p className={styles.selectBox__inputText}>For Rent</p>
                 </div>
                 <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="1" value="2" name="Ben" defaultChecked={true} />
-                  <p className={styles.selectBox__inputText}>Sales</p>
-                </div>
-                <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="2" value="3" name="Ben" />
-                  <p className={styles.selectBox__inputText}>Sold</p>
+                  <input className={styles.selectBox__input} type="radio" id="1" value="Sale" name="Housing" defaultChecked={true} onChange={(e)=>handlePropertySubtypeChange(e)} />
+                  <p className={styles.selectBox__inputText}>For Buy</p>
                 </div>
                 <img className={styles.selectBox__icon} src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
               </div>
               <ul className={styles.selectBox__list}>
                 <li>
-                  <label className={styles.selectBox__option} for="0" aria-hidden="aria-hidden">Rentals</label>
+                  <label className={styles.selectBox__option} for="0" aria-hidden="aria-hidden">For Rent</label>
                 </li>
                 <li>
-                  <label className={styles.selectBox__option} for="1" aria-hidden="aria-hidden">Sales</label>
-                </li>
-                <li>
-                  <label className={styles.selectBox__option} for="2" aria-hidden="aria-hidden">Sold</label>
+                  <label className={styles.selectBox__option} for="1" aria-hidden="aria-hidden">For Buy</label>
                 </li>
               </ul>
             </div>
@@ -119,41 +154,41 @@ const index = () => {
             <div className={styles.selectBox}>
               <div className={styles.selectBox__current} tabindex="1">
                 <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="5" value="1" name="Ben1" />
-                  <p className={styles.selectBox__inputText}>Apartments</p>
+                  <input className={styles.selectBox__input} type="radio" id="5" value="Residential" name="propertyType" onChange={handlePropertyTypeChange} />
+                  <p className={styles.selectBox__inputText}>Residential</p>
                 </div>
                 <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="6" value="2" name="Ben1" defaultChecked={true} />
-                  <p className={styles.selectBox__inputText}>Houses</p>
+                  <input className={styles.selectBox__input} type="radio" id="6" value="Commercial" name="propertyType" onChange={handlePropertyTypeChange} defaultChecked={true} />
+                  <p className={styles.selectBox__inputText}>Commercial</p>
                 </div>
                 <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="7" value="3" name="Ben1" />
-                  <p className={styles.selectBox__inputText}>Villas</p>
+                  <input className={styles.selectBox__input} type="radio" id="7" value="Land" name="propertyType" onChange={handlePropertyTypeChange} />
+                  <p className={styles.selectBox__inputText}>Land</p>
                 </div>
                 <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="8" value="4" name="Ben1" />
-                  <p className={styles.selectBox__inputText}>Duplexes</p>
+                  <input className={styles.selectBox__input} type="radio" id="8" value="MultipleUnits" name="propertyType" onChange={handlePropertyTypeChange} />
+                  <p className={styles.selectBox__inputText}>Multiple Units</p>
                 </div>
                 <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
               </div>
               <ul className={styles.selectBox__list}>
                 <li>
-                  <label className={styles.selectBox__option} for="5" aria-hidden="aria-hidden">Apartments</label>
+                  <label className={styles.selectBox__option} for="5" aria-hidden="aria-hidden">Residential</label>
                 </li>
                 <li>
-                  <label className={styles.selectBox__option} for="6" aria-hidden="aria-hidden">Houses</label>
+                  <label className={styles.selectBox__option} for="6" aria-hidden="aria-hidden">Commercial</label>
                 </li>
                 <li>
-                  <label className={styles.selectBox__option} for="7" aria-hidden="aria-hidden">Villas</label>
+                  <label className={styles.selectBox__option} for="7" aria-hidden="aria-hidden">Land</label>
                 </li>
                 <li>
-                  <label className={styles.selectBox__option} for="8" aria-hidden="aria-hidden">Duplexes</label>
+                  <label className={styles.selectBox__option} for="8" aria-hidden="aria-hidden">Multiple Units</label>
                 </li>
               </ul>
             </div>
           </div>
           <div className={`${styles.formBox} ${styles.flexEnd}`}>
-            <button><i className="fa-solid fa-magnifying-glass"></i> Search</button>
+            <button onClick={handleSearch}><i className="fa-solid fa-magnifying-glass"></i> Search</button>
           </div>
         </div>
       </section>
@@ -192,44 +227,44 @@ const index = () => {
 
       {/* <!-- Latest Properties Section --> */}
       <section className={styles.latestPropertiesSection}>
-      <p>DUBAI REAL ESTATE</p>
+        <p>DUBAI REAL ESTATE</p>
         <h2>Latest Properties</h2>
         <div className={styles.latestPropertiesBigBox}>
           {latestProperties.map((property, index) => (
             <Link href={`/property?id=${property.id}`} key={index} className={styles.latestPropertiesInnerBox}>
               <Image
-                    width={600}
-                    height={400}
-                    src={`https://a.khelogame.xyz/${property.media_path}`}
-                    alt="Property Image"
-                    className={styles.mainHouseImg}
-                />
-                {/* <Image width={200} height={200} src={property.image} alt={property.property_name} /> */}
-                {/* <Image width={200} height={200} src="/images/property-1.webp" alt="" /> */}
-                <div className={styles.latestPropertiesContentBox}>
-                  <p className={styles.miniText}>{property.property_type}</p>
-                  <h3>{property.property_name}</h3>
-                  <p className={styles.priceText}>{property.price}</p>
-                  <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
-                  <div className={styles.innerPropertyContent}>
-                    <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
-                    <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
-                    <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
-                    <p><i className="fa-solid fa-car"></i> {property.vehicle}</p>
-                    <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
-                  </div>
-                  <hr />
-                  <div className={styles.innerButtonBox}>
-                    <button><i className="fa-solid fa-phone"></i> Call</button>
-                    <button><i className="fa-solid fa-envelope"></i> Email</button>
-                    <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
-                  </div>
+                width={600}
+                height={400}
+                src={`https://a.khelogame.xyz/${property.media_path}`}
+                alt="Property Image"
+                className={styles.mainHouseImg}
+              />
+              {/* <Image width={200} height={200} src={property.image} alt={property.property_name} /> */}
+              {/* <Image width={200} height={200} src="/images/property-1.webp" alt="" /> */}
+              <div className={styles.latestPropertiesContentBox}>
+                <p className={styles.miniText}>{property.property_type}</p>
+                <h3>{property.property_name}</h3>
+                <p className={styles.priceText}>{property.price}</p>
+                <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
+                <div className={styles.innerPropertyContent}>
+                  <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
+                  <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
+                  <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
+                  <p><i className="fa-solid fa-car"></i> {property.vehicle}</p>
+                  <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
                 </div>
+                <hr />
+                <div className={styles.innerButtonBox}>
+                  <button><i className="fa-solid fa-phone"></i> Call</button>
+                  <button><i className="fa-solid fa-envelope"></i> Email</button>
+                  <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                </div>
+              </div>
             </Link>
           ))}
         </div>
       </section>
-  
+
 
       {/* <!-- Popular Areas Section --> */}
 

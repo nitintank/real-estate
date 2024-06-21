@@ -113,9 +113,15 @@
 }
 
 .error{
+    width: 100%;
     color: red;
+    font-size: 18px;
+    text-transform: capitalize;
 }
 
 .success{
+    width: 100%;
     color: green;
+    font-size: 18px;
+    text-transform: capitalize;
 }

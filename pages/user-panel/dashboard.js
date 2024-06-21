@@ -6,25 +6,35 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-
 const dashboard = () => {
     const [pendingCount, setPendingCount] = useState(0);
+    const [loadingProperties, setLoadingProperties] = useState(true);
+    const [loadingProfile, setLoadingProfile] = useState(true);
+    const [profile, setProfile] = useState({});
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchPendingProperties = async () => {
+        const fetchProperties = async () => {
             try {
-                const response = await fetch('https://a.khelogame.xyz/get-properties');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                const userId = localStorage.getItem('userId');
+                if (!userId) {
+                    throw new Error('User ID not found');
                 }
+                const response = await fetch(`https://a.khelogame.xyz/get-properties-user/${userId}`);
+                if (!response.ok) {
+                    console.error('Network response status:', response.status, response.statusText);
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+
                 const data = await response.json();
                 setPendingCount(data.length);
             } catch (error) {
-                console.error('Error fetching pending properties:', error);
+                setError(error.message);
+            } finally {
+                setLoadingProperties(false);
             }
         };
-
-        fetchPendingProperties();
+        fetchProperties();
 
         // Check local storage if user is logged in
         const loggedInStatus = localStorage.getItem('isLoggedIn');
@@ -32,6 +42,40 @@ const dashboard = () => {
             location.href = "/"
         }
     }, []);
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const response = await fetch('https://a.khelogame.xyz/profile', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                setProfile(data);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoadingProfile(false);
+            }
+        };
+
+        fetchProfile();
+    }, []);
+
+    if (loadingProperties || loadingProfile) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <>
@@ -47,7 +91,7 @@ const dashboard = () => {
                     <Link href="/user-panel/user-profile"><i className="fa-solid fa-user"></i> View Profile</Link>
                 </div>
                 <div className={styles.mainContentBox}>
-                    <h2>Hey User,</h2>
+                    <h2>Hey {profile.username},</h2>
                     <p className={styles.gladPara}>We are glad to see you again!</p>
                     <div className={styles.dashboardCardsBigBox}>
                         <div className={styles.dashboardCardsBox}>

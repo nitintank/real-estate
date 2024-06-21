@@ -6,31 +6,88 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const rent = () => {
-
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [category] = useState('buy');
+    const [propertyType, setPropertyType] = useState('Residential');
+    const [propertySubtype, setPropertySubtype] = useState('');
+    const [price, setPrice] = useState('');
+
+    const fetchProperties = async (filters = {}) => {
+        // setLoading(true); // Set loading to true when fetching data
+        try {
+            const response = await fetch('https://a.khelogame.xyz/get-properties');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+
+            let filteredProperties = data;
+
+            // Filter by category
+            filteredProperties = filteredProperties.filter(property => property.property_categories === 'Rent');
+
+            console.log('Filtered by category:', filteredProperties);
+
+            // Filter by property typecon
+            console.log(filters,"filters");
+            console.log(filters.propertyType,"filters.propertyType");
+            if (filters.propertyType) {
+                filteredProperties = filteredProperties.filter((property) =>{
+                    console.log(property,"properties");
+                    console.log(property.property_type,"property.property_type");
+
+                    return property.property_type === filters.propertyType
+                })
+            }
+
+            if (filters.price) {
+                const priceRange = filters.price.split('-').map(Number);
+                const minPrice = priceRange[0];
+                const maxPrice = priceRange[1] || Infinity;
+            
+                filteredProperties = filteredProperties.filter((property) => {
+                    const propertyPrice = property.price;
+                    return propertyPrice >= minPrice && propertyPrice <= maxPrice;
+                });
+            }
+
+            console.log('Filtered by property type:', filteredProperties);
+
+            // Filter by property subtype
+            if (filters.propertySubtype) {
+                filteredProperties = filteredProperties.filter(property => property.property_subtype === filters.propertySubtype);
+            }
+
+            console.log('Filtered by property subtype:', filteredProperties);
+
+            setProperties(filteredProperties);
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false); // Set loading to false after fetching data
+        }
+    };
 
     useEffect(() => {
-        const fetchProperties = async () => {
-            try {
-                const response = await fetch('https://a.khelogame.xyz/get-properties');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                // Assuming data is an array of properties
-                const rentProperties = data.filter(property => property.property_categories === 'Rent');
-                setProperties(rentProperties);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchProperties();
     }, []);
 
+    const handleSearch = () => {
+        fetchProperties({ propertyType, propertySubtype, price });
+    };
+
+    const handlePropertyTypeChange = (e) => {
+        console.log(e.target.value,"tqargeted value");
+        setPropertyType(e.target.value);
+        setPropertySubtype(''); // Reset property subtype when property type changes
+    };
+
+    const handlePriceChange = (e) => {
+        console.log(e.target.value,"tqargeted value");
+        setPrice(e.target.value)
+    };
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
@@ -49,171 +106,78 @@ const rent = () => {
                 </div>
                 <div className={styles.searchBiggerBox}>
                     <div className={styles.formBox}>
-                        <label for="">Type</label>
+                        <label htmlFor="">Property Type</label>
                         {/* <select name="" id="">
                             <option value="">Rent</option>
                             <option value="">Buy</option>
                         </select> */}
                         <div className={styles.selectBox}>
-                            <div className={styles.selectBox__current} tabindex="1">
+                            <div className={styles.selectBox__current} tabIndex="1">
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="0" value="1" name="Ben" />
-                                    <p className={styles.selectBox__inputText}>Rentals</p>
+                                    <input className={styles.selectBox__input} type="radio" id="0" value="Residential" name="propertyType" onChange={handlePropertyTypeChange} defaultChecked={true}/>
+                                    <p className={styles.selectBox__inputText}>Residential</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="1" value="2" name="Ben" defaultChecked={true} />
-                                    <p className={styles.selectBox__inputText}>Sales</p>
+                                    <input className={styles.selectBox__input} type="radio" id="1" value="Commercial" name="propertyType"  onChange={handlePropertyTypeChange}/>
+                                    <p className={styles.selectBox__inputText}>Commercial</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="2" value="3" name="Ben" />
-                                    <p className={styles.selectBox__inputText}>Sold</p>
+                                    <input className={styles.selectBox__input} type="radio" id="2" value="Land" name="propertyType" onChange={handlePropertyTypeChange}/>
+                                    <p className={styles.selectBox__inputText}>Land</p>
+                                </div>
+                                <div className={styles.selectBox__value}>
+                                    <input className={styles.selectBox__input} type="radio" id="3" value="MultipleUnits" name="propertyType" onChange={handlePropertyTypeChange}/>
+                                    <p className={styles.selectBox__inputText}>Multiple Units</p>
                                 </div>
                                 <img className={styles.selectBox__icon} src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
                             </div>
                             <ul className={styles.selectBox__list}>
                                 <li>
-                                    <label className={styles.selectBox__option} for="0" aria-hidden="aria-hidden">Rentals</label>
+                                    <label className={styles.selectBox__option} htmlFor="0" aria-hidden="aria-hidden">Residential</label>
                                 </li>
                                 <li>
-                                    <label className={styles.selectBox__option} for="1" aria-hidden="aria-hidden">Sales</label>
+                                    <label className={styles.selectBox__option} htmlFor="1" aria-hidden="aria-hidden">Commercial</label>
                                 </li>
                                 <li>
-                                    <label className={styles.selectBox__option} for="2" aria-hidden="aria-hidden">Sold</label>
+                                    <label className={styles.selectBox__option} htmlFor="2" aria-hidden="aria-hidden">Land</label>
+                                </li>
+                                <li>
+                                    <label className={styles.selectBox__option} htmlFor="3" aria-hidden="aria-hidden">Multiple Units</label>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div className={styles.formBox}>
-                        <label for="">Status</label>
+                        <label htmlFor="">Price</label>
                         {/* <select name="" id="">
                             <option value="">Property Type</option>
                             <option value="">Villa</option>
                             <option value="">Bungalow</option>
                         </select> */}
                         <div className={styles.selectBox}>
-                            <div className={styles.selectBox__current} tabindex="1">
+                            <div className={styles.selectBox__current} tabIndex="1">
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="5" value="4" name="Ben1" />
-                                    <p className={styles.selectBox__inputText}>Apartments</p>
+                                    <input className={styles.selectBox__input} type="radio" id="5" value="1000000" name="price" defaultChecked={true} onChange={handlePriceChange} />
+                                    <p className={styles.selectBox__inputText}>1000000 - 499999</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="6" value="5" name="Ben1" defaultChecked={true} />
-                                    <p className={styles.selectBox__inputText}>Houses</p>
-                                </div>
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="7" value="6" name="Ben1" />
-                                    <p className={styles.selectBox__inputText}>Villas</p>
-                                </div>
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="8" value="7" name="Ben1" />
-                                    <p className={styles.selectBox__inputText}>Duplexes</p>
+                                    <input className={styles.selectBox__input} type="radio" id="6" value="5000000" name="price" onChange={handlePriceChange} />
+                                    <p className={styles.selectBox__inputText}>5000000 & Above</p>
                                 </div>
                                 <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
                             </div>
                             <ul className={styles.selectBox__list}>
                                 <li>
-                                    <label className={styles.selectBox__option} for="5" aria-hidden="aria-hidden">Apartments</label>
+                                    <label className={styles.selectBox__option} htmlFor="5" aria-hidden="aria-hidden">1000000 - 499999</label>
                                 </li>
                                 <li>
-                                    <label className={styles.selectBox__option} for="6" aria-hidden="aria-hidden">Houses</label>
-                                </li>
-                                <li>
-                                    <label className={styles.selectBox__option} for="7" aria-hidden="aria-hidden">Villas</label>
-                                </li>
-                                <li>
-                                    <label className={styles.selectBox__option} for="8" aria-hidden="aria-hidden">Duplexes</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className={styles.formBox}>
-                        <label for="">Category</label>
-                        {/* <select name="" id="">
-                            <option value="">Beds</option>
-                            <option value="">1+</option>
-                            <option value="">2+</option>
-                        </select> */}
-                        <div className={styles.selectBox}>
-                            <div className={styles.selectBox__current} tabindex="1">
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="9" value="8" name="Ben2" />
-                                    <p className={styles.selectBox__inputText}>Apartments</p>
-                                </div>
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="10" value="9" name="Ben2" />
-                                    <p className={styles.selectBox__inputText}>Houses</p>
-                                </div>
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="11" value="10" name="Ben2" defaultChecked={true} />
-                                    <p className={styles.selectBox__inputText}>Villas</p>
-                                </div>
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="12" value="11" name="Ben2" />
-                                    <p className={styles.selectBox__inputText}>Duplexes</p>
-                                </div>
-                                <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
-                            </div>
-                            <ul className={styles.selectBox__list}>
-                                <li>
-                                    <label className={styles.selectBox__option} for="9" aria-hidden="aria-hidden">Apartments</label>
-                                </li>
-                                <li>
-                                    <label className={styles.selectBox__option} for="10" aria-hidden="aria-hidden">Houses</label>
-                                </li>
-                                <li>
-                                    <label className={styles.selectBox__option} for="11" aria-hidden="aria-hidden">Villas</label>
-                                </li>
-                                <li>
-                                    <label className={styles.selectBox__option} for="12" aria-hidden="aria-hidden">Duplexes</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className={styles.formBox}>
-                        <label for="">Price</label>
-                        {/* <select name="" id="">
-                            <option value="">Price</option>
-                            <option value="">10 Lakh</option>
-                            <option value="">50 Lakh</option>
-                        </select> */}
-                        <div className={styles.selectBox}>
-                            <div className={styles.selectBox__current} tabindex="1">
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="13" value="12" name="Ben3" />
-                                    <p className={styles.selectBox__inputText}>Apartments</p>
-                                </div>
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="14" value="13" name="Ben3" />
-                                    <p className={styles.selectBox__inputText}>Houses</p>
-                                </div>
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="15" value="14" name="Ben3" />
-                                    <p className={styles.selectBox__inputText}>Villas</p>
-                                </div>
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="16" value="15" name="Ben3" defaultChecked={true} />
-                                    <p className={styles.selectBox__inputText}>Duplexes</p>
-                                </div>
-                                <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
-                            </div>
-                            <ul className={styles.selectBox__list}>
-                                <li>
-                                    <label className={styles.selectBox__option} for="13" aria-hidden="aria-hidden">Apartments</label>
-                                </li>
-                                <li>
-                                    <label className={styles.selectBox__option} for="14" aria-hidden="aria-hidden">Houses</label>
-                                </li>
-                                <li>
-                                    <label className={styles.selectBox__option} for="15" aria-hidden="aria-hidden">Villas</label>
-                                </li>
-                                <li>
-                                    <label className={styles.selectBox__option} for="16" aria-hidden="aria-hidden">Duplexes</label>
+                                    <label className={styles.selectBox__option} htmlFor="6" aria-hidden="aria-hidden">5000000 & Above</label>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div className={`${styles.formBox} ${styles.flexEnd}`}>
-                        <button><i className="fa-solid fa-magnifying-glass"></i> Search</button>
+                        <button onClick={handleSearch}><i className="fa-solid fa-magnifying-glass"></i> Search</button>
                     </div>
                 </div>
             </section>

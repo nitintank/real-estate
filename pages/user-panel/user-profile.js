@@ -5,44 +5,45 @@ import Footer from '@/components/footer';
 import styles from "@/styles/UserProfile.module.css";
 
 const UserProfile = () => {
-    const [profile, setProfile] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone_number, setPhoneNumber] = useState('');
+    const [profileSuccessMessage, setProfileSuccessMessage] = useState('');
 
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [merror, setMError] = useState(null);
     const [successMessage, setSuccessMessage] = useState('');
+    const [error, setError] = useState('');
 
     useEffect(() => {
-        const fetchProfile = async () => {
-            try {
-                const response = await fetch('https://a.khelogame.xyz/profile', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const data = await response.json();
-                setProfile(data);
-                setLoading(false);
-            } catch (error) {
-                setError(error.message);
-                setLoading(false);
-            }
-        };
-
-        fetchProfile();
+        fetchProfileData();
     }, []);
+
+    const fetchProfileData = async () => {
+        try {
+            const response = await fetch('https://a.khelogame.xyz/profile', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch profile data');
+            }
+            const profileData = await response.json();
+            setUsername(profileData.username);
+            setEmail(profileData.email);
+            setPhoneNumber(profileData.phone_number);
+        } catch (error) {
+            console.error('Error fetching profile data:', error.message);
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setSuccessMessage('');
+        setError('');
 
         if (!oldPassword || !newPassword || !confirmPassword) {
             setError('All fields are required');
@@ -83,8 +84,33 @@ const UserProfile = () => {
         }
     };
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+    const handleProfileSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await fetch('https://a.khelogame.xyz/edit-profile', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify({
+                    username,
+                    email,
+                    phone_number
+                })
+            });
+            if (!response.ok) {
+                throw new Error('Failed to update profile');
+            }
+            const responseData = await response.json();
+            setProfileSuccessMessage(responseData.message);
+            console.log('Profile updated successfully:', responseData);
+            // Optionally, show success message or redirect to another page
+        } catch (error) {
+            console.error('Error updating profile:', error.message);
+            // Handle error as needed (show error message to user, retry logic, etc.)
+        }
+    };
 
     return (
         <>
@@ -101,16 +127,17 @@ const UserProfile = () => {
                 <div className={styles.mainContentBox}>
                     <div className={styles.userProfileBox}>
                         <h2>User Profile</h2>
-                        <form>
+                        <form onSubmit={handleProfileSubmit}>
                         <div className={styles.formInnerBox1}>
-                            <input type="text" placeholder={profile.username} />
-                            <input type="text" placeholder={profile.email} />
-                            <input type="text" placeholder={profile.phone_number} />
-                            <input type="text" placeholder={profile.created_at.substring(0, 17)} />
+                            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input type="text" value={phone_number} onChange={(e) => setPhoneNumber(e.target.value)}
+                            readOnly />
                             </div>
                             <div className={styles.formInnerBox1}>
                                 <button type="submit">Update <i class="fa-solid fa-arrow-right"></i></button>
                             </div>
+                            {profileSuccessMessage && <p className={styles.success}>{profileSuccessMessage}</p>}
                         </form>
                     </div>
 

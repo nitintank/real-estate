@@ -4,6 +4,7 @@ import Footer from '@/components/footer';
 import Link from 'next/link';
 import styles from "@/styles/AddProperty.module.css";
 import { imageConfigDefault } from 'next/dist/shared/lib/image-config';
+import Image from 'next/image';
 
 const addProperty = () => {
     const [propertyName, setPropertyName] = useState('');
@@ -180,17 +181,17 @@ const addProperty = () => {
                         {!propertyType && <div className={styles.propertyTypeBox}>
                             <h3>Select Property Type</h3>
                             <input type="radio" value="Residential" id="Residential" name='property_type' onChange={handlePropertyTypeChange} />
-                            <label htmlFor="Residential">Residential</label>
+                            <label htmlFor="Residential"><Image width={60} height={60} src="/images/icon-land-1.png"/> Residential</label>
                             <input type="radio" value="Commercial" id="Commercial" name='property_type' onChange={handlePropertyTypeChange} />
-                            <label htmlFor="Commercial">Commercial</label>
+                            <label htmlFor="Commercial"><Image width={60} height={60} src="/images/icon-land-2.png"/> Commercial</label>
                             <input type="radio" value="Land" id="Land" name='property_type' onChange={handlePropertyTypeChange} />
-                            <label htmlFor="Land">Land</label>
+                            <label htmlFor="Land"><Image width={60} height={60} src="/images/icon-land-3.png"/> Land</label>
                             <input type="radio" value="MultipleUnits" id="MultipleUnits" name='property_type' onChange={handlePropertyTypeChange} />
-                            <label htmlFor="MultipleUnits">MultipleUnits</label>
+                            <label htmlFor="MultipleUnits"><Image width={60} height={60} src="/images/icon-land-4.png"/> Multiple Units</label>
                         </div>
                         }
                         {propertyType && !propertySubtype && (
-                            <div className={styles.propertyTypeBox}>
+                            <div className={styles.propertyTypeBox2}>
                                 <h3>Select Property Category</h3>
                                 {propertyCategories[propertyType].map((subtype, index) => (
                                     <>
