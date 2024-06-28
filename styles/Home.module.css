@@ -92,7 +92,7 @@
 .formBox2 label {
     font-size: 15px;
     border: 0.2px solid rgb(163, 163, 163);
-    padding: 7px 20px;
+    padding: 7px 80px;
     cursor: pointer;
 }
 
@@ -276,6 +276,7 @@
 .propertyCategoriesSection h2 {
     font-size: 28px;
     font-weight: 600;
+    margin-bottom: 30px;
 }
 
 .propertyCategoriesImagesBox {
@@ -317,7 +318,7 @@
 }
 
 .content p span {
-    font-size: 15px;
+    font-size: 14px;
 }
 
 /* Latest Properties Section */
@@ -448,6 +449,7 @@
     color: #1085FF;
     font-size: 18px;
     text-align: center;
+    margin-bottom: 5px;
 }
 
 .popularAreasSection h2 {
@@ -455,6 +457,7 @@
     font-weight: 600;
     text-align: center;
     line-height: 1;
+    margin-bottom: 30px;
 }
 
 .popularAreasImageBox {
@@ -502,7 +505,7 @@
     height: auto;
     padding: 40px 60px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -516,14 +519,17 @@
 
 .glideSupportBox2 {
     width: 50%;
+    padding-top: 25px;
 }
 
 .glideSupportBox2 h2 {
     font-size: 50px;
     font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .glideSupportBox2 p {
+    width: 80%;
     color: #7d7d7d;
     font-size: 18px;
 }
@@ -684,7 +690,7 @@
     width: 100%;
     height: auto;
     background-color: #deeeff;
-    padding: 80px 0px;
+    padding: 60px 0px;
 }
 
 /* .trustedAgentsSection .wave2Img {
@@ -798,11 +804,13 @@
 .whatClientSaysSection h2 {
     font-size: 32px;
     font-weight: 600;
+    text-align: center;
 }
 
 .whatClientSaysSection hr {
     width: 19%;
     border: 2px solid black;
+    margin: 5px auto 20px auto;
 }
 
 .testimonialBigBox {
@@ -816,13 +824,13 @@
 .testimonialBox {
     width: 32%;
     background-color: #deeeff;
-    padding: 60px 20px 20px 20px;
+    padding: 60px 20px 30px 20px;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
     position: relative;
 }
 
@@ -968,7 +976,7 @@
     width: var(--container_width);
     overflow: hidden;
     border: 1px solid rgba(53, 52, 52, 0.226);
-    margin: 20px auto;
+    margin: 20px auto 40px auto;
 }
 
 .radioInput label {

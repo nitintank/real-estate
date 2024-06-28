@@ -66,17 +66,23 @@
     width: 70%;
     background-color: #deeeff;
     border: none;
-    font-size: 18px;
-    padding: 5px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 15px;
     border-radius: 25px;
+}
+
+.inputSearchBox input::placeholder{
+    color: #acacac;
+    font-weight: 400;
 }
 
 .inputSearchBox button{
     background-color: #1085FF;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 25px;
-    padding: 5px 15px;
+    padding: 10px 25px;
     cursor: pointer;
     position: absolute;
     right: 25%;
@@ -90,7 +96,7 @@
 
 .footerBottomBox{
     width: 100%;
-    padding: 10px 20px;
+    padding: 20px;
     font-size: 18px;
     display: flex;
     align-items: center;

@@ -353,6 +353,12 @@ const index = () => {
           <br />
           <p>The Appedronce And Design Of The Bunding Whenios Antennos Mou Be Added Or Remowees Witholk Such
             consequences.</p>
+            <br />
+          <p>The Whole Team Spires Are Considered Integrat Parts Of The Architectural Design Of Buldings, Changes To
+            Which Would Substandally Change.</p>
+          <br />
+          <p>The Appedronce And Design Of The Bunding Whenios Antennos Mou Be Added Or Remowees Witholk Such
+            consequences.</p>
         </div>
       </section>
 
