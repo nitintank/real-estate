@@ -23,16 +23,18 @@
 }
 
 .topIntroInnerBox1 h2 {
-    font-size: 60px;
+    font-size: 55px;
     font-weight: 500;
     line-height: 1;
     color: white;
 }
 
 .topIntroInnerBox1 p {
-    font-size: 16px;
+    width: 70%;
+    font-size: 14px;
     margin-top: 5px;
     color: white;
+    font-weight: 400;
 }
 
 .topIntroInnerBox2 {
@@ -51,25 +53,60 @@
 
 .searchBiggerBox {
     width: 90%;
-    height: 100px;
+    height: auto;
     background-color: white;
     position: absolute;
     bottom: -50px;
     left: 5%;
     border-radius: 10px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 20px;
+    border: 0.1px solid rgb(224, 224, 224);
+    gap: 15px;
 }
 
-.searchBiggerBox .formBox {
+.formBiggerBox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formBiggerBox .formBox {
     width: 24%;
-    height: 62px;
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+.formBox2 input {
+    display: none;
+}
+
+.formBox2 label {
+    font-size: 15px;
+    border: 0.2px solid rgb(163, 163, 163);
+    padding: 7px 20px;
+    cursor: pointer;
+}
+
+.formBox2 input[type="radio"]:checked+label {
+    background-color: #1085FF;
+    color: white;
+}
+
+.LBorderRadius {
+    border-radius: 20px 0px 0px 20px;
+}
+
+.RBorderRadius {
+    border-radius: 0px 20px 20px 0px;
 }
 
 .formBox label {
@@ -79,8 +116,10 @@
 .formBox input {
     height: 30px;
     border: none;
-    border-bottom: 1px solid black;
-    font-size: 16px;
+    border: 0.2px solid rgb(163, 163, 163);
+    font-size: 14px;
+    padding: 21px 15px;
+    border-radius: 25px 0px 0px 25px;
 }
 
 .formBox select {
@@ -98,8 +137,8 @@
     background-color: #1085FF;
     color: white;
     border: none;
-    border-radius: 25px;
-    padding: 5px;
+    border-radius: 0px 25px 25px 0px;
+    padding: 11px 5px;
     font-size: 18px;
 }
 
@@ -110,32 +149,39 @@
     display: block;
     width: 100%;
     margin: 0 auto;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     color: #60666d;
-    border-bottom: 1px solid black;
-  }
-  .selectBox__current {
+    padding: 12px 10px;
+    border: 0.2px solid rgb(163, 163, 163);
+}
+
+.selectBox__current {
     position: relative;
     cursor: pointer;
     outline: none;
-  }
-  .selectBox__current:focus + .selectBox__list {
+}
+
+.selectBox__current:focus+.selectBox__list {
     opacity: 1;
     -webkit-animation-name: none;
-            animation-name: none;
-  }
-  .selectBox__current:focus + .selectBox__list .selectBox__option {
+    animation-name: none;
+}
+
+.selectBox__current:focus+.selectBox__list .selectBox__option {
     cursor: pointer;
-  }
-  .selectBox__current:focus .selectBox__icon {
+}
+
+.selectBox__current:focus .selectBox__icon {
     transform: translateY(-50%) rotate(180deg);
-  }
-  .selectBox__list label{
+}
+
+.selectBox__list label {
     font-weight: 500 !important;
-    font-size: 16px;
-  }
-  .selectBox__icon {
+    font-size: 14px;
+}
+
+.selectBox__icon {
     position: absolute;
     top: 50%;
     right: 15px;
@@ -143,75 +189,88 @@
     width: 20px;
     opacity: 0.3;
     transition: 0.2s ease;
-  }
-  .selectBox__value {
+}
+
+.selectBox__value {
     display: flex;
-  }
-  .selectBox__input {
+}
+
+.selectBox__input {
     display: none;
-  }
-  .selectBox__input:checked + .selectBox__inputText {
+}
+
+.selectBox__input:checked+.selectBox__inputText {
     display: block;
-  }
-  .selectBox__inputText {
+}
+
+.selectBox__inputText {
     display: none;
     width: 100%;
     margin: 0;
     padding: 0px 10px 1px 0px;
     background-color: #fff;
-  }
-  .selectBox__list {
+}
+
+.selectBox__list {
     position: absolute;
+    border: 0.2px solid rgb(163, 163, 163);
+    top: 42px;
     width: 100%;
+    left: 0px;
     padding: 0;
     list-style: none;
     opacity: 0;
     z-index: 100000;
     -webkit-animation-name: HideList;
-            animation-name: HideList;
+    animation-name: HideList;
     -webkit-animation-duration: 0.5s;
-            animation-duration: 0.5s;
+    animation-duration: 0.5s;
     -webkit-animation-delay: 0.5s;
-            animation-delay: 0.5s;
+    animation-delay: 0.5s;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
     -webkit-animation-timing-function: step-start;
-            animation-timing-function: step-start;
+    animation-timing-function: step-start;
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
-  }
-  .selectBox__option {
+}
+
+.selectBox__option {
     display: block;
     padding: 5px;
     background-color: #fff;
-  }
-  .selectBox__option:hover, .selectBox__option:focus {
+}
+
+.selectBox__option:hover,
+.selectBox__option:focus {
     color: #546c84;
     background-color: #fbfbfb;
-  }
-  
-  @-webkit-keyframes HideList {
+}
+
+@-webkit-keyframes HideList {
     from {
-      transform: scaleY(1);
+        transform: scaleY(1);
     }
+
     to {
-      transform: scaleY(0);
+        transform: scaleY(0);
     }
-  }
-  
-  @keyframes HideList {
+}
+
+@keyframes HideList {
     from {
-      transform: scaleY(1);
+        transform: scaleY(1);
     }
+
     to {
-      transform: scaleY(0);
+        transform: scaleY(0);
     }
-  }
+}
 
 /* Property Categories Section */
 
 .propertyCategoriesSection {
     margin-top: 50px;
-    padding: 20px 80px;
+    padding: 50px 80px;
 }
 
 .propertyCategoriesSection h2 {
@@ -228,7 +287,7 @@
     margin-top: 10px;
 }
 
-.propertyCategoryImgBox{
+.propertyCategoryImgBox {
     width: 24%;
 }
 
@@ -244,32 +303,33 @@
     background: rgba(255, 255, 255, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(255, 255, 255, .1) 40%, rgba(255, 255, 255, .5) 75%, rgb(142, 197, 255) 100%) repeat scroll 0 0;
     position: relative;
     margin-top: -186px;
-    height: 180px;
+    height: 185px;
     border-radius: 0px 0px 10px 10px;
-  }
+}
 
-  .content p{
+.content p {
     position: absolute;
     bottom: 5px;
     left: 5px;
     font-size: 22px;
     font-weight: 500;
-    color: #3c3c3c;
-  }
+    color: #000000;
+}
 
-  .content p span{
-    font-size: 17px;
-  }
+.content p span {
+    font-size: 15px;
+}
 
 /* Latest Properties Section */
 
 .latestPropertiesSection {
-    padding: 20px 80px;
+    padding: 40px 80px;
 }
 
 .latestPropertiesSection p {
     font-size: 18px;
     font-weight: 500;
+    color: #838383;
 }
 
 .latestPropertiesSection h2 {
@@ -288,7 +348,7 @@
     gap: 35px;
 }
 
-.latestPropertiesBigBox a{
+.latestPropertiesBigBox a {
     text-decoration: none;
     color: black;
 }
@@ -308,6 +368,10 @@
 
 .latestPropertiesContentBox {
     padding: 10px 15px;
+}
+
+.latestPropertiesContentBox hr {
+    border: 0.5px solid rgb(178, 178, 178);
 }
 
 .latestPropertiesContentBox .miniText {
@@ -382,12 +446,12 @@
 
 .popularAreasSection p {
     color: #1085FF;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
 }
 
 .popularAreasSection h2 {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
     text-align: center;
     line-height: 1;
@@ -400,13 +464,13 @@
     justify-content: space-between;
     margin-top: 20px;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
     position: relative;
     z-index: 1;
 }
 
 .popularAreasImage1 {
-    width: 70%;
+    width: 69%;
     height: 300px;
     border-radius: 15px;
 }
@@ -436,7 +500,7 @@
 .glideSupportSection {
     width: 100%;
     height: auto;
-    padding: 20px 40px;
+    padding: 40px 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -455,13 +519,13 @@
 }
 
 .glideSupportBox2 h2 {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 700;
 }
 
 .glideSupportBox2 p {
     color: #7d7d7d;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .glideContentBox1 {
@@ -473,7 +537,7 @@
 }
 
 .glideContentBox1 p {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .glideContentBox1 img {
@@ -489,7 +553,7 @@
 }
 
 .glideContentBox2 p {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .glideContentBox2 img {
@@ -505,7 +569,7 @@
 }
 
 .glideContentBox3 p {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .glideContentBox3 img {
@@ -520,7 +584,7 @@
 }
 
 .glideContentBox4 p {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .glideContentBox4 img {
@@ -604,12 +668,12 @@
 }
 
 .findPerfectHomeBox2 h2 {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 600;
 }
 
 .findPerfectHomeBox2 h2 span {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 600;
     color: #1085FF;
 }
@@ -620,7 +684,7 @@
     width: 100%;
     height: auto;
     background-color: #deeeff;
-    padding: 40px 0px;
+    padding: 80px 0px;
 }
 
 /* .trustedAgentsSection .wave2Img {
@@ -650,7 +714,7 @@
 }
 
 .agentsCardsBox {
-    width: 24%;
+    width: 22%;
     height: auto;
     background-color: white;
     border-radius: 10px;
@@ -667,14 +731,16 @@
 }
 
 .agentsCardsBox h3 {
-    font-size: 30px;
+    font-size: 27px;
     font-weight: 600;
     text-align: center;
+    margin-bottom: 5px;
 }
 
 .agentsCardsBox ul li {
+    margin-top: 5px;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     list-style: none;
 }
@@ -703,6 +769,10 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.totalPropertyContentBox p {
+    font-size: 14px;
+}
+
 .housingExpertPara {
     color: white;
     font-size: 20px;
@@ -722,16 +792,16 @@
 
 .whatClientSaysSection {
     width: 100%;
-    padding: 20px 40px;
+    padding: 80px 40px;
 }
 
 .whatClientSaysSection h2 {
-    font-size: 35px;
+    font-size: 32px;
     font-weight: 600;
 }
 
 .whatClientSaysSection hr {
-    width: 21%;
+    width: 19%;
     border: 2px solid black;
 }
 
@@ -746,7 +816,7 @@
 .testimonialBox {
     width: 32%;
     background-color: #deeeff;
-    padding: 80px 20px 20px 20px;
+    padding: 60px 20px 20px 20px;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
@@ -767,11 +837,11 @@
 }
 
 .testimonialUserImg {
-    width: 120px;
+    width: 100px;
     height: auto;
     position: absolute;
     top: -40px;
-    left: 37%;
+    left: 39%;
 }
 
 .testimonialStarImg {
@@ -796,7 +866,7 @@
 .downloadAndroidAppSection {
     width: 98%;
     height: auto;
-    margin: auto;
+    margin: 20px auto;
     background: rgb(16, 133, 255);
     background: linear-gradient(270deg, rgba(16, 133, 255, 1) 0%, rgba(222, 238, 255, 1) 100%);
     border-radius: 20px;
@@ -851,7 +921,7 @@
 
 .upperFooterSection {
     width: 100%;
-    padding: 20px 40px;
+    padding: 60px 40px;
 }
 
 .footerPropertyAvailableBigBox {
@@ -1154,7 +1224,7 @@
         flex-wrap: wrap;
     }
 
-    .propertyCategoryImgBox{
+    .propertyCategoryImgBox {
         width: 48%;
     }
 
@@ -1163,15 +1233,16 @@
         font-weight: 700;
     }
 
-    .propertyCategoryImgBox img{
+    .propertyCategoryImgBox img {
         max-height: 95px;
     }
 
-    .content p{
+    .content p {
         font-size: 18px;
         line-height: 1;
     }
-    .content p span{
+
+    .content p span {
         font-size: 14px;
     }
 

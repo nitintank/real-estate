@@ -11,12 +11,16 @@ const index = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selected, setSelected] = useState('loco1');
 
   const [propertyType, setPropertyType] = useState('Commercial');
   const [Subtype, setSubtype] = useState('Sale');
   const router = useRouter();
   const [location, setLocation] = useState('');
 
+  const handleRadioChange = (event) => {
+    setSelected(event.target.id);
+  };
 
   const fetchProperties = async (filters = {}) => {
     // setLoading(true);
@@ -108,87 +112,128 @@ const index = () => {
           <Image width={200} height={200} src="/images/house_png_2-e1646989822282.png" alt="" priority={true} />
         </div>
         <div className={styles.searchBiggerBox}>
-          <div className={styles.formBox}>
-            <label for="">Location</label>
-            <input type="text" placeholder="Enter An Address, City Or Zip Code" onChange={handleLocationChange}/>
-            {/* <input type="text" placeholder="Enter An Address, City Or Zip Code"  onChange={(e)=> setLocations(e.target.value)}/> */}
+          <div className={styles.formBiggerBox}>
+            <div className={styles.formBox2}>
+              <input
+                type="radio"
+                name="loco"
+                id="loco1"
+                defaultChecked={true}
+                onChange={handleRadioChange}
+              />
+              <label htmlFor="loco1" className={`${styles.LBorderRadius} ${selected === 'loco1' ? styles.selectedLabel : ''}`}>
+                Rent
+              </label>
+            </div>
+            <div className={styles.formBox2}>
+              <input type="radio" name="loco" id="loco2" onChange={handleRadioChange} />
+              <label htmlFor="loco2" className={selected === 'loco2' ? styles.selectedLabel : ''}>
+                Buy
+              </label>
+            </div>
+            <div className={styles.formBox2}>
+              <input type="radio" name="loco" id="loco3" onChange={handleRadioChange} />
+              <label htmlFor="loco3" className={selected === 'loco3' ? styles.selectedLabel : ''}>
+                New Projects
+              </label>
+            </div>
+            <div className={styles.formBox2}>
+              <input type="radio" name="loco" id="loco4" onChange={handleRadioChange} />
+              <label htmlFor="loco4" className={`${styles.RBorderRadius} ${selected === 'loco4' ? styles.selectedLabel : ''}`}>
+                Commercial
+              </label>
+            </div>
           </div>
-          <div className={styles.formBox}>
-            <label for="">Property Type</label>
-            {/* <select name="" id="">
+          <div className={styles.formBiggerBox}>
+            <div className={styles.formBox}>
+              {/* <label for="">Location</label> */}
+              <input type="text" placeholder="Enter An Address, City Or Zip Code" onChange={handleLocationChange} />
+              {/* <input type="text" placeholder="Enter An Address, City Or Zip Code"  onChange={(e)=> setLocations(e.target.value)}/> */}
+            </div>
+            <div className={styles.formBox}>
+              {/* <label for="">Property Type</label> */}
+              {/* <select name="" id="">
               <option value="">Property Type</option>
               <option value="">Rentals</option>
               <option value="">Sales</option>
             </select> */}
-            <div className={styles.selectBox}>
-              <div className={styles.selectBox__current} tabindex="1">
-                <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="0" value="Rent" name="Housing" onChange={(e)=>handlePropertySubtypeChange(e)} />
-                  <p className={styles.selectBox__inputText}>For Rent</p>
+              <div className={styles.selectBox}>
+                <div className={styles.selectBox__current} tabindex="1">
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="0" value="PropertyType" name="Housing" defaultChecked={true} />
+                    <p className={styles.selectBox__inputText}>Property Type</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="1" value="Rent" name="Housing" onChange={(e) => handlePropertySubtypeChange(e)} />
+                    <p className={styles.selectBox__inputText}>For Rent</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="2" value="Sale" name="Housing" onChange={(e) => handlePropertySubtypeChange(e)} />
+                    <p className={styles.selectBox__inputText}>For Buy</p>
+                  </div>
+                  <img className={styles.selectBox__icon} src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
                 </div>
-                <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="1" value="Sale" name="Housing" defaultChecked={true} onChange={(e)=>handlePropertySubtypeChange(e)} />
-                  <p className={styles.selectBox__inputText}>For Buy</p>
-                </div>
-                <img className={styles.selectBox__icon} src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
+                <ul className={styles.selectBox__list}>
+                  {/* <li>
+                    <label className={styles.selectBox__option} for="0" aria-hidden="aria-hidden">Property Type</label>
+                  </li> */}
+                  <li>
+                    <label className={styles.selectBox__option} for="1" aria-hidden="aria-hidden">For Rent</label>
+                  </li>
+                  <li>
+                    <label className={styles.selectBox__option} for="2" aria-hidden="aria-hidden">For Buy</label>
+                  </li>
+                </ul>
               </div>
-              <ul className={styles.selectBox__list}>
-                <li>
-                  <label className={styles.selectBox__option} for="0" aria-hidden="aria-hidden">For Rent</label>
-                </li>
-                <li>
-                  <label className={styles.selectBox__option} for="1" aria-hidden="aria-hidden">For Buy</label>
-                </li>
-              </ul>
             </div>
-          </div>
-          <div className={styles.formBox}>
-            <label for="">Category</label>
-            {/* <select name="" id="">
+            <div className={styles.formBox}>
+              {/* <label for="">Category</label> */}
+              {/* <select name="" id="">
               <option value="">Property Category</option>
               <option value="">Apartments</option>
               <option value="">Houses</option>
               <option value="">Villas</option>
               <option value="">Duplexes</option>
             </select> */}
-            <div className={styles.selectBox}>
-              <div className={styles.selectBox__current} tabindex="1">
-                <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="5" value="Residential" name="propertyType" onChange={handlePropertyTypeChange} />
-                  <p className={styles.selectBox__inputText}>Residential</p>
+              <div className={styles.selectBox}>
+                <div className={styles.selectBox__current} tabindex="1">
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="5" value="Residential" name="propertyType" onChange={handlePropertyTypeChange} />
+                    <p className={styles.selectBox__inputText}>Residential</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="6" value="Commercial" name="propertyType" onChange={handlePropertyTypeChange} defaultChecked={true} />
+                    <p className={styles.selectBox__inputText}>Commercial</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="7" value="Land" name="propertyType" onChange={handlePropertyTypeChange} />
+                    <p className={styles.selectBox__inputText}>Land</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="8" value="MultipleUnits" name="propertyType" onChange={handlePropertyTypeChange} />
+                    <p className={styles.selectBox__inputText}>Multiple Units</p>
+                  </div>
+                  <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
                 </div>
-                <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="6" value="Commercial" name="propertyType" onChange={handlePropertyTypeChange} defaultChecked={true} />
-                  <p className={styles.selectBox__inputText}>Commercial</p>
-                </div>
-                <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="7" value="Land" name="propertyType" onChange={handlePropertyTypeChange} />
-                  <p className={styles.selectBox__inputText}>Land</p>
-                </div>
-                <div className={styles.selectBox__value}>
-                  <input className={styles.selectBox__input} type="radio" id="8" value="MultipleUnits" name="propertyType" onChange={handlePropertyTypeChange} />
-                  <p className={styles.selectBox__inputText}>Multiple Units</p>
-                </div>
-                <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
+                <ul className={styles.selectBox__list}>
+                  <li>
+                    <label className={styles.selectBox__option} for="5" aria-hidden="aria-hidden">Residential</label>
+                  </li>
+                  <li>
+                    <label className={styles.selectBox__option} for="6" aria-hidden="aria-hidden">Commercial</label>
+                  </li>
+                  <li>
+                    <label className={styles.selectBox__option} for="7" aria-hidden="aria-hidden">Land</label>
+                  </li>
+                  <li>
+                    <label className={styles.selectBox__option} for="8" aria-hidden="aria-hidden">Multiple Units</label>
+                  </li>
+                </ul>
               </div>
-              <ul className={styles.selectBox__list}>
-                <li>
-                  <label className={styles.selectBox__option} for="5" aria-hidden="aria-hidden">Residential</label>
-                </li>
-                <li>
-                  <label className={styles.selectBox__option} for="6" aria-hidden="aria-hidden">Commercial</label>
-                </li>
-                <li>
-                  <label className={styles.selectBox__option} for="7" aria-hidden="aria-hidden">Land</label>
-                </li>
-                <li>
-                  <label className={styles.selectBox__option} for="8" aria-hidden="aria-hidden">Multiple Units</label>
-                </li>
-              </ul>
             </div>
-          </div>
-          <div className={`${styles.formBox} ${styles.flexEnd}`}>
-            <button onClick={handleSearch}><i className="fa-solid fa-magnifying-glass"></i> Search</button>
+            <div className={`${styles.formBox} ${styles.flexEnd}`}>
+              <button onClick={handleSearch}><i className="fa-solid fa-magnifying-glass"></i> Search</button>
+            </div>
           </div>
         </div>
       </section>

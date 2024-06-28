@@ -23,11 +23,11 @@
 .nav ul li {
     cursor: pointer;
     list-style: none;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .nav .logoImg {
-    width: 170px;
+    width: 150px;
     height: auto;
 }
 
@@ -39,8 +39,8 @@
 }
 
 .nav .navbarBox button {
-    padding: 4px 20px;
-    font-size: 15px;
+    padding: 4px 15px;
+    font-size: 14px;
     background-color: #1085FF;
     border-radius: 25px;
     border: none;
@@ -57,6 +57,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    font-size: 16px;
 }
 
 .navbarBox a{

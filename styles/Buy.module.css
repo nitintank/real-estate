@@ -64,7 +64,7 @@
 }
 
 .searchBiggerBox .formBox {
-    width: 19%;
+    width: 32%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -379,7 +379,7 @@
         flex-wrap: wrap;
         gap: 20px;
         height: auto;
-        bottom: -320px;
+        bottom: -180px;
     }
     .searchBiggerBox .formBox{
         width: 100%;
@@ -388,7 +388,7 @@
     /* Latest Properties Section */
 
     .latestPropertiesSection{
-        padding: 320px 10px 20px 10px;
+        padding: 190px 10px 20px 10px;
     }
     .latestPropertiesBigBox{
         gap: 20px;
