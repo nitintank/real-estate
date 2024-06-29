@@ -85,6 +85,10 @@
     gap: 5px;
 }
 
+.formBox2 {
+    height: auto;
+}
+
 .formBox2 input {
     display: none;
 }
@@ -1189,13 +1193,14 @@
     }
 
     .topIntroInnerBox1 h2 {
-        font-size: 40px;
+        font-size: 30px;
         text-align: center;
         margin: auto;
     }
 
     .topIntroInnerBox1 p {
-        font-size: 18px;
+        width: 100%;
+        font-size: 14px;
         text-align: center;
     }
 
@@ -1214,18 +1219,61 @@
         flex-wrap: wrap;
         height: auto;
         gap: 10px;
-        bottom: -250px;
+        bottom: -320px;
     }
 
     .searchBiggerBox .formBox {
         width: 100%;
         height: auto;
+        margin: 2px auto;
+    }
+
+    .formBox2 {
+        width: 100%;
+        height: 32px;
+        margin: 2px auto;
+    }
+
+    .formBox2 label {
+        width: 100%;
+        display: block;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .LBorderRadius {
+        border-radius: 5px;
+    }
+
+    .RBorderRadius {
+        border-radius: 5px;
+    }
+
+    .formBiggerBox {
+        flex-wrap: wrap;
+    }
+
+    .formBox input {
+        border-radius: 5px;
+    }
+
+    .searchBiggerBox .formBox button {
+        border-radius: 5px;
+    }
+
+    /* Select Box */
+
+    .selectBox {
+        border-radius: 5px;
+    }
+    .selectBox__icon{
+        right: 5px;
     }
 
     /* Property Categories Section */
     .propertyCategoriesSection {
-        margin-top: 240px;
-        padding: 10px;
+        margin-top: 330px;
+        padding: 5px 10px 30px 10px;
     }
 
     .propertyCategoriesImagesBox {
@@ -1245,26 +1293,37 @@
         max-height: 95px;
     }
 
+    .content{
+        margin-top: -100px;
+        height: 100px;
+    }
+
     .content p {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 1;
     }
 
     .content p span {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     /* Latest Properties Section */
     .latestPropertiesSection h2 {
-        font-size: 37px;
+        font-size: 30px;
     }
 
     .latestPropertiesSection p {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .innerPropertyContent p {
-        font-size: 14px;
+        font-size: 12px;
+    }
+    .latestPropertiesContentBox h3{
+        font-size: 18px;
+    }
+    .latestPropertiesContentBox .priceText{
+        font-size: 18px;
     }
 
     .latestPropertiesSection {
@@ -1302,6 +1361,7 @@
     .popularAreasImageBox {
         width: 100%;
         margin: 10px auto 0px auto;
+        gap: 10px;
     }
 
     .popularAreasImage1 {
@@ -1345,10 +1405,13 @@
 
     .glideSupportBox2 h2 {
         font-size: 40px;
+        text-align: center;
     }
 
     .glideSupportBox2 p {
+        width: 100%;
         font-size: 18px;
+        text-align: center;
     }
 
     .glideContentBox1 {
@@ -1401,17 +1464,18 @@
     }
 
     .findPerfectHomeBox2 p {
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
     }
 
     .findPerfectHomeBox2 h2 {
-        font-size: 32px;
+        font-size: 28px;
         text-align: center;
+        margin-bottom: 20px;
     }
 
     .findPerfectHomeBox2 h2 span {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .commentBoxImg {
@@ -1419,7 +1483,7 @@
     }
 
     .perfectHomeBox {
-        padding: 5px 10px;
+        padding: 15px 15px;
     }
 
     .perfectHomeBox img {
@@ -1427,11 +1491,11 @@
     }
 
     .prefectHomeContentBox h3 span {
-        font-size: 25px;
+        font-size: 22px;
     }
 
     .prefectHomeContentBox p {
-        font-size: 15px;
+        font-size: 12px;
     }
 
     /* Trusted Agents Section */
@@ -1440,7 +1504,7 @@
     }
 
     .trustedAgentsSection h2 {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .agentsBigBox {
@@ -1513,7 +1577,7 @@
     }
 
     .downloadAndroidBox1 h3 {
-        font-size: 40px;
+        font-size: 30px;
     }
 
     .downloadAndroidBox2 {
@@ -1526,11 +1590,11 @@
     }
 
     .downloadAndroidBox1 ul li {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .downloadAndroidBox1 img {
-        margin: auto;
+        margin: 10px auto;
     }
 
     /* Upper Footer Section */
