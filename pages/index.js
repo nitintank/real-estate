@@ -6,8 +6,27 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const index = () => {
+
+  const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add(styles.animate);
+        observer.unobserve(entry.target); // Stop observing once animation is triggered
+      }
+    });
+  };
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  };
+
+  useIntersectionObserver(observerCallback, observerOptions);
+
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -100,9 +119,10 @@ const index = () => {
   return (
     <>
       <Navbar />
+
       {/* <!-- Top Introduction Box --> */}
 
-      <section className={styles.topIntroductionBox}>
+      <section className={`${styles.topIntroductionBox} animate-on-scroll`}>
         <div className={styles.topIntroInnerBox1}>
           <h2>Find Your Next<br />Real Estate In Dubai</h2>
           <p>Through our proprietary platform, We are changing how agents and clients navigate the process of finding
@@ -111,7 +131,7 @@ const index = () => {
         <div className={styles.topIntroInnerBox2}>
           <Image width={200} height={200} src="/images/house_png_2-e1646989822282.png" alt="" priority={true} />
         </div>
-        <div className={styles.searchBiggerBox}>
+        <div className={`${styles.searchBiggerBox} animate-on-scroll`}>
           <div className={styles.formBiggerBox}>
             <div className={styles.formBox2}>
               <input
@@ -240,7 +260,7 @@ const index = () => {
 
       {/* <!-- Property Categories Section --> */}
 
-      <section className={styles.propertyCategoriesSection}>
+      <section className={`${styles.propertyCategoriesSection} animate-on-scroll`}>
         <h2>{`We've Got Properties In Dubai For Everyone`}</h2>
         <div className={styles.propertyCategoriesImagesBox}>
           <div className={styles.propertyCategoryImgBox}>
@@ -271,7 +291,8 @@ const index = () => {
       </section>
 
       {/* <!-- Latest Properties Section --> */}
-      <section className={styles.latestPropertiesSection}>
+
+      <section className={`${styles.latestPropertiesSection} animate-on-scroll`}>
         <p>DUBAI REAL ESTATE</p>
         <h2>Latest Properties</h2>
         <div className={styles.latestPropertiesBigBox}>
@@ -310,10 +331,9 @@ const index = () => {
         </div>
       </section>
 
-
       {/* <!-- Popular Areas Section --> */}
 
-      <section className={styles.popularAreasSection}>
+      <section className={`${styles.popularAreasSection} animate-on-scroll`}>
         <p>POPULAR AREAS</p>
         <h2>Explore Most Popular Areas</h2>
         <div className={styles.popularAreasImageBox}>
@@ -327,7 +347,7 @@ const index = () => {
 
       {/* <!-- Glide Support Section --> */}
 
-      <section className={styles.glideSupportSection}>
+      <section className={`${styles.glideSupportSection} animate-on-scroll`}>
         <div className={styles.glideSupportBox1}>
           <div className={styles.glideContentBox1}>
             <Image width={200} height={200} src="/images/card-1.png" alt="" />
@@ -353,7 +373,7 @@ const index = () => {
           <br />
           <p>The Appedronce And Design Of The Bunding Whenios Antennos Mou Be Added Or Remowees Witholk Such
             consequences.</p>
-            <br />
+          <br />
           <p>The Whole Team Spires Are Considered Integrat Parts Of The Architectural Design Of Buldings, Changes To
             Which Would Substandally Change.</p>
           <br />
@@ -364,7 +384,7 @@ const index = () => {
 
       {/* <!-- Find Perfect Home Section --> */}
 
-      <section className={styles.findPerfectHomeSection}>
+      <section className={`${styles.findPerfectHomeSection} animate-on-scroll`}>
         <div className={styles.findPerfectHomeBox1}>
           <div className={`${styles.perfectHomeBox} ${styles.bgWhite}`}>
             <Image width={200} height={200} src="/images/icon-1.png" alt="" />
@@ -397,7 +417,7 @@ const index = () => {
 
       {/* <!-- Trusted Agents Section --> */}
 
-      <section className={styles.trustedAgentsSection}>
+      <section className={`${styles.trustedAgentsSection} animate-on-scroll`}>
         {/* <Image width={200} height={200} src="/images/blue-wave-2.png" alt="" className={styles.wave2Img} /> */}
         <h2>We Are Have <span>Trusted<br />Expert</span> Agent</h2>
         <div className={styles.agentsBigBox}>
@@ -483,7 +503,7 @@ const index = () => {
 
       {/* <!-- What Client Says Section --> */}
 
-      <section className={styles.whatClientSaysSection}>
+      <section className={`${styles.whatClientSaysSection} animate-on-scroll`}>
         <h2>What Clients Say</h2>
         <hr />
         <div className={styles.testimonialBigBox}>
@@ -510,7 +530,7 @@ const index = () => {
 
       {/* <!-- Download Android App Section --> */}
 
-      <section className={styles.downloadAndroidAppSection}>
+      <section className={`${styles.downloadAndroidAppSection} animate-on-scroll`}>
         <div className={styles.downloadAndroidBox1}>
           <h3>Download Our Mobile App</h3>
           <p>and never miss out any update</p>
@@ -527,7 +547,7 @@ const index = () => {
 
       {/* <!-- Upper Footer Section --> */}
 
-      <section className={styles.upperFooterSection}>
+      <section className={`${styles.upperFooterSection} animate-on-scroll`}>
         <div className={styles.radioInput}>
           <label>
             <input value="value-1" name="value-radio" id="value-1" type="radio" checked="true" />
@@ -617,6 +637,7 @@ const index = () => {
       </section>
 
       {/* <!-- Footer Section --> */}
+
       <Footer />
 
     </>

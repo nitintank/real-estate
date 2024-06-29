@@ -1,4 +1,34 @@
 /* Top Introduction Box */
+.topIntroductionBox,
+.searchBiggerBox,
+.propertyCategoriesSection,
+.latestPropertiesSection,
+.popularAreasSection,
+.glideSupportSection,
+.findPerfectHomeSection,
+.trustedAgentsSection,
+.whatClientSaysSection,
+.downloadAndroidAppSection,
+.upperFooterSection {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.topIntroductionBox.animate,
+.searchBiggerBox.animate,
+.propertyCategoriesSection.animate,
+.latestPropertiesSection.animate,
+.popularAreasSection.animate,
+.glideSupportSection.animate,
+.findPerfectHomeSection.animate,
+.trustedAgentsSection.animate,
+.whatClientSaysSection.animate,
+.downloadAndroidAppSection.animate,
+.upperFooterSection.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .topIntroductionBox {
     width: 95%;
@@ -1023,6 +1053,18 @@
 .radioInput label:nth-child(2):has(input:checked)~.selection {
     transform: translateX(calc(var(--container_width) * 1/2));
 }
+
+/* Keyframes */
+@keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
 /* Responsive Code */
 

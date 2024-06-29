@@ -24,14 +24,14 @@
 
 .topIntroInnerBox1 h2 {
     color: white;
-    font-size: 60px;
+    font-size: 45px;
     font-weight: 500;
     line-height: 1;
 }
 
 .topIntroInnerBox1 p {
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 5px;
 }
 
@@ -289,7 +289,7 @@
 
 .latestPropertiesInnerBox img {
     width: 100%;
-    height: 300px;
+    height: 200px;
     border-radius: 10px 10px 0px 0px;
 }
 
@@ -300,17 +300,20 @@
 .latestPropertiesContentBox .miniText {
     font-size: 14px;
     font-weight: 500;
+    margin: 5px 0px;
 }
 
 .latestPropertiesContentBox h3 {
     font-size: 18px;
     font-weight: 600;
+    margin: 5px 0px;
 }
 
 .latestPropertiesContentBox .priceText {
-    font-size: 20px;
+    font-size: 18px;
     color: #1085FF;
     font-weight: 600;
+    margin: 5px 0px;
 }
 
 .latestPropertiesContentBox .propertyDescription {
@@ -343,14 +346,14 @@
 }
 
 .innerButtonBox button {
-    width: 100%;
-    padding: 5px 35px;
+    width: 32%;
+    padding: 5px 10px;
     cursor: pointer;
     border: 1px solid #deeeff;
     color: #1085FF;
     background-color: #deeeff;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .innerButtonBox button .fa-whatsapp {
@@ -363,7 +366,7 @@
 .downloadAndroidAppSection {
     width: 98%;
     height: auto;
-    margin: auto;
+    margin: 10px auto;
     background: rgb(16, 133, 255);
     background: linear-gradient(270deg, rgba(16, 133, 255, 1) 0%, rgba(222, 238, 255, 1) 100%);
     border-radius: 20px;
@@ -381,7 +384,7 @@
 }
 
 .downloadAndroidBox1 h3{
-    font-size: 40px;
+    font-size: 37px;
     font-weight: 600;
 }
 
@@ -461,11 +464,11 @@
         align-items: center;
     }
     .topIntroInnerBox1 h2{
-        font-size: 45px;
+        font-size: 35px;
         text-align: center;
     }
     .topIntroInnerBox1 p{
-        font-size: 18px;
+        font-size: 16px;
         text-align: center;
     }
     .topIntroInnerBox2{
@@ -514,13 +517,13 @@
         width: 100%;
     }
     .latestPropertiesContentBox h3{
-        font-size: 20px !important;
+        font-size: 18px !important;
     }
 
     /* Main Section */
 
     .mainSection{
-        padding: 340px 10px 20px 10px;
+        padding: 350px 10px 20px 10px;
     }
     .mainSectionBox1{
         width: 100%;
@@ -531,7 +534,10 @@
         padding: 0px;
     }
     .mainSectionBox1 h3{
-        font-size: 40px;
+        font-size: 30px;
+    }
+    .mainSectionBox1 p{
+        font-size: 12px;
     }
     .mainSectionBox2 img{
         margin-top: 10px;
@@ -540,25 +546,30 @@
     .downloadAndroidAppSection{
         flex-wrap: wrap;
     }
-    .download-android-box-1{
+    .downloadAndroidBox1{
         width: 100%;
         padding: 10px 25px;
     }
-    .download-android-box-1 h3{
-        font-size: 40px;
+    .downloadAndroidBox1 h3{
+        font-size: 30px;
+    }
+    .downloadAndroidBox1 p{
+        font-size: 14px;
+        margin: 5px 0px;
     }
     .downloadAndroidBox2 {
         width: 100%;
     }
-    .download-android-box-1 ul{
+    .downloadAndroidBox1 ul{
         margin: 5px 0px;
         margin-bottom: 10px;
     }
-    .download-android-box-1 ul li{
+    .downloadAndroidBox1 ul li{
         font-size: 16px;
     }
-    .download-android-box-1 img{
-        margin: auto;
+    .downloadAndroidBox1 img{
+        width: 160px;
+        margin: 10px auto;
     }
 }
 
