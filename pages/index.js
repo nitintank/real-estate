@@ -131,7 +131,7 @@ const index = () => {
         <div className={styles.topIntroInnerBox2}>
           <Image width={200} height={200} src="/images/house_png_2-e1646989822282.png" alt="" priority={true} />
         </div>
-        <div className={`${styles.searchBiggerBox} animate-on-scroll`}>
+        <div className={styles.searchBiggerBox}>
           <div className={styles.formBiggerBox}>
             <div className={styles.formBox2}>
               <input

@@ -1,6 +1,5 @@
 /* Top Introduction Box */
 .topIntroductionBox,
-.searchBiggerBox,
 .propertyCategoriesSection,
 .latestPropertiesSection,
 .popularAreasSection,
@@ -16,7 +15,6 @@
 }
 
 .topIntroductionBox.animate,
-.searchBiggerBox.animate,
 .propertyCategoriesSection.animate,
 .latestPropertiesSection.animate,
 .popularAreasSection.animate,

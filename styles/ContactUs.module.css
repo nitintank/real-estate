@@ -1,4 +1,16 @@
 /* Form Section */
+.formContentBox1,
+.formContentBox {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.formContentBox1.animate,
+.formContentBox.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .formSection{
     width: 100%;

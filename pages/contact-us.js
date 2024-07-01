@@ -4,8 +4,26 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import styles from "../styles/ContactUs.module.css";
 import { useState } from 'react'
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const contactUs = () => {
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.animate);
+            observer.unobserve(entry.target); // Stop observing once animation is triggered
+          }
+        });
+      };
+    
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      };
+    
+      useIntersectionObserver(observerCallback, observerOptions);
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -51,10 +69,10 @@ const contactUs = () => {
             {/* <!-- Form Section --> */}
             <section className={styles.formSection}>
                 <div className={styles.formContentBigBox}>
-                    <div className={styles.formContentBox1}>
+                    <div className={`${styles.formContentBox1} animate-on-scroll`}>
                         <Image width={200} height={200} src="/images/contact-us-house-img.png" priority={true} alt="" />
                     </div>
-                    <div className={styles.formContentBox}>
+                    <div className={`${styles.formContentBox} animate-on-scroll`}>
                         <form method='POST' onSubmit={handleSubmit}>
                             <h2>Contact Us</h2>
                             {messageSent && <p className={styles.whiteText}>Message Sent Successfully, Our Team Will Contact You Back Really Soon!!</p>}

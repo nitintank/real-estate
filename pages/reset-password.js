@@ -5,8 +5,27 @@ import Footer from '@/components/footer'
 import styles from "../styles/ResetPassword.module.css";
 import Image from 'next/image';
 import Link from 'next/link';
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const ResetPassword = () => {
+
+  const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add(styles.animate);
+        observer.unobserve(entry.target); // Stop observing once animation is triggered
+      }
+    });
+  };
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  };
+
+  useIntersectionObserver(observerCallback, observerOptions);
+
   const [phone_number, setPhoneNumber] = useState('')
   const [otp, setOtp] = useState('')
   const [new_password, setNewPassword] = useState('')
@@ -102,12 +121,12 @@ const ResetPassword = () => {
       <Navbar />
       {/* <!-- Reset Password Big Box Section --> */}
       <div class={styles.registerBigBox}>
-        <div class={styles.registerContentBox1}>
+        <div class={`${styles.registerContentBox1} animate-on-scroll`}>
           <h2>Connecting People & Property</h2>
           <p>Easy way to Buy/ Sell property</p>
           <Image width={200} height={200} src="/images/orange-house.png" alt="" />
         </div>
-        <div class={styles.registerContentBox2}>
+        <div class={`${styles.registerContentBox2} animate-on-scroll`}>
           <h2>Reset Password,</h2>
           <form method='POST' onSubmit={handleSubmit}>
             <div className={styles.sendOtpBox}>

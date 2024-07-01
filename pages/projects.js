@@ -3,15 +3,34 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import styles from "../styles/Projects.module.css";
 import Image from 'next/image';
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const projects = () => {
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.animate);
+            observer.unobserve(entry.target); // Stop observing once animation is triggered
+          }
+        });
+      };
+    
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      };
+    
+      useIntersectionObserver(observerCallback, observerOptions);
+      
     return (
         <>
             <Navbar />
 
             {/* <!-- Top Introduction Box --> */}
 
-            <section className={styles.topIntroductionBox}>
+            <section className={`${styles.topIntroductionBox} animate-on-scroll`}>
                 <div className={styles.topIntroInnerBox1}>
                     <p>POPULAR AREAS</p>
                     <h2>Explore Most Popular Areas</h2>
@@ -203,7 +222,7 @@ const projects = () => {
 
             {/* <!-- Main Section --> */}
 
-            <section className={styles.mainSection}>
+            <section className={`${styles.mainSection} animate-on-scroll`}>
                 <div className={styles.mainSectionBox1}>
                     <p>POPULAR AREAS</p>
                     <h3>Recent Projects</h3>
@@ -312,7 +331,7 @@ const projects = () => {
 
             {/* <!-- Download Android App Section --> */}
 
-            <section className={styles.downloadAndroidAppSection}>
+            <section className={`${styles.downloadAndroidAppSection} animate-on-scroll`}>
                 <div className={styles.downloadAndroidBox1}>
                     <h3>Download Our Mobile App</h3>
                     <p>and never miss out any update</p>

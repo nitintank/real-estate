@@ -3,14 +3,33 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import styles from "../styles/Agents.module.css";
 import Image from 'next/image';
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const agents = () => {
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add(styles.animate);
+                observer.unobserve(entry.target); // Stop observing once animation is triggered
+            }
+        });
+    };
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+    };
+
+    useIntersectionObserver(observerCallback, observerOptions);
+
     return (
         <>
             <Navbar />
             {/* <!-- Top Introduction Box --> */}
 
-            <section className={styles.topIntroductionBox}>
+            <section className={`${styles.topIntroductionBox} animate-on-scroll`}>
                 <div className={styles.topIntroInnerBox1}>
                     <p>POPULAR AREAS</p>
                     <h2>Find Your Agent To Find A Home Agents</h2>
@@ -71,7 +90,7 @@ const agents = () => {
 
             {/* <!-- Trusted Agents Section --> */}
 
-            <section className={styles.trustedAgentsSection}>
+            <section className={`${styles.trustedAgentsSection} animate-on-scroll`}>
                 <h2>We Are Have <span>Trusted<br />Expert</span> Agent</h2>
                 <div className={styles.agentsBigBox}>
                     <div className={styles.agentsCardsBox}>

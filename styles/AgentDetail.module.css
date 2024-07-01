@@ -1,4 +1,24 @@
 /* Agent Card Box Section */
+.agentCardBox,
+.agentAboutBox,
+.trackRecordSection,
+.latestPropertiesSection,
+.contactMeSection,
+.reviewsSection {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.agentCardBox.animate,
+.agentAboutBox.animate,
+.trackRecordSection.animate,
+.latestPropertiesSection.animate,
+.contactMeSection.animate,
+.reviewsSection.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .agentCardBox{
     width: 100%;

@@ -4,8 +4,27 @@ import Footer from '@/components/footer'
 import styles from "../styles/Rent.module.css";
 import Link from 'next/link';
 import Image from 'next/image';
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const rent = () => {
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add(styles.animate);
+                observer.unobserve(entry.target); // Stop observing once animation is triggered
+            }
+        });
+    };
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+    };
+
+    useIntersectionObserver(observerCallback, observerOptions);
+
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -31,12 +50,12 @@ const rent = () => {
             console.log('Filtered by category:', filteredProperties);
 
             // Filter by property typecon
-            console.log(filters,"filters");
-            console.log(filters.propertyType,"filters.propertyType");
+            console.log(filters, "filters");
+            console.log(filters.propertyType, "filters.propertyType");
             if (filters.propertyType) {
-                filteredProperties = filteredProperties.filter((property) =>{
-                    console.log(property,"properties");
-                    console.log(property.property_type,"property.property_type");
+                filteredProperties = filteredProperties.filter((property) => {
+                    console.log(property, "properties");
+                    console.log(property.property_type, "property.property_type");
 
                     return property.property_type === filters.propertyType
                 })
@@ -46,7 +65,7 @@ const rent = () => {
                 const priceRange = filters.price.split('-').map(Number);
                 const minPrice = priceRange[0];
                 const maxPrice = priceRange[1] || Infinity;
-            
+
                 filteredProperties = filteredProperties.filter((property) => {
                     const propertyPrice = property.price;
                     return propertyPrice >= minPrice && propertyPrice <= maxPrice;
@@ -79,13 +98,13 @@ const rent = () => {
     };
 
     const handlePropertyTypeChange = (e) => {
-        console.log(e.target.value,"tqargeted value");
+        console.log(e.target.value, "tqargeted value");
         setPropertyType(e.target.value);
         setPropertySubtype(''); // Reset property subtype when property type changes
     };
 
     const handlePriceChange = (e) => {
-        console.log(e.target.value,"tqargeted value");
+        console.log(e.target.value, "tqargeted value");
         setPrice(e.target.value)
     };
 
@@ -96,7 +115,7 @@ const rent = () => {
         <>
             <Navbar />
             {/* Top Introduction Box */}
-            <section className={styles.topIntroductionBox}>
+            <section className={`${styles.topIntroductionBox} animate-on-scroll`}>
                 <div className={styles.topIntroInnerBox1}>
                     <h2>Properties For Rent</h2>
                     <p>Find the prefect property for rent</p>
@@ -114,19 +133,19 @@ const rent = () => {
                         <div className={styles.selectBox}>
                             <div className={styles.selectBox__current} tabIndex="1">
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="0" value="Residential" name="propertyType" onChange={handlePropertyTypeChange} defaultChecked={true}/>
+                                    <input className={styles.selectBox__input} type="radio" id="0" value="Residential" name="propertyType" onChange={handlePropertyTypeChange} defaultChecked={true} />
                                     <p className={styles.selectBox__inputText}>Residential</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="1" value="Commercial" name="propertyType"  onChange={handlePropertyTypeChange}/>
+                                    <input className={styles.selectBox__input} type="radio" id="1" value="Commercial" name="propertyType" onChange={handlePropertyTypeChange} />
                                     <p className={styles.selectBox__inputText}>Commercial</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="2" value="Land" name="propertyType" onChange={handlePropertyTypeChange}/>
+                                    <input className={styles.selectBox__input} type="radio" id="2" value="Land" name="propertyType" onChange={handlePropertyTypeChange} />
                                     <p className={styles.selectBox__inputText}>Land</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="3" value="MultipleUnits" name="propertyType" onChange={handlePropertyTypeChange}/>
+                                    <input className={styles.selectBox__input} type="radio" id="3" value="MultipleUnits" name="propertyType" onChange={handlePropertyTypeChange} />
                                     <p className={styles.selectBox__inputText}>Multiple Units</p>
                                 </div>
                                 <img className={styles.selectBox__icon} src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
@@ -183,7 +202,7 @@ const rent = () => {
             </section>
 
             {/* Latest Properties Section */}
-            <section className={styles.latestPropertiesSection}>
+            <section className={`${styles.latestPropertiesSection} animate-on-scroll`}>
                 <p>DUBAI REAL ESTATE</p>
                 <h2>Latest Properties</h2>
                 <div className={styles.latestPropertiesBigBox}>

@@ -4,8 +4,27 @@ import Footer from '@/components/footer'
 import styles from "../styles/Buy.module.css";
 import Link from 'next/link';
 import Image from 'next/image';
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const buy = () => {
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.animate);
+            observer.unobserve(entry.target); // Stop observing once animation is triggered
+          }
+        });
+      };
+    
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      };
+    
+      useIntersectionObserver(observerCallback, observerOptions);
+      
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -124,7 +143,7 @@ const buy = () => {
         <>
             <Navbar />
             {/* <!-- Top Introduction Box --> */}
-            <section className={styles.topIntroductionBox}>
+            <section className={`${styles.topIntroductionBox} animate-on-scroll`}>
                 <div className={styles.topIntroInnerBox1}>
                     <h2>Properties For Buy</h2>
                     <p>Find the prefect property for sale</p>
@@ -212,7 +231,7 @@ const buy = () => {
 
             {/* <!-- Latest Properties Section --> */}
 
-            <section className={styles.latestPropertiesSection}>
+            <section className={`${styles.latestPropertiesSection} animate-on-scroll`}>
                 <p>DUBAI REAL ESTATE</p>
                 <h2>Latest Properties</h2>
                 <div className={styles.latestPropertiesBigBox}>

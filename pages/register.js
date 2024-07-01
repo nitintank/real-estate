@@ -5,8 +5,26 @@ import Footer from '@/components/footer'
 import styles from "../styles/Register.module.css";
 import Image from 'next/image';
 import Link from 'next/link';
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const Register = () => {
+
+  const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add(styles.animate);
+        observer.unobserve(entry.target); // Stop observing once animation is triggered
+      }
+    });
+  };
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  };
+
+  useIntersectionObserver(observerCallback, observerOptions);
 
   const [username, setUserName] = useState('')
   const [phone_number, setPhoneNumber] = useState('')
@@ -97,12 +115,12 @@ const Register = () => {
       <Navbar />
       {/* <!-- Register Big Box Section --> */}
       <div className={styles.registerBigBox}>
-        <div className={styles.registerContentBox1}>
+        <div className={`${styles.registerContentBox1} animate-on-scroll`}>
           <h2>Connecting People & Property</h2>
           <p>Easy way to Buy/ Sell property</p>
           <Image width={200} height={200} src="/images/register-house.png" alt="" />
         </div>
-        <div className={styles.registerContentBox2}>
+        <div className={`${styles.registerContentBox2} animate-on-scroll`}>
           <h2>Register Here,</h2>
           <form method='POST' onSubmit={handleSubmit}>
             <label htmlFor="">Enter Name</label>

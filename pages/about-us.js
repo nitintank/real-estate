@@ -3,13 +3,32 @@ import Image from 'next/image'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import styles from "../styles/AboutUs.module.css";
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const aboutUs = () => {
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add(styles.animate);
+                observer.unobserve(entry.target); // Stop observing once animation is triggered
+            }
+        });
+    };
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+    };
+
+    useIntersectionObserver(observerCallback, observerOptions);
+
     return (
         <>
             <Navbar />
             {/* <!-- Top Introduction Box --> */}
-            <section className={styles.topIntroductionBox}>
+            <section className={`${styles.topIntroductionBox} animate-on-scroll`}>
                 <div className={styles.topIntroInnerBox1}>
                     <h2>OUR MISSION AND VISION</h2>
                     <p>{`"Empowering dreams through personalized real estate experiences, where innovation meets integrity for a brighter tomorrow."`}</p>
@@ -21,7 +40,7 @@ const aboutUs = () => {
 
             {/* <!-- Why Us Section --> */}
 
-            <section className={styles.whyUsSection}>
+            <section className={`${styles.whyUsSection} animate-on-scroll`}>
                 <h2>Why Us</h2>
                 <p>Best real estate agents you will ever see in your life. If you encounter any problems do not hesitate to knock our agents.</p>
                 <div className={styles.whyCardsBigBox}>
@@ -50,7 +69,7 @@ const aboutUs = () => {
 
             {/* <!-- Our Story Section --> */}
 
-            <section className={styles.ourStorySection}>
+            <section className={`${styles.ourStorySection} animate-on-scroll`}>
                 <h2>Our Story</h2>
                 <div className={styles.ourStoryBigBox}>
                     <div className={styles.ourStoryContentBox}>
@@ -74,7 +93,7 @@ const aboutUs = () => {
 
             {/* <!-- Our Value Section --> */}
 
-            <section className={styles.ourValueSection}>
+            <section className={`${styles.ourValueSection} animate-on-scroll`}>
                 <h2>Our Value</h2>
                 <p>As a homegrown UAE brand, we are keen to address the needs of both the local and expat communities. To facilitate the needs of property seekers in the region, we have studied the market extensively and focused on building</p>
                 <div className={styles.popularAreasImageBox}>

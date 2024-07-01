@@ -5,8 +5,27 @@ import Footer from '@/components/footer';
 import Image from 'next/image';
 import styles from "../styles/Property.module.css";
 import Link from 'next/link';
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const property = () => {
+    
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.animate);
+            observer.unobserve(entry.target); // Stop observing once animation is triggered
+          }
+        });
+      };
+    
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      };
+    
+      useIntersectionObserver(observerCallback, observerOptions);
+
     const router = useRouter();
     const { id } = router.query;
     const [propertyDetails, setPropertyDetails] = useState({});
@@ -161,7 +180,7 @@ const property = () => {
     return (
         <>
             <Navbar />
-            <section className={styles.propertyImagesSection}>
+            <section className={`${styles.propertyImagesSection} animate-on-scroll`}>
                 {/* Main property image */}
                 <Image
                     width={600}
@@ -189,7 +208,7 @@ const property = () => {
                 </div> */}
             </section>
 
-            <section className={styles.propertyTitleContentBox}>
+            <section className={`${styles.propertyTitleContentBox} animate-on-scroll`}>
                 <div className={styles.contentTitleContentBox1}>
                     <p>Publish on {propertyDetails.created_at.substring(0, 10)}</p>
                     <h2>{propertyDetails.property_name}</h2>
@@ -202,7 +221,7 @@ const property = () => {
                 </div>
             </section>
 
-            <section className={styles.amenitiesContentBox}>
+            <section className={`${styles.amenitiesContentBox} animate-on-scroll`}>
                 <ul>
                     <li className={styles.activeSelection}>Amenities</li>
                     <Link href="#descriptionSection" scroll={false}><li>Description</li></Link>
@@ -220,12 +239,12 @@ const property = () => {
                 </div>
             </section>
 
-            <section className={styles.descriptionContentBox} id='descriptionSection'>
+            <section className={`${styles.descriptionContentBox} animate-on-scroll`} id='descriptionSection'>
                 <h3>Description</h3>
                 <p>{propertyDetails.description}</p>
             </section>
 
-            <section className={styles.addressSection} id='addressSection'>
+            <section className={`${styles.addressSection} animate-on-scroll`} id='addressSection'>
                 <div className={styles.addressTopContent}>
                     <h2>Address</h2>
                     <Link href={propertyDetails.location}><button className={styles.googleMapsBtn}><i className="fa-solid fa-location-dot"></i>Open On Google Maps</button></Link>
@@ -242,17 +261,17 @@ const property = () => {
                 </div>
             </section>
 
-            <section className={styles.floorPlanSection}>
+            <section className={`${styles.floorPlanSection} animate-on-scroll`}>
                 <h2>Floor Plan</h2>
                 <Image width={600} height={400} src={`https://a.khelogame.xyz/${mediaPaths[0]}`} alt="Floor Plan" />
             </section>
 
-            <section className={styles.googleMapsSection} id='locationSection'>
+            <section className={`${styles.googleMapsSection} animate-on-scroll`} id='locationSection'>
                 <h2>Location</h2>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.1353252701656!2d75.77526107587087!3d26.962613576617418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42aef78fb948e4ab%3A0x1935463d9171cfa!2sSwipeconnect%20Cybersecurity!5e0!3m2!1sen!2sin!4v1717758451689!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
 
-            <section className={styles.ownerDetailsBox}>
+            <section className={`${styles.ownerDetailsBox} animate-on-scroll`}>
                 <div className={styles.ownerDetailBox1}>
                     <h3>Owner Details</h3>
                     <Image width={200} height={200} src="/images/agent-img.png" alt="Agent" />
@@ -316,7 +335,7 @@ const property = () => {
                 </div>
             </section>
 
-            <section className={styles.reviewsSection}>
+            <section className={`${styles.reviewsSection} animate-on-scroll`}>
                 <h2>Property Reviews</h2>
                 {reviews.length === 0 && <p>No reviews available</p>}
                 {reviews.map((review, index) => (

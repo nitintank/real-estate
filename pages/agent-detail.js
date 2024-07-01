@@ -3,13 +3,32 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import styles from "../styles/AgentDetail.module.css";
 import Image from 'next/image';
+import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const agentDetail = () => {
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.animate);
+            observer.unobserve(entry.target); // Stop observing once animation is triggered
+          }
+        });
+      };
+    
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      };
+    
+      useIntersectionObserver(observerCallback, observerOptions);
+
     return (
         <>
             <Navbar />
             {/* <!-- Agent Card Box Section --> */}
-            <section className={styles.agentCardBox}>
+            <section className={`${styles.agentCardBox} animate-on-scroll`}>
                 <div className={styles.agentDetailBox1}>
                     <Image width={200} height={200} src="/images/agent-img.png" alt="" />
                 </div>
@@ -32,7 +51,7 @@ const agentDetail = () => {
             </section>
 
             {/* <!-- About Agent Box --> */}
-            <section className={styles.agentAboutBox}>
+            <section className={`${styles.agentAboutBox} animate-on-scroll`}>
                 <h3>About Ali Tufan</h3>
                 <p>Enchanting three bedroom, three bath home with spacious one bedroom, one bath cabana, in-laws quarters.
                     Charming living area features fireplace and fabulous art deco details. Formal dining room.</p>
@@ -43,7 +62,7 @@ const agentDetail = () => {
 
             {/* <!-- Track Record Section --> */}
 
-            <section className={styles.trackRecordSection}>
+            <section className={`${styles.trackRecordSection} animate-on-scroll`}>
                 <h3>Track Record</h3>
                 <p>Transactions submitted by agent to Property Finder</p>
                 <div className={styles.trackRecordContentBox}>
@@ -68,7 +87,7 @@ const agentDetail = () => {
 
             {/* <!-- Latest Properties Section --> */}
 
-            <section className={styles.latestPropertiesSection}>
+            <section className={`${styles.latestPropertiesSection} animate-on-scroll`}>
                 <h2>Latest Properties</h2>
                 <div className={styles.latestPropertiesBigBox}>
                     <div className={styles.latestPropertiesInnerBox}>
@@ -168,7 +187,7 @@ const agentDetail = () => {
 
             {/* <!-- Contact Me Section --> */}
 
-            <section className={styles.contactMeSection}>
+            <section className={`${styles.contactMeSection} animate-on-scroll`}>
                 <h3>Contact Me</h3>
 
                 <div className={styles.contactMeFormBigBox}>
@@ -196,7 +215,7 @@ const agentDetail = () => {
 
             {/* <!-- Reviews Section --> */}
 
-            <section className={styles.reviewsSection}>
+            <section className={`${styles.reviewsSection} animate-on-scroll`}>
                 <h2>Property Reviews</h2>
                 <div className={styles.ratingsBox}>
                     <div className={styles.ratingsUpperContentBox}>
