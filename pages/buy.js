@@ -249,7 +249,7 @@ const buy = () => {
                                 <p className={styles.miniText}>{property.property_type}</p>
                                 <h3>{property.property_name}</h3>
                                 <p className={styles.priceText}>{property.price}</p>
-                                <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
+                                <p className={styles.propertyDescription}>{property.description.substring(0, 60) + '...'}</p>
                                 <div className={styles.innerPropertyContent}>
                                     <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
                                     <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>

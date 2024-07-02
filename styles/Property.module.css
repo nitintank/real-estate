@@ -74,16 +74,19 @@
 
 .contentTitleContentBox1 p {
     font-size: 18px;
+    margin: 5px 0px;
 }
 
 .contentTitleContentBox1 h2 {
     font-size: 35px;
     font-weight: 600;
+    margin: 5px 0px;
 }
 
 .contentTitleContentBox1 h4 {
     font-size: 25px;
     font-weight: 500;
+    margin: 5px 0px;
 }
 
 .contentTitleContentBox2 {
@@ -106,7 +109,7 @@
     padding: 5px 20px;
     border: none;
     border-radius: 10px;
-    font-size: 25px;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -186,10 +189,12 @@
 .descriptionContentBox h3 {
     font-size: 35px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .descriptionContentBox p {
     font-size: 16px;
+    line-height: 1.4;
 }
 
 /* Address Section */
@@ -204,6 +209,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .addressTopContent a{
@@ -264,6 +270,7 @@
 .floorPlanSection h2 {
     font-size: 35px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .floorPlanSection img {
@@ -283,6 +290,7 @@
 .googleMapsSection h2 {
     font-size: 35px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .googleMapsSection iframe {
@@ -310,6 +318,7 @@
 .ownerDetailBox1 h3 {
     font-size: 30px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .ownerDetailBox1 img {
@@ -344,6 +353,7 @@
 .ownerDetailBox2 h3 {
     font-size: 30px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .ownerDetailBox2 form {

@@ -320,6 +320,98 @@ const projects = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className={styles.latestPropertiesInnerBox}>
+                            <Image width={200} height={200} src="/images/property-1.webp" alt="" />
+                            <div className={styles.latestPropertiesContentBox}>
+                                <p className={styles.miniText}>Apartment, Sales</p>
+                                <h3>Luxury 6 Bed Mansion In Jumeria</h3>
+                                <p className={styles.priceText}>AED 10,0000</p>
+                                <p className={styles.propertyDescription}>Beautiful, updated, ground floor Co-op apartment in the desirable
+                                    bay terrace neighborhood....</p>
+                                <div className={styles.innerPropertyContent}>
+                                    <p><i className="fa-solid fa-bed"></i> 5</p>
+                                    <p><i className="fa-solid fa-shower"></i> 5</p>
+                                    <p><i className="fa-solid fa-maximize"></i> 29,000ft</p>
+                                    <p><i className="fa-solid fa-car"></i> 2 Cars</p>
+                                    <p><i className="fa-solid fa-up-right-from-square"></i> 600ft</p>
+                                </div>
+                                <hr />
+                                <div className={styles.innerButtonBox}>
+                                    <button><i className="fa-solid fa-phone"></i> Call</button>
+                                    <button><i className="fa-solid fa-envelope"></i> Email</button>
+                                    <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.latestPropertiesInnerBox}>
+                            <Image width={200} height={200} src="/images/property-2.webp" alt="" />
+                            <div className={styles.latestPropertiesContentBox}>
+                                <p className={styles.miniText}>Apartment, Sales</p>
+                                <h3>Luxury 6 Bed Mansion In Jumeria</h3>
+                                <p className={styles.priceText}>AED 10,0000</p>
+                                <p className={styles.propertyDescription}>Beautiful, updated, ground floor Co-op apartment in the desirable
+                                    bay terrace neighborhood....</p>
+                                <div className={styles.innerPropertyContent}>
+                                    <p><i className="fa-solid fa-bed"></i> 5</p>
+                                    <p><i className="fa-solid fa-shower"></i> 5</p>
+                                    <p><i className="fa-solid fa-maximize"></i> 29,000ft</p>
+                                    <p><i className="fa-solid fa-car"></i> 2 Cars</p>
+                                    <p><i className="fa-solid fa-up-right-from-square"></i> 600ft</p>
+                                </div>
+                                <hr />
+                                <div className={styles.innerButtonBox}>
+                                    <button><i className="fa-solid fa-phone"></i> Call</button>
+                                    <button><i className="fa-solid fa-envelope"></i> Email</button>
+                                    <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.latestPropertiesInnerBox}>
+                            <Image width={200} height={200} src="/images/property-1.webp" alt="" />
+                            <div className={styles.latestPropertiesContentBox}>
+                                <p className={styles.miniText}>Apartment, Sales</p>
+                                <h3>Luxury 6 Bed Mansion In Jumeria</h3>
+                                <p className={styles.priceText}>AED 10,0000</p>
+                                <p className={styles.propertyDescription}>Beautiful, updated, ground floor Co-op apartment in the desirable
+                                    bay terrace neighborhood....</p>
+                                <div className={styles.innerPropertyContent}>
+                                    <p><i className="fa-solid fa-bed"></i> 5</p>
+                                    <p><i className="fa-solid fa-shower"></i> 5</p>
+                                    <p><i className="fa-solid fa-maximize"></i> 29,000ft</p>
+                                    <p><i className="fa-solid fa-car"></i> 2 Cars</p>
+                                    <p><i className="fa-solid fa-up-right-from-square"></i> 600ft</p>
+                                </div>
+                                <hr />
+                                <div className={styles.innerButtonBox}>
+                                    <button><i className="fa-solid fa-phone"></i> Call</button>
+                                    <button><i className="fa-solid fa-envelope"></i> Email</button>
+                                    <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.latestPropertiesInnerBox}>
+                            <Image width={200} height={200} src="/images/property-2.webp" alt="" />
+                            <div className={styles.latestPropertiesContentBox}>
+                                <p className={styles.miniText}>Apartment, Sales</p>
+                                <h3>Luxury 6 Bed Mansion In Jumeria</h3>
+                                <p className={styles.priceText}>AED 10,0000</p>
+                                <p className={styles.propertyDescription}>Beautiful, updated, ground floor Co-op apartment in the desirable
+                                    bay terrace neighborhood....</p>
+                                <div className={styles.innerPropertyContent}>
+                                    <p><i className="fa-solid fa-bed"></i> 5</p>
+                                    <p><i className="fa-solid fa-shower"></i> 5</p>
+                                    <p><i className="fa-solid fa-maximize"></i> 29,000ft</p>
+                                    <p><i className="fa-solid fa-car"></i> 2 Cars</p>
+                                    <p><i className="fa-solid fa-up-right-from-square"></i> 600ft</p>
+                                </div>
+                                <hr />
+                                <div className={styles.innerButtonBox}>
+                                    <button><i className="fa-solid fa-phone"></i> Call</button>
+                                    <button><i className="fa-solid fa-envelope"></i> Email</button>
+                                    <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.mainSectionBox2}>

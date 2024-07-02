@@ -248,6 +248,8 @@
 .mainSectionBox2{
     width: 30%;
     padding: 20px 20px 0px 20px;
+    position: sticky;
+    top: -20px;
 }
 
 .mainSectionBox2 h3{
