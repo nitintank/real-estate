@@ -68,6 +68,7 @@
     text-align: left;
     background-color: #1085FF;
     color: white;
+    white-space: nowrap;
 }
 
 .allReviews td h4{

@@ -45,7 +45,7 @@
 
 .mainContentBox form{
     width: 80%;
-    margin: auto;
+    margin: 10px auto;
 }
 
 .mainContentBox form label{
@@ -249,7 +249,7 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     background-color: white;
     padding: 10px 15px;
     border-radius: 10px;
@@ -315,12 +315,21 @@
     display: flex;
 }
 
+.propertyFormBox2 select{
+    width: 49%;
+    border: 1px solid #ebebeb;
+    padding: 10px 15px;
+    color: black;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
 .submitBtn{
     width: 250px;
     padding: 6px 0px;
     text-align: center;
     margin: 10px auto;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
     background-color: #1085FF;
     border-radius: 5px;
@@ -373,4 +382,10 @@
         width: 220px;
         font-size: 18px;
     }
+}
+
+.previewImage{
+    width: 180px;
+    height: auto;
+    border-radius: 5px;
 }

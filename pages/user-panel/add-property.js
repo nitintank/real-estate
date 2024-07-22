@@ -13,15 +13,19 @@ const addProperty = () => {
     const [location, setLocation] = useState('');
     const [description, setDescription] = useState('');
     const [bedroom, setBedroom] = useState('');
+    const [bathroom, setBathroom] = useState('');
     const [size, setSize] = useState('');
     const [area, setArea] = useState('');
-    const [vehicle, setVehicle] = useState('');
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [pincode, setPincode] = useState('');
+    const [parking, setParking] = useState('');
+    const [buildArea, setBuildArea] = useState('');
+    const [plotUpArea, setPlotUpArea] = useState('');
+    const [furnishing_type, setFurnishing_type] = useState('');
+    const [apartmentNumber, setApartmentNumber] = useState('');
+    const [title_deed, setTitle_deed] = useState('');
     const [imagePaths, setImagePaths] = useState([]);
+    const [videoPaths, setVideoPaths] = useState([]);
     const [mediaPaths, setMediaPaths] = useState([]);
+    const [propertydocumnetpaths, setPropertyDocumentPaths] = useState([]);
     const [token, setToken] = useState(null);
     const [propertySubtype, setPropertySubtype] = useState('');
     const [saleOrRent, setSaleOrRent] = useState('');
@@ -37,16 +41,11 @@ const addProperty = () => {
         if (storedToken) {
             setToken(storedToken);
         }
-        // Check local storage if user is logged in
-        const loggedInStatus = localStorage.getItem('isLoggedIn');
-        if (loggedInStatus == null) {
-            location.href = "/"
-        }
     }, []);
 
     const handlePropertyTypeChange = (e) => {
         setPropertyType(e.target.value);
-        setPropertySubtype(''); // Reset propertySubtype when propertyType changes
+        setPropertySubtype('');
     };
 
     const handleSubmit = async (event) => {
@@ -60,27 +59,37 @@ const addProperty = () => {
         formData.append('location', location);
         formData.append('description', description);
         formData.append('bedroom', bedroom);
+        formData.append('bathroom', bathroom);
         formData.append('size', size);
         formData.append('area', area);
-        formData.append('vehicle', vehicle);
-        formData.append('address', address);
-        formData.append('city', city);
-        formData.append('state', state);
-        formData.append('pincode', pincode);
+        formData.append('parking', parking);
+        formData.append('build_area', buildArea);
+        formData.append('plot_up_area', plotUpArea);
+        formData.append('furnishing_type', furnishing_type);
+        formData.append('title_deed', title_deed);
+        formData.append('apartment_number', apartmentNumber);
         formData.append('property_categories', saleOrRent);
-        imagePaths.forEach((imageFile, index) => {
-            formData.append(`image_path`, imageFile); // key should match server expectations
+
+        imagePaths.forEach((imageFile) => {
+            formData.append('image_path', imageFile);
         });
 
-        mediaPaths.forEach((mediaFile, index) => {
-            formData.append('media_path', mediaFile); // key should match server expectations
+        mediaPaths.forEach((mediaFile) => {
+            formData.append('media_path', mediaFile);
         });
+
+        videoPaths.forEach((videoFile) => {
+            formData.append('video_path', videoFile);
+        });
+
+        propertydocumnetpaths.forEach((propertydocumentFile) => {
+            formData.append('document_path', propertydocumentFile);
+        });
+
 
         if (Object.values(amenities).flat().length > 0) {
             formData.append('amenities', JSON.stringify(amenities));
         }
-
-        console.log('FormData being sent:', Array.from(formData.entries()));
 
         try {
             const response = await fetch('https://a.khelogame.xyz/add-property', {
@@ -121,7 +130,7 @@ const addProperty = () => {
     };
 
     const amenityCheckbox = (category, label) => (
-        <div className={styles.checkBoxDiv}>
+        <div className={styles.checkBoxDiv} key={label}>
             <input
                 type="checkbox"
                 onChange={() => handleAmenityChange(category, label)}
@@ -172,7 +181,8 @@ const addProperty = () => {
                     <Link href="/user-panel/add-property" className={styles.activeSelection}><i className="fa-solid fa-house-chimney"></i> Add Property</Link>
                     <Link href="/user-panel/property-list"><i className="fa-solid fa-list"></i> Property List</Link>
                     <Link href="/user-panel/all-reviews"><i className="fa-solid fa-comment"></i> All Reviews</Link>
-                    <Link href="/user-panel/all-enquiry"><i className="fa fa-question-circle"></i> All Enquiry</Link>
+                    <Link href="/user-panel/contact-tracking"><i class="fa-solid fa-address-book"></i> Contact Track</Link>
+                    <Link href="/user-panel/subscription"><i class="fa-solid fa-paper-plane"></i> Subscription</Link>
                     <Link href="/user-panel/user-profile"><i className="fa-solid fa-user"></i> View Profile</Link>
                 </div>
                 <div className={styles.mainContentBox}>
@@ -181,13 +191,13 @@ const addProperty = () => {
                         {!propertyType && <div className={styles.propertyTypeBox}>
                             <h3>Select Property Type</h3>
                             <input type="radio" value="Residential" id="Residential" name='property_type' onChange={handlePropertyTypeChange} />
-                            <label htmlFor="Residential"><Image width={60} height={60} src="/images/icon-land-1.png"/> Residential</label>
+                            <label htmlFor="Residential"><Image width={60} height={60} src="/images/icon-land-1.png" /> Residential</label>
                             <input type="radio" value="Commercial" id="Commercial" name='property_type' onChange={handlePropertyTypeChange} />
-                            <label htmlFor="Commercial"><Image width={60} height={60} src="/images/icon-land-2.png"/> Commercial</label>
+                            <label htmlFor="Commercial"><Image width={60} height={60} src="/images/icon-land-2.png" /> Commercial</label>
                             <input type="radio" value="Land" id="Land" name='property_type' onChange={handlePropertyTypeChange} />
-                            <label htmlFor="Land"><Image width={60} height={60} src="/images/icon-land-3.png"/> Land</label>
+                            <label htmlFor="Land"><Image width={60} height={60} src="/images/icon-land-3.png" /> Land</label>
                             <input type="radio" value="MultipleUnits" id="MultipleUnits" name='property_type' onChange={handlePropertyTypeChange} />
-                            <label htmlFor="MultipleUnits"><Image width={60} height={60} src="/images/icon-land-4.png"/> Multiple Units</label>
+                            <label htmlFor="MultipleUnits"><Image width={60} height={60} src="/images/icon-land-4.png" /> Multiple Units</label>
                         </div>
                         }
                         {propertyType && !propertySubtype && (
@@ -227,17 +237,32 @@ const addProperty = () => {
                                 </div>
                                 <div className={styles.propertyFormBox2}>
                                     <h3>Additional Details</h3>
+                                    <select value={bedroom} onChange={(e) => setBedroom(e.target.value)}>
+                                        <option value="">Select Bedroom</option>
+                                        {[...Array(11)].map((_, i) => (
+                                            <option key={i} value={i}>{i}</option>
+                                        ))}
+                                    </select>
+                                    <select value={bathroom} onChange={(e) => setBathroom(e.target.value)}>
+                                        <option value="">Select Bathroom</option>
+                                        {[...Array(11)].map((_, i) => (
+                                            <option key={i} value={i}>{i}</option>
+                                        ))}
+                                    </select>
+                                    <select
+                                        value={furnishing_type}
+                                        onChange={(e) => setFurnishing_type(e.target.value)}
+                                    >
+                                        <option value="" disabled>Select Furnishing Type</option>
+                                        <option value="Semi Furnished">Semi Furnished</option>
+                                        <option value="Fully Furnished">Fully Furnished</option>
+                                        <option value="Unfurnished">Unfurnished</option>
+                                    </select>
                                     <input
                                         type="text"
                                         value={location}
                                         onChange={(e) => setLocation(e.target.value)}
                                         placeholder="Add Location"
-                                    />
-                                    <input
-                                        type="text"
-                                        value={bedroom}
-                                        onChange={(e) => setBedroom(e.target.value)}
-                                        placeholder="Add Number of Bedrooms"
                                     />
                                     <input
                                         type="text"
@@ -247,9 +272,9 @@ const addProperty = () => {
                                     />
                                     <input
                                         type="text"
-                                        value={vehicle}
-                                        onChange={(e) => setVehicle(e.target.value)}
-                                        placeholder="Add Number of Vehicles"
+                                        value={parking}
+                                        onChange={(e) => setParking(e.target.value)}
+                                        placeholder="Add Number of Parking"
                                     />
                                     <input
                                         type="text"
@@ -259,27 +284,21 @@ const addProperty = () => {
                                     />
                                     <input
                                         type="text"
-                                        value={address}
-                                        onChange={(e) => setAddress(e.target.value)}
-                                        placeholder="Add Address"
+                                        value={buildArea}
+                                        onChange={(e) => setBuildArea(e.target.value)}
+                                        placeholder="Enter Build Up Area"
                                     />
                                     <input
                                         type="text"
-                                        value={city}
-                                        onChange={(e) => setCity(e.target.value)}
-                                        placeholder="Add City"
+                                        value={plotUpArea}
+                                        onChange={(e) => setPlotUpArea(e.target.value)}
+                                        placeholder="Enter Plot Up Area"
                                     />
                                     <input
                                         type="text"
-                                        value={state}
-                                        onChange={(e) => setState(e.target.value)}
-                                        placeholder="Add State/Country"
-                                    />
-                                    <input
-                                        type="text"
-                                        value={pincode}
-                                        onChange={(e) => setPincode(e.target.value)}
-                                        placeholder="Add Zip/Postal Code"
+                                        value={apartmentNumber}
+                                        onChange={(e) => setApartmentNumber(e.target.value)}
+                                        placeholder="Enter Apartment Number"
                                     />
                                 </div>
                                 {/* <div className={styles.propertyFormBox}>
@@ -313,6 +332,8 @@ const addProperty = () => {
                                             />
                                         ))}
                                     </div>
+                                    <label>Add Property Videos</label>
+                                    <input type="file" onChange={(e) => setVideoPaths(Array.from(e.target.files))} multiple />
                                 </div>
                                 <div className={styles.propertyFormBox2}>
                                     <h3 className={styles.amenitiesText}>Select Amenities For This Property</h3>
@@ -345,6 +366,20 @@ const addProperty = () => {
                                         {amenityCheckbox('cleaningAndMaintenance', 'maintenance staff')}
                                         {amenityCheckbox('cleaningAndMaintenance', 'cleaning services')}
                                     </div>
+                                </div>
+                                <div className={styles.propertyFormBox}>
+                                    <label>Title Deed</label>
+                                    <input
+                                        type="text"
+                                        value={title_deed}
+                                        onChange={(e) => setTitle_deed(e.target.value)}
+                                        placeholder="Enter Title Deed"
+                                    />
+                                    <label>Property Document</label>
+                                    <input
+                                        type="file"
+                                        onChange={(e) => setPropertyDocumentPaths(Array.from(e.target.files))}
+                                    />
                                 </div>
                                 <button type="submit" className={styles.submitBtn}>Add Property <i class="fa-solid fa-arrow-right"></i></button>
                             </>}

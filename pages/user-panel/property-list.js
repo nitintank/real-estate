@@ -75,7 +75,8 @@ const propertylist = () => {
                     <Link href="/user-panel/add-property"><i className="fa-solid fa-house-chimney"></i> Add Property</Link>
                     <Link href="/user-panel/property-list" className={styles.activeSelection}><i className="fa-solid fa-list"></i> Property List</Link>
                     <Link href="/user-panel/all-reviews"><i className="fa-solid fa-comment"></i> All Reviews</Link>
-                    <Link href="/user-panel/all-enquiry"><i className="fa fa-question-circle"></i> All Enquiry</Link>
+                    <Link href="/user-panel/contact-tracking"><i class="fa-solid fa-address-book"></i> Contact Track</Link>
+                    <Link href="/user-panel/subscription"><i class="fa-solid fa-paper-plane"></i> Subscription</Link>
                     <Link href="/user-panel/user-profile"><i className="fa-solid fa-user"></i> View Profile</Link>
                 </div>
                 <div className={styles.mainContentBox}>
@@ -112,7 +113,7 @@ const propertylist = () => {
                                         <td>{property.status}</td>
                                         <td>
                                             <i className="fa-solid fa-pen-to-square" onClick={() => handleEditClick(property.id)}></i>
-                                            <i className="fa-solid fa-trash-can" onClick={() => handleDeleteClick(property.id)}></i>
+                                            {/* <i className="fa-solid fa-trash-can" onClick={() => handleDeleteClick(property.id)}></i> */}
                                         </td>
                                     </tr>
                                 ))}

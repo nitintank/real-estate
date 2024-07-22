@@ -30,40 +30,34 @@ const index = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [propertyType, setPropertyType] = useState('');
+  const [subtype, setSubtype] = useState('');
+  const [location, setLocation] = useState('');
+  const [bedroom, setBedroom] = useState('');
+  const [agents, setAgents] = useState([]);
   const [selected, setSelected] = useState('loco1');
 
-  const [propertyType, setPropertyType] = useState('Commercial');
-  const [Subtype, setSubtype] = useState('Sale');
   const router = useRouter();
-  const [location, setLocation] = useState('');
-
-  const handleRadioChange = (event) => {
-    setSelected(event.target.id);
-  };
 
   const fetchProperties = async (filters = {}) => {
-    // setLoading(true);
+    setLoading(true);
     try {
       const response = await fetch('https://a.khelogame.xyz/get-properties');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-
+      console.log("****", data)
       let filteredProperties = data;
 
       // Filter by property type
       if (filters.propertyType) {
-        filteredProperties = filteredProperties.filter((property) => {
-          return property.property_type === filters.propertyType;
-        });
+        filteredProperties = filteredProperties.filter((property) => property.property_type === filters.propertyType);
       }
 
       // Filter by property subtype
-      if (filters.Subtype) {
-        filteredProperties = filteredProperties.filter((property) => {
-          return property.property_categories === filters.Subtype;
-        });
+      if (filters.subtype) {
+        filteredProperties = filteredProperties.filter((property) => property.property_categories === filters.subtype);
       }
 
       // Filter by location (city or address)
@@ -76,13 +70,27 @@ const index = () => {
         });
       }
 
+      if (filters.bedroom) {
+        filteredProperties = filteredProperties.filter((property) => {
+          if (filters.bedroom === '5+') {
+            return property.bedroom >= 5;
+          } else {
+            return property.bedroom === parseInt(filters.bedroom);
+          }
+        });
+      }
+
       console.log('Filtered properties:', filteredProperties);
       setProperties(filteredProperties);
     } catch (error) {
       setError(error.message);
     } finally {
-      setLoading(false); // Set loading to false after fetching data
+      setLoading(false);
     }
+  };
+
+  const handleRadioChange = (event) => {
+    setSelected(event.target.id);
   };
 
   const handlePropertyTypeChange = (e) => {
@@ -95,27 +103,36 @@ const index = () => {
 
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
+
   };
 
+  const handleBedroomsChange = (e) => {
+    setBedroom(e.target.value);
+  };
   const handleSearch = () => {
-    fetchProperties({ propertyType, Subtype, location });
+    router.push({
+      pathname: '/search',
+      query: { propertyType, subtype, location, bedroom }
+    });
+    fetchProperties({ propertyType, subtype, location, bedroom });
   };
 
   useEffect(() => {
     fetchProperties();
   }, []);
 
+  useEffect(() => {
+    fetch('https://a.khelogame.xyz/agent-details')
+      .then(response => response.json())
+      .then(data => setAgents(data))
+      .catch(error => console.error('Error fetching agent details:', error));
+  }, []);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   const currentDate = new Date();
-  const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000); // Calculate 7 days ago
-  const latestProperties = properties
-    .filter(property => {
-      const propertyDate = new Date(property.created_at);
-      return propertyDate >= oneWeekAgo;
-    })
-    .slice(-2);
+  const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+  const latestProperties = properties;
   return (
     <>
       <Navbar />
@@ -160,14 +177,14 @@ const index = () => {
             <div className={styles.formBox2}>
               <input type="radio" name="loco" id="loco4" onChange={handleRadioChange} />
               <label htmlFor="loco4" className={`${styles.RBorderRadius} ${selected === 'loco4' ? styles.selectedLabel : ''}`}>
-                Commercial
+                Type
               </label>
             </div>
           </div>
           <div className={styles.formBiggerBox}>
             <div className={styles.formBox}>
               {/* <label for="">Location</label> */}
-              <input type="text" placeholder="Enter An Address, City Or Zip Code" onChange={handleLocationChange} />
+              <input type="text" placeholder="Enter Location" onChange={handleLocationChange} />
               {/* <input type="text" placeholder="Enter An Address, City Or Zip Code"  onChange={(e)=> setLocations(e.target.value)}/> */}
             </div>
             <div className={styles.formBox}>
@@ -251,6 +268,61 @@ const index = () => {
                 </ul>
               </div>
             </div>
+            <div className={styles.formBox}>
+              <div className={styles.selectBox}>
+                <div className={styles.selectBox__current} tabindex="1">
+                <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" name="bedroom" defaultChecked={true} />
+                    <p className={styles.selectBox__inputText}>Select Bedrooms</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="9" value="1" name="bedroom" onChange={handleBedroomsChange}/>
+                    <p className={styles.selectBox__inputText}>1</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="10" value="2" name="bedroom" onChange={handleBedroomsChange} />
+                    <p className={styles.selectBox__inputText}>2</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="11" value="3" name="bedroom" onChange={handleBedroomsChange} />
+                    <p className={styles.selectBox__inputText}>3</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="12" value="4" name="bedroom" onChange={handleBedroomsChange} />
+                    <p className={styles.selectBox__inputText}>4</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="13" value="5" name="bedroom" onChange={handleBedroomsChange} />
+                    <p className={styles.selectBox__inputText}>5</p>
+                  </div>
+                  <div className={styles.selectBox__value}>
+                    <input className={styles.selectBox__input} type="radio" id="14" value="5+" name="bedroom" onChange={handleBedroomsChange} />
+                    <p className={styles.selectBox__inputText}>5</p>
+                  </div>
+                  <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
+                </div>
+                <ul className={styles.selectBox__list}>
+                  <li>
+                    <label className={styles.selectBox__option} for="9" aria-hidden="aria-hidden">1</label>
+                  </li>
+                  <li>
+                    <label className={styles.selectBox__option} for="10" aria-hidden="aria-hidden">2</label>
+                  </li>
+                  <li>
+                    <label className={styles.selectBox__option} for="11" aria-hidden="aria-hidden">3</label>
+                  </li>
+                  <li>
+                    <label className={styles.selectBox__option} for="12" aria-hidden="aria-hidden">4</label>
+                  </li>
+                  <li>
+                    <label className={styles.selectBox__option} for="13" aria-hidden="aria-hidden">5</label>
+                  </li>
+                  <li>
+                    <label className={styles.selectBox__option} for="14" aria-hidden="aria-hidden">5+</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <div className={`${styles.formBox} ${styles.flexEnd}`}>
               <button onClick={handleSearch}><i className="fa-solid fa-magnifying-glass"></i> Search</button>
             </div>
@@ -260,7 +332,7 @@ const index = () => {
 
       {/* <!-- Property Categories Section --> */}
 
-      <section className={`${styles.propertyCategoriesSection} animate-on-scroll`}>
+      <section className={styles.propertyCategoriesSection}>
         <h2>{`We've Got Properties In Dubai For Everyone`}</h2>
         <div className={styles.propertyCategoriesImagesBox}>
           <div className={styles.propertyCategoryImgBox}>
@@ -301,7 +373,7 @@ const index = () => {
               <Image
                 width={600}
                 height={400}
-                src={`https://a.khelogame.xyz/${property.media_path}`}
+                src={`https://a.khelogame.xyz/${property.media_paths[0]}`}
                 alt="Property Image"
                 className={styles.mainHouseImg}
               />

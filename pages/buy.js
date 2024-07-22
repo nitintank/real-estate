@@ -240,7 +240,7 @@ const buy = () => {
                             <Image
                                 width={600}
                                 height={400}
-                                src={`https://a.khelogame.xyz/${property.media_path}`}
+                                src={`https://a.khelogame.xyz/${property.media_paths[0]}`}
 
                                 alt="Property Image"
                                 className={styles.mainHouseImg}
