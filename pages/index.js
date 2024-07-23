@@ -271,12 +271,12 @@ const index = () => {
             <div className={styles.formBox}>
               <div className={styles.selectBox}>
                 <div className={styles.selectBox__current} tabindex="1">
-                <div className={styles.selectBox__value}>
+                  <div className={styles.selectBox__value}>
                     <input className={styles.selectBox__input} type="radio" name="bedroom" defaultChecked={true} />
                     <p className={styles.selectBox__inputText}>Select Bedrooms</p>
                   </div>
                   <div className={styles.selectBox__value}>
-                    <input className={styles.selectBox__input} type="radio" id="9" value="1" name="bedroom" onChange={handleBedroomsChange}/>
+                    <input className={styles.selectBox__input} type="radio" id="9" value="1" name="bedroom" onChange={handleBedroomsChange} />
                     <p className={styles.selectBox__inputText}>1</p>
                   </div>
                   <div className={styles.selectBox__value}>
@@ -493,83 +493,27 @@ const index = () => {
         {/* <Image width={200} height={200} src="/images/blue-wave-2.png" alt="" className={styles.wave2Img} /> */}
         <h2>We Are Have <span>Trusted<br />Expert</span> Agent</h2>
         <div className={styles.agentsBigBox}>
-          <div className={styles.agentsCardsBox}>
-            <p className={styles.housingExpertPara}>Housing Expert Pro</p>
-            <Image width={200} height={170} src="/images/agent-img.png" alt="" />
-            <h3>KK Jaipur</h3>
-            <hr />
-            <ul>
-              <li>Mansarovar</li>
-              <li>Sunder Nagar</li>
-            </ul>
-            <div className={styles.totalPropertyBox}>
-              <div className={styles.totalPropertyContentBox}>
-                <h4>7</h4>
-                <p>Years Experience</p>
+          {agents.slice(0, 4).map(agent => (
+            <Link href={`/agent-detail?id=${agent.id}`} className={styles.agentsCardsBox}>
+              {/* <p className={styles.housingExpertPara}>Housing Expert Pro</p> */}
+              <Image width={200} height={170} src={`https://a.khelogame.xyz/${agent.image_path}`} alt="" />
+              <h3>{agent.name}</h3>
+              <hr />
+              <ul>
+                <li>{agent.address}</li>
+              </ul>
+              <div className={styles.totalPropertyBox}>
+                <div className={styles.totalPropertyContentBox}>
+                  <h4>{agent.experience}</h4>
+                  <p>Years Experience</p>
+                </div>
+                <div className={styles.totalPropertyContentBox}>
+                  <h4>{agent.property_count}</h4>
+                  <p>Properties</p>
+                </div>
               </div>
-              <div className={styles.totalPropertyContentBox}>
-                <h4>8</h4>
-                <p>Properties</p>
-              </div>
-            </div>
-          </div>
-          <div className={styles.agentsCardsBox}>
-            <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-            <h3>KK Jaipur</h3>
-            <hr />
-            <ul>
-              <li>Mansarovar</li>
-              <li>Sunder Nagar</li>
-            </ul>
-            <div className={styles.totalPropertyBox}>
-              <div className={styles.totalPropertyContentBox}>
-                <h4>7</h4>
-                <p>Years Experience</p>
-              </div>
-              <div className={styles.totalPropertyContentBox}>
-                <h4>8</h4>
-                <p>Properties</p>
-              </div>
-            </div>
-          </div>
-          <div className={styles.agentsCardsBox}>
-            <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-            <h3>KK Jaipur</h3>
-            <hr />
-            <ul>
-              <li>Mansarovar</li>
-              <li>Sunder Nagar</li>
-            </ul>
-            <div className={styles.totalPropertyBox}>
-              <div className={styles.totalPropertyContentBox}>
-                <h4>7</h4>
-                <p>Years Experience</p>
-              </div>
-              <div className={styles.totalPropertyContentBox}>
-                <h4>8</h4>
-                <p>Properties</p>
-              </div>
-            </div>
-          </div>
-          <div className={styles.agentsCardsBox}>
-            <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-            <h3>KK Jaipur</h3>
-            <hr />
-            <ul>
-              <li>Mansarovar</li>
-              <li>Sunder Nagar</li>
-            </ul>
-            <div className={styles.totalPropertyBox}>
-              <div className={styles.totalPropertyContentBox}>
-                <h4>7</h4>
-                <p>Years Experience</p>
-              </div>
-              <div className={styles.totalPropertyContentBox}>
-                <h4>8</h4>
-                <p>Properties</p>
-              </div>
-            </div>
-          </div>
+            </Link>
+          ))}
         </div>
       </section>
 

@@ -1,28 +1,117 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import styles from "../styles/AgentDetail.module.css";
 import Image from 'next/image';
+import Link from 'next/link';
 import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const agentDetail = () => {
 
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.animate);
-            observer.unobserve(entry.target); // Stop observing once animation is triggered
-          }
+            if (entry.isIntersecting) {
+                entry.target.classList.add(styles.animate);
+                observer.unobserve(entry.target); // Stop observing once animation is triggered
+            }
         });
-      };
-    
-      const observerOptions = {
+    };
+
+    const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1,
-      };
-    
-      useIntersectionObserver(observerCallback, observerOptions);
+    };
+
+    useIntersectionObserver(observerCallback, observerOptions);
+
+    const router = useRouter();
+    const { id } = router.query;
+    const [agentDetails, setAgentDetails] = useState({});
+    const [properties, setProperties] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone_number: '',
+        message: ''
+    });
+
+    useEffect(() => {
+        if (id) {
+            fetchAgentDetails(id);
+            fetchPropertiesByAgent(id);
+        }
+    }, [id]);
+
+    const fetchAgentDetails = async (agentId) => {
+        try {
+            const response = await fetch(`https://a.khelogame.xyz/agents/${agentId}`);
+            if (response.ok) {
+                const data = await response.json();
+                console.log("=================>", data);
+                setAgentDetails(data);
+                setLoading(false);
+            } else {
+                const errorData = await response.json();
+                console.error('Error:', errorData);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const fetchPropertiesByAgent = async (agentId) => {
+        try {
+            const response = await fetch(`https://a.khelogame.xyz/get-agent-properties?agent_id=${agentId}`);
+            if (response.ok) {
+                const data = await response.json();
+                setProperties(data);
+            } else {
+                const errorData = await response.json();
+                console.error('Error:', errorData);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevState) => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`https://a.khelogame.xyz/create-agent-inquiry/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            if (response.ok) {
+                alert('Message sent successfully');
+                setFormData({ name: '', email: '', phone_number: '', message: '' });
+            } else {
+                const errorData = await response.json();
+                console.error('Error:', errorData);
+                alert('Error sending message');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error sending message');
+        }
+    };
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <>
@@ -30,34 +119,29 @@ const agentDetail = () => {
             {/* <!-- Agent Card Box Section --> */}
             <section className={`${styles.agentCardBox} animate-on-scroll`}>
                 <div className={styles.agentDetailBox1}>
-                    <Image width={200} height={200} src="/images/agent-img.png" alt="" />
+                    <Image width={200} height={200} src={`https://a.khelogame.xyz/${agentDetails.image_path}`} alt="" />
                 </div>
                 <div className={styles.agentDetailBox2}>
-                    <h3>Ali Tufan</h3>
+                    <h3>{agentDetails.name}</h3>
                     <p className={styles.agentAboutPara}>Company Agent at The James Estate Agents</p>
                     <div className={styles.agentOtherDetailsBox}>
-                        <p><span>Address:</span> 560 3rd Ave, New York,</p>
-                        <p><span>Office Phone:</span> +7778889992</p>
-                        <p><span>Mobile Phone:</span> +7778889992</p>
-                        <p><span>Address:</span> 560 3rd Ave, New York,</p>
+                        <p><span>Address:</span> {agentDetails.address}</p>
+                        <p><span>Office Phone:</span> {agentDetails.office_phone_number}</p>
+                        <p><span>Mobile Phone:</span> {agentDetails.phone_number}</p>
                     </div>
                     <div className={styles.agentSocialMedia}>
-                        <i className="fa-brands fa-twitter"></i>
-                        <i className="fa-brands fa-youtube"></i>
-                        <i className="fa-brands fa-facebook"></i>
-                        <i className="fa-brands fa-instagram"></i>
+                        {agentDetails.twitter && <Link href={agentDetails.twitter}><i className="fa-brands fa-twitter"></i></Link>}
+                        {agentDetails.youtube && <Link href={agentDetails.youtube}><i className="fa-brands fa-youtube"></i></Link>}
+                        {agentDetails.facebook && <Link href={agentDetails.facebook}><i className="fa-brands fa-facebook"></i></Link>}
+                        {agentDetails.instagram && <Link href={agentDetails.instagram}><i className="fa-brands fa-instagram"></i></Link>}
                     </div>
                 </div>
             </section>
 
             {/* <!-- About Agent Box --> */}
             <section className={`${styles.agentAboutBox} animate-on-scroll`}>
-                <h3>About Ali Tufan</h3>
-                <p>Enchanting three bedroom, three bath home with spacious one bedroom, one bath cabana, in-laws quarters.
-                    Charming living area features fireplace and fabulous art deco details. Formal dining room.</p>
-                <p>Remodeled kitchen with granite countertops, white cabinetry and stainless appliances. Lovely master bedroom
-                    has updated bath, beautiful view of the pool. Guest bedrooms have walk-in, cedar closets. Delightful
-                    backyard; majestic oaks surround the free form pool and expansive patio, wet bar and grill.</p>
+                <h3>About {agentDetails.name}</h3>
+                <p>{agentDetails.description}</p>
             </section>
 
             {/* <!-- Track Record Section --> */}
@@ -90,20 +174,19 @@ const agentDetail = () => {
             <section className={`${styles.latestPropertiesSection} animate-on-scroll`}>
                 <h2>Latest Properties</h2>
                 <div className={styles.latestPropertiesBigBox}>
-                    <div className={styles.latestPropertiesInnerBox}>
-                        <Image width={200} height={200} src="/images/property-1.webp" alt="" />
+                {properties.map((property) => (
+                    <Link href={`/property?id=${property.id}`} className={styles.latestPropertiesInnerBox} key={property.id}>
+                        <Image width={200} height={200} src={`https://a.khelogame.xyz/${property.image_path}`} alt="" />
                         <div className={styles.latestPropertiesContentBox}>
-                            <p className={styles.miniText}>Apartment, Sales</p>
-                            <h3>Luxury 6 Bed Mansion In Jumeria</h3>
-                            <p className={styles.priceText}>AED 10,0000</p>
-                            <p className={styles.propertyDescription}>Beautiful, updated, ground floor Co-op apartment in the desirable
-                                bay terrace neighborhood....</p>
+                            <p className={styles.miniText}>{property.property_type}</p>
+                            <h3>{property.property_name}</h3>
+                            <p className={styles.priceText}>AED {property.price}</p>
+                            <p className={styles.propertyDescription}>{property.description}</p>
                             <div className={styles.innerPropertyContent}>
-                                <p><i className="fa-solid fa-bed"></i> 5</p>
-                                <p><i className="fa-solid fa-shower"></i> 5</p>
-                                <p><i className="fa-solid fa-maximize"></i> 29,000ft</p>
-                                <p><i className="fa-solid fa-car"></i> 2 Cars</p>
-                                <p><i className="fa-solid fa-up-right-from-square"></i> 600ft</p>
+                                <p><i className="fa-solid fa-bed"></i> {property.bedrooms}</p>
+                                <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
+                                <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
+                                <p><i className="fa-solid fa-car"></i> {property.parking}</p>
                             </div>
                             <hr />
                             <div className={styles.innerButtonBox}>
@@ -112,76 +195,8 @@ const agentDetail = () => {
                                 <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
                             </div>
                         </div>
-                    </div>
-                    <div className={styles.latestPropertiesInnerBox}>
-                        <Image width={200} height={200} src="/images/property-2.webp" alt="" />
-                        <div className={styles.latestPropertiesContentBox}>
-                            <p className={styles.miniText}>Apartment, Sales</p>
-                            <h3>Luxury 6 Bed Mansion In Jumeria</h3>
-                            <p className={styles.priceText}>AED 10,0000</p>
-                            <p className={styles.propertyDescription}>Beautiful, updated, ground floor Co-op apartment in the desirable
-                                bay terrace neighborhood....</p>
-                            <div className={styles.innerPropertyContent}>
-                                <p><i className="fa-solid fa-bed"></i> 5</p>
-                                <p><i className="fa-solid fa-shower"></i> 5</p>
-                                <p><i className="fa-solid fa-maximize"></i> 29,000ft</p>
-                                <p><i className="fa-solid fa-car"></i> 2 Cars</p>
-                                <p><i className="fa-solid fa-up-right-from-square"></i> 600ft</p>
-                            </div>
-                            <hr />
-                            <div className={styles.innerButtonBox}>
-                                <button><i className="fa-solid fa-phone"></i> Call</button>
-                                <button><i className="fa-solid fa-envelope"></i> Email</button>
-                                <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.latestPropertiesInnerBox}>
-                        <Image width={200} height={200} src="/images/property-1.webp" alt="" />
-                        <div className={styles.latestPropertiesContentBox}>
-                            <p className={styles.miniText}>Apartment, Sales</p>
-                            <h3>Luxury 6 Bed Mansion In Jumeria</h3>
-                            <p className={styles.priceText}>AED 10,0000</p>
-                            <p className={styles.propertyDescription}>Beautiful, updated, ground floor Co-op apartment in the desirable
-                                bay terrace neighborhood....</p>
-                            <div className={styles.innerPropertyContent}>
-                                <p><i className="fa-solid fa-bed"></i> 5</p>
-                                <p><i className="fa-solid fa-shower"></i> 5</p>
-                                <p><i className="fa-solid fa-maximize"></i> 29,000ft</p>
-                                <p><i className="fa-solid fa-car"></i> 2 Cars</p>
-                                <p><i className="fa-solid fa-up-right-from-square"></i> 600ft</p>
-                            </div>
-                            <hr />
-                            <div className={styles.innerButtonBox}>
-                                <button><i className="fa-solid fa-phone"></i> Call</button>
-                                <button><i className="fa-solid fa-envelope"></i> Email</button>
-                                <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.latestPropertiesInnerBox}>
-                        <Image width={200} height={200} src="/images/property-2.webp" alt="" />
-                        <div className={styles.latestPropertiesContentBox}>
-                            <p className={styles.miniText}>Apartment, Sales</p>
-                            <h3>Luxury 6 Bed Mansion In Jumeria</h3>
-                            <p className={styles.priceText}>AED 10,0000</p>
-                            <p className={styles.propertyDescription}>Beautiful, updated, ground floor Co-op apartment in the desirable
-                                bay terrace neighborhood....</p>
-                            <div className={styles.innerPropertyContent}>
-                                <p><i className="fa-solid fa-bed"></i> 5</p>
-                                <p><i className="fa-solid fa-shower"></i> 5</p>
-                                <p><i className="fa-solid fa-maximize"></i> 29,000ft</p>
-                                <p><i className="fa-solid fa-car"></i> 2 Cars</p>
-                                <p><i className="fa-solid fa-up-right-from-square"></i> 600ft</p>
-                            </div>
-                            <hr />
-                            <div className={styles.innerButtonBox}>
-                                <button><i className="fa-solid fa-phone"></i> Call</button>
-                                <button><i className="fa-solid fa-envelope"></i> Email</button>
-                                <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
-                            </div>
-                        </div>
-                    </div>
+                    </Link>
+                    ))}
                 </div>
             </section>
 
@@ -192,15 +207,17 @@ const agentDetail = () => {
 
                 <div className={styles.contactMeFormBigBox}>
                     <div className={styles.contactMeForm1}>
-                        <form action="">
+                        <form onSubmit={handleSubmit}>
                             <label for="">Name</label>
-                            <input type="text" placeholder="Enter Name" />
+                            <input type="text" name="name" placeholder="Enter Name" value={formData.name} onChange={handleChange} required />
                             <label for="">Phone</label>
-                            <input type="text" placeholder="Enter Phone" />
+                            <input type="text" name="phone_number" placeholder="Enter Phone" value={formData.phone_number} onChange={handleChange} required />
                             <label for="">Email</label>
-                            <input type="text" placeholder="Enter Email" />
+                            <input type="text" name="email" placeholder="Enter Email" value={formData.email} onChange={handleChange}
+                                required />
                             <label for="">Message</label>
-                            <input type="text" placeholder="Enter Message" />
+                            <input type="text" name="message" placeholder="Enter Message" value={formData.message} onChange={handleChange}
+                                required />
                             <input type="submit" value="Send Message" />
                         </form>
                     </div>
@@ -211,72 +228,6 @@ const agentDetail = () => {
                     </div>
                 </div>
 
-            </section>
-
-            {/* <!-- Reviews Section --> */}
-
-            <section className={`${styles.reviewsSection} animate-on-scroll`}>
-                <h2>Property Reviews</h2>
-                <div className={styles.ratingsBox}>
-                    <div className={styles.ratingsUpperContentBox}>
-                        <div className={styles.ratingsUpperUserDetailBox}>
-                            <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                            <div className={styles.ratingsUpperContent}>
-                                <h4>Aman Sharma</h4>
-                                <p>Property Agent</p>
-                            </div>
-                        </div>
-                        <Image width={200} height={200} src="/images/star.png" alt="" className={styles.starImg} />
-                    </div>
-                    <p className={styles.reviewsPara}>Enchanting three bedroom, three bath home with spacious one bedroom, one bath
-                        cabana, in-laws quarters. Charming living area features fireplace and fabulous art deco details. Formal
-                        dining room. Enchanting three bedroom, three bath home with spacious one bedroom, one bath cabana,
-                        in-laws quarters. Charming living area features fireplace and fabulous art deco details. Formal dining
-                        room.</p>
-                </div>
-                <div className={styles.ratingsBox}>
-                    <div className={styles.ratingsUpperContentBox}>
-                        <div className={styles.ratingsUpperUserDetailBox}>
-                            <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                            <div className={styles.ratingsUpperContent}>
-                                <h4>Piyush Singh</h4>
-                                <p>Property Dealer</p>
-                            </div>
-                        </div>
-                        <Image width={200} height={200} src="/images/star.png" alt="" className={styles.starImg} />
-                    </div>
-                    <p className={styles.reviewsPara}>Enchanting three bedroom, three bath home with spacious one bedroom, one bath
-                        cabana, in-laws quarters. Charming living area features fireplace and fabulous art deco details. Formal
-                        dining room. Enchanting three bedroom, three bath home with spacious one bedroom, one bath cabana,
-                        in-laws quarters. Charming living area features fireplace and fabulous art deco details. Formal dining
-                        room.</p>
-                </div>
-                {/* <!-- Leave A Review Section --> */}
-                <div className={styles.addCommentBox}>
-                    <h3>Leave A Review</h3>
-                    <form action="">
-                        <label for="" className={styles.commentLabel}>Your Rating</label>
-                        <div className={styles.starRating}>
-                            <input type="radio" id="5-stars" name="rating" value="5" />
-                            <label for="5-stars" className={styles.star}>&#9733;</label>
-                            <input type="radio" id="4-stars" name="rating" value="4" />
-                            <label for="4-stars" className={styles.star}>&#9733;</label>
-                            <input type="radio" id="3-stars" name="rating" value="3" />
-                            <label for="3-stars" className={styles.star}>&#9733;</label>
-                            <input type="radio" id="2-stars" name="rating" value="2" />
-                            <label for="2-stars" className={styles.star}>&#9733;</label>
-                            <input type="radio" id="1-star" name="rating" value="1" />
-                            <label for="1-star" className={styles.star}>&#9733;</label>
-                        </div>
-                        <label for="" className={styles.commentLabel}>Your Comment</label>
-                        <textarea name="" id="" rows="6"></textarea>
-                        <label for="" className={styles.commentLabel}>Your Name</label>
-                        <input type="text" />
-                        <label for="" className={styles.commentLabel}>Your Email</label>
-                        <input type="text" />
-                        <input type="submit" value="Submit Review" />
-                    </form>
-                </div>
             </section>
 
             {/* Footer Section */}

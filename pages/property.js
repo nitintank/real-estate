@@ -8,32 +8,35 @@ import Link from 'next/link';
 import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const property = () => {
-    
+
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.animate);
-            observer.unobserve(entry.target); // Stop observing once animation is triggered
-          }
+            if (entry.isIntersecting) {
+                entry.target.classList.add(styles.animate);
+                observer.unobserve(entry.target); // Stop observing once animation is triggered
+            }
         });
-      };
-    
-      const observerOptions = {
+    };
+
+    const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1,
-      };
-    
-      useIntersectionObserver(observerCallback, observerOptions);
+    };
+
+    useIntersectionObserver(observerCallback, observerOptions);
 
     const router = useRouter();
     const { id } = router.query;
-    const [propertyDetails, setPropertyDetails] = useState({});
+    // const [propertyDetails, setPropertyDetails] = useState({});
+    const [propertyDetails, setPropertyDetails] = useState({
+        image_path: '',
+        media_paths: [],
+    });
+
     const [loading, setLoading] = useState(true);
     const [reviews, setReviews] = useState([]);
     const [error, setError] = useState('');
-    const [imagePaths, setImagePaths] = useState([]);
-    const [mediaPaths, setMediaPaths] = useState([]);
     const [reviewForm, setReviewForm] = useState({
         rating: '',
         comment: '',
@@ -43,26 +46,22 @@ const property = () => {
         name: '',
         email: '',
         phone: '',
-        agentType: 'Individual'
+        agentType: ''
     });
 
     useEffect(() => {
         if (id) {
             fetchPropertyDetails(id);
-            fetchReviews(id);
+            fetchReviews(id)
         }
     }, [id]);
 
     const fetchPropertyDetails = async (propertyId) => {
         try {
             const response = await fetch(`https://a.khelogame.xyz/property/${propertyId}`)
-
             if (response.ok) {
                 const data = await response.json();
-                const paths = data.media_path.split(',');
-                setImagePaths(paths);
-                const paths2 = data.image_path.split(',');
-                setMediaPaths(paths2);
+                console.log("================= propty>", data)
                 setPropertyDetails(data);
                 setLoading(false);
             } else {
@@ -90,6 +89,7 @@ const property = () => {
         }
     };
 
+
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -103,6 +103,7 @@ const property = () => {
         e.preventDefault();
 
         try {
+
             const response = await fetch(`https://a.khelogame.xyz/property/${id}/review`, {
                 method: 'POST',
                 headers: {
@@ -138,10 +139,31 @@ const property = () => {
         }
     };
 
+    const handleContactClick = async () => {
+        try {
+            const response = await fetch(`https://a.khelogame.xyz/property/${id}/number-of-click`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Click count incremented successfully:', data);
+            } else {
+                const errorData = await response.json();
+                console.error('Error incrementing click count:', errorData.error);
+            }
+        } catch (error) {
+            console.error('Error incrementing click count:', error);
+        }
+    };
+
     const submitAgentEnquiry = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`https://a.khelogame.xyz/create-agent-inquiry/${id}`, {
+            const response = await fetch(`https://a.khelogame.xyz/create-user-inquiry/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -185,7 +207,7 @@ const property = () => {
                 <Image
                     width={600}
                     height={400}
-                    src={`https://a.khelogame.xyz/${imagePaths[0]}`}
+                    src={`https://a.khelogame.xyz/${propertyDetails.media_paths}`}
                     alt="Property Image"
                     className={styles.mainHouseImg}
                 />
@@ -232,7 +254,10 @@ const property = () => {
                     {propertyDetails.amenities && Object.keys(propertyDetails.amenities).map((category, index) => (
                         <div key={index} className={styles.aminitiesCardsBox}>
                             {propertyDetails.amenities[category].map((amenity, idx) => (
-                                <p key={idx}><span><i class="fa-solid fa-star"></i></span>{amenity}</p>
+                                <p key={idx}>
+                                    <span><i className="fa-solid fa-bed"></i></span>
+                                    {amenity.amenity} {/* Render the amenity property here */}
+                                </p>
                             ))}
                         </div>
                     ))}
@@ -255,7 +280,7 @@ const property = () => {
                         <p><span className={styles.darkText}>City</span><span>{propertyDetails.city}</span></p>
                     </div>
                     <div className={styles.addressBottomBox}>
-                        <p><span className={styles.darkText}>State/Country</span><span>{propertyDetails.state}</span></p>
+                        <p><span className={styles.darkText}>Parking</span><span>{propertyDetails.parking}</span></p>
                         <p><span className={styles.darkText}>Zip/Postal Code</span><span>{propertyDetails.pincode}</span></p>
                     </div>
                 </div>
@@ -263,7 +288,7 @@ const property = () => {
 
             <section className={`${styles.floorPlanSection} animate-on-scroll`}>
                 <h2>Floor Plan</h2>
-                <Image width={600} height={400} src={`https://a.khelogame.xyz/${mediaPaths[0]}`} alt="Floor Plan" />
+                <Image width={600} height={400} src={`https://a.khelogame.xyz/${propertyDetails.image_paths}`} alt="Floor Plan" />
             </section>
 
             <section className={`${styles.googleMapsSection} animate-on-scroll`} id='locationSection'>

@@ -29,12 +29,11 @@ const rent = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [category] = useState('buy');
-    const [propertyType, setPropertyType] = useState('Residential');
+    const [propertyType, setPropertyType] = useState('');
     const [propertySubtype, setPropertySubtype] = useState('');
     const [price, setPrice] = useState('');
 
     const fetchProperties = async (filters = {}) => {
-        // setLoading(true); // Set loading to true when fetching data
         try {
             const response = await fetch('https://a.khelogame.xyz/get-properties');
             if (!response.ok) {
@@ -72,6 +71,7 @@ const rent = () => {
                 });
             }
 
+
             console.log('Filtered by property type:', filteredProperties);
 
             // Filter by property subtype
@@ -98,13 +98,14 @@ const rent = () => {
     };
 
     const handlePropertyTypeChange = (e) => {
-        console.log(e.target.value, "tqargeted value");
+        console.log(e.target.value, "targeted value");
         setPropertyType(e.target.value);
         setPropertySubtype(''); // Reset property subtype when property type changes
     };
 
+
     const handlePriceChange = (e) => {
-        console.log(e.target.value, "tqargeted value");
+        console.log(e.target.value, "targeted value");
         setPrice(e.target.value)
     };
 
@@ -133,7 +134,11 @@ const rent = () => {
                         <div className={styles.selectBox}>
                             <div className={styles.selectBox__current} tabIndex="1">
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="0" value="Residential" name="propertyType" onChange={handlePropertyTypeChange} defaultChecked={true} />
+                                    <input className={styles.selectBox__input} type="radio" id="11" value="SelectProperty" name="propertyType" onChange={handlePropertyTypeChange} defaultChecked={true} />
+                                    <p className={styles.selectBox__inputText}>Select Property Type</p>
+                                </div>
+                                <div className={styles.selectBox__value}>
+                                    <input className={styles.selectBox__input} type="radio" id="0" value="Residential" name="propertyType" onChange={handlePropertyTypeChange} />
                                     <p className={styles.selectBox__inputText}>Residential</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
@@ -176,21 +181,32 @@ const rent = () => {
                         <div className={styles.selectBox}>
                             <div className={styles.selectBox__current} tabIndex="1">
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="5" value="1000000" name="price" defaultChecked={true} onChange={handlePriceChange} />
-                                    <p className={styles.selectBox__inputText}>1000000 - 499999</p>
+                                    <input className={styles.selectBox__input} type="radio" id="12" value="Price" name="price" defaultChecked={true} onChange={handlePriceChange} />
+                                    <p className={styles.selectBox__inputText}>Price</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="6" value="5000000" name="price" onChange={handlePriceChange} />
+                                    <input className={styles.selectBox__input} type="radio" id="5" value="1-1000000" name="price" defaultChecked={true} onChange={handlePriceChange} />
+                                    <p className={styles.selectBox__inputText}>1-1000000</p>
+                                </div>
+                                <div className={styles.selectBox__value}>
+                                    <input className={styles.selectBox__input} type="radio" id="6" value="1000000-4999999" name="price" onChange={handlePriceChange} />
+                                    <p className={styles.selectBox__inputText}>1000000-4999999</p>
+                                </div>
+                                <div className={styles.selectBox__value}>
+                                    <input className={styles.selectBox__input} type="radio" id="7" value="5000000-10000000" name="price" onChange={handlePriceChange} />
                                     <p className={styles.selectBox__inputText}>5000000 & Above</p>
                                 </div>
                                 <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
                             </div>
                             <ul className={styles.selectBox__list}>
                                 <li>
-                                    <label className={styles.selectBox__option} htmlFor="5" aria-hidden="aria-hidden">1000000 - 499999</label>
+                                    <label className={styles.selectBox__option} htmlFor="5" aria-hidden="aria-hidden">1-1000000</label>
                                 </li>
                                 <li>
-                                    <label className={styles.selectBox__option} htmlFor="6" aria-hidden="aria-hidden">5000000 & Above</label>
+                                    <label className={styles.selectBox__option} htmlFor="6" aria-hidden="aria-hidden">1000000-4999999</label>
+                                </li>
+                                <li>
+                                    <label className={styles.selectBox__option} htmlFor="7" aria-hidden="aria-hidden">5000000 & Above</label>
                                 </li>
                             </ul>
                         </div>
@@ -202,7 +218,7 @@ const rent = () => {
             </section>
 
             {/* Latest Properties Section */}
-            <section className={`${styles.latestPropertiesSection} animate-on-scroll`}>
+            <section className={styles.latestPropertiesSection}>
                 <p>DUBAI REAL ESTATE</p>
                 <h2>Latest Properties</h2>
                 <div className={styles.latestPropertiesBigBox}>
@@ -213,7 +229,6 @@ const rent = () => {
                                 width={600}
                                 height={400}
                                 src={`https://a.khelogame.xyz/${property.media_paths[0]}`}
-
                                 alt="Property Image"
                                 className={styles.mainHouseImg}
                             />

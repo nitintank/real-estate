@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import styles from "../styles/Agents.module.css";
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const agents = () => {
@@ -24,6 +26,26 @@ const agents = () => {
 
     useIntersectionObserver(observerCallback, observerOptions);
 
+    const [agents, setAgents] = useState([]);
+    const router = useRouter();
+
+    useEffect(() => {
+        const fetchAgents = async () => {
+            try {
+                const response = await fetch('https://a.khelogame.xyz/all_agents');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch agents');
+                }
+                const data = await response.json();
+                setAgents(data);
+            } catch (error) {
+                console.error('Error fetching agents:', error);
+            }
+        };
+
+        fetchAgents();
+    }, []);
+
     return (
         <>
             <Navbar />
@@ -37,55 +59,6 @@ const agents = () => {
                 <div className={styles.topIntroInnerBox2}>
                     <Image width={500} height={500} src="/images/agent-vector.png" alt="" priority={true} />
                 </div>
-                <div className={styles.searchBiggerBox}>
-                    <div className={styles.formBox}>
-                        <label for="">Area</label>
-                        <input type="text" placeholder="Enter An Address, City Or Zip Code" />
-                    </div>
-                    <div className={styles.formBox}>
-                        <label for="">Location</label>
-                        <input type="text" placeholder="Enter Location" />
-                    </div>
-                    <div className={styles.formBox}>
-                        <label for="">Language</label>
-                        {/* <select name="" id="">
-                            <option value="">Language</option>
-                            <option value="">English</option>
-                            <option value="">Hindi</option>
-                        </select> */}
-                        <div className={styles.selectBox}>
-                            <div className={styles.selectBox__current} tabindex="1">
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="0" value="1" name="Ben" />
-                                    <p className={styles.selectBox__inputText}>Hindi</p>
-                                </div>
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="1" value="2" name="Ben" defaultChecked={true} />
-                                    <p className={styles.selectBox__inputText}>English</p>
-                                </div>
-                                <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="2" value="3" name="Ben" />
-                                    <p className={styles.selectBox__inputText}>Marathi</p>
-                                </div>
-                                <img className={styles.selectBox__icon} src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
-                            </div>
-                            <ul className={styles.selectBox__list}>
-                                <li>
-                                    <label className={styles.selectBox__option} for="0" aria-hidden="aria-hidden">Hindi</label>
-                                </li>
-                                <li>
-                                    <label className={styles.selectBox__option} for="1" aria-hidden="aria-hidden">English</label>
-                                </li>
-                                <li>
-                                    <label className={styles.selectBox__option} for="2" aria-hidden="aria-hidden">Marathi</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className={`${styles.formBox} ${styles.flexEnd}`}>
-                        <button><i className="fa-solid fa-magnifying-glass"></i> Search</button>
-                    </div>
-                </div>
             </section>
 
             {/* <!-- Trusted Agents Section --> */}
@@ -93,159 +66,28 @@ const agents = () => {
             <section className={`${styles.trustedAgentsSection} animate-on-scroll`}>
                 <h2>We Are Have <span>Trusted<br />Expert</span> Agent</h2>
                 <div className={styles.agentsBigBox}>
-                    <div className={styles.agentsCardsBox}>
-                        <p className={styles.housingExpertPara}>Housing Expert Pro</p>
-                        <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                        <h3>KK Jaipur</h3>
-                        <hr />
-                        <ul>
-                            <li>Mansarovar</li>
-                            <li>Sunder Nagar</li>
-                        </ul>
-                        <div className={styles.totalPropertyBox}>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>7</h4>
-                                <p>Years Experience</p>
+                    {agents.map(agent => (
+                        <Link href={`/agent-detail?id=${agent.id}`} className={styles.agentsCardsBox} key={agent.id}>
+                            {/* <p className={styles.housingExpertPara}>Housing Expert Pro</p> */}
+                            <Image width={200} height={200} src={`https://a.khelogame.xyz/${agent.image_path}`} alt={agent.name} />
+                            <h3>{agent.name}</h3>
+                            <hr />
+                            <ul>
+                                <li>{agent.address}</li>
+                                <li>{agent.office_phone_number}</li>
+                            </ul>
+                            <div className={styles.totalPropertyBox}>
+                                <div className={styles.totalPropertyContentBox}>
+                                    <h4>{agent.experience}</h4>
+                                    <p>Years Experience</p>
+                                </div>
+                                <div className={styles.totalPropertyContentBox}>
+                                    <h4>8</h4>
+                                    <p>Properties</p>
+                                </div>
                             </div>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>8</h4>
-                                <p>Properties</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.agentsCardsBox}>
-                        <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                        <h3>KK Jaipur</h3>
-                        <hr />
-                        <ul>
-                            <li>Mansarovar</li>
-                            <li>Sunder Nagar</li>
-                        </ul>
-                        <div className={styles.totalPropertyBox}>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>7</h4>
-                                <p>Years Experience</p>
-                            </div>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>8</h4>
-                                <p>Properties</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.agentsCardsBox}>
-                        <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                        <h3>KK Jaipur</h3>
-                        <hr />
-                        <ul>
-                            <li>Mansarovar</li>
-                            <li>Sunder Nagar</li>
-                        </ul>
-                        <div className={styles.totalPropertyBox}>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>7</h4>
-                                <p>Years Experience</p>
-                            </div>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>8</h4>
-                                <p>Properties</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.agentsCardsBox}>
-                        <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                        <h3>KK Jaipur</h3>
-                        <hr />
-                        <ul>
-                            <li>Mansarovar</li>
-                            <li>Sunder Nagar</li>
-                        </ul>
-                        <div className={styles.totalPropertyBox}>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>7</h4>
-                                <p>Years Experience</p>
-                            </div>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>8</h4>
-                                <p>Properties</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.agentsCardsBox}>
-                        <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                        <h3>KK Jaipur</h3>
-                        <hr />
-                        <ul>
-                            <li>Mansarovar</li>
-                            <li>Sunder Nagar</li>
-                        </ul>
-                        <div className={styles.totalPropertyBox}>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>7</h4>
-                                <p>Years Experience</p>
-                            </div>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>8</h4>
-                                <p>Properties</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.agentsCardsBox}>
-                        <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                        <h3>KK Jaipur</h3>
-                        <hr />
-                        <ul>
-                            <li>Mansarovar</li>
-                            <li>Sunder Nagar</li>
-                        </ul>
-                        <div className={styles.totalPropertyBox}>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>7</h4>
-                                <p>Years Experience</p>
-                            </div>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>8</h4>
-                                <p>Properties</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.agentsCardsBox}>
-                        <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                        <h3>KK Jaipur</h3>
-                        <hr />
-                        <ul>
-                            <li>Mansarovar</li>
-                            <li>Sunder Nagar</li>
-                        </ul>
-                        <div className={styles.totalPropertyBox}>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>7</h4>
-                                <p>Years Experience</p>
-                            </div>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>8</h4>
-                                <p>Properties</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.agentsCardsBox}>
-                        <Image width={200} height={200} src="/images/agent-img.png" alt="" />
-                        <h3>KK Jaipur</h3>
-                        <hr />
-                        <ul>
-                            <li>Mansarovar</li>
-                            <li>Sunder Nagar</li>
-                        </ul>
-                        <div className={styles.totalPropertyBox}>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>7</h4>
-                                <p>Years Experience</p>
-                            </div>
-                            <div className={styles.totalPropertyContentBox}>
-                                <h4>8</h4>
-                                <p>Properties</p>
-                            </div>
-                        </div>
-                    </div>
+                        </Link>
+                    ))}
                 </div>
             </section>
             {/* Footer Section */}

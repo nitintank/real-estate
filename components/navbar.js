@@ -5,11 +5,14 @@ import Image from 'next/image';
 
 const navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [profile, setProfile] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         // Check local storage if user is logged in
         const loggedInStatus = localStorage.getItem('isLoggedIn');
-        if(loggedInStatus == 'true'){
+        if (loggedInStatus == 'true') {
             setIsLoggedIn(true);
         }
     }, []);
@@ -27,6 +30,38 @@ const navbar = () => {
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0px";
     }
+
+    useEffect(() => {
+        const fetchSupportContact = async () => {
+            try {
+                const response = await fetch('https://a.khelogame.xyz/admin_support_contact');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch support contact');
+                }
+                const data = await response.json();
+                if (data.length > 0) {
+                    setProfile(data[0]); // Assuming you only want the first contact info
+                } else {
+                    throw new Error('No contact information available');
+                }
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchSupportContact();
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
     return (
         <>
             <nav className={styles.nav}>
@@ -43,11 +78,11 @@ const navbar = () => {
                 </ul>
                 <div className={styles.navbarBox}>
                     {isLoggedIn ? (
-                       <Link href="/user-panel/add-property"><button>Post Property</button></Link>
+                        <Link href="/user-panel/add-property"><button>Post Property</button></Link>
                     ) : (
                         <Link href="/register"><button>Post Property</button></Link>
                     )}
-                    <Link href="/contact-us"><p><i className="fa-solid fa-phone"></i>8000-300-725</p></Link>
+                    <Link href="/contact-us"><p><i className="fa-solid fa-phone"></i>{profile.help_contact_number}</p></Link>
                     {isLoggedIn ? (
                         <button onClick={handleLogout}>Logout</button>
                     ) : (

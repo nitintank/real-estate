@@ -1,14 +1,12 @@
 /* Top Introduction Box */
 
-.topIntroductionBox,
-.latestPropertiesSection {
+.topIntroductionBox {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.topIntroductionBox.animate,
-.latestPropertiesSection.animate {
+.topIntroductionBox.animate {
   opacity: 1;
   transform: translateY(0);
 }

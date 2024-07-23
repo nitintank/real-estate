@@ -10,28 +10,29 @@ const buy = () => {
 
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.animate);
-            observer.unobserve(entry.target); // Stop observing once animation is triggered
-          }
+            if (entry.isIntersecting) {
+                entry.target.classList.add(styles.animate);
+                observer.unobserve(entry.target); // Stop observing once animation is triggered
+            }
         });
-      };
-    
-      const observerOptions = {
+    };
+
+    const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1,
-      };
-    
-      useIntersectionObserver(observerCallback, observerOptions);
-      
+    };
+
+    useIntersectionObserver(observerCallback, observerOptions);
+
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [category] = useState('buy');
-    const [propertyType, setPropertyType] = useState('Residential');
+    const [propertyType, setPropertyType] = useState('');
     const [propertySubtype, setPropertySubtype] = useState('');
     const [price, setPrice] = useState('');
+
 
     const propertySubtypes = {
         Residential: [
@@ -57,7 +58,6 @@ const buy = () => {
     };
 
     const fetchProperties = async (filters = {}) => {
-        setLoading(true); // Set loading to true when fetching data
         try {
             const response = await fetch('https://a.khelogame.xyz/get-properties');
             if (!response.ok) {
@@ -73,29 +73,30 @@ const buy = () => {
             console.log('Filtered by category:', filteredProperties);
 
             // Filter by property typecon
-            console.log(filters,"filters");
-            console.log(filters.propertyType,"filters.propertyType");
+            console.log(filters, "filters");
+            console.log(filters.propertyType, "filters.propertyType");
             if (filters.propertyType) {
-                filteredProperties = filteredProperties.filter((property) =>{
-                    console.log(property,"properties");
-                    console.log(property.property_type,"property.property_type");
+                filteredProperties = filteredProperties.filter((property) => {
+                    console.log(property, "properties");
+                    console.log(property.property_type, "property.property_type");
 
                     return property.property_type === filters.propertyType
                 })
             }
 
             if (filters.price) {
+                console.log(price, "priceprice")
                 const priceRange = filters.price.split('-').map(Number);
+                console.log(priceRange, "priceRange")
                 const minPrice = priceRange[0];
                 const maxPrice = priceRange[1] || Infinity;
-            
+
                 filteredProperties = filteredProperties.filter((property) => {
                     const propertyPrice = property.price;
+                    console.log(propertyPrice, "propertyPrice");
                     return propertyPrice >= minPrice && propertyPrice <= maxPrice;
                 });
             }
-
-
             console.log('Filtered by property type:', filteredProperties);
 
             // Filter by property subtype
@@ -123,18 +124,17 @@ const buy = () => {
     };
 
     const handlePropertyTypeChange = (e) => {
-        console.log(e.target.value,"tqargeted value");
+        console.log(e.target.value, "tqargeted value");
         setPropertyType(e.target.value);
-        setPropertySubtype(''); 
+        setPropertySubtype('');
     };
 
 
     const handlePriceChange = (e) => {
-        console.log(e.target.value,"tqargeted value");
+        console.log(e.target.value, "tqargeted value");
         setPrice(e.target.value)
-        
     };
-    
+
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
@@ -161,19 +161,23 @@ const buy = () => {
                         <div className={styles.selectBox}>
                             <div className={styles.selectBox__current} tabIndex="1">
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="0" value="Residential" name="propertyType" onChange={handlePropertyTypeChange} defaultChecked={true}/>
+                                    <input className={styles.selectBox__input} type="radio" id="11" value="SelectProperty" name="propertyType" onChange={handlePropertyTypeChange} defaultChecked={true} />
+                                    <p className={styles.selectBox__inputText}>Select Property Type</p>
+                                </div>
+                                <div className={styles.selectBox__value}>
+                                    <input className={styles.selectBox__input} type="radio" id="0" value="Residential" name="propertyType" onChange={handlePropertyTypeChange} />
                                     <p className={styles.selectBox__inputText}>Residential</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="1" value="Commercial" name="propertyType"  onChange={handlePropertyTypeChange}/>
+                                    <input className={styles.selectBox__input} type="radio" id="1" value="Commercial" name="propertyType" onChange={handlePropertyTypeChange} />
                                     <p className={styles.selectBox__inputText}>Commercial</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="2" value="Land" name="propertyType" onChange={handlePropertyTypeChange}/>
+                                    <input className={styles.selectBox__input} type="radio" id="2" value="Land" name="propertyType" onChange={handlePropertyTypeChange} />
                                     <p className={styles.selectBox__inputText}>Land</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="3" value="MultipleUnits" name="propertyType" onChange={handlePropertyTypeChange}/>
+                                    <input className={styles.selectBox__input} type="radio" id="3" value="MultipleUnits" name="propertyType" onChange={handlePropertyTypeChange} />
                                     <p className={styles.selectBox__inputText}>Multiple Units</p>
                                 </div>
                                 <img className={styles.selectBox__icon} src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" />
@@ -204,21 +208,32 @@ const buy = () => {
                         <div className={styles.selectBox}>
                             <div className={styles.selectBox__current} tabIndex="1">
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="5" value="1000000" name="price" defaultChecked={true} onChange={handlePriceChange} />
-                                    <p className={styles.selectBox__inputText}>1000000 - 499999</p>
+                                    <input className={styles.selectBox__input} type="radio" id="12" value="Price" name="price" defaultChecked={true} onChange={handlePriceChange} />
+                                    <p className={styles.selectBox__inputText}>Price</p>
                                 </div>
                                 <div className={styles.selectBox__value}>
-                                    <input className={styles.selectBox__input} type="radio" id="6" value="5000000" name="price" onChange={handlePriceChange} />
+                                    <input className={styles.selectBox__input} type="radio" id="5" value="1-1000000" name="price" onChange={handlePriceChange} />
+                                    <p className={styles.selectBox__inputText}>1-1000000</p>
+                                </div>
+                                <div className={styles.selectBox__value}>
+                                    <input className={styles.selectBox__input} type="radio" id="6" value="1000000-4999999" name="price" onChange={handlePriceChange} />
+                                    <p className={styles.selectBox__inputText}>1000000-4999999</p>
+                                </div>
+                                <div className={styles.selectBox__value}>
+                                    <input className={styles.selectBox__input} type="radio" id="7" value="5000000-10000000" name="price" onChange={handlePriceChange} />
                                     <p className={styles.selectBox__inputText}>5000000 & Above</p>
                                 </div>
                                 <Image width={100} height={100} className={styles.selectBox__icon} src="/images/arrow.svg" alt="Arrow Icon" aria-hidden="true" />
                             </div>
                             <ul className={styles.selectBox__list}>
                                 <li>
-                                    <label className={styles.selectBox__option} htmlFor="5" aria-hidden="aria-hidden">1000000 - 499999</label>
+                                    <label className={styles.selectBox__option} htmlFor="5" aria-hidden="aria-hidden">1-1000000</label>
                                 </li>
                                 <li>
-                                    <label className={styles.selectBox__option} htmlFor="6" aria-hidden="aria-hidden">5000000 & Above</label>
+                                    <label className={styles.selectBox__option} htmlFor="6" aria-hidden="aria-hidden">1000000-4999999</label>
+                                </li>
+                                <li>
+                                    <label className={styles.selectBox__option} htmlFor="7" aria-hidden="aria-hidden">5000000 & Above</label>
                                 </li>
                             </ul>
                         </div>
@@ -231,7 +246,7 @@ const buy = () => {
 
             {/* <!-- Latest Properties Section --> */}
 
-            <section className={`${styles.latestPropertiesSection} animate-on-scroll`}>
+            <section className={styles.latestPropertiesSection}>
                 <p>DUBAI REAL ESTATE</p>
                 <h2>Latest Properties</h2>
                 <div className={styles.latestPropertiesBigBox}>

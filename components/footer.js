@@ -1,11 +1,46 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import styles from "../styles/Footer.module.css";
 import Image from 'next/image';
 
 const footer = () => {
+  const [profile, setProfile] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchSupportContact = async () => {
+      try {
+        const response = await fetch('https://a.khelogame.xyz/admin_support_contact');
+        if (!response.ok) {
+          throw new Error('Failed to fetch support contact');
+        }
+        const data = await response.json();
+        if (data.length > 0) {
+          setProfile(data[0]); // Assuming you only want the first contact info
+        } else {
+          throw new Error('No contact information available');
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSupportContact();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <>
-    <footer className={styles.footerSection}>
+      <footer className={styles.footerSection}>
         <div className={styles.footerContentUpperBigBox}>
           <div className={styles.footerContentBox}>
             <Image width={200} height={200} src="/images/las-vegas.png" alt="" className={styles.footerLogoImg} />
@@ -37,8 +72,8 @@ const footer = () => {
         <div className={styles.footerBottomBox}>
           <p>@Get to know about.desihned by me</p>
           <div className={styles.contactDetailBox}>
-            <p><i className="fa-solid fa-phone"></i> 9998786797</p>
-            <p><i className="fa-brands fa-whatsapp"></i> 9998786797</p>
+            <p><i className="fa-solid fa-phone"></i> {profile.support_contact_number}</p>
+            <p><i className="fa-brands fa-whatsapp"></i> {profile.emergency_contact_number}</p>
           </div>
         </div>
       </footer>
