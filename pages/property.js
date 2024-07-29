@@ -141,7 +141,7 @@ const property = () => {
 
     const handleContactClick = async () => {
         try {
-            const response = await fetch(`https://a.khelogame.xyz/property/${id}/number-of-click`, {
+            const response = await fetch(`https://a.khelogame.xyz/property/${id}/number_of_click`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -239,7 +239,7 @@ const property = () => {
                 </div>
                 <div className={styles.contentTitleContentBox2}>
                     <h3>{propertyDetails.price}</h3>
-                    <button>Contact Us</button>
+                    <button onClick={handleContactClick}>Contact Us</button>
                 </div>
             </section>
 
@@ -271,17 +271,21 @@ const property = () => {
 
             <section className={`${styles.addressSection} animate-on-scroll`} id='addressSection'>
                 <div className={styles.addressTopContent}>
-                    <h2>Address</h2>
+                    <h2>Property Details</h2>
                     <Link href={propertyDetails.location}><button className={styles.googleMapsBtn}><i className="fa-solid fa-location-dot"></i>Open On Google Maps</button></Link>
                 </div>
                 <div className={styles.addressBottomContentBox}>
                     <div className={styles.addressBottomBox}>
-                        <p><span className={styles.darkText}>Address</span><span>{propertyDetails.address}</span></p>
-                        <p><span className={styles.darkText}>City</span><span>{propertyDetails.city}</span></p>
+                        <p><span className={styles.darkText}>Furnishing</span><span>{propertyDetails.furnishing_type}</span></p>
+                        <p><span className={styles.darkText}>Building Area</span><span>{propertyDetails.build_area}</span></p>
                     </div>
                     <div className={styles.addressBottomBox}>
                         <p><span className={styles.darkText}>Parking</span><span>{propertyDetails.parking}</span></p>
-                        <p><span className={styles.darkText}>Zip/Postal Code</span><span>{propertyDetails.pincode}</span></p>
+                        <p><span className={styles.darkText}>Apartment Number</span><span>{propertyDetails.apartment_number}</span></p>
+                    </div>
+                    <div className={styles.addressBottomBox}>
+                        <p><span className={styles.darkText}>Plot Area</span><span>{propertyDetails.plot_up_area}</span></p>
+                        <p><span className={styles.darkText}>Area</span><span>{propertyDetails.area}</span></p>
                     </div>
                 </div>
             </section>

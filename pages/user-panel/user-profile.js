@@ -15,7 +15,7 @@ const UserProfile = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [error, setError] = useState('');
-
+    
     useEffect(() => {
         fetchProfileData();
     }, []);

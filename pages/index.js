@@ -47,18 +47,20 @@ const index = () => {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      console.log("****", data)
       let filteredProperties = data;
 
       // Filter by property type
       if (filters.propertyType) {
         filteredProperties = filteredProperties.filter((property) => property.property_type === filters.propertyType);
+        console.log(filters.propertyType,"filters.propertyType====")
+       
       }
 
       // Filter by property subtype
       if (filters.subtype) {
         filteredProperties = filteredProperties.filter((property) => property.property_categories === filters.subtype);
       }
+
 
       // Filter by location (city or address)
       if (filters.location) {
@@ -80,7 +82,7 @@ const index = () => {
         });
       }
 
-      console.log('Filtered properties:', filteredProperties);
+      // console.log('Filtered properties:', filteredProperties);
       setProperties(filteredProperties);
     } catch (error) {
       setError(error.message);
@@ -94,6 +96,7 @@ const index = () => {
   };
 
   const handlePropertyTypeChange = (e) => {
+    console.log(e.target.value,"prpotype");
     setPropertyType(e.target.value);
   };
 
@@ -117,6 +120,21 @@ const index = () => {
     fetchProperties({ propertyType, subtype, location, bedroom });
   };
 
+  const handleSelectSearch = (propertyType) => {
+    router.push({
+      pathname: '/search',
+      query: { propertyType, subtype, location, bedroom }
+    });
+    fetchProperties({ propertyType, subtype, location, bedroom });
+  };
+
+  const handleCategoryClick = (propertyType) => {
+    router.push({
+      pathname: '/search',
+      query: { propertyType },
+    });
+  
+  };
   useEffect(() => {
     fetchProperties();
   }, []);
@@ -132,7 +150,14 @@ const index = () => {
 
   const currentDate = new Date();
   const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
-  const latestProperties = properties;
+  // const latestProperties = properties;
+  const latestProperties = properties
+  .filter(property => {
+    const propertyDate = new Date(property.created_at);
+    return propertyDate >= oneWeekAgo;
+  })
+  .slice(-3);
+
   return (
     <>
       <Navbar />
@@ -332,31 +357,73 @@ const index = () => {
 
       {/* <!-- Property Categories Section --> */}
 
-      <section className={styles.propertyCategoriesSection}>
+      {/* <section className={styles.propertyCategoriesSection}>
         <h2>{`We've Got Properties In Dubai For Everyone`}</h2>
         <div className={styles.propertyCategoriesImagesBox}>
           <div className={styles.propertyCategoryImgBox}>
             <Image width={200} height={200} src="/images/about-us-home-1.png" alt="" />
             <div className={styles.content}>
-              <p>For Sale <span>Apartments, Sales</span></p>
+              <p>Residential</p>
             </div>
           </div>
           <div className={styles.propertyCategoryImgBox}>
             <Image width={200} height={200} src="/images/about-us-home-2.png" alt="" />
             <div className={styles.content}>
-              <p>For Sale <span>Apartments, Sales</span></p>
+              <p>Commercial</p>
             </div>
           </div>
           <div className={styles.propertyCategoryImgBox}>
             <Image width={200} height={200} src="/images/about-us-home-1.png" alt="" />
             <div className={styles.content}>
-              <p>For Sale <span>Apartments, Sales</span></p>
+              <p>Land</p>
             </div>
           </div>
           <div className={styles.propertyCategoryImgBox}>
             <Image width={200} height={200} src="/images/about-us-home-2.png" alt="" />
             <div className={styles.content}>
-              <p>For Sale <span>Apartments, Sales</span></p>
+              <p>Multiple Units</p>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      <section className={styles.propertyCategoriesSection}>
+        <h2>{`We've Got Properties In Dubai For Everyone`}</h2>
+        <div className={styles.propertyCategoriesImagesBox}>
+          <div
+            className={styles.propertyCategoryImgBox}
+            onClick={() => handleSelectSearch('Residential')}
+          >
+            <Image width={200} height={200} src="/images/about-us-home-1.png" alt="Residential" />
+            <div className={styles.content}>
+              <p>Residential</p>
+            </div>
+          </div>
+          <div
+            className={styles.propertyCategoryImgBox}
+            onClick={() => handleSelectSearch('Commercial')}
+          >
+            <Image width={200} height={200} src="/images/about-us-home-2.png" alt="Commercial" />
+            <div className={styles.content}>
+              <p>Commercial</p>
+            </div>
+          </div>
+          <div
+            className={styles.propertyCategoryImgBox}
+            onClick={() => handleSelectSearch('Land')}
+          >
+            <Image width={200} height={200} src="/images/about-us-home-1.png" alt="Land" />
+            <div className={styles.content}>
+              <p>Land</p>
+            </div>
+          </div>
+          <div
+            className={styles.propertyCategoryImgBox}
+            onClick={() => handleSelectSearch('Multiple Units')}
+          >
+            <Image width={200} height={200} src="/images/about-us-home-2.png" alt="Multiple Units" />
+            <div className={styles.content}>
+              <p>Multiple Units</p>
             </div>
           </div>
         </div>
@@ -364,7 +431,7 @@ const index = () => {
 
       {/* <!-- Latest Properties Section --> */}
 
-      <section className={`${styles.latestPropertiesSection} animate-on-scroll`}>
+      <section className={styles.latestPropertiesSection}>
         <p>DUBAI REAL ESTATE</p>
         <h2>Latest Properties</h2>
         <div className={styles.latestPropertiesBigBox}>
@@ -386,9 +453,9 @@ const index = () => {
                 <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
                 <div className={styles.innerPropertyContent}>
                   <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
-                  <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
+                  <p><i className="fa-solid fa-shower"></i> {property.bathroom}</p>
                   <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
-                  <p><i className="fa-solid fa-car"></i> {property.vehicle}</p>
+                  <p><i className="fa-solid fa-car"></i> {property.parking}</p>
                   <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
                 </div>
                 <hr />

@@ -76,30 +76,14 @@ const ProjectDetails = () => {
                         <Image key={index} width={200} height={200} src={image} alt="" />
                     ))}
                 </div>
-                {/* {imagePaths.map((path, index) => (
-                    <div key={index}>
-                        <Image width={600} height={400} src={`https://a.khelogame.xyz/${path}`} alt={`Image ${index + 1}`} className={styles.mainHouseImg} />
-                    </div>
-                ))} */}
-                {/* Additional property images */}
-                {/* <div className={styles.propertyMoreImages}>
-                    {propertyDetails.media_paths && propertyDetails.media_paths.map((path, index) => (
-                        <Image
-                            key={index}
-                            width={200}
-                            height={200}
-                            src={`/${path}`}  
-                            alt={`Property Image ${index + 1}`}
-                        />
-                    ))}
-                </div> */}
+
             </section>
 
             <section className={`${styles.propertyTitleContentBox} animate-on-scroll`}>
                 <div className={styles.contentTitleContentBox1}>
                     <h2>{project.project_name}</h2>
-                    <h4>{project.price}</h4>
-                    <p>{project.developer_name}</p>
+                    <h4>{project.created_at}</h4>
+                    <p>Developer Name :{project.developer_name}</p>
                 </div>
                 <div className={styles.contentTitleContentBox2}>
                     <h3>Starting from {project.price}AED</h3>
@@ -132,6 +116,30 @@ const ProjectDetails = () => {
                 <p>{project.description}</p>
             </section>
 
+            <section className={`${styles.addressSection} animate-on-scroll`} id='addressSection'>
+                <div className={styles.addressTopContent}>
+                    <h2>Property Details</h2>
+                    <Link href={project.location}><button className={styles.googleMapsBtn}><i className="fa-solid fa-location-dot"></i>Open On Google Maps</button></Link>
+                </div>
+                <div className={styles.addressBottomContentBox}>
+                    <div className={styles.addressBottomBox}>
+                        <p><span className={styles.darkText}>Delivery Date</span><span>{project.delivery_date}</span></p>
+                        <p><span className={styles.darkText}>Construction Start Date</span><span>{project.construction_start_date}</span></p>
+                    </div>
+                    <br/>
+                    <div className={styles.addressBottomBox}>
+                        <p><span className={styles.darkText}>Expected Completion Date</span><span>{project.expected_completion_date}</span></p>
+                        <p><span className={styles.darkText}>Locality</span><span>{project.locality}</span></p>
+                    </div>
+                    <br/>
+                    <div className={styles.addressBottomBox}>
+                        <p><span className={styles.darkText}>Number of buildings</span><span>{project.number_of_buildings}</span></p>
+                        <p><span className={styles.darkText}>City</span><span>{project.city}</span></p>
+                    </div>
+                    <br/>
+                </div>
+            </section>
+
             {/* Units Section */}
             <section className={`${styles.descriptionContentBox} animate-on-scroll`} id='units'>
                 <h3>Units</h3>
@@ -147,7 +155,8 @@ const ProjectDetails = () => {
                                     <Image
                                         width={200}
                                         height={200}
-                                        src={`https://a.khelogame.xyz/projects/${unit.floor_plan_image}`}
+                                        src={`https://a.khelogame.xyz/property/${unit.floor_plan_image[0]}`}
+                                        
                                         alt="Floor Plan"
                                     />
                                 )}

@@ -31,10 +31,19 @@ const Search = () => {
         location: '',
         selectedAmenities: []
     });
+
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [location, setLocation] = useState('')
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const router = useRouter();
+    const [isPropertiesUpdated, setIsPropertiesUpdated] = useState(false);
+
+
+    const handleFilterChange = (filterName, value) => {
+        console.log(filterName, "bcbdsfd")
+        setFilters(prevFilters => ({ ...prevFilters, [filterName]: value }));
+    };
 
     const fetchProperties = async () => {
         setLoading(true);
@@ -60,135 +69,76 @@ const Search = () => {
     }, [router.isReady]);
 
     useEffect(() => {
+        console.log(router.query)
+        if (router.query) {
+            Object.keys(router.query).forEach(key => {
+                if (key = 'location') {
+                    setLocation(router.query[key])
+                }
+                handleFilterChange(key, router.query[key]);
+            });
+        }
+    }, [router.query]);
+
+    useEffect(() => {
         applyFilters();
-    }, [filters]);
-
-    // const applyFilters = () => {
-    //     let tempProperties = [...properties];
-
-    //     if (filters.propertyType) {
-    //         tempProperties = tempProperties.filter(
-    //             (property) => property.property_categories === filters.propertyType
-    //         );
-    //     }
-
-    //     if (filters.subType) {
-    //         tempProperties = tempProperties.filter(
-    //             (property) => property.property_type === filters.subType
-    //         );
-    //     }
-
-    //     if (filters.location) {
-    //         const locationLower = filters.location.toLowerCase();
-    //         tempProperties = tempProperties.filter(
-    //             (property) =>
-    //                 property.city.toLowerCase().includes(locationLower) ||
-    //                 property.address.toLowerCase().includes(locationLower)
-    //         );
-    //     }
-
-    //     if (filters.keyword) {
-    //         const keywordLower = filters.keyword.toLowerCase();
-    //         tempProperties = tempProperties.filter((property) =>
-    //             `${property.property_name} ${property.description}`
-    //                 .toLowerCase()
-    //                 .includes(keywordLower)
-    //         );
-    //     }
-
-    //     if (filters.bedroom) {
-    //         if (filters.bedroom === '5+') {
-    //             tempProperties = tempProperties.filter((property) => property.bedroom >= 5);
-    //         } else {
-    //             tempProperties = tempProperties.filter(
-    //                 (property) => property.bedroom === parseInt(filters.bedroom)
-    //             );
-    //         }
-    //     }
-
-
-    //     if (filters.selectedAmenities.length > 0) {
-    //         console.log(filters, "filters");
-    //         console.log("tempProperties>>>>", tempProperties);
-    //         console.log("properties>>>>", properties);
-
-    //         // Start filtering from the original set of properties
-    //         let updatedProperties = properties.slice();
-
-    //         updatedProperties = updatedProperties.filter(property =>
-    //             filters.selectedAmenities.every(amenity => {
-    //                 console.log("property=>>", property);
-    //                 console.log("amenity=>>", amenity);
-
-    //                 return property.amenities.some(propAmenity => {
-    //                     console.log("propAmenity=>>", propAmenity);
-    //                     console.log("propAmenity.amenity === amenity ::", propAmenity.amenity, "::", amenity);
-    //                     console.log("propAmenity.amenity === amenity ::", propAmenity.amenity === amenity);
-    //                     return propAmenity.amenity === amenity;
-    //                 });
-    //             })
-    //         );
-
-    //         setFilteredProperties(updatedProperties);
-    //     } else {
-    //         setFilteredProperties(properties);
-    //     }
-    // };
+    }, [filters, properties]);
 
     const applyFilters = () => {
         let tempProperties = [...properties];
-      
+
         if (filters.propertyType) {
-          tempProperties = tempProperties.filter(
-            (property) => property.property_categories === filters.propertyType
-          );
-        }
-      
-        if (filters.subType) {
-          tempProperties = tempProperties.filter(
-            (property) => property.property_type === filters.subType
-          );
-        }
-      
-        if (filters.location) {
-          const locationLower = filters.location.toLowerCase();
-          tempProperties = tempProperties.filter(
-            (property) => property.location && property.location.toLowerCase().includes(locationLower)
-          );
-        }
-      
-        if (filters.keyword) {
-          const keywordLower = filters.keyword.toLowerCase();
-          tempProperties = tempProperties.filter((property) =>
-            `${property.property_name} ${property.description}`
-              .toLowerCase()
-              .includes(keywordLower)
-          );
-        }
-      
-        if (filters.bedroom) {
-          if (filters.bedroom === '5+') {
-            tempProperties = tempProperties.filter((property) => property.bedroom >= 5);
-          } else {
+            console.log(tempProperties, "tempProperties")
             tempProperties = tempProperties.filter(
-              (property) => property.bedroom === parseInt(filters.bedroom, 10)
+                (property) => property.property_type === filters.propertyType
             );
-          }
         }
-      
-        if (filters.selectedAmenities.length > 0) {
-          tempProperties = tempProperties.filter(property =>
-            filters.selectedAmenities.every(amenity =>
-              property.amenities.some(propAmenity => propAmenity.amenity === amenity)
-            )
-          );
+
+        if (filters.subType) {
+            tempProperties = tempProperties.filter(
+                (property) => property.property_categories === filters.subType
+            );
         }
-      
+
+        if (filters.location) {
+            const locationLower = filters.location.toLowerCase();
+            tempProperties = tempProperties.filter(
+                (property) => property.location && property.location.toLowerCase().includes(locationLower)
+            );
+        }
+
+        if (filters.keyword) {
+            const keywordLower = filters.keyword.toLowerCase();
+            tempProperties = tempProperties.filter((property) =>
+                `${property.property_name} ${property.description}`
+                    .toLowerCase()
+                    .includes(keywordLower)
+            );
+        }
+
+        if (filters.bedroom) {
+            if (filters.bedroom === '5+') {
+                tempProperties = tempProperties.filter((property) => property.bedroom >= 5);
+            } else {
+                tempProperties = tempProperties.filter(
+                    (property) => property.bedroom === parseInt(filters.bedroom, 10)
+                );
+            }
+        }
+
+        if (filters.selectedAmenities?.length > 0) {
+            tempProperties = tempProperties.filter(property =>
+                filters.selectedAmenities.every(amenity =>
+                    property.amenities.some(propAmenity => propAmenity.amenity === amenity)
+                )
+            );
+        }
+
         setFilteredProperties(tempProperties);
-      };
-    const handleFilterChange = (filterName, value) => {
-        setFilters(prevFilters => ({ ...prevFilters, [filterName]: value }));
     };
+    // const handleFilterChange = (filterName, value) => {
+    //     setFilters(prevFilters => ({ ...prevFilters, [filterName]: value }));
+    // };
 
     const handleAmenityChange = (amenity) => {
         console.log("curretn aminity:=>", amenity)
@@ -245,12 +195,13 @@ const Search = () => {
                         <input
                             type="text"
                             placeholder="Enter Location"
+                            value={location}
                             onChange={(e) => handleFilterChange('location', e.target.value)}
                         />
                     </div>
                     <div className={styles.formBox}>
                         <label>Type</label>
-                        <select onChange={(e) => handleFilterChange('propertyType', e.target.value)}>
+                        <select onChange={(e) => handleFilterChange('subType', e.target.value)}>
                             <option value="">Property Type</option>
                             <option value="Rent">For Rent</option>
                             <option value="Buy">For Buy</option>
@@ -258,7 +209,7 @@ const Search = () => {
                     </div>
                     <div className={styles.formBox}>
                         <label>Category</label>
-                        <select onChange={(e) => handleFilterChange('subType', e.target.value)}>
+                        <select onChange={(e) => handleFilterChange('propertyType', e.target.value)}>
                             <option value="">Select Property Type</option>
                             <option value="Residential">Residential</option>
                             <option value="Commercial">Commercial</option>
