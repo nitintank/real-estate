@@ -14,7 +14,7 @@ const index = () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add(styles.animate);
-        observer.unobserve(entry.target); // Stop observing once animation is triggered
+        observer.unobserve(entry.target); 
       }
     });
   };
@@ -148,15 +148,26 @@ const index = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
+  // const currentDate = new Date();
+  // const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+  // const latestProperties = properties
+  // .filter(property => {
+  //   const propertyDate = new Date(property.created_at);
+  //   return propertyDate >= oneWeekAgo;
+  // })
+  // .slice(-3);
   const currentDate = new Date();
-  const oneWeekAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
-  // const latestProperties = properties;
-  const latestProperties = properties
+const twoWeeksAgo = new Date(currentDate.getTime() - 14 * 24 * 60 * 60 * 1000); // Calculate the date two weeks ago
+
+const latestProperties = properties
   .filter(property => {
     const propertyDate = new Date(property.created_at);
-    return propertyDate >= oneWeekAgo;
+    return propertyDate >= twoWeeksAgo; // Filter properties created within the last two weeks
   })
-  .slice(-3);
+  .slice(-3); // Get the latest 3 properties
+
+console.log(latestProperties); // Display the filtered properties
+
 
   return (
     <>
@@ -213,12 +224,6 @@ const index = () => {
               {/* <input type="text" placeholder="Enter An Address, City Or Zip Code"  onChange={(e)=> setLocations(e.target.value)}/> */}
             </div>
             <div className={styles.formBox}>
-              {/* <label for="">Property Type</label> */}
-              {/* <select name="" id="">
-              <option value="">Property Type</option>
-              <option value="">Rentals</option>
-              <option value="">Sales</option>
-            </select> */}
               <div className={styles.selectBox}>
                 <div className={styles.selectBox__current} tabindex="1">
                   <div className={styles.selectBox__value}>
@@ -249,14 +254,6 @@ const index = () => {
               </div>
             </div>
             <div className={styles.formBox}>
-              {/* <label for="">Category</label> */}
-              {/* <select name="" id="">
-              <option value="">Property Category</option>
-              <option value="">Apartments</option>
-              <option value="">Houses</option>
-              <option value="">Villas</option>
-              <option value="">Duplexes</option>
-            </select> */}
               <div className={styles.selectBox}>
                 <div className={styles.selectBox__current} tabindex="1">
                   <div className={styles.selectBox__value}>
@@ -355,38 +352,6 @@ const index = () => {
         </div>
       </section>
 
-      {/* <!-- Property Categories Section --> */}
-
-      {/* <section className={styles.propertyCategoriesSection}>
-        <h2>{`We've Got Properties In Dubai For Everyone`}</h2>
-        <div className={styles.propertyCategoriesImagesBox}>
-          <div className={styles.propertyCategoryImgBox}>
-            <Image width={200} height={200} src="/images/about-us-home-1.png" alt="" />
-            <div className={styles.content}>
-              <p>Residential</p>
-            </div>
-          </div>
-          <div className={styles.propertyCategoryImgBox}>
-            <Image width={200} height={200} src="/images/about-us-home-2.png" alt="" />
-            <div className={styles.content}>
-              <p>Commercial</p>
-            </div>
-          </div>
-          <div className={styles.propertyCategoryImgBox}>
-            <Image width={200} height={200} src="/images/about-us-home-1.png" alt="" />
-            <div className={styles.content}>
-              <p>Land</p>
-            </div>
-          </div>
-          <div className={styles.propertyCategoryImgBox}>
-            <Image width={200} height={200} src="/images/about-us-home-2.png" alt="" />
-            <div className={styles.content}>
-              <p>Multiple Units</p>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       <section className={styles.propertyCategoriesSection}>
         <h2>{`We've Got Properties In Dubai For Everyone`}</h2>
         <div className={styles.propertyCategoriesImagesBox}>
@@ -444,13 +409,11 @@ const index = () => {
                 alt="Property Image"
                 className={styles.mainHouseImg}
               />
-              {/* <Image width={200} height={200} src={property.image} alt={property.property_name} /> */}
-              {/* <Image width={200} height={200} src="/images/property-1.webp" alt="" /> */}
               <div className={styles.latestPropertiesContentBox}>
                 <p className={styles.miniText}>{property.property_type}</p>
                 <h3>{property.property_name}</h3>
                 <p className={styles.priceText}>{property.price}</p>
-                <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
+                <p className={styles.propertyDescription}>{property.description.substring(0, 50) + '...'}</p>
                 <div className={styles.innerPropertyContent}>
                   <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
                   <p><i className="fa-solid fa-shower"></i> {property.bathroom}</p>

@@ -36,7 +36,7 @@ const editProperty = () => {
     const [furnishingType, setFurnishingType] = useState('');
     const [apartmentNumber, setApartmentNumber] = useState('');
     const [titleDeed, setTitleDeed] = useState('');
-    const [propertyTypes, setPropertyTypes] = useState([]);
+    // const [propertyTypes, setPropertyTypes] = useState([]);
     const [propertySubtypes, setPropertySubtypes] = useState([]);
 
     useEffect(() => {
@@ -90,22 +90,18 @@ const editProperty = () => {
         }
     }, [id]);
 
-    // const handlePropertyTypeChange = (e) => {
-    //     const selectedType = e.target.value;
-    //     setPropertyType(selectedType);
-    //     // Optionally, you can reset property subtype when property type changes
-    //     setPropertySubtype('');
-    // };
+
     const handlePropertyTypeChange = (e) => {
         const selectedType = e.target.value;
         setPropertyType(selectedType);
         setPropertySubtype('');
         setPropertySubtypes(propertyCategories[selectedType]);
+        
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+      
         const formData = new FormData();
         formData.append('property_name', propertyName);
         formData.append('property_type', propertyType);
@@ -183,6 +179,7 @@ const editProperty = () => {
 
     const amenityCheckbox = (category, label) => {
         const categoryAmenities = amenities && amenities[category] ? amenities[category].map(item => item.amenity) : [];
+        
 
         return (
             <div className={styles.checkBoxDiv} key={label}>
@@ -285,6 +282,7 @@ const editProperty = () => {
                                         </select>
                                     </div>
                                 )}
+
                             </div>
                             <div className={styles.propertyFormBox2}>
                                 <h3>Additional Details</h3>

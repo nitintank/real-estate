@@ -1,26 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import styles from "@/styles/PropertyList.module.css";
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-
-const propertylist = () => {
+const PropertyList = () => {
     const [properties, setProperties] = useState([]);
+    const [subscriptionPlan, setSubscriptionPlan] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const router = useRouter();
 
     useEffect(() => {
-        const fetchProperties = async () => {
+        const fetchData = async () => {
             try {
                 const userId = localStorage.getItem('userId');
                 if (!userId) {
                     throw new Error('User ID not found');
                 }
+
+                // Fetch properties and subscription plan
                 const response = await fetch(`https://a.khelogame.xyz/get-properties-user/${userId}`);
                 if (!response.ok) {
                     console.error('Network response status:', response.status, response.statusText);
@@ -28,14 +29,15 @@ const propertylist = () => {
                 }
 
                 const data = await response.json();
-                setProperties(data);
+                setProperties(data.properties);
+                setSubscriptionPlan(data.subscription_plan || null);
             } catch (error) {
                 setError(error.message);
             } finally {
                 setLoading(false);
             }
         };
-        fetchProperties();
+        fetchData();
     }, []);
 
     const handleEditClick = (propertyId) => {
@@ -71,12 +73,12 @@ const propertylist = () => {
             <Navbar />
             <section className={styles.mainContentBigBox}>
                 <div className={styles.mainSidebarBox}>
-                <Link href="/user-panel/dashboard"><i className="fa-solid fa-chart-line"></i> Dashboard</Link>
+                    <Link href="/user-panel/dashboard"><i className="fa-solid fa-chart-line"></i> Dashboard</Link>
                     <Link href="/user-panel/add-property"><i className="fa-solid fa-house-chimney"></i> Add Property</Link>
                     <Link href="/user-panel/property-list" className={styles.activeSelection}><i className="fa-solid fa-list"></i> Property List</Link>
                     <Link href="/user-panel/all-reviews"><i className="fa-solid fa-comment"></i> All Reviews</Link>
-                    <Link href="/user-panel/contact-tracking"><i class="fa-solid fa-address-book"></i> Contact Track</Link>
-                    <Link href="/user-panel/subscription"><i class="fa-solid fa-paper-plane"></i> Subscription</Link>
+                    <Link href="/user-panel/contact-tracking"><i className="fa-solid fa-address-book"></i> Contact Track</Link>
+                    <Link href="/user-panel/subscription"><i className="fa-solid fa-paper-plane"></i> Subscription</Link>
                     <Link href="/user-panel/user-profile"><i className="fa-solid fa-user"></i> View Profile</Link>
                 </div>
                 <div className={styles.mainContentBox}>
@@ -91,6 +93,7 @@ const propertylist = () => {
                                     <th>Location</th>
                                     <th>Price</th>
                                     <th>Status</th>
+                                    {subscriptionPlan && <th>Subscription Detail</th>} {/* Conditionally render */}
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -108,9 +111,10 @@ const propertylist = () => {
                                         </td>
                                         <td>{property.property_type}</td>
                                         <td>{new Date(property.created_at).toLocaleDateString()}</td>
-                                        <td>{property.address}</td>
+                                        <td>{property.location}</td>
                                         <td>{property.price}</td>
                                         <td>{property.status}</td>
+                                        {subscriptionPlan && <td>{subscriptionPlan.plan_name}</td>} {/* Conditionally render */}
                                         <td>
                                             <i className="fa-solid fa-pen-to-square" onClick={() => handleEditClick(property.id)}></i>
                                             {/* <i className="fa-solid fa-trash-can" onClick={() => handleDeleteClick(property.id)}></i> */}
@@ -127,4 +131,4 @@ const propertylist = () => {
     );
 }
 
-export default propertylist
+export default PropertyList;

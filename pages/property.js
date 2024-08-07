@@ -37,6 +37,7 @@ const property = () => {
     const [loading, setLoading] = useState(true);
     const [reviews, setReviews] = useState([]);
     const [error, setError] = useState('');
+    const [recommendedProperties, setRecommendedProperties] = useState([]);
     const [reviewForm, setReviewForm] = useState({
         rating: '',
         comment: '',
@@ -56,14 +57,38 @@ const property = () => {
         }
     }, [id]);
 
+    // const fetchPropertyDetails = async (propertyId) => {
+    //     try {
+    //         const response = await fetch(`https://a.khelogame.xyz/property/${propertyId}`)
+    //         if (response.ok) {
+    //             const data = await response.json();
+    //             console.log("================= propty>", data)
+    //             setPropertyDetails(data);
+    //             setLoading(false);
+
+                
+
+
+    //         } else {
+    //             const errorData = await response.json();
+    //             console.error('Error:', errorData);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    // };
+
     const fetchPropertyDetails = async (propertyId) => {
         try {
-            const response = await fetch(`https://a.khelogame.xyz/property/${propertyId}`)
+            const response = await fetch(`https://a.khelogame.xyz/property/${propertyId}`);
             if (response.ok) {
                 const data = await response.json();
-                console.log("================= propty>", data)
+                console.log("================= propty>", data);
                 setPropertyDetails(data);
                 setLoading(false);
+
+                // Fetch recommended properties based on location and bedroom count
+                fetchRecommendedProperties(data.location, data.bedroom);
             } else {
                 const errorData = await response.json();
                 console.error('Error:', errorData);
@@ -73,6 +98,21 @@ const property = () => {
         }
     };
 
+    const fetchRecommendedProperties = async (location, bedroom) => {
+        try {
+            const response = await fetch('https://a.khelogame.xyz/get-properties');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            const recommendedProperties = data.filter((property) => {
+                return property.status === 'approved' && (property.location.toLowerCase() === location.toLowerCase() || property.bedroom === bedroom);
+            }).slice(0, 3); // Limit to 3 properties
+            setRecommendedProperties(recommendedProperties);
+        } catch (error) {
+            console.error('Error fetching recommended properties:', error);
+        }
+    };
     const fetchReviews = async (propertyId) => {
         try {
             const response = await fetch(`https://a.khelogame.xyz/get_review?property_id=${propertyId}`);
@@ -416,9 +456,84 @@ const property = () => {
                 </div>
             </section>
 
+            {/* reacommation propety */}
+            {/* <section className={styles.latestPropertiesSection}>
+                <h2>Recommended Properties</h2>
+                <div className={styles.latestPropertiesBigBox}>
+                {recommendedProperties.length > 0 ? (
+                    recommendedProperties.map((property, index) => (
+                        <div key={index} className={styles.recommendedPropertyBox}>
+                            <Image
+                                width={300}
+                                height={200}
+                                src={`https://a.khelogame.xyz/${property.image_paths}`}
+                                alt="Recommended Property"
+                                className={styles.recommendedPropertyImage}
+                            />
+                            <h3>{property.property_name}</h3>
+                            <p>{property.price}</p>
+                            <p>{property.bedroom} Bedrooms</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>No recommended properties available.</p>
+                )}
+                </div>
+            </section> */}
+
+            <section className={styles.latestPropertiesSection}>
+      <h2>Recommended Properties</h2>
+      <div className={styles.latestPropertiesBigBox}>
+      {recommendedProperties.length > 0 ? (
+          recommendedProperties.map((property, index) => (
+              <div key={index} className={styles.recommendedPropertyBox}>
+              <Link href={`/property?id=${property.id}`} key={index} className={styles.latestPropertiesInnerBox}>
+                  <Image
+                      width={300}
+                      height={200}
+                      src={`https://a.khelogame.xyz/${property.image_paths}`}
+                      alt="Recommended Property"
+                      className={styles.recommendedPropertyImage}
+                  />
+                  </Link>
+                  <div className={styles.latestPropertiesContentBox}>
+                <p className={styles.miniText}>{property.property_type}</p>
+                <h3>{property.property_name}</h3>
+                <p className={styles.priceText}>{property.price}</p>
+                <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
+                <div className={styles.innerPropertyContent}>
+                  <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
+                  <p><i className="fa-solid fa-shower"></i> {property.bathroom}</p>
+                  <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
+                  <p><i className="fa-solid fa-car"></i> {property.parking}</p>
+                  <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
+                </div>
+                <hr />
+                <div className={styles.innerButtonBox}>
+                  <button><i className="fa-solid fa-phone"></i> Call</button>
+                  <button><i className="fa-solid fa-envelope"></i> Email</button>
+                  <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                </div>
+              </div>
+              </div>
+              
+          ))
+      ) : (
+          <p>No recommended properties available.</p>
+      )}
+      </div>
+  </section>
+
+
+  
+
+    
+
+
             <Footer />
         </>
     );
 };
 
 export default property;
+

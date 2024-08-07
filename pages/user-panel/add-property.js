@@ -5,6 +5,8 @@ import Link from 'next/link';
 import styles from "@/styles/AddProperty.module.css";
 import { imageConfigDefault } from 'next/dist/shared/lib/image-config';
 import Image from 'next/image';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const addProperty = () => {
     const [propertyName, setPropertyName] = useState('');
@@ -35,6 +37,9 @@ const addProperty = () => {
         features: [],
         cleaningAndMaintenance: [],
     });
+    const [errors, setErrors] = useState({});
+
+    
 
     useEffect(() => {
         const storedToken = localStorage.getItem('accessToken');
@@ -48,9 +53,30 @@ const addProperty = () => {
         setPropertySubtype('');
     };
 
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!propertyType) newErrors.propertyType = 'Property type is required';
+        if (!plotUpArea) newErrors.plotUpArea = 'Plot Up Area is required';
+        if (!bedroom) newErrors.bedroom = 'Bedroom count is required';
+        if (!bathroom) newErrors.bathroom = 'Bathroom count is required';
+        if (!furnishing_type) newErrors.furnishing_type = 'Furnishing type is required';
+        if (!price) newErrors.price = 'Price is required';
+        if (!propertyName) newErrors.propertyName = 'Property title is required';
+        if (!description) newErrors.description = 'Description is required';
+        if (imagePaths.length < 5) newErrors.imagePaths = 'At least 5 property images are required';
+        if (!area) newErrors.area = 'Area is required';
+
+        setErrors(newErrors);
+
+        return Object.keys(newErrors).length === 0;
+    };
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        if (!validateForm()) return;
+        
         const formData = new FormData();
         formData.append('property_name', propertyName);
         formData.append('property_type', propertyType);
@@ -102,10 +128,12 @@ const addProperty = () => {
 
             if (response.ok) {
                 const data = await response.json();
+                toast.success('Property added successfully!');
                 console.log(data);
             } else {
                 const errorData = await response.json();
-                console.error('Error:', errorData);
+                toast.error(`Error: ${errorData.message}`);
+                console.error('Error:',  errorData);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -175,6 +203,7 @@ const addProperty = () => {
     return (
         <>
             <Navbar />
+            <ToastContainer />
             <section className={styles.mainContentBigBox}>
                 <div className={styles.mainSidebarBox}>
                     <Link href="/user-panel/dashboard"><i className="fa-solid fa-chart-line"></i> Dashboard</Link>
@@ -221,14 +250,18 @@ const addProperty = () => {
                                         onChange={(e) => setPropertyName(e.target.value)}
                                         placeholder="Add Property Title"
                                     />
+                                    {errors.propertyName && <p className={styles.errorText}>{errors.propertyName}</p>}
+                                    
                                     <textarea name="" id="" value={description} onChange={(e) => setDescription(e.target.value)}
                                         placeholder="Add Property Description" rows='5'></textarea>
+                                    {errors.description && <p className={styles.errorText}>{errors.description}</p>}    
                                     <input
                                         type="text"
                                         value={price}
                                         onChange={(e) => setPrice(e.target.value)}
                                         placeholder="Add Price"
                                     />
+                                    {errors.price && <p className={styles.errorText}>{errors.price}</p>}
                                     <select value={saleOrRent} onChange={(e) => setSaleOrRent(e.target.value)}>
                                         <option value="">Select Listing Type</option>
                                         <option value="Rent">For Rent</option>
@@ -243,12 +276,14 @@ const addProperty = () => {
                                             <option key={i} value={i}>{i}</option>
                                         ))}
                                     </select>
+                                    {errors.bedroom && <p className={styles.errorText}>{errors.bedroom}</p>}
                                     <select value={bathroom} onChange={(e) => setBathroom(e.target.value)}>
                                         <option value="">Select Bathroom</option>
                                         {[...Array(11)].map((_, i) => (
                                             <option key={i} value={i}>{i}</option>
                                         ))}
                                     </select>
+                                    {errors.bathroom && <p className={styles.errorText}>{errors.bathroom}</p>}
                                     <select
                                         value={furnishing_type}
                                         onChange={(e) => setFurnishing_type(e.target.value)}
@@ -258,6 +293,7 @@ const addProperty = () => {
                                         <option value="Fully Furnished">Fully Furnished</option>
                                         <option value="Unfurnished">Unfurnished</option>
                                     </select>
+                                    {errors.furnishing_type && <p className={styles.errorText}>{errors.furnishing_type}</p>}
                                     <input
                                         type="text"
                                         value={location}
@@ -282,6 +318,7 @@ const addProperty = () => {
                                         onChange={(e) => setArea(e.target.value)}
                                         placeholder="Add Area"
                                     />
+                                    {errors.area && <p className={styles.errorText}>{errors.area}</p>}
                                     <input
                                         type="text"
                                         value={buildArea}
@@ -294,6 +331,7 @@ const addProperty = () => {
                                         onChange={(e) => setPlotUpArea(e.target.value)}
                                         placeholder="Enter Plot Up Area"
                                     />
+                                      {errors.plotUpArea && <p className={styles.errorText}>{errors.plotUpArea}</p>}
                                     <input
                                         type="text"
                                         value={apartmentNumber}
@@ -320,6 +358,7 @@ const addProperty = () => {
                                             />
                                         ))}
                                     </div>
+                                    {errors.imagePaths && <p className={styles.errorText}>{errors.imagePaths}</p>}
                                     <label>Floor Map Images</label>
                                     <input type="file" onChange={handleImageChange} multiple />
                                     <div>

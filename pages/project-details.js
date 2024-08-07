@@ -8,7 +8,6 @@ import Link from 'next/link';
 import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
 const ProjectDetails = () => {
-
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -28,7 +27,7 @@ const ProjectDetails = () => {
 
     const router = useRouter();
     const { id } = router.query;
-    const [project, setProject] = useState(null);
+    const [Projectdetails, setProjectdetails] = useState(null);
 
     useEffect(() => {
         const fetchProjectDetails = async (projectId) => {
@@ -41,7 +40,7 @@ const ProjectDetails = () => {
                     throw new Error('Failed to fetch project details');
                 }
                 const data = await response.json();
-                setProject(data);
+                setProjectdetails(data);
                 console.log("project-details ", data);
             } catch (error) {
                 console.error('Error fetching project details:', error);
@@ -53,7 +52,7 @@ const ProjectDetails = () => {
         }
     }, [id]);
 
-    if (!project) {
+    if (!Projectdetails) {
         return <p>Loading...</p>;
     }
 
@@ -62,31 +61,30 @@ const ProjectDetails = () => {
             <Navbar />
             <section className={`${styles.propertyImagesSection} animate-on-scroll`}>
                 {/* Main property image */}
-                {project.image_paths && (
+                {Projectdetails.project.image_paths && Projectdetails.project.image_paths.length > 0 && (
                     <Image
                         width={600}
                         height={400}
-                        src={`https://a.khelogame.xyz/property/${project.image_paths[0]}`}
+                        src={`https://a.khelogame.xyz/property/${Projectdetails.project.image_paths[0]}`}
                         alt="Property Image"
                         className={styles.mainHouseImg}
                     />
                 )}
                 <div className={styles.propertyMoreImages}>
-                    {project.moreImages && project.moreImages.map((image, index) => (
-                        <Image key={index} width={200} height={200} src={image} alt="" />
+                    {Projectdetails.project.moreImages && project.moreImages.map((image, index) => (
+                        <Image key={index} width={200} height={200} src={image} alt={`Additional Image ${index}`} />
                     ))}
                 </div>
-
             </section>
 
             <section className={`${styles.propertyTitleContentBox} animate-on-scroll`}>
                 <div className={styles.contentTitleContentBox1}>
-                    <h2>{project.project_name}</h2>
-                    <h4>{project.created_at}</h4>
-                    <p>Developer Name :{project.developer_name}</p>
+                    <h2>{Projectdetails.project.project_name}</h2>
+                    <h4>{new Date(Projectdetails.project.created_at).toLocaleDateString()}</h4>
+                    <p>Developer Name: {Projectdetails.project.developer_name}</p>
                 </div>
                 <div className={styles.contentTitleContentBox2}>
-                    <h3>Starting from {project.price}AED</h3>
+                    <h3>Starting from {Projectdetails.project.price} AED</h3>
                     <button>Contact Us</button>
                 </div>
             </section>
@@ -98,68 +96,77 @@ const ProjectDetails = () => {
                     <Link href="#units" scroll={false}><li>Units</li></Link>
                 </ul>
                 <div className={styles.amenitiesCardsBigBox}>
-                    {Object.keys(project.amenities).map((key, index) => (
-                        <div key={index} className={styles.aminitiesCardsBox}>
-                            {project.amenities[key].map((amenity, index) => (
-                                <p key={index}>
-                                    <span><i className="fa-solid fa-bed"></i></span>
-                                    {amenity} {/* Render the amenity property here */}
-                                </p>
-                            ))}
-                        </div>
-                    ))}
+                    {Projectdetails.project.amenities && Object.keys(Projectdetails.project.amenities).length > 0 ? (
+                        Object.keys(Projectdetails.project.amenities).map((key, index) => (
+                            <div key={index} className={styles.aminitiesCardsBox}>
+                                {Projectdetails.project.amenities[key].map((amenity, index) => (
+                                    <p key={index}>
+                                        <span><i className="fa-solid fa-bed"></i></span>
+                                        {amenity}
+                                    </p>
+                                ))}
+                            </div>
+                        ))
+                    ) : (
+                        <p>No amenities available.</p>
+                    )}
                 </div>
             </section>
 
             <section className={`${styles.descriptionContentBox} animate-on-scroll`} id='descriptionSection'>
                 <h3>Description</h3>
-                <p>{project.description}</p>
+                <p>{Projectdetails.project.description}</p>
             </section>
 
             <section className={`${styles.addressSection} animate-on-scroll`} id='addressSection'>
                 <div className={styles.addressTopContent}>
                     <h2>Property Details</h2>
-                    <Link href={project.location}><button className={styles.googleMapsBtn}><i className="fa-solid fa-location-dot"></i>Open On Google Maps</button></Link>
+                    {Projectdetails.project.location && (
+                        <Link href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(Projectdetails.project.location)}`}>
+                            <button className={styles.googleMapsBtn}>
+                                <i className="fa-solid fa-location-dot"></i> Open On Google Maps
+                            </button>
+                        </Link>
+                    )}
                 </div>
                 <div className={styles.addressBottomContentBox}>
                     <div className={styles.addressBottomBox}>
-                        <p><span className={styles.darkText}>Delivery Date</span><span>{project.delivery_date}</span></p>
-                        <p><span className={styles.darkText}>Construction Start Date</span><span>{project.construction_start_date}</span></p>
+                        <p><span className={styles.darkText}>Delivery Date</span><span>{new Date(Projectdetails.project.delivery_date).toLocaleDateString()}</span></p>
+                        <p><span className={styles.darkText}>Construction Start Date</span><span>{new Date(Projectdetails.project.construction_start_date).toLocaleDateString()}</span></p>
                     </div>
-                    <br/>
+                    <br />
                     <div className={styles.addressBottomBox}>
-                        <p><span className={styles.darkText}>Expected Completion Date</span><span>{project.expected_completion_date}</span></p>
-                        <p><span className={styles.darkText}>Locality</span><span>{project.locality}</span></p>
+                        <p><span className={styles.darkText}>Expected Completion Date</span><span>{new Date(Projectdetails.project.expected_completion_date).toLocaleDateString()}</span></p>
+                        <p><span className={styles.darkText}>Locality</span><span>{Projectdetails.project.locality}</span></p>
                     </div>
-                    <br/>
+                    <br />
                     <div className={styles.addressBottomBox}>
-                        <p><span className={styles.darkText}>Number of buildings</span><span>{project.number_of_buildings}</span></p>
-                        <p><span className={styles.darkText}>City</span><span>{project.city}</span></p>
+                        <p><span className={styles.darkText}>Number of buildings</span><span>{Projectdetails.project.number_of_buildings}</span></p>
+                        <p><span className={styles.darkText}>City</span><span>{Projectdetails.project.city}</span></p>
                     </div>
-                    <br/>
+                    <br />
                 </div>
             </section>
 
-            {/* Units Section */}
             <section className={`${styles.descriptionContentBox} animate-on-scroll`} id='units'>
                 <h3>Units</h3>
-                {project.building_names && Object.entries(project.building_names).map(([buildingName, units]) => (
-                    <div key={buildingName}>
-                        <h4>Building Name: {buildingName}</h4>
-                        {units.map((unit, index) => (
-                            <div key={index} className={styles.unit}>
-                                <p>{unit.floor_name}</p>
-                                <p>{unit.bedrooms} Beds</p>
-                                <p>{unit.area} sqft</p>
-                                {unit.floor_plan_image && (
+                {Projectdetails.buildings && Projectdetails.buildings.map((building, buildingIndex) => (
+                    <div key={buildingIndex}>
+                        <h4>Building Name: {building.building_name}</h4>
+                        {building.floors.map((floor, floorIndex) => (
+                            <div key={floorIndex} className={styles.unit}>
+                                <p>{floor.floor_name}</p>
+                                <p>{floor.bedrooms || 'N/A'} Beds</p>
+                                <p>{floor.area || 'N/A'} sqft</p>
+                                {floor.floor_plan_image && (
                                     <Image
                                         width={200}
                                         height={200}
-                                        src={`https://a.khelogame.xyz/property/${unit.floor_plan_image[0]}`}
-                                        
+                                        src={`https://a.khelogame.xyz/property/${floor.floor_plan_image}`}
                                         alt="Floor Plan"
                                     />
                                 )}
+                                <p>Price: {floor.floor_price} AED</p>
                             </div>
                         ))}
                     </div>

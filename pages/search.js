@@ -33,16 +33,16 @@ const Search = () => {
     });
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [location, setLocation] = useState('')
+    const [location, setLocation] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const router = useRouter();
-    const [isPropertiesUpdated, setIsPropertiesUpdated] = useState(false);
-
 
     const handleFilterChange = (filterName, value) => {
-        console.log(filterName, "bcbdsfd")
         setFilters(prevFilters => ({ ...prevFilters, [filterName]: value }));
+        if (filterName === 'location') {
+            setLocation(value);
+        }
     };
 
     const fetchProperties = async () => {
@@ -69,14 +69,15 @@ const Search = () => {
     }, [router.isReady]);
 
     useEffect(() => {
-        console.log(router.query)
         if (router.query) {
+            const newFilters = { ...filters };
             Object.keys(router.query).forEach(key => {
-                if (key = 'location') {
-                    setLocation(router.query[key])
+                newFilters[key] = router.query[key];
+                if (key === 'location') {
+                    setLocation(router.query[key]);
                 }
-                handleFilterChange(key, router.query[key]);
             });
+            setFilters(newFilters);
         }
     }, [router.query]);
 
@@ -88,7 +89,6 @@ const Search = () => {
         let tempProperties = [...properties];
 
         if (filters.propertyType) {
-            console.log(tempProperties, "tempProperties")
             tempProperties = tempProperties.filter(
                 (property) => property.property_type === filters.propertyType
             );
@@ -136,17 +136,12 @@ const Search = () => {
 
         setFilteredProperties(tempProperties);
     };
-    // const handleFilterChange = (filterName, value) => {
-    //     setFilters(prevFilters => ({ ...prevFilters, [filterName]: value }));
-    // };
 
     const handleAmenityChange = (amenity) => {
-        console.log("curretn aminity:=>", amenity)
         setFilters((prevFilters) => {
             const newSelectedAmenities = prevFilters.selectedAmenities.includes(amenity)
                 ? prevFilters.selectedAmenities.filter((a) => a !== amenity)
                 : [...prevFilters.selectedAmenities, amenity];
-            console.log(newSelectedAmenities, "newSelectedAmenities")
             return { ...prevFilters, selectedAmenities: newSelectedAmenities };
         });
     };
@@ -259,24 +254,23 @@ const Search = () => {
                                         <h3>{property.property_name}</h3>
                                         <p className={styles.priceText}>{property.price}</p>
                                         <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
+                                        {/* <div className={styles.innerPropertyContent}>
+                                            <p><i className="fa-solid fa-bed"></i> {property.bedroom} Bed</p>
+                                            <p><i className="fa-solid fa-shower"></i> {property.washroom} Bath</p>
+                                            <p><i className="fa-solid fa-location-dot"></i> {property.location}</p>
+                                        </div> */}
                                         <div className={styles.innerPropertyContent}>
-                                            <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
-                                            <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>
-                                            <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
-                                            <p><i className="fa-solid fa-car"></i> {property.vehicle}</p>
-                                            <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
-                                        </div>
-                                        <hr />
-                                        <div className={styles.innerButtonBox}>
-                                            <button><i className="fa-solid fa-phone"></i> Call</button>
-                                            <button><i className="fa-solid fa-envelope"></i> Email</button>
-                                            <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
-                                        </div>
+                  <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
+                  <p><i className="fa-solid fa-shower"></i> {property.bathroom}</p>
+                  <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
+                  <p><i className="fa-solid fa-car"></i> {property.parking}</p>
+                  <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
+                </div>
                                     </div>
                                 </Link>
                             ))
                         ) : (
-                            <p>No properties found for the selected filters.</p>
+                            <p>No properties found matching the filters.</p>
                         )}
                     </div>
                 </div>
@@ -287,46 +281,11 @@ const Search = () => {
                 style={customStyles}
                 contentLabel="Select Amenities"
             >
-                <h2 className={styles.modal_h2}>Select Amenities For This Property</h2>
-                <h3 className={styles.modal_h3}>Recreation And Family</h3>
-                <div className={styles.modal_Label}>
-                    {amenityCheckbox('recreationAndFamily', 'barbeque area')}
-                    {amenityCheckbox('recreationAndFamily', 'day care center')}
-                    {amenityCheckbox('recreationAndFamily', 'kids play area')}
-                    {amenityCheckbox('recreationAndFamily', 'lawn or garden')}
-                    {amenityCheckbox('recreationAndFamily', 'cafeteria or canteen')}
+                <h2>Select Amenities</h2>
+                <button onClick={closeModal} style={{ backgroundColor: '#333', color: '#fff', border: 'none', padding: '5px 10px' }}>Close</button>
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                    {['Gym', 'Laundry', 'Dishwasher', 'Pets', 'Parking', 'Fireplace'].map(amenity => amenityCheckbox('Amenities', amenity))}
                 </div>
-                <h3 className={styles.modal_h3}>Health And Fitness</h3>
-                <div className={styles.modal_Label}>
-                    {amenityCheckbox('healthAndFitness', 'first aid medical center')}
-                    {amenityCheckbox('healthAndFitness', 'gym or health club')}
-                    {amenityCheckbox('healthAndFitness', 'jacuzzi')}
-                    {amenityCheckbox('healthAndFitness', 'sauna')}
-                    {amenityCheckbox('healthAndFitness', 'swimming pool')}
-                </div>
-                <h3 className={styles.modal_h3}>Business and Security</h3>
-                <div className={styles.modal_Label}>
-                    {amenityCheckbox('businessAndSecurity', 'conference room')}
-                    {amenityCheckbox('businessAndSecurity', 'business center')}
-                    {amenityCheckbox('businessAndSecurity', 'intercom')}
-                    {amenityCheckbox('businessAndSecurity', 'atm')}
-                    {amenityCheckbox('businessAndSecurity', 'cctv security')}
-                </div>
-                <h3 className={styles.modal_h3}>Nearby Locations And Other Facilities</h3>
-                <div className={styles.modal_Label}>
-                    {amenityCheckbox('nearbyLocationsAndOtherFacilities', 'community center')}
-                    {amenityCheckbox('nearbyLocationsAndOtherFacilities', 'mosque')}
-                    {amenityCheckbox('nearbyLocationsAndOtherFacilities', 'market area')}
-                    {amenityCheckbox('nearbyLocationsAndOtherFacilities', 'public parking')}
-                    {amenityCheckbox('nearbyLocationsAndOtherFacilities', 'school')}
-                </div>
-                <h3 className={styles.modal_h3}>Other Facilities</h3>
-                <div className={styles.modal_Label}>
-                    {amenityCheckbox('otherFacilities', 'maintenance staff')}
-                    {amenityCheckbox('otherFacilities', 'security staff')}
-                    {amenityCheckbox('otherFacilities', 'cleaning services')}
-                </div>
-                <button onClick={closeModal} className={styles.modal_save_btn}>Save</button>
             </Modal>
             <Footer />
         </>
@@ -334,4 +293,3 @@ const Search = () => {
 };
 
 export default Search;
-
