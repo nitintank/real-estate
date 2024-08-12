@@ -117,11 +117,10 @@ const allReviews = () => {
                                 {reviews.map((review) => (
                                     <tr key={review.id}>
                                         <td>
-                                            <h4><img src="/images/contact-card.png" alt=""/>{review.name}</h4>
+                                            <h4>{review.name}</h4>
                                             <p className={styles.reviewComment}>{review.comment}</p>
                                             <p className={styles.replyText}>REPLY</p>
                                             <div className={styles.replyBox}>
-                                                <img src="/images/contact-card.png" alt="" />
                                                 <input
                                                     type="text"
                                                     placeholder="Add A Reply...."
