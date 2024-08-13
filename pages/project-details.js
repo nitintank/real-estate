@@ -24,7 +24,7 @@ const ProjectDetails = () => {
     };
 
     useIntersectionObserver(observerCallback, observerOptions);
-
+            
     const router = useRouter();
     const { id } = router.query;
     const [Projectdetails, setProjectdetails] = useState(null);

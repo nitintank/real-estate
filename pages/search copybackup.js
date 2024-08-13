@@ -20,13 +20,6 @@ const customStyles = {
 
 Modal.setAppElement('#__next');
 
-const subscriptionPriority = {
-    Diamond: 1,
-    Gold: 2,
-    Silver: 3,
-    Default: 4,
-};
-
 const Search = () => {
     const [properties, setProperties] = useState([]);
     const [filteredProperties, setFilteredProperties] = useState([]);
@@ -95,15 +88,6 @@ const Search = () => {
     const applyFilters = () => {
         let tempProperties = [...properties];
 
-        tempProperties.sort((a, b) => {
-            const planA = a.subscription_plan?.plan_name || 'Default';
-            const planB = b.subscription_plan?.plan_name || 'Default';
-            return (subscriptionPriority[planA] || subscriptionPriority.Default) - (subscriptionPriority[planB] || subscriptionPriority.Default);
-        });
-
-     
-        
-
         if (filters.propertyType) {
             tempProperties = tempProperties.filter(
                 (property) => property.property_type === filters.propertyType
@@ -151,7 +135,6 @@ const Search = () => {
         }
 
         setFilteredProperties(tempProperties);
-        
     };
 
     const handleAmenityChange = (amenity) => {
@@ -271,16 +254,18 @@ const Search = () => {
                                         <h3>{property.property_name}</h3>
                                         <p className={styles.priceText}>{property.price}</p>
                                         <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
-                                        <p className={styles.subscriptionTag}>
-                                            {property.subscription_plan?.plan_name || 'Free'}
-                                        </p>
+                                        {/* <div className={styles.innerPropertyContent}>
+                                            <p><i className="fa-solid fa-bed"></i> {property.bedroom} Bed</p>
+                                            <p><i className="fa-solid fa-shower"></i> {property.washroom} Bath</p>
+                                            <p><i className="fa-solid fa-location-dot"></i> {property.location}</p>
+                                        </div> */}
                                         <div className={styles.innerPropertyContent}>
-                                            <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
-                                            <p><i className="fa-solid fa-shower"></i> {property.bathroom}</p>
-                                            <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
-                                            <p><i className="fa-solid fa-car"></i> {property.parking}</p>
-                                            <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
-                                        </div>
+                  <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
+                  <p><i className="fa-solid fa-shower"></i> {property.bathroom}</p>
+                  <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
+                  <p><i className="fa-solid fa-car"></i> {property.parking}</p>
+                  <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
+                </div>
                                     </div>
                                 </Link>
                             ))
