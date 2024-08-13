@@ -358,7 +358,7 @@ const addProperty = () => {
                                             />
                                         ))}
                                     </div>
-                                    {errors.imagePaths && <p className={styles.errorText}>{errors.imagePaths}</p>}
+                                  
                                     <label>Floor Map Images</label>
                                     <input type="file" onChange={handleImageChange} multiple />
                                     <div>

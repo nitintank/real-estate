@@ -30,13 +30,17 @@ const property = () => {
     const { id } = router.query;
     // const [propertyDetails, setPropertyDetails] = useState({});
     const [propertyDetails, setPropertyDetails] = useState({
-        image_path: '',
+        image_paths: [],
+        document_paths: [],
         media_paths: [],
+        video_paths: []
     });
 
     const [loading, setLoading] = useState(true);
     const [reviews, setReviews] = useState([]);
     const [error, setError] = useState('');
+
+
     const [recommendedProperties, setRecommendedProperties] = useState([]);
     const [reviewForm, setReviewForm] = useState({
         rating: '',
@@ -57,26 +61,6 @@ const property = () => {
         }
     }, [id]);
 
-    // const fetchPropertyDetails = async (propertyId) => {
-    //     try {
-    //         const response = await fetch(`https://a.khelogame.xyz/property/${propertyId}`)
-    //         if (response.ok) {
-    //             const data = await response.json();
-    //             console.log("================= propty>", data)
-    //             setPropertyDetails(data);
-    //             setLoading(false);
-
-                
-
-
-    //         } else {
-    //             const errorData = await response.json();
-    //             console.error('Error:', errorData);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //     }
-    // };
 
     const fetchPropertyDetails = async (propertyId) => {
         try {
@@ -239,35 +223,23 @@ const property = () => {
         setEnquiryForm({ ...enquiryForm, [name]: value });
     };
 
+
     return (
         <>
             <Navbar />
             <section className={`${styles.propertyImagesSection} animate-on-scroll`}>
                 {/* Main property image */}
-                <Image
-                    width={600}
-                    height={400}
-                    src={`https://a.khelogame.xyz/${propertyDetails.media_paths}`}
-                    alt="Property Image"
-                    className={styles.mainHouseImg}
-                />
-                {/* {imagePaths.map((path, index) => (
-                    <div key={index}>
-                        <Image width={600} height={400} src={`https://a.khelogame.xyz/${path}`} alt={`Image ${index + 1}`} className={styles.mainHouseImg} />
-                    </div>
-                ))} */}
-                {/* Additional property images */}
-                {/* <div className={styles.propertyMoreImages}>
-                    {propertyDetails.media_paths && propertyDetails.media_paths.map((path, index) => (
-                        <Image
-                            key={index}
-                            width={200}
-                            height={200}
-                            src={`/${path}`}  
-                            alt={`Property Image ${index + 1}`}
-                        />
-                    ))}
-                </div> */}
+                {propertyDetails.media_paths.map((media, index) => (
+                    <Image
+                        key={index}
+                        width={600}
+                        height={400}
+                        src={`https://a.khelogame.xyz/${media}`}
+                        alt={`Media Image ${index + 1}`}
+                        className={styles.mediaImg}
+                    />
+                ))}
+
             </section>
 
             <section className={`${styles.propertyTitleContentBox} animate-on-scroll`}>
@@ -304,6 +276,17 @@ const property = () => {
                 </div>
             </section>
 
+            <section className={`${styles.videosSection} animate-on-scroll`}>
+                <h3>Videos</h3>
+                {/* Display all videos */}
+                {propertyDetails.video_paths.map((video, index) => (
+                    <video key={index} width="600" height="400" controls>
+                        <source src={`https://a.khelogame.xyz/${video}`} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                ))}
+            </section>
+
             <section className={`${styles.descriptionContentBox} animate-on-scroll`} id='descriptionSection'>
                 <h3>Description</h3>
                 <p>{propertyDetails.description}</p>
@@ -332,14 +315,43 @@ const property = () => {
 
             <section className={`${styles.floorPlanSection} animate-on-scroll`}>
                 <h2>Floor Plan</h2>
-                <Image width={600} height={400} src={`https://a.khelogame.xyz/${propertyDetails.image_paths}`} alt="Floor Plan" />
+                {propertyDetails.image_paths.map((image, index) => (
+                    <Image
+                        key={index}
+                        width={600}
+                        height={400}
+                        src={`https://a.khelogame.xyz/${image}`}
+                        alt={`Property Image ${index + 1}`}
+                        className={styles.mainHouseImg}
+                    />
+                ))}
             </section>
+
+
+
 
             <section className={`${styles.googleMapsSection} animate-on-scroll`} id='locationSection'>
                 <h2>Location</h2>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3556.1353252701656!2d75.77526107587087!3d26.962613576617418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42aef78fb948e4ab%3A0x1935463d9171cfa!2sSwipeconnect%20Cybersecurity!5e0!3m2!1sen!2sin!4v1717758451689!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
             </section>
 
+            <section className={`${styles.documentsSection} animate-on-scroll`}>
+                <h3>Documents</h3>
+                {/* Display all documents as links */}
+                {propertyDetails.document_paths.map((document, index) => (
+                    <Link
+                        key={index}
+                        href={`https://a.khelogame.xyz/${document}`}
+                        download
+                        target="_blank"
+                        className={styles.documentLink}
+                    >
+                        {`Document ${index + 1}`}
+                    </Link>
+
+                ))}
+            </section>
             <section className={`${styles.ownerDetailsBox} animate-on-scroll`}>
                 <div className={styles.ownerDetailBox1}>
                     <h3>Owner Details</h3>
@@ -457,78 +469,48 @@ const property = () => {
             </section>
 
             {/* reacommation propety */}
-            {/* <section className={styles.latestPropertiesSection}>
+            <section className={styles.latestPropertiesSection}>
                 <h2>Recommended Properties</h2>
                 <div className={styles.latestPropertiesBigBox}>
-                {recommendedProperties.length > 0 ? (
-                    recommendedProperties.map((property, index) => (
-                        <div key={index} className={styles.recommendedPropertyBox}>
-                            <Image
-                                width={300}
-                                height={200}
-                                src={`https://a.khelogame.xyz/${property.image_paths}`}
-                                alt="Recommended Property"
-                                className={styles.recommendedPropertyImage}
-                            />
-                            <h3>{property.property_name}</h3>
-                            <p>{property.price}</p>
-                            <p>{property.bedroom} Bedrooms</p>
-                        </div>
-                    ))
-                ) : (
-                    <p>No recommended properties available.</p>
-                )}
+                    {recommendedProperties.length > 0 ? (
+                        recommendedProperties.map((property, index) => (
+                            <div key={index} className={styles.recommendedPropertyBox}>
+                                <Link href={`/property?id=${property.id}`} key={index} className={styles.latestPropertiesInnerBox}>
+                                    <Image
+                                        width={300}
+                                        height={200}
+                                        src={`https://a.khelogame.xyz/${property.image_paths}`}
+                                        alt="Recommended Property"
+                                        className={styles.recommendedPropertyImage}
+                                    />
+                                </Link>
+                                <div className={styles.latestPropertiesContentBox}>
+                                    <p className={styles.miniText}>{property.property_type}</p>
+                                    <h3>{property.property_name}</h3>
+                                    <p className={styles.priceText}>{property.price}</p>
+                                    <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
+                                    <div className={styles.innerPropertyContent}>
+                                        <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
+                                        <p><i className="fa-solid fa-shower"></i> {property.bathroom}</p>
+                                        <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
+                                        <p><i className="fa-solid fa-car"></i> {property.parking}</p>
+                                        <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
+                                    </div>
+                                    <hr />
+                                    <div className={styles.innerButtonBox}>
+                                        <button><i className="fa-solid fa-phone"></i> Call</button>
+                                        <button><i className="fa-solid fa-envelope"></i> Email</button>
+                                        <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        ))
+                    ) : (
+                        <p>No recommended properties available.</p>
+                    )}
                 </div>
-            </section> */}
-
-            <section className={styles.latestPropertiesSection}>
-      <h2>Recommended Properties</h2>
-      <div className={styles.latestPropertiesBigBox}>
-      {recommendedProperties.length > 0 ? (
-          recommendedProperties.map((property, index) => (
-              <div key={index} className={styles.recommendedPropertyBox}>
-              <Link href={`/property?id=${property.id}`} key={index} className={styles.latestPropertiesInnerBox}>
-                  <Image
-                      width={300}
-                      height={200}
-                      src={`https://a.khelogame.xyz/${property.image_paths}`}
-                      alt="Recommended Property"
-                      className={styles.recommendedPropertyImage}
-                  />
-                  </Link>
-                  <div className={styles.latestPropertiesContentBox}>
-                <p className={styles.miniText}>{property.property_type}</p>
-                <h3>{property.property_name}</h3>
-                <p className={styles.priceText}>{property.price}</p>
-                <p className={styles.propertyDescription}>{property.description.substring(0, 110) + '...'}</p>
-                <div className={styles.innerPropertyContent}>
-                  <p><i className="fa-solid fa-bed"></i> {property.bedroom}</p>
-                  <p><i className="fa-solid fa-shower"></i> {property.bathroom}</p>
-                  <p><i className="fa-solid fa-maximize"></i> {property.area}</p>
-                  <p><i className="fa-solid fa-car"></i> {property.parking}</p>
-                  <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
-                </div>
-                <hr />
-                <div className={styles.innerButtonBox}>
-                  <button><i className="fa-solid fa-phone"></i> Call</button>
-                  <button><i className="fa-solid fa-envelope"></i> Email</button>
-                  <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
-                </div>
-              </div>
-              </div>
-              
-          ))
-      ) : (
-          <p>No recommended properties available.</p>
-      )}
-      </div>
-  </section>
-
-
-  
-
-    
-
+            </section>
 
             <Footer />
         </>

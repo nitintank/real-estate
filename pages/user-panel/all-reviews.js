@@ -3,6 +3,9 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import styles from "@/styles/AllReviews.module.css";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const allReviews = () => {
     const [reviews, setReviews] = useState([]);
@@ -80,13 +83,15 @@ const allReviews = () => {
             }
 
             const data = await response.json();
-            alert(data.message); // Notify user of success
+            toast.success('Replay back comment on propety !');
+            console.log(data.message); // Notify user of success
 
             // Optionally, update the review list with the new reply
             setReviews(reviews.map(review =>
                 review.id === reviewId ? { ...review, reply_comment: replyComment } : review
             ));
         } catch (error) {
+            toast.error(`Error: ${errorData.message}`);
             console.error('Error adding reply:', error);
         }
     };
@@ -94,6 +99,7 @@ const allReviews = () => {
     return (
         <>
             <Navbar />
+            <ToastContainer />
             <section className={styles.mainContentBigBox}>
                 <div className={styles.mainSidebarBox}>
                     <Link href="/user-panel/dashboard"><i className="fa-solid fa-chart-line"></i> Dashboard</Link>
@@ -134,12 +140,13 @@ const allReviews = () => {
                                             <div className={styles.propertyDetailTableBox}>
                                                 {/* <img src="/images/property-1.webp" alt="" /> */}
                                                 <div className={styles.propertyDetailText}>
+                                                <Link href={`https://real-estate-gray-zeta.vercel.app/property?id=${review.property_id}`}>
+                                               
+                                           
                                                     <h4>{review.property.property_name}</h4>
-                                                    <p className={styles.priceText}>{review.property.price}</p>
-                                                    {/* <p className={styles.propertyMiniDetail}>
-                                                        <span><i className="fa-solid fa-bed"></i>{review.property.bedroom}</span>
-                                                        <span><i className="fa-solid fa-table-cells-large"></i> {review.property.area}sqft</span>
-                                                    </p> */}
+                                                    </Link>
+                                                    <p className={styles.priceText}>AED{review.property.price}</p>
+                                                   
                                                 </div>
                                             </div>
                                         </td>
