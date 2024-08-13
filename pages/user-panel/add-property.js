@@ -64,7 +64,7 @@ const addProperty = () => {
         if (!price) newErrors.price = 'Price is required';
         if (!propertyName) newErrors.propertyName = 'Property title is required';
         if (!description) newErrors.description = 'Description is required';
-        if (imagePaths.length < 5) newErrors.imagePaths = 'At least 5 property images are required';
+        // if (imagePaths.length < 5) newErrors.imagePaths = 'At least 5 property images are required';
         if (!area) newErrors.area = 'Area is required';
 
         setErrors(newErrors);
