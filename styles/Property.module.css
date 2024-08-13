@@ -1,3 +1,36 @@
+/* Slider Big Box */
+
+.slider_big_box{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider_big_box img{
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: cover;
+}
+
+.slider_big_box i{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 40px;
+    color: white;
+}
+
 /* Property Images Section */
 
 .propertyImagesSection,
@@ -8,7 +41,8 @@
 .floorPlanSection,
 .googleMapsSection,
 .ownerDetailsBox,
-.reviewsSection{
+.reviewsSection
+.videosSection{
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
@@ -22,7 +56,8 @@
 .floorPlanSection.animate,
 .googleMapsSection.animate,
 .ownerDetailsBox.animate,
-.reviewsSection.animate {
+.reviewsSection.animate,
+.videosSection.animate{
   opacity: 1;
   transform: translateY(0);
 }
@@ -40,6 +75,8 @@
     display: block;
     margin: auto;
     border-radius: 20px;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .propertyMoreImages {
@@ -48,14 +85,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
     padding: 20px;
+    gap: 10px;
+    overflow-x: scroll;
 }
 
 .propertyMoreImages img {
-    width: 18%;
+    min-width: 24%;
     border-radius: 10px;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 /* Property Title Content Box */
@@ -78,13 +118,13 @@
 }
 
 .contentTitleContentBox1 h2 {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
     margin: 5px 0px;
 }
 
 .contentTitleContentBox1 h4 {
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 500;
     margin: 5px 0px;
 }
@@ -166,6 +206,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    text-transform: capitalize;
 }
 
 .aminitiesCardsBox p span {
@@ -187,7 +228,7 @@
 }
 
 .descriptionContentBox h3 {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -217,7 +258,7 @@
 }
 
 .addressTopContent h2 {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
 }
 
@@ -227,7 +268,7 @@
     padding: 5px 15px;
     border: none;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -239,6 +280,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .addressBottomBox {
@@ -249,7 +291,7 @@
 }
 
 .addressBottomBox p {
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -268,16 +310,53 @@
 }
 
 .floorPlanSection h2 {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
+.floor_map_img_box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    gap: 10px;
+}
+
 .floorPlanSection img {
     width: auto;
-    height: 400px;
+    height: 350px;
     display: block;
     margin: auto;
+}
+
+/* Videos Section */
+
+.videosSection {
+    width: 100%;
+    padding: 65px 40px 10px 40px;
+}
+
+.videosSection h3 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.video_box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow-x: scroll;
+}
+
+.videosSection video {
+    width: auto;
+    height: 350px;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
 }
 
 /* Google Maps Section */
@@ -288,7 +367,7 @@
 }
 
 .googleMapsSection h2 {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -316,7 +395,7 @@
 }
 
 .ownerDetailBox1 h3 {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -327,7 +406,7 @@
 }
 
 .ownerDetailBox1 h4 {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     line-height: 1;
 }
@@ -351,7 +430,7 @@
 }
 
 .ownerDetailBox2 h3 {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -373,12 +452,12 @@
 }
 
 .ownerDetailBox2 form p {
-    font-size: 18px;
+    font-size: 16px;
     color: black;
 }
 
 .ownerDetailBox2 form label {
-    font-size: 16px;
+    font-size: 14px;
     color: black;
 }
 
@@ -387,7 +466,7 @@
     border-radius: 10px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .ownerDetailBox2 form input[type=submit] {
@@ -409,7 +488,7 @@
 }
 
 .reviewsSection h2 {
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 600;
 }
 
@@ -440,7 +519,7 @@
 }
 
 .ratingsUpperContent h4 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -465,7 +544,7 @@
 }
 
 .addCommentBox h3 {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     margin-top: 10px;
 }
@@ -544,7 +623,7 @@
 }
 
 .latestPropertiesSection h2 {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
     line-height: 1;
 }
@@ -564,12 +643,15 @@
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 10px;
+    text-decoration: none;
+    color: black;
 }
 
 .latestPropertiesInnerBox img {
     width: 100%;
     height: 300px;
     border-radius: 10px 10px 0px 0px;
+    object-fit: cover;
 }
 
 .latestPropertiesContentBox {
@@ -701,7 +783,7 @@
     }
 
     .latestPropertiesSection h2{
-        font-size: 35px;
+        font-size: 25px;
         text-align: center;
     }
 
@@ -735,6 +817,7 @@
 
     .mainHouseImg{
         border-radius: 10px;
+        max-height: 150px;
     }
     .propertyMoreImages{
         padding: 10px 5px;
@@ -748,6 +831,7 @@
     .propertyMoreImages img{
         border-radius: 5px;
         width: 30%;
+        max-height: 80px;
     }
 
     /* Property Title Content Box */
@@ -766,25 +850,27 @@
         gap: 5px;
     }
     .contentTitleContentBox1 p{
-        font-size: 18px;
+        font-size: 14px;
     }
     .contentTitleContentBox1 h2{
-        font-size: 25px;
-    }
-    .contentTitleContentBox1 h4{
         font-size: 21px;
     }
+    .contentTitleContentBox1 h4{
+        font-size: 18px;
+    }
     .contentTitleContentBox2 h3{
-        font-size: 25px;
+        font-size: 21px;
     }
     .contentTitleContentBox2 button{
-        font-size: 20px;
+        font-size: 16px;
     }
 
     /* Amenities Content Box */
 
     .amenitiesContentBox{
         width: 98%;
+        overflow-x: scroll;
+        margin: 10px auto;
     }
 
     .amenitiesCardsBigBox{
@@ -796,14 +882,14 @@
     }
 
     .amenitiesContentBox ul li{
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .aminitiesCardsBox{
         width: 49%;
     }
     .aminitiesCardsBox p{
-        font-size: 16px;
+        font-size: 14px;
         gap: 5px;
     }
     .aminitiesCardsBox p span{
@@ -816,13 +902,13 @@
     /* Description Section */
 
     .descriptionContentBox{
-        padding: 5px 10px;
+        padding: 15px 10px;
     }
     .descriptionContentBox h3{
-        font-size: 35px;
+        font-size: 25px;
     }
     .descriptionContentBox p{
-        font-size: 16px;
+        font-size: 14px;
     }
 
     /* Address Section */
@@ -832,15 +918,13 @@
     }
     .addressTopContent{
         flex-wrap: wrap;
-        justify-content: center;
     }
     .addressTopContent h2{
-        font-size: 35px;
-        text-align: center;
+        font-size: 25px;
     }
     .addressTopContent button{
-        font-size: 16px;
-        margin: auto;
+        font-size: 14px;
+        margin: 5px auto;
     }
     .addressBottomContentBox{
         flex-wrap: wrap;
@@ -852,7 +936,7 @@
         gap: 10px;
     }
     .addressBottomBox p{
-        font-size: 17px;
+        font-size: 15px;
     }
 
     /* Floor Plan Section */
@@ -861,10 +945,24 @@
         padding: 10px;
     }
     .floorPlanSection h2{
-        font-size: 35px;
+        font-size: 25px;
     }
     .floorPlanSection img{
-        width: 100%;
+        width: auto;
+        height: 200px;
+    }
+
+    /* Floor Plan Section */
+
+    .videosSection{
+        padding: 10px;
+    }
+    .videosSection h3{
+        font-size: 25px;
+    }
+    .videosSection video{
+        width: auto;
+        height: 150px;
     }
 
     /* Google Maps Section */
@@ -873,7 +971,11 @@
         padding: 10px;
     }
     .googleMapsSection h2{
-        font-size: 35px;
+        font-size: 25px;
+    }
+
+    .googleMapsSection iframe{
+        max-height: 250px;
     }
 
     /* Owner Details Section */
@@ -895,7 +997,7 @@
         width: 100px;
     }
     .ownerDetailBox2 h3{
-        font-size: 28px;
+        font-size: 22px;
         text-align: center;
         margin: 5px 0px;
     }
@@ -907,18 +1009,26 @@
 
     /* Reviews Section */
 
+    .addCommentBox h3{
+        font-size: 20px;
+    }
+
+    .addCommentBox form{
+        margin: 10px auto;
+    }
+
     .reviewsSection{
         padding: 10px 15px;
     }
     .reviewsSection h2{
-        font-size: 30px;
+        font-size: 25px;
         text-align: center;
     }
     .ratingsUpperContentBox{
         flex-wrap: wrap;
     }
     .reviewsPara{
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 

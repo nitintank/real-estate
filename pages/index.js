@@ -439,7 +439,7 @@ console.log(latestProperties); // Display the filtered properties
         <p>POPULAR AREAS</p>
         <h2>Explore Most Popular Areas</h2>
         <div className={styles.popularAreasImageBox}>
-          <Image width={200} height={200} src="/images/property-5.jpeg" alt="" className={styles.popularAreasImage1} />
+          <Image width={200} height={200} src="/images/property-4.webp" alt="" className={styles.popularAreasImage1} />
           <Image width={200} height={200} src="/images/property-2.webp" alt="" className={styles.popularAreasImage2} />
           <Image width={200} height={200} src="/images/property-3.webp" alt="" className={styles.popularAreasImage2} />
           <Image width={200} height={200} src="/images/property-1.webp" alt="" className={styles.popularAreasImage1} />

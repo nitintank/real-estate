@@ -36,7 +36,7 @@
 
 .topIntroInnerBox1 h2 {
     color: white;
-    font-size: 60px;
+    font-size: 45px;
     font-weight: 500;
     line-height: 1;
 }
@@ -227,7 +227,7 @@
 }
 
 .trustedAgentsSection h2 {
-    font-size: 35px;
+    font-size: 30px;
     text-align: center;
     font-weight: 500;
     line-height: 1.1;
@@ -269,10 +269,11 @@
     border-radius: 50%;
     margin: auto;
     display: block;
+    object-fit: cover;
 }
 
 .agentsCardsBox h3 {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     text-align: center;
     text-transform: capitalize;
@@ -280,7 +281,7 @@
 
 .agentsCardsBox ul li {
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     list-style: none;
     text-transform: capitalize;

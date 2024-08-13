@@ -101,8 +101,8 @@ const Search = () => {
             return (subscriptionPriority[planA] || subscriptionPriority.Default) - (subscriptionPriority[planB] || subscriptionPriority.Default);
         });
 
-     
-        
+
+
 
         if (filters.propertyType) {
             tempProperties = tempProperties.filter(
@@ -151,7 +151,7 @@ const Search = () => {
         }
 
         setFilteredProperties(tempProperties);
-        
+
     };
 
     const handleAmenityChange = (amenity) => {
@@ -296,11 +296,46 @@ const Search = () => {
                 style={customStyles}
                 contentLabel="Select Amenities"
             >
-                <h2>Select Amenities</h2>
-                <button onClick={closeModal} style={{ backgroundColor: '#333', color: '#fff', border: 'none', padding: '5px 10px' }}>Close</button>
-                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                    {['Gym', 'Laundry', 'Dishwasher', 'Pets', 'Parking', 'Fireplace'].map(amenity => amenityCheckbox('Amenities', amenity))}
+                <h2 className={styles.modal_h2}>Select Amenities For This Property</h2>
+                <h3 className={styles.modal_h3}>Recreation And Family</h3>
+                <div className={styles.modal_Label}>
+                    {amenityCheckbox('recreationAndFamily', 'barbeque area')}
+                    {amenityCheckbox('recreationAndFamily', 'day care center')}
+                    {amenityCheckbox('recreationAndFamily', 'kids play area')}
+                    {amenityCheckbox('recreationAndFamily', 'lawn or garden')}
+                    {amenityCheckbox('recreationAndFamily', 'cafeteria or canteen')}
                 </div>
+                <h3 className={styles.modal_h3}>Health And Fitness</h3>
+                <div className={styles.modal_Label}>
+                    {amenityCheckbox('healthAndFitness', 'first aid medical center')}
+                    {amenityCheckbox('healthAndFitness', 'gym or health club')}
+                    {amenityCheckbox('healthAndFitness', 'jacuzzi')}
+                    {amenityCheckbox('healthAndFitness', 'sauna')}
+                    {amenityCheckbox('healthAndFitness', 'swimming pool')}
+                </div>
+                <h3 className={styles.modal_h3}>Business and Security</h3>
+                <div className={styles.modal_Label}>
+                    {amenityCheckbox('businessAndSecurity', 'conference room')}
+                    {amenityCheckbox('businessAndSecurity', 'business center')}
+                    {amenityCheckbox('businessAndSecurity', 'intercom')}
+                    {amenityCheckbox('businessAndSecurity', 'atm')}
+                    {amenityCheckbox('businessAndSecurity', 'cctv security')}
+                </div>
+                <h3 className={styles.modal_h3}>Nearby Locations And Other Facilities</h3>
+                <div className={styles.modal_Label}>
+                    {amenityCheckbox('nearbyLocationsAndOtherFacilities', 'community center')}
+                    {amenityCheckbox('nearbyLocationsAndOtherFacilities', 'mosque')}
+                    {amenityCheckbox('nearbyLocationsAndOtherFacilities', 'market area')}
+                    {amenityCheckbox('nearbyLocationsAndOtherFacilities', 'public parking')}
+                    {amenityCheckbox('nearbyLocationsAndOtherFacilities', 'school')}
+                </div>
+                <h3 className={styles.modal_h3}>Other Facilities</h3>
+                <div className={styles.modal_Label}>
+                    {amenityCheckbox('otherFacilities', 'maintenance staff')}
+                    {amenityCheckbox('otherFacilities', 'security staff')}
+                    {amenityCheckbox('otherFacilities', 'cleaning services')}
+                </div>
+                <button onClick={closeModal} className={styles.modal_save_btn}>Save</button>
             </Modal>
             <Footer />
         </>
