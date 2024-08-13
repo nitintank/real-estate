@@ -90,7 +90,7 @@ const PropertyList = () => {
                                     <th>Property Image</th>
                                     <th>Property Type</th>
                                     <th>Created At</th>
-                                    <th>Location</th>
+                                    {/* <th>Location</th> */}
                                     <th>Price</th>
                                     <th>Status</th>
                                     {subscriptionPlan && <th>Subscription Detail</th>} {/* Conditionally render */}
@@ -111,10 +111,10 @@ const PropertyList = () => {
                                         </td>
                                         <td>{property.property_type}</td>
                                         <td>{new Date(property.created_at).toLocaleDateString()}</td>
-                                        <td>{property.location}</td>
+                                        {/* <td>{property.location}</td> */}
                                         <td>{property.price}</td>
                                         <td>{property.status}</td>
-                                        {subscriptionPlan && <td>{subscriptionPlan.plan_name}</td>} {/* Conditionally render */}
+                                        {subscriptionPlan && <td>{subscriptionPlan.plan_name}</td>}
                                         <td>
                                             <i className="fa-solid fa-pen-to-square" onClick={() => handleEditClick(property.id)}></i>
                                             {/* <i className="fa-solid fa-trash-can" onClick={() => handleDeleteClick(property.id)}></i> */}

@@ -39,7 +39,7 @@ const addProperty = () => {
     });
     const [errors, setErrors] = useState({});
 
-    
+
 
     useEffect(() => {
         const storedToken = localStorage.getItem('accessToken');
@@ -76,7 +76,7 @@ const addProperty = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!validateForm()) return;
-        
+
         const formData = new FormData();
         formData.append('property_name', propertyName);
         formData.append('property_type', propertyType);
@@ -133,7 +133,7 @@ const addProperty = () => {
             } else {
                 const errorData = await response.json();
                 toast.error(`Error: ${errorData.message}`);
-                console.error('Error:',  errorData);
+                console.error('Error:', errorData);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -251,10 +251,10 @@ const addProperty = () => {
                                         placeholder="Add Property Title"
                                     />
                                     {errors.propertyName && <p className={styles.errorText}>{errors.propertyName}</p>}
-                                    
+
                                     <textarea name="" id="" value={description} onChange={(e) => setDescription(e.target.value)}
                                         placeholder="Add Property Description" rows='5'></textarea>
-                                    {errors.description && <p className={styles.errorText}>{errors.description}</p>}    
+                                    {errors.description && <p className={styles.errorText}>{errors.description}</p>}
                                     <input
                                         type="text"
                                         value={price}
@@ -331,7 +331,7 @@ const addProperty = () => {
                                         onChange={(e) => setPlotUpArea(e.target.value)}
                                         placeholder="Enter Plot Up Area"
                                     />
-                                      {errors.plotUpArea && <p className={styles.errorText}>{errors.plotUpArea}</p>}
+                                    {errors.plotUpArea && <p className={styles.errorText}>{errors.plotUpArea}</p>}
                                     <input
                                         type="text"
                                         value={apartmentNumber}

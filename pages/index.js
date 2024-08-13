@@ -593,7 +593,7 @@ console.log(latestProperties); // Display the filtered properties
 
       {/* <!-- Upper Footer Section --> */}
 
-      <section className={`${styles.upperFooterSection} animate-on-scroll`}>
+      {/* <section className={`${styles.upperFooterSection} animate-on-scroll`}>
         <div className={styles.radioInput}>
           <label>
             <input value="value-1" name="value-radio" id="value-1" type="radio" checked="true" />
@@ -680,7 +680,7 @@ console.log(latestProperties); // Display the filtered properties
             <a href="#">Dubailand</a>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <!-- Footer Section --> */}
 

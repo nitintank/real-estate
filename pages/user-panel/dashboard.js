@@ -107,7 +107,7 @@ const dashboard = () => {
                         </div>
                         <div className={styles.dashboardCardsBox}>
                             <Image width={200} height={200} src="/images/dashboard-icon-3.png" alt="" />
-                            <h3>{pendingCount}</h3>
+                            <h3>{pendingCount ? pendingCount :'0'}</h3>
                             <p>Pending</p>
                         </div>
                         <div className={styles.dashboardCardsBox}>

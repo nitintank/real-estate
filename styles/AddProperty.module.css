@@ -22,7 +22,7 @@
 .mainSidebarBox a{
     color: #deeeff;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 18px;
     padding: 10px 20px;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .mainContentBox h2{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
 }
 
@@ -66,6 +66,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 12px;
+    font-size: 12px;
 }
 
 .checkBoxDiv{
@@ -76,14 +77,14 @@
 } 
 
 .amenitiesText{
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 600;
     text-align: center;
     margin: auto;
 }
 
 .amenitiesNamesText{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -193,7 +194,7 @@
 }
 
 .propertyTypeBox h3{
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     width: 100%;
     text-align: center;
@@ -215,7 +216,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 18px !important;
+    font-size: 16px !important;
     font-weight: 600;
 }
 
@@ -230,7 +231,7 @@
 }
 
 .propertyTypeBox2 h3{
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
 }
 
@@ -268,8 +269,12 @@
     border: 1px solid #ebebeb;
     padding: 10px 15px;
     color: black;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 10px;
+}
+
+.propertyFormBox h3{
+    font-size: 18px;
 }
 
 .propertyFormBox textarea{
@@ -277,7 +282,7 @@
     border: 1px solid #ebebeb;
     padding: 10px 15px;
     color: black;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 10px;
 }
 
@@ -286,7 +291,7 @@
     border: 1px solid #ebebeb;
     padding: 10px 15px;
     color: black;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 10px;
 }
 
@@ -312,7 +317,7 @@
     border: 1px solid #ebebeb;
     padding: 10px 15px;
     color: black;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 10px;
 }
 
@@ -326,7 +331,7 @@
     border: 1px solid #ebebeb;
     padding: 10px 15px;
     color: black;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 10px;
 }
 
@@ -335,7 +340,7 @@
     padding: 6px 0px;
     text-align: center;
     margin: 10px auto;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
     background-color: #1085FF;
     border-radius: 5px;
