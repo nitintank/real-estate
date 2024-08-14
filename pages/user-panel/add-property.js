@@ -39,8 +39,6 @@ const addProperty = () => {
     });
     const [errors, setErrors] = useState({});
 
-
-
     useEffect(() => {
         const storedToken = localStorage.getItem('accessToken');
         if (storedToken) {
@@ -128,7 +126,7 @@ const addProperty = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                toast.success('Property added successfully!');
+                toast.success('Property Added Successfully!');
                 console.log(data);
             } else {
                 const errorData = await response.json();

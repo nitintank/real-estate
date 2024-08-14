@@ -105,7 +105,7 @@ const PropertyList = () => {
                                             <Image
                                                 width={200}
                                                 height={200}
-                                                src={`https://a.khelogame.xyz/${property.media_path}`}
+                                                src={`https://a.khelogame.xyz/${property.media_paths[0]}`}
                                                 alt={property.property_name}
                                             />
                                         </td>

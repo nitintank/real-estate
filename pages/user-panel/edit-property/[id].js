@@ -15,7 +15,7 @@ const editProperty = () => {
     const [price, setPrice] = useState('');
     const [location, setLocation] = useState('');
     const [description, setDescription] = useState('');
-    const [imagePath, setImagePath] = useState(null);
+    const [imagePath, setImagePath] = useState([]);
     const [mediaPaths, setMediaPaths] = useState([]);
     const [videoPaths, setVideoPaths] = useState([]);
     const [propertyDocumentPaths, setPropertyDocumentPaths] = useState([]);
@@ -57,7 +57,7 @@ const editProperty = () => {
                     setPrice(data.price);
                     setLocation(data.location);
                     setDescription(data.description);
-                    setImagePath(data.image_paths[0]); // Assuming single image for preview
+                    setImagePath(data.image_paths); // Assuming single image for preview
                     setMediaPaths(data.media_paths || []);
                     setVideoPaths(data.video_paths || []);
                     setPropertyDocumentPaths(data.document_paths || []);
@@ -96,12 +96,12 @@ const editProperty = () => {
         setPropertyType(selectedType);
         setPropertySubtype('');
         setPropertySubtypes(propertyCategories[selectedType]);
-        
+
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-      
+
         const formData = new FormData();
         formData.append('property_name', propertyName);
         formData.append('property_type', propertyType);
@@ -179,7 +179,7 @@ const editProperty = () => {
 
     const amenityCheckbox = (category, label) => {
         const categoryAmenities = amenities && amenities[category] ? amenities[category].map(item => item.amenity) : [];
-        
+
 
         return (
             <div className={styles.checkBoxDiv} key={label}>
@@ -358,42 +358,53 @@ const editProperty = () => {
                                 </div> */}
                             <div className={styles.propertyFormBox}>
                                 <label>Add Property Images</label>
-                                {imagePath && (
-                                    <img src={`https://a.khelogame.xyz/${imagePath}`} alt="Property Preview" className={styles.previewImage} />
-                                )}
-                                <input
-                                    type="file"
-                                    onChange={(e) => setImagePath(e.target.files[0])}
-                                    accept=".jpg,.jpeg,.png"
-                                />
-                                {mediaPaths.length > 0 && (
-                                    <div>
-                                        <img
-                                            src={`https://a.khelogame.xyz/${mediaPaths[0]}`}
-                                            alt="Media Preview"
-                                            className={styles.previewImage}
-                                        />
-                                    </div>
-                                )}
+
                                 <input
                                     type="file"
                                     onChange={(e) => handleMediaPathChange(e.target.files)}
                                     accept=".jpg,.jpeg,.png"
                                 />
-                                <label>Video Paths</label>
-                                {videoPaths.map((videoPath, index) => (
-                                    <div key={`video_${index}`}>
-                                        <video controls className={styles.previewVideo}>
-                                            <source src={`https://a.khelogame.xyz/${videoPath}`} type="video/mp4" />
-                                            Your browser does not support the video tag.
-                                        </video>
+                                <div>
+                                    {mediaPaths.map((file, index) => (
+                                        <img
+                                            key={index}
+                                            src={`https://a.khelogame.xyz/${file}`}
+                                            alt={`Property Image ${index + 1}`}
+                                            style={{ width: '100px', height: '100px', objectFit: 'cover', margin: '0px 10px', borderRadius: '10px' }}
+                                        />
+                                    ))}
+                                </div>
+                                <label>Floor Map Images</label>
+                                <input
+                                    type="file"
+                                    onChange={(e) => setImagePath(e.target.files[0])}
+                                    accept=".jpg,.jpeg,.png"
+                                />
+                                <div>
+                                        {imagePath.map((file, index) => (
+                                            <img
+                                                key={index}
+                                                src={`https://a.khelogame.xyz/${file}`}
+                                                alt={`Floor Map Image ${index + 1}`}
+                                                style={{ width: '100px', height: '100px', objectFit: 'cover', margin: '0px 10px', borderRadius: '10px' }}
+                                            />
+                                        ))}
                                     </div>
-                                ))}
+
+                                <label>Video Paths</label>
                                 <input
                                     type="file"
                                     onChange={(e) => handleVideoPathChange(e.target.files)}
                                     accept=".mp4,.gif"
                                 />
+                                {videoPaths.map((videoPath, index) => (
+                                    <div key={`video_${index}`}>
+                                        <video controls className={styles.previewVideo}>
+                                            <source src={`https://a.khelogame.xyz/${videoPath}`} type="video/mp4" />
+                                        </video>
+                                    </div>
+                                ))}
+
                             </div>
                             <div className={styles.propertyFormBox2}>
                                 <h3 className={styles.amenitiesText}>Select Amenities For This Property</h3>

@@ -141,6 +141,11 @@
     font-weight: 700;
 }
 
+.propertyDetailText a{
+    text-decoration: none;
+    color: black;
+}
+
 .propertyDetailText .priceText{
     font-size: 14px;
     font-weight: 600;

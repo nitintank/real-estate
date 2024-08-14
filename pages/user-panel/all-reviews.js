@@ -140,9 +140,8 @@ const allReviews = () => {
                                             <div className={styles.propertyDetailTableBox}>
                                                 {/* <img src="/images/property-1.webp" alt="" /> */}
                                                 <div className={styles.propertyDetailText}>
-                                                <Link href={`https://real-estate-gray-zeta.vercel.app/property?id=${review.property_id}`}>
+                                                <Link href={`https://real-estate-gray-zeta.vercel.app/property?id=${review.property_id}`} target='_blank'>
                                                
-                                           
                                                     <h4>{review.property.property_name}</h4>
                                                     </Link>
                                                     <p className={styles.priceText}>AED{review.property.price}</p>

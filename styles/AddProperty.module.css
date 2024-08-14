@@ -264,6 +264,12 @@
     margin-bottom: 10px;
 }
 
+.propertyFormBox video{
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+}
+
 .propertyFormBox input{
     width: 100%;
     border: 1px solid #ebebeb;
