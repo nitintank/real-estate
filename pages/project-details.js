@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import Image from 'next/image';
@@ -7,7 +8,17 @@ import styles from "../styles/Property.module.css";
 import Link from 'next/link';
 import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+// import required modules
+import { Pagination, Navigation } from 'swiper/modules';
+
 const ProjectDetails = () => {
+    const [propertyImagesPopup, setPropertyImagesPopup] = useState(false);
+
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -24,7 +35,7 @@ const ProjectDetails = () => {
     };
 
     useIntersectionObserver(observerCallback, observerOptions);
-            
+
     const router = useRouter();
     const { id } = router.query;
     const [Projectdetails, setProjectdetails] = useState(null);
@@ -52,6 +63,10 @@ const ProjectDetails = () => {
         }
     }, [id]);
 
+    const togglePropertyImages = () => {
+        setPropertyImagesPopup(!propertyImagesPopup);
+    };
+
     if (!Projectdetails) {
         return <p>Loading...</p>;
     }
@@ -59,6 +74,33 @@ const ProjectDetails = () => {
     return (
         <>
             <Navbar />
+
+            {propertyImagesPopup && <section className={styles.slider_big_box}>
+                <i class="fa-solid fa-circle-xmark" onClick={togglePropertyImages}></i>
+                <Swiper
+                    slidesPerView={1}
+                    spaceBetween={30}
+                    loop={true}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                    className="mySwiper">
+                    {Projectdetails.project.image_paths && Projectdetails.project.image_paths.map((path, index) => (
+                        <SwiperSlide>
+                            <Image
+                                key={index}
+                                width={500}
+                                height={500}
+                                src={`https://a.khelogame.xyz/property/${path}`}
+                                alt={`Property Image ${index + 1}`}
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </section>}
+
             <section className={`${styles.propertyImagesSection} animate-on-scroll`}>
                 {/* Main property image */}
                 {Projectdetails.project.image_paths && Projectdetails.project.image_paths.length > 0 && (
@@ -68,11 +110,12 @@ const ProjectDetails = () => {
                         src={`https://a.khelogame.xyz/property/${Projectdetails.project.image_paths[0]}`}
                         alt="Property Image"
                         className={styles.mainHouseImg}
+                        onClick={togglePropertyImages}
                     />
                 )}
                 <div className={styles.propertyMoreImages}>
-                    {Projectdetails.project.moreImages && project.moreImages.map((image, index) => (
-                        <Image key={index} width={200} height={200} src={image} alt={`Additional Image ${index}`} />
+                    {Projectdetails.project.image_paths && Projectdetails.project.image_paths.slice(1).map((image, index) => (
+                        <Image key={index} width={200} height={200} src={`https://a.khelogame.xyz/property/${image}`} alt={`Additional Image ${index}`} onClick={togglePropertyImages} />
                     ))}
                 </div>
             </section>
@@ -133,40 +176,68 @@ const ProjectDetails = () => {
                     <div className={styles.addressBottomBox}>
                         <p><span className={styles.darkText}>Delivery Date</span><span>{new Date(Projectdetails.project.delivery_date).toLocaleDateString()}</span></p>
                         <p><span className={styles.darkText}>Construction Start Date</span><span>{new Date(Projectdetails.project.construction_start_date).toLocaleDateString()}</span></p>
-                    </div>
-                    <br />
-                    <div className={styles.addressBottomBox}>
                         <p><span className={styles.darkText}>Expected Completion Date</span><span>{new Date(Projectdetails.project.expected_completion_date).toLocaleDateString()}</span></p>
-                        <p><span className={styles.darkText}>Locality</span><span>{Projectdetails.project.locality}</span></p>
                     </div>
                     <br />
                     <div className={styles.addressBottomBox}>
+                        <p><span className={styles.darkText}>Locality</span><span>{Projectdetails.project.locality}</span></p>
                         <p><span className={styles.darkText}>Number of buildings</span><span>{Projectdetails.project.number_of_buildings}</span></p>
                         <p><span className={styles.darkText}>City</span><span>{Projectdetails.project.city}</span></p>
                     </div>
-                    <br />
+                </div>
+            </section>
+
+            <section className={`${styles.videosSection} animate-on-scroll`}>
+                <h3>Videos</h3>
+                <div className={styles.video_box}>
+                    {Projectdetails.project.video_paths.map((video, index) => (
+                        <video key={index} width="600" height="400" controls>
+                            <source src={`https://a.khelogame.xyz/property/${video}`} type="video/mp4" />
+                        </video>
+                    ))}
                 </div>
             </section>
 
             <section className={`${styles.descriptionContentBox} animate-on-scroll`} id='units'>
                 <h3>Units</h3>
+
                 {Projectdetails.buildings && Projectdetails.buildings.map((building, buildingIndex) => (
-                    <div key={buildingIndex}>
+                    <div className={styles.unit_big_box} key={buildingIndex}>
                         <h4>Building Name: {building.building_name}</h4>
                         {building.floors.map((floor, floorIndex) => (
-                            <div key={floorIndex} className={styles.unit}>
-                                <p>{floor.floor_name}</p>
-                                <p>{floor.bedrooms || 'N/A'} Beds</p>
-                                <p>{floor.area || 'N/A'} sqft</p>
-                                {floor.floor_plan_image && (
-                                    <Image
-                                        width={200}
-                                        height={200}
-                                        src={`https://a.khelogame.xyz/property/${floor.floor_plan_image}`}
-                                        alt="Floor Plan"
-                                    />
-                                )}
-                                <p>Price: {floor.floor_price} AED</p>
+                            <div key={floorIndex} className={styles.unit_box}>
+                                <div className={styles.header}>
+                                    <div className={styles.bed_info}>{floor.bedrooms || 'N/A'} Beds</div>
+                                    <div className={styles.price_info}>from {floor.floor_price} AED</div>
+                                    <div className={styles.size_info}>{floor.area || 'N/A'} sqft</div>
+                                </div>
+                                <div className={styles.content}>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Floor Name</th>
+                                                <th>Size (sqft)</th>
+                                                <th>Floor Plan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{floor.floor_name}</td>
+                                                <td>{floor.area || 'N/A'} sqft</td>
+                                                <td className={styles.floor_plan}>
+                                                    {floor.floor_plan_image && (
+                                                        <Image
+                                                            width={200}
+                                                            height={200}
+                                                            src={`https://a.khelogame.xyz/property/${floor.floor_plan_image}`}
+                                                            alt="Floor Plan"
+                                                        />
+                                                    )}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         ))}
                     </div>

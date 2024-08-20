@@ -97,7 +97,7 @@ const aboutUs = () => {
                 <h2>Our Value</h2>
                 <p>As a homegrown UAE brand, we are keen to address the needs of both the local and expat communities. To facilitate the needs of property seekers in the region, we have studied the market extensively and focused on building</p>
                 <div className={styles.popularAreasImageBox}>
-                    <Image width={200} height={200} src="/images/property-5.jpeg" alt="" className={styles.popularAreasImage1} />
+                    <Image width={200} height={200} src="/images/property-4.webp" alt="" className={styles.popularAreasImage1} />
                     <Image width={200} height={200} src="/images/property-2.webp" alt="" className={styles.popularAreasImage2} />
                     <Image width={200} height={200} src="/images/property-3.webp" alt="" className={styles.popularAreasImage2} />
                     <Image width={200} height={200} src="/images/property-1.webp" alt="" className={styles.popularAreasImage1} />

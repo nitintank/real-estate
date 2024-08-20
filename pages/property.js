@@ -289,7 +289,6 @@ const property = () => {
                         />
                     ))}
                 </div>
-
             </section>
 
             <section className={`${styles.propertyTitleContentBox} animate-on-scroll`}>

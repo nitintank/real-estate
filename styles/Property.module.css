@@ -189,7 +189,6 @@
 .amenitiesCardsBigBox {
     width: 100%;
     display: flex;
-    align-items: center;
 }
 
 .aminitiesCardsBox {
@@ -1037,5 +1036,105 @@
     .latestPropertiesInnerBox img {
         height: 160px;
         border-radius: 5px 5px 0px 0px;
+    }
+}
+
+/* Unit Box CSS */
+
+.unit_big_box h4{
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #767676;
+}
+
+.unit_box {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.unit_box .header {
+    background-color: #deeeff;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.unit_box .header span {
+    font-size: 14px;
+    color: #666;
+}
+
+.unit_box .header .bed-info {
+    font-size: 16px;
+    color: #333;
+}
+
+.unit_box .header .price-info {
+    font-size: 14px;
+    color: #333;
+}
+
+.unit_box .content {
+    padding: 10px;
+    background-color: white;
+}
+
+.unit_box .content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.unit_box .content th, .unit_box .content td {
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.unit_box .content th {
+    border-bottom: 1px solid #ddd;
+    font-weight: normal;
+    color: #888;
+}
+
+.unit_box .content td {
+    border-bottom: 1px solid #ddd;
+}
+
+.unit_box .content .floor-plan img {
+    width: 50px;
+    height: auto;
+}
+
+.unit_box .content .size-info {
+    text-align: center;
+}
+
+@media (max-width: 769px) {
+    .bed_info{
+        font-size: 12px;
+    }
+    .price_info{
+        font-size: 12px;
+    }
+    .size_info{
+        font-size: 12px;
+    }
+    .unit_box .content {
+        padding: 5px;
+    }
+    .unit_big_box h4{
+        font-size: 16px;
+    }
+    .unit_box .content th, .unit_box .content td {
+        padding: 5px;
+        font-size: 12px;
     }
 }

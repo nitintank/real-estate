@@ -47,8 +47,9 @@
 }
 
 .topIntroInnerBox1 h2 {
-    font-size: 55px;
+    font-size: 45px;
     font-weight: 500;
+    margin-bottom: 5px;
     line-height: 1;
     color: white;
 }
@@ -302,7 +303,7 @@
 }
 
 .propertyCategoriesSection h2 {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
     margin-bottom: 30px;
 }
@@ -340,7 +341,7 @@
     position: absolute;
     bottom: 5px;
     left: 5px;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
     color: #000000;
 }
@@ -356,13 +357,13 @@
 }
 
 .latestPropertiesSection p {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: #838383;
 }
 
 .latestPropertiesSection h2 {
-    font-size: 35px;
+    font-size: 32px;
     font-weight: 600;
     line-height: 1;
 }
@@ -476,13 +477,13 @@
 
 .popularAreasSection p {
     color: #1085FF;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     margin-bottom: 5px;
 }
 
 .popularAreasSection h2 {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     text-align: center;
     line-height: 1;
@@ -554,7 +555,7 @@
 }
 
 .glideSupportBox2 h2 {
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 700;
     margin-bottom: 20px;
 }
@@ -562,7 +563,7 @@
 .glideSupportBox2 p {
     width: 80%;
     color: #7d7d7d;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .glideContentBox1 {
@@ -574,11 +575,11 @@
 }
 
 .glideContentBox1 p {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .glideContentBox1 img {
-    width: 80px;
+    width: 60px;
     height: auto;
 }
 
@@ -590,11 +591,11 @@
 }
 
 .glideContentBox2 p {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .glideContentBox2 img {
-    width: 80px;
+    width: 60px;
     height: auto;
 }
 
@@ -606,11 +607,11 @@
 }
 
 .glideContentBox3 p {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .glideContentBox3 img {
-    width: 80px;
+    width: 60px;
     height: auto;
 }
 
@@ -621,11 +622,11 @@
 }
 
 .glideContentBox4 p {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .glideContentBox4 img {
-    width: 80px;
+    width: 60px;
     height: auto;
 }
 
@@ -677,7 +678,7 @@
 
 .prefectHomeContentBox h3 {
     color: black;
-    font-size: 27px;
+    font-size: 25px;
     font-weight: 600;
 }
 
@@ -688,7 +689,7 @@
 
 .prefectHomeContentBox p {
     color: black;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .commentBoxImg {
@@ -700,17 +701,17 @@
 }
 
 .findPerfectHomeBox2 p {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
 }
 
 .findPerfectHomeBox2 h2 {
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 600;
 }
 
 .findPerfectHomeBox2 h2 span {
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 600;
     color: #1085FF;
 }
@@ -730,7 +731,7 @@
 } */
 
 .trustedAgentsSection h2 {
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     font-weight: 500;
     line-height: 1.1;
@@ -771,7 +772,7 @@
 }
 
 .agentsCardsBox h3 {
-    font-size: 27px;
+    font-size: 22px;
     font-weight: 600;
     text-align: center;
     margin-bottom: 5px;
@@ -838,13 +839,13 @@
 }
 
 .whatClientSaysSection h2 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 600;
     text-align: center;
 }
 
 .whatClientSaysSection hr {
-    width: 19%;
+    width: 16%;
     border: 2px solid black;
     margin: 5px auto 20px auto;
 }
@@ -871,7 +872,7 @@
 }
 
 .testimonialBox h3 {
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 600;
 }
 
@@ -928,7 +929,7 @@
 }
 
 .downloadAndroidBox1 h3 {
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 600;
 }
 
@@ -942,11 +943,11 @@
 }
 
 .downloadAndroidBox1 ul li {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .downloadAndroidBox1 img {
-    width: 200px;
+    width: 180px;
     height: auto;
     cursor: pointer;
 }
@@ -1202,6 +1203,15 @@
 
 @media (max-width: 995px) {
 
+    /* Top Introduction Box */
+
+    .topIntroInnerBox1 h2 {
+        font-size: 35px;
+    }
+    .topIntroInnerBox1 p {
+        font-size: 12px;
+    }
+
     /* Latest Properties Section */
     .innerButtonBox {
         flex-wrap: wrap;
@@ -1273,7 +1283,7 @@
     }
 
     .formBox2 {
-        width: 100%;
+        width: 48%;
         height: 32px;
         margin: 2px auto;
     }
@@ -1283,6 +1293,7 @@
         display: block;
         text-align: center;
         border-radius: 5px;
+        padding: 5px 0px;
     }
 
     .LBorderRadius {

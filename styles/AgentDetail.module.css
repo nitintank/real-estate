@@ -55,18 +55,19 @@
 
 .agentDetailBox2 h3{
     line-height: 1;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
     text-transform: capitalize;
 }
 
 .agentDetailBox2 .agentAboutPara{
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
 }
 
 .agentOtherDetailsBox p{
-    font-size: 18px;
+    font-size: 16px;
+    text-transform: capitalize;
 }
 
 .agentOtherDetailsBox p span{
@@ -96,7 +97,7 @@
 }
 
 .agentAboutBox h3{
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
     text-transform: capitalize;
 }
@@ -116,14 +117,13 @@
 }
 
 .trackRecordSection h3{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
 }
 
 .trackRecordSection p{
-    font-size: 18px;
+    font-size: 16px;
 }
-
 .trackRecordContentBox{
     width: 100%;
     display: flex;
@@ -262,7 +262,7 @@
 }
 
 .contactMeSection h3{
-    font-size: 35px;
+    font-size: 30px;
     font-weight: 600;
 }
 
@@ -288,9 +288,9 @@
 
 .contactMeForm1 form input{
     border: none;
-    font-size: 18px;
-    padding: 5px 15px;
-    border-radius: 10px;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .contactMeForm1 form input[type=submit] {
@@ -302,6 +302,10 @@
     color: white;
     cursor: pointer;
     margin-top: 15px;
+}
+
+.contactMeForm1 form label{
+    font-size: 16px;
 }
 
 .contactMeForm2{
