@@ -6,7 +6,6 @@ import styles from "@/styles/AllReviews.module.css";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 const allReviews = () => {
     const [reviews, setReviews] = useState([]);
     const [replyComments, setReplyComments] = useState({});
@@ -18,6 +17,31 @@ const allReviews = () => {
         const accessTokenFromStorage = localStorage.getItem('accessToken');
         setUserId(userIdFromStorage);
         setAccessToken(accessTokenFromStorage);
+    }, []);
+
+    // Utility function to check if the token has expired
+    const isTokenExpired = (token) => {
+        if (!token) return true;
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        const { exp } = JSON.parse(jsonPayload);
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        return exp < currentTime;
+    };
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
+        const username = localStorage.getItem('username');
+
+        // If token is not found or token is expired, redirect to login
+        if (!accessToken || !username || isTokenExpired(accessToken)) {
+            location.href = "/login";
+        }
     }, []);
 
     useEffect(() => {
@@ -140,12 +164,12 @@ const allReviews = () => {
                                             <div className={styles.propertyDetailTableBox}>
                                                 {/* <img src="/images/property-1.webp" alt="" /> */}
                                                 <div className={styles.propertyDetailText}>
-                                                <Link href={`https://real-estate-gray-zeta.vercel.app/property?id=${review.property_id}`} target='_blank'>
-                                               
-                                                    <h4>{review.property.property_name}</h4>
+                                                    <Link href={`https://real-estate-gray-zeta.vercel.app/property?id=${review.property_id}`} target='_blank'>
+
+                                                        <h4>{review.property.property_name}</h4>
                                                     </Link>
                                                     <p className={styles.priceText}>AED{review.property.price}</p>
-                                                   
+
                                                 </div>
                                             </div>
                                         </td>

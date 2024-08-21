@@ -35,11 +35,30 @@ const dashboard = () => {
             }
         };
         fetchProperties();
+    }, []);
 
-        // Check local storage if user is logged in
-        const loggedInStatus = localStorage.getItem('isLoggedIn');
-        if (loggedInStatus == null) {
-            location.href = "/"
+    // Utility function to check if the token has expired
+    const isTokenExpired = (token) => {
+        if (!token) return true;
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        const { exp } = JSON.parse(jsonPayload);
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        return exp < currentTime;
+    };
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
+        const username = localStorage.getItem('username');
+
+        // If token is not found or token is expired, redirect to login
+        if (!accessToken || !username || isTokenExpired(accessToken)) {
+            location.href = "/login";
         }
     }, []);
 
@@ -107,7 +126,7 @@ const dashboard = () => {
                         </div>
                         <div className={styles.dashboardCardsBox}>
                             <Image width={200} height={200} src="/images/dashboard-icon-3.png" alt="" />
-                            <h3>{pendingCount ? pendingCount :'0'}</h3>
+                            <h3>{pendingCount ? pendingCount : '0'}</h3>
                             <p>Pending</p>
                         </div>
                         <div className={styles.dashboardCardsBox}>

@@ -15,7 +15,32 @@ const UserProfile = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [error, setError] = useState('');
-    
+
+    // Utility function to check if the token has expired
+    const isTokenExpired = (token) => {
+        if (!token) return true;
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        const { exp } = JSON.parse(jsonPayload);
+        const currentTime = Math.floor(Date.now() / 1000);
+
+        return exp < currentTime;
+    };
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
+        const username = localStorage.getItem('username');
+
+        // If token is not found or token is expired, redirect to login
+        if (!accessToken || !username || isTokenExpired(accessToken)) {
+            location.href = "/login";
+        }
+    }, []);
+
     useEffect(() => {
         fetchProfileData();
     }, []);
@@ -129,11 +154,11 @@ const UserProfile = () => {
                     <div className={styles.userProfileBox}>
                         <h2>User Profile</h2>
                         <form onSubmit={handleProfileSubmit}>
-                        <div className={styles.formInnerBox1}>
-                            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-                            <input type="text" value={phone_number} onChange={(e) => setPhoneNumber(e.target.value)}
-                            readOnly />
+                            <div className={styles.formInnerBox1}>
+                                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                <input type="text" value={phone_number} onChange={(e) => setPhoneNumber(e.target.value)}
+                                    readOnly />
                             </div>
                             <div className={styles.formInnerBox1}>
                                 <button type="submit">Update <i class="fa-solid fa-arrow-right"></i></button>
