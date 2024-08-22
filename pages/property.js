@@ -62,6 +62,12 @@ const property = () => {
         phone: '',
         agentType: ''
     });
+    const [isSubmittingReview, setIsSubmittingReview] = useState(false);
+    const [reviewSubmissionStatus, setReviewSubmissionStatus] = useState('');
+
+    const [isSubmittingEnquiry, setIsSubmittingEnquiry] = useState(false);
+    const [enquirySubmissionStatus, setEnquirySubmissionStatus] = useState('');
+
 
     useEffect(() => {
         if (id) {
@@ -134,9 +140,10 @@ const property = () => {
 
     const handleSubmitReview = async (e) => {
         e.preventDefault();
+        setIsSubmittingReview(true);
+        setReviewSubmissionStatus(''); // Reset status message
 
         try {
-
             const response = await fetch(`https://a.khelogame.xyz/property/${id}/review`, {
                 method: 'POST',
                 headers: {
@@ -151,26 +158,24 @@ const property = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                // Optionally, update UI to reflect the new review (if needed)
-                console.log('Review added successfully:', data);
-                // Reset form fields
                 setReviewForm({
                     rating: '',
                     comment: '',
                     name: ''
                 });
-                // You may want to fetch property details again to update reviews list
+                setReviewSubmissionStatus('Review Submitted Successfully!');
                 fetchPropertyDetails(id);
             } else {
                 const errorData = await response.json();
-                console.error('Error adding review:', errorData.error);
-                // Handle error (e.g., show error message to user)
+                setReviewSubmissionStatus(`Error: ${errorData.error}`);
             }
         } catch (error) {
-            console.error('Error adding review:', error);
-            // Handle error (e.g., show error message to user)
+            setReviewSubmissionStatus(`Error: ${error.message}`);
+        } finally {
+            setIsSubmittingReview(false);
         }
     };
+
 
     const handleContactClick = async () => {
         try {
@@ -195,6 +200,9 @@ const property = () => {
 
     const submitAgentEnquiry = async (e) => {
         e.preventDefault();
+        setIsSubmittingEnquiry(true);
+        setEnquirySubmissionStatus(''); // Reset status message
+
         try {
             const response = await fetch(`https://a.khelogame.xyz/create-user-inquiry/${id}`, {
                 method: 'POST',
@@ -208,25 +216,27 @@ const property = () => {
                     agent_type: enquiryForm.agentType
                 }),
             });
+
             if (response.ok) {
                 const data = await response.json();
-                console.log('Agent enquiry submitted successfully:', data);
                 setEnquiryForm({
                     name: '',
                     email: '',
                     phone: '',
                     agentType: ''
                 });
+                setEnquirySubmissionStatus('Enquiry Submitted Successfully!');
             } else {
                 const errorData = await response.json();
-                console.error('Error submitting agent enquiry:', errorData.error);
-                // Handle error (e.g., show error message to user)
+                setEnquirySubmissionStatus(`Error: ${errorData.error}`);
             }
         } catch (error) {
-            console.error('Error submitting agent enquiry:', error);
-            // Handle error (e.g., show error message to user)
+            setEnquirySubmissionStatus(`Error: ${error.message}`);
+        } finally {
+            setIsSubmittingEnquiry(false);
         }
     };
+
     const handleEnquiryChange = (e) => {
         const { name, value } = e.target;
         setEnquiryForm({ ...enquiryForm, [name]: value });
@@ -365,7 +375,7 @@ const property = () => {
                 </div>
             </section>
 
-            <section className={`${styles.videosSection} animate-on-scroll`}>
+            {propertyDetails.video_paths && propertyDetails.video_paths.length > 0 && (<section className={`${styles.videosSection} animate-on-scroll`}>
                 <h3>Videos</h3>
                 <div className={styles.video_box}>
                     {propertyDetails.video_paths.map((video, index) => (
@@ -374,7 +384,7 @@ const property = () => {
                         </video>
                     ))}
                 </div>
-            </section>
+            </section>)}
 
             <section className={`${styles.googleMapsSection} animate-on-scroll`} id='locationSection'>
                 <h2>Location</h2>
@@ -454,7 +464,10 @@ const property = () => {
                             onChange={handleEnquiryChange}
                             placeholder="Enter Phone Number"
                         />
-                        <input type="submit" value="Submit" />
+                        <input type="submit" value="Submit" disabled={isSubmittingEnquiry} />
+
+                        {isSubmittingEnquiry && <p className={styles.submit_msg_text}>Submitting Your Enquiry...</p>}
+                        {!isSubmittingEnquiry && enquirySubmissionStatus && <p className={styles.submit_msg_text}>{enquirySubmissionStatus}</p>}
                     </form>
                 </div>
             </section>
@@ -464,14 +477,15 @@ const property = () => {
                 {reviews.length === 0 && <p>No Reviews Available</p>}
                 {reviews.map((review, index) => (
                     <div key={index} className={styles.ratingsBox}>
+                        <p className={styles.name_bold_text}>{review.name}</p>
                         <p>{review.comment}</p>
-                        <p>{review.name}</p>
                     </div>
                 ))}
                 {error && <p>{error}</p>}
 
                 <div className={styles.addCommentBox}>
                     <h3>Leave A Review</h3>
+
                     <form onSubmit={handleSubmitReview}>
                         <label className={styles.commentLabel}>Your Rating</label>
                         <div className={styles.starRating}>
@@ -506,8 +520,10 @@ const property = () => {
                             value={reviewForm.name}
                             onChange={handleInputChange}
                         />
-                        <input type="submit" value="Submit Review" />
+                        <input type="submit" value="Submit Review" disabled={isSubmittingReview} />
                     </form>
+                    {isSubmittingReview && <p className={styles.submit_msg_text}>Submitting Your Review...</p>}
+                    {!isSubmittingReview && reviewSubmissionStatus && <p className={styles.submit_msg_text}>{reviewSubmissionStatus}</p>}
                 </div>
             </section>
 

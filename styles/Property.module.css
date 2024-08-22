@@ -1138,3 +1138,17 @@
         font-size: 12px;
     }
 }
+
+.name_bold_text{
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.submit_msg_text{
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 16px;
+    color: green;
+}

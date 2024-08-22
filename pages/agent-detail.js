@@ -28,9 +28,13 @@ const agentDetail = () => {
 
     const router = useRouter();
     const { id } = router.query;
+
     const [agentDetails, setAgentDetails] = useState({});
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isSubmitting, setIsSubmitting] = useState(false); // State for loader
+    const [submissionMessage, setSubmissionMessage] = useState(''); // State for form submission message
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -50,7 +54,6 @@ const agentDetail = () => {
             const response = await fetch(`https://a.khelogame.xyz/agents/${agentId}`);
             if (response.ok) {
                 const data = await response.json();
-                console.log("=================>", data);
                 setAgentDetails(data);
                 setLoading(false);
             } else {
@@ -87,6 +90,9 @@ const agentDetail = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
+        setSubmissionMessage('');
+
         try {
             const response = await fetch(`https://a.khelogame.xyz/create-agent-inquiry/${id}`, {
                 method: 'POST',
@@ -95,17 +101,20 @@ const agentDetail = () => {
                 },
                 body: JSON.stringify(formData)
             });
+
             if (response.ok) {
-                alert('Message sent successfully');
+                setSubmissionMessage('Message Sent Successfully!!');
                 setFormData({ name: '', email: '', phone_number: '', message: '' });
             } else {
                 const errorData = await response.json();
                 console.error('Error:', errorData);
-                alert('Error sending message');
+                setSubmissionMessage('Error Sending Message');
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Error sending message');
+            setSubmissionMessage('Error Sending Message');
+        } finally {
+            setIsSubmitting(false); 
         }
     };
 
@@ -207,19 +216,47 @@ const agentDetail = () => {
 
                 <div className={styles.contactMeFormBigBox}>
                     <div className={styles.contactMeForm1}>
-                        <form onSubmit={handleSubmit}>
-                            <label for="">Name</label>
-                            <input type="text" name="name" placeholder="Enter Name" value={formData.name} onChange={handleChange} required />
-                            <label for="">Phone</label>
-                            <input type="text" name="phone_number" placeholder="Enter Phone" value={formData.phone_number} onChange={handleChange} required />
-                            <label for="">Email</label>
-                            <input type="text" name="email" placeholder="Enter Email" value={formData.email} onChange={handleChange}
-                                required />
-                            <label for="">Message</label>
-                            <input type="text" name="message" placeholder="Enter Message" value={formData.message} onChange={handleChange}
-                                required />
-                            <input type="submit" value="Send Message" />
+                    <form onSubmit={handleSubmit}>
+                            <label htmlFor="">Name</label>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Enter Name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                            <label htmlFor="">Phone</label>
+                            <input
+                                type="text"
+                                name="phone_number"
+                                placeholder="Enter Phone"
+                                value={formData.phone_number}
+                                onChange={handleChange}
+                                required
+                            />
+                            <label htmlFor="">Email</label>
+                            <input
+                                type="text"
+                                name="email"
+                                placeholder="Enter Email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                            <label htmlFor="">Message</label>
+                            <input
+                                type="text"
+                                name="message"
+                                placeholder="Enter Message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input type="submit" value="Send Message" disabled={isSubmitting} />
                         </form>
+                        {isSubmitting && <p className={styles.msg_para}>Sending Message...</p>}
+                        {submissionMessage && <p className={styles.msg_para}>{submissionMessage}</p>}
                     </div>
                     <div className={styles.contactMeForm2}>
                         <Image width={200} height={200} src="/images/agent-img.png" alt="" />

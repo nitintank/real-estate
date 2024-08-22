@@ -187,7 +187,7 @@ const ProjectDetails = () => {
                 </div>
             </section>
 
-            <section className={`${styles.videosSection} animate-on-scroll`}>
+            {Projectdetails.project.video_paths && Projectdetails.project.video_paths.length > 0 && (<section className={`${styles.videosSection} animate-on-scroll`}>
                 <h3>Videos</h3>
                 <div className={styles.video_box}>
                     {Projectdetails.project.video_paths.map((video, index) => (
@@ -196,7 +196,7 @@ const ProjectDetails = () => {
                         </video>
                     ))}
                 </div>
-            </section>
+            </section>)}
 
             <section className={`${styles.descriptionContentBox} animate-on-scroll`} id='units'>
                 <h3>Units</h3>
