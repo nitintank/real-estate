@@ -5,31 +5,32 @@ import Footer from '@/components/footer'
 import styles from "../styles/ContactUs.module.css";
 import { useState } from 'react'
 import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const contactUs = () => {
 
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.animate);
-            observer.unobserve(entry.target); // Stop observing once animation is triggered
-          }
+            if (entry.isIntersecting) {
+                entry.target.classList.add(styles.animate);
+                observer.unobserve(entry.target); // Stop observing once animation is triggered
+            }
         });
-      };
-    
-      const observerOptions = {
+    };
+
+    const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.1,
-      };
-    
-      useIntersectionObserver(observerCallback, observerOptions);
+    };
+
+    useIntersectionObserver(observerCallback, observerOptions);
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone_number, setPhoneNumber] = useState('')
     const [message, setMessage] = useState('')
-    const [messageSent, setmessageSent] = useState(false)
 
     const handleChange = (e) => {
         if (e.target.name == 'name') {
@@ -59,13 +60,14 @@ const contactUs = () => {
         let response = await res.json()
 
         if (response.message == "Message received successfully") {
-            setmessageSent(true)
+            toast.success('Message Sent Successfully, Our Team Will Contact You Soon!');
         }
     }
 
     return (
         <>
             <Navbar />
+            <ToastContainer />
             {/* <!-- Form Section --> */}
             <section className={styles.formSection}>
                 <div className={styles.formContentBigBox}>
@@ -75,18 +77,15 @@ const contactUs = () => {
                     <div className={`${styles.formContentBox} animate-on-scroll`}>
                         <form method='POST' onSubmit={handleSubmit}>
                             <h2>Contact Us</h2>
-                            {messageSent && <p className={styles.whiteText}>Message Sent Successfully, Our Team Will Contact You Back Really Soon!!</p>}
-                            {!messageSent && <>
-                                <label htmlFor="">Enter Name</label>
-                                <input type="text" placeholder="Enter Name" name='name' value={name} onChange={handleChange} required />
-                                <label htmlFor="">Enter Email</label>
-                                <input type="text" placeholder="Enter Email" name='email' value={email} onChange={handleChange} required />
-                                <label htmlFor="">Enter Phone No.</label>
-                                <input type="text" placeholder="Enter Phone No." name='phone_number' value={phone_number} onChange={handleChange} required />
-                                <label htmlFor="">Message</label>
-                                <textarea id="" rows="6" placeholder="Enter Message" name='message' value={message} onChange={handleChange} required></textarea>
-                                <input type="submit" value="SUBMIT" />
-                            </>}
+                            <label htmlFor="">Enter Name</label>
+                            <input type="text" placeholder="Enter Name" name='name' value={name} onChange={handleChange} required />
+                            <label htmlFor="">Enter Email</label>
+                            <input type="text" placeholder="Enter Email" name='email' value={email} onChange={handleChange} required />
+                            <label htmlFor="">Enter Phone No.</label>
+                            <input type="text" placeholder="Enter Phone No." name='phone_number' value={phone_number} onChange={handleChange} required />
+                            <label htmlFor="">Message</label>
+                            <textarea id="" rows="6" placeholder="Enter Message" name='message' value={message} onChange={handleChange} required></textarea>
+                            <input type="submit" value="SUBMIT" />
                         </form>
                     </div>
                 </div>

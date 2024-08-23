@@ -107,7 +107,7 @@ const allReviews = () => {
             }
 
             const data = await response.json();
-            toast.success('Replay back comment on propety !');
+            toast.success('Reply Back Submitted For The Comment On Property !');
             console.log(data.message); // Notify user of success
 
             // Optionally, update the review list with the new reply

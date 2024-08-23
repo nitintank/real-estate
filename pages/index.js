@@ -157,7 +157,7 @@ const index = () => {
   // })
   // .slice(-3);
   const currentDate = new Date();
-const twoWeeksAgo = new Date(currentDate.getTime() - 14 * 24 * 60 * 60 * 1000); // Calculate the date two weeks ago
+const twoWeeksAgo = new Date(currentDate.getTime() - 21 * 24 * 60 * 60 * 1000);
 
 const latestProperties = properties
   .filter(property => {
