@@ -190,7 +190,7 @@ const agentDetail = () => {
                             <p className={styles.miniText}>{property.property_type}</p>
                             <h3>{property.property_name}</h3>
                             <p className={styles.priceText}>AED {property.price}</p>
-                            <p className={styles.propertyDescription}>{property.description}</p>
+                            <p className={styles.propertyDescription}>{property.description.substring(0, 50) + '...'}</p>
                             <div className={styles.innerPropertyContent}>
                                 <p><i className="fa-solid fa-bed"></i> {property.bedrooms}</p>
                                 <p><i className="fa-solid fa-shower"></i> {property.bathrooms}</p>

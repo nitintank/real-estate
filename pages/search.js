@@ -241,7 +241,7 @@ const Search = () => {
                             <option value="5+">5+ Bedrooms</option>
                         </select>
                     </div>
-                    <div className={styles.formBox}>
+                    <div className={`${styles.formBox} ${styles.amenities_box}`}>
                         <label>Amenities</label>
                         <button onClick={openModal} className={styles.amenities_btn}>Select Amenities</button>
                     </div>
@@ -281,6 +281,12 @@ const Search = () => {
                                             <p><i className="fa-solid fa-car"></i> {property.parking}</p>
                                             <p><i className="fa-solid fa-up-right-from-square"></i> {property.size}</p>
                                         </div>
+                                        <hr />
+                                        <div className={styles.innerButtonBox}>
+                                            <button><i className="fa-solid fa-phone"></i> Call</button>
+                                            <button><i className="fa-solid fa-envelope"></i> Email</button>
+                                            <button><i className="fa-brands fa-whatsapp"></i> WhatsApp</button>
+                                        </div>
                                     </div>
                                 </Link>
                             ))
@@ -296,6 +302,7 @@ const Search = () => {
                 style={customStyles}
                 contentLabel="Select Amenities"
             >
+                <i className={`fa-solid fa-circle-xmark ${styles.cross_close_mark}`} onClick={closeModal}></i>
                 <h2 className={styles.modal_h2}>Select Amenities For This Property</h2>
                 <h3 className={styles.modal_h3}>Recreation And Family</h3>
                 <div className={styles.modal_Label}>

@@ -613,6 +613,10 @@
         right: 5px;
     }
 
+    .searchBiggerBox .formBox .amenities_btn{
+        font-size: 14px;
+    }
+
     /* Latest Properties Section */
     .latestPropertiesSection h2 {
         font-size: 30px;
@@ -679,8 +683,10 @@
     .searchBiggerBox .formBox .amenities_btn{
         display: none;
     }
+    .amenities_box{
+        display: none;
+    }
 }
-
 
 /* MODAL CSS */
 
@@ -723,4 +729,12 @@
     font-size: 22px;
     font-weight: 600;
     text-align: center;
+}
+
+.cross_close_mark{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 24px;
+    cursor: pointer;
 }
