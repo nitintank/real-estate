@@ -1,0 +1,740 @@
+/* Top Introduction Box */
+
+.topIntroductionBox {
+    width: 95%;
+    height: auto;
+    background: rgb(16, 133, 255);
+    background: linear-gradient(90deg, rgba(16, 133, 255, 1) 0%, rgba(222, 238, 255, 1) 100%);
+    margin: 10px auto;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.topIntroInnerBox1 {
+    width: 50%;
+    height: auto;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.topIntroInnerBox1 h2 {
+    font-size: 55px;
+    font-weight: 500;
+    line-height: 1;
+    color: white;
+}
+
+.topIntroInnerBox1 p {
+    width: 70%;
+    font-size: 14px;
+    margin-top: 5px;
+    color: white;
+    font-weight: 400;
+}
+
+.topIntroInnerBox2 {
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: 0px 0px 20px 0px;
+}
+
+.topIntroInnerBox2 img {
+    width: 150%;
+    height: auto;
+}
+
+.searchBiggerBox {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border-radius: 10px;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border: 0.1px solid rgb(224, 224, 224);
+    gap: 15px;
+}
+
+.formBiggerBox {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formBiggerBox .formBox {
+    width: 24%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.formBox2 {
+    height: auto;
+}
+
+.formBox2 input {
+    display: none;
+}
+
+.formBox2 label {
+    font-size: 15px;
+    border: 0.2px solid rgb(163, 163, 163);
+    padding: 7px 80px;
+    cursor: pointer;
+}
+
+.formBox2 input[type="radio"]:checked+label {
+    background-color: #1085FF;
+    color: white;
+}
+
+.LBorderRadius {
+    border-radius: 20px 0px 0px 20px;
+}
+
+.RBorderRadius {
+    border-radius: 0px 20px 20px 0px;
+}
+
+.formBox{
+    width: 19%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.formBox label {
+    font-weight: 700;
+}
+
+.formBox input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border: 0.2px solid rgb(163, 163, 163);
+    font-size: 14px;
+    padding: 15px 10px;
+    border-radius: 5px;
+}
+
+.formBox select {
+    width: 100%;
+    height: 30px;
+    border: 0.2px solid rgb(163, 163, 163);
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    color: black;
+}
+
+.searchBiggerBox .flexEnd {
+    justify-content: flex-end;
+}
+
+.searchBiggerBox .formBox .search_btn {
+    width: 100%;
+    background-color: #1085FF;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 5px;
+    font-size: 16px;
+}
+
+.searchBiggerBox .formBox .amenities_btn {
+    width: 100%;
+    background-color: #1085FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 5px;
+    font-size: 16px;
+}
+
+/* Select Box */
+
+.selectBox {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 14px;
+    font-weight: 500;
+    color: #60666d;
+    padding: 12px 10px;
+    border: 0.2px solid rgb(163, 163, 163);
+}
+
+.selectBox__current {
+    position: relative;
+    cursor: pointer;
+    outline: none;
+}
+
+.selectBox__current:focus+.selectBox__list {
+    opacity: 1;
+    -webkit-animation-name: none;
+    animation-name: none;
+}
+
+.selectBox__current:focus+.selectBox__list .selectBox__option {
+    cursor: pointer;
+}
+
+.selectBox__current:focus .selectBox__icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.selectBox__list label {
+    font-weight: 500 !important;
+    font-size: 14px;
+}
+
+.selectBox__icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 20px;
+    opacity: 0.3;
+    transition: 0.2s ease;
+}
+
+.selectBox__value {
+    display: flex;
+}
+
+.selectBox__input {
+    display: none;
+}
+
+.selectBox__input:checked+.selectBox__inputText {
+    display: block;
+}
+
+.selectBox__inputText {
+    display: none;
+    width: 100%;
+    margin: 0;
+    padding: 0px 10px 1px 0px;
+    background-color: #fff;
+}
+
+.selectBox__list {
+    position: absolute;
+    border: 0.2px solid rgb(163, 163, 163);
+    top: 42px;
+    width: 100%;
+    left: 0px;
+    padding: 0;
+    list-style: none;
+    opacity: 0;
+    z-index: 100000;
+    -webkit-animation-name: HideList;
+    animation-name: HideList;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-timing-function: step-start;
+    animation-timing-function: step-start;
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+.selectBox__option {
+    display: block;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.selectBox__option:hover,
+.selectBox__option:focus {
+    color: #546c84;
+    background-color: #fbfbfb;
+}
+
+@-webkit-keyframes HideList {
+    from {
+        transform: scaleY(1);
+    }
+
+    to {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes HideList {
+    from {
+        transform: scaleY(1);
+    }
+
+    to {
+        transform: scaleY(0);
+    }
+}
+
+/* Search Result Section */
+
+.searchResultsSection {
+    width: 100%;
+    padding: 10px 60px;
+}
+
+.searchResultsSection h2{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+/* Latest Properties Section */
+
+.latestPropertiesSection {
+    padding: 40px 80px;
+}
+
+.latestPropertiesSection p {
+    font-size: 18px;
+    font-weight: 500;
+    color: #838383;
+}
+
+.latestPropertiesSection h2 {
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.latestPropertiesBigBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0px;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.latestPropertiesBigBox a {
+    text-decoration: none;
+    color: black;
+}
+
+.latestPropertiesInnerBox {
+    width: 48%;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+}
+
+.latestPropertiesInnerBox img {
+    width: 100%;
+    height: 270px;
+    border-radius: 10px 10px 0px 0px;
+    object-fit: cover;
+}
+
+.latestPropertiesContentBox {
+    padding: 10px 15px;
+}
+
+.latestPropertiesContentBox hr {
+    border: 0.5px solid rgb(178, 178, 178);
+}
+
+.latestPropertiesContentBox .miniText {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.latestPropertiesContentBox h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.latestPropertiesContentBox .priceText {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1085FF;
+}
+
+.latestPropertiesContentBox .propertyDescription {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5c727d;
+}
+
+.innerPropertyContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 5px;
+}
+
+.innerPropertyContent p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #5c727d;
+}
+
+.innerButtonBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px 5px 0px;
+}
+
+.innerButtonBox button {
+    padding: 5px 35px;
+    cursor: pointer;
+    border: 1px solid #deeeff;
+    color: #1085FF;
+    background-color: #deeeff;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.innerButtonBox button .fa-whatsapp {
+    font-size: 17px;
+    font-weight: 800;
+}
+/* 07/08/2024 */
+.subscriptionTag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.amenities_btn {
+    background-color: #0070f3;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Responsive Code */
+
+@media (max-width: 1190px) {
+
+    /* Top Introduction Box */
+    .searchBiggerBox {
+        width: 100%;
+    }
+
+    /* Property Categories Section */
+    .propertyCategoriesSection {
+        margin-top: 60px;
+        padding: 20px 50px;
+    }
+
+    /* Find Perfect Home Section */
+    .findPerfectHomeBox2 h2 {
+        font-size: 50px;
+    }
+
+    .commentBoxImg {
+        width: 150px;
+        bottom: -60px;
+        right: -60px;
+    }
+
+    .searchBiggerBox .formBox .amenities_btn{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1094px) {
+
+    /* Popular Areas Section */
+    .popularAreasImage1 {
+        width: 69%;
+    }
+
+    .waveImg {
+        bottom: -100px;
+    }
+
+    /* Find Perfect Home Section */
+    .findPerfectHomeSection {
+        padding: 50px 0px;
+    }
+
+    .searchBiggerBox .formBox .amenities_btn{
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 1090px) {
+
+    /* Latest Properties Section */
+    .latestPropertiesBigBox {
+        gap: 25px;
+    }
+
+    .latestPropertiesSection {
+        padding: 10px 20px 20px 20px;
+    }
+
+    .latestPropertiesInnerBox img {
+        height: 240px;
+    }
+
+    /* Property Categories Section */
+    .propertyCategoriesSection {
+        margin-top: 60px;
+        padding: 20px 30px;
+    }
+}
+
+@media (max-width: 995px) {
+
+    /* Latest Properties Section */
+    .innerButtonBox {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .innerButtonBox button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 769px) {
+
+    /* Top Introduction Box */
+    .topIntroductionBox {
+        width: 98%;
+        flex-direction: column;
+    }
+
+    .topIntroInnerBox1 {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .topIntroInnerBox1 h2 {
+        font-size: 30px;
+        text-align: center;
+        margin: auto;
+    }
+
+    .topIntroInnerBox1 p {
+        width: 100%;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .topIntroInnerBox2 {
+        width: 100%;
+        border-radius: 0px 0px 20px 20px;
+    }
+
+    .topIntroInnerBox2 img {
+        border-radius: 0px 0px 20px 20px;
+    }
+
+    .searchBiggerBox {
+        width: 100%;
+        flex-wrap: wrap;
+        height: auto;
+        gap: 10px;
+        bottom: -320px;
+    }
+
+    .searchBiggerBox .formBox {
+        width: 100%;
+        height: auto;
+        margin: 2px auto;
+    }
+
+    .formBox2 {
+        width: 100%;
+        height: 32px;
+        margin: 2px auto;
+    }
+
+    .formBox2 label {
+        width: 100%;
+        display: block;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .LBorderRadius {
+        border-radius: 5px;
+    }
+
+    .RBorderRadius {
+        border-radius: 5px;
+    }
+
+    .formBiggerBox {
+        flex-wrap: wrap;
+    }
+
+    .formBox input {
+        border-radius: 5px;
+    }
+
+    .searchBiggerBox .formBox button {
+        border-radius: 5px;
+    }
+
+    /* Select Box */
+
+    .selectBox {
+        border-radius: 5px;
+    }
+
+    .selectBox__icon {
+        right: 5px;
+    }
+
+    .searchBiggerBox .formBox .amenities_btn{
+        font-size: 14px;
+    }
+
+    /* Latest Properties Section */
+    .latestPropertiesSection h2 {
+        font-size: 30px;
+    }
+
+    .latestPropertiesSection p {
+        font-size: 16px;
+    }
+
+    .innerPropertyContent p {
+        font-size: 12px;
+    }
+
+    .latestPropertiesContentBox h3 {
+        font-size: 18px;
+    }
+
+    .latestPropertiesContentBox .priceText {
+        font-size: 18px;
+    }
+
+    .latestPropertiesSection {
+        padding: 5px 10px 10px 10px;
+    }
+
+    .latestPropertiesBigBox {
+        gap: 15px;
+        padding: 10px 0px;
+    }
+
+    .latestPropertiesInnerBox {
+        width: 100%;
+    }
+
+    .latestPropertiesInnerBox img {
+        height: 250px;
+        border-radius: 5px 5px 0px 0px;
+    }
+
+    .innerButtonBox {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .innerButtonBox button {
+        width: 100%;
+    }
+
+    /* Search Result Section */
+
+    .searchResultsSection {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    /* Latest Properties Section */
+    .latestPropertiesInnerBox img {
+        height: 160px;
+        border-radius: 5px 5px 0px 0px;
+    }
+    .searchBiggerBox .formBox .amenities_btn{
+        display: none;
+    }
+    .amenities_box{
+        display: none;
+    }
+}
+
+/* MODAL CSS */
+
+.modal_Label{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 5px auto;
+}
+
+.modal_Label label{
+    width: 32%;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+.modal_save_btn{
+    width: 100%;
+    background-color: #1085FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 5px;
+    font-size: 16px;
+    margin: 10px 0px 0px 0px;
+}
+
+.modal_h3{
+    font-size: 16px;
+    margin: 10px;
+    font-weight: 600;
+}
+
+.modal_h2{
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.cross_close_mark{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 24px;
+    cursor: pointer;
+}

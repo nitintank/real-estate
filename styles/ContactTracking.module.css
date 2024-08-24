@@ -81,6 +81,11 @@
     cursor: pointer;
 }
 
+.linkTag{
+    text-decoration: none;
+    color: black;
+}
+
 /* Responsive Code */
 
 @media (max-width: 1395px) {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
-import styles from "../styles/Projects.module.css";
+import styles from "../styles/SearchProject.module.css";
 import Image from 'next/image';
 import Link from 'next/link';
 import useIntersectionObserver from '../pages/hooks/useIntersectionObserver';
@@ -94,83 +94,81 @@ const SearchProjectFilter = () => {
     return (
         <>
             <Navbar />
+            <br />
+            <section className={styles.topIntroductionBox}>
+                <div className={styles.searchBiggerBox}>
+                    <div className={styles.formBox}>
+                        <input
+                            type="text"
+                            name="location"
+                            value={filters.location}
+                            onChange={handleFilterChange}
+                            placeholder="Enter An Address, City Or Zip Code"
+                        />
+                    </div>
+                    <div className={styles.formBox}>
+                        <select
+                            name="propertyType"
+                            value={filters.propertyType}
+                            onChange={handleFilterChange}
+                        >
+                            <option value="">Property Type</option>
+                            <option value="Flat/ Apartment">Flat/ Apartment</option>
+                            <option value="Residential House">Residential House</option>
+                            <option value="Villa">Villa</option>
+                            <option value="Builder Floor Apartment">Builder Floor Apartment</option>
+                            <option value="Residential Land/ Plot">Residential Land/ Plot</option>
+                            <option value="Penthouse">Penthouse</option>
+                            <option value="Studio Apartment">Studio Apartment</option>
+                            <option value="Commercial Office Space">Commercial Office Space</option>
+                            <option value="Office in IT Park/ SEZ">Office in IT Park/ SEZ</option>
+                            <option value="Commercial Shop">Commercial Shop</option>
+                            <option value="Commercial Showroom">Commercial Showroom</option>
+                            <option value="Commercial Land">Commercial Land</option>
+                            <option value="Warehouse/ Godown">Warehouse/ Godown</option>
+                            <option value="Industrial Land">Industrial Land</option>
+                            <option value="Industrial Building">Industrial Building</option>
+                            <option value="Industrial Shed">Industrial Shed</option>
+                            <option value="Agricultural Land">Agricultural Land</option>
+                            <option value="Farm House">Farm House</option>
+                        </select>
+                    </div>
+                    <div className={styles.formBox}>
+                        <select
+                            name="bedrooms"
+                            value={filters.bedrooms}
+                            onChange={handleFilterChange}
+                        >
+                            <option value="">Bedrooms</option>
+                            <option value="1-2">1-2</option>
+                            <option value="3-4">3-4</option>
+                            <option value="5">5 +</option>
+                        </select>
+                    </div>
+                    <div className={styles.formBox}>
+                        <select
+                            name="price"
+                            value={filters.price}
+                            onChange={handleFilterChange}
+                        >
+                            <option value="">Price</option>
+                            <option value="1-1000000">1-1000000</option>
+                            <option value="1000000-2000000">1000000-2000000</option>
+                            <option value="2000000-5000000">2000000-5000000</option>
+                            <option value="5000000">5000000+</option>
+                        </select>
+                    </div>
+                    <div className={`${styles.formBox} ${styles.flexEnd}`}>
+                        <button onClick={handleSearch} className={styles.search_btn}>
+                            <i className="fa-solid fa-magnifying-glass"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </section>
 
-<br/>
-           <section className={`${styles.topIntroductionBox} animate-on-scroll`}>
-           <div className={styles.searchBiggerBox}>
-                <div className={styles.formBox}>
-                    <input
-                        type="text"
-                        name="location"
-                        value={filters.location}
-                        onChange={handleFilterChange}
-                        placeholder="Enter An Address, City Or Zip Code"
-                    />
-                </div>
-                <div className={styles.formBox}>
-                    <select
-                        name="propertyType"
-                        value={filters.propertyType}
-                        onChange={handleFilterChange}
-                    >
-                        <option value="">Property Type</option>
-                        <option value="Flat/ Apartment">Flat/ Apartment</option>
-                        <option value="Residential House">Residential House</option>
-                        <option value="Villa">Villa</option>
-                        <option value="Builder Floor Apartment">Builder Floor Apartment</option>
-                        <option value="Residential Land/ Plot">Residential Land/ Plot</option>
-                        <option value="Penthouse">Penthouse</option>
-                        <option value="Studio Apartment">Studio Apartment</option>
-                        <option value="Commercial Office Space">Commercial Office Space</option>
-                        <option value="Office in IT Park/ SEZ">Office in IT Park/ SEZ</option>
-                        <option value="Commercial Shop">Commercial Shop</option>
-                        <option value="Commercial Showroom">Commercial Showroom</option>
-                        <option value="Commercial Land">Commercial Land</option>
-                        <option value="Warehouse/ Godown">Warehouse/ Godown</option>
-                        <option value="Industrial Land">Industrial Land</option>
-                        <option value="Industrial Building">Industrial Building</option>
-                        <option value="Industrial Shed">Industrial Shed</option>
-                        <option value="Agricultural Land">Agricultural Land</option>
-                        <option value="Farm House">Farm House</option>
-                    </select>
-                </div>
-                <div className={styles.formBox}>
-                    <select
-                        name="bedrooms"
-                        value={filters.bedrooms}
-                        onChange={handleFilterChange}
-                    >
-                        <option value="">Bedrooms</option>
-                        <option value="1-2">1-2</option>
-                        <option value="3-4">3-4</option>
-                        <option value="5">5 +</option>
-                    </select>
-                </div>
-                <div className={styles.formBox}>
-                    <select
-                        name="price"
-                        value={filters.price}
-                        onChange={handleFilterChange}
-                    >
-                        <option value="">Price</option>
-                        <option value="1-1000000">1-1000000</option>
-                        <option value="1000000-2000000">1000000-2000000</option>
-                        <option value="2000000-5000000">2000000-5000000</option>
-                        <option value="5000000">5000000+</option>
-                    </select>
-                </div>
-                <div className={`${styles.formBox} ${styles.flexEnd}`}>
-                    <button onClick={handleSearch}>
-                        <i className="fa-solid fa-magnifying-glass"></i> Search
-                    </button>
-                </div>
-            </div>
-            </section>  
-
-            <section className={`${styles.mainSection} animate-on-scroll`}>
-                <div className={styles.mainSectionBox1}>
-                    <p>POPULAR AREAS</p>
-                    <h3>Recent Projects</h3>
+            <section className={styles.searchResultsSection}>
+                <h2>Search Results</h2>
+                <div className={styles.searchResultsBox}>
                     <div className={styles.latestPropertiesBigBox}>
                         {projects.map(project => (
                             <Link href={`/project-details?id=${project.project_id}`} className={styles.latestPropertiesInnerBox} key={project.project_id}>

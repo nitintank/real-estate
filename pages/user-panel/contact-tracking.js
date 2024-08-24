@@ -101,9 +101,11 @@ const contactTracking = () => {
                   {numbercount.map((property, index) => (
                     <tr key={property.property_id}>
                       <td>{index + 1}</td>
-                      <Link href={`https://real-estate-gray-zeta.vercel.app/property?id=${property.property_id}`}>
-                        <td>{property.property_name}</td>
-                      </Link>
+                      <td>
+                        <Link href={`https://real-estate-gray-zeta.vercel.app/property?id=${property.property_id}`} target='_blank' className={styles.linkTag}>
+                          {property.property_name}
+                        </Link>
+                      </td>
                       <td>{property.property_type}</td>
                       <td>{property.number_of_click}</td>
                     </tr>

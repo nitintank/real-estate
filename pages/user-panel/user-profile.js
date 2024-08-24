@@ -3,17 +3,17 @@ import Link from 'next/link';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import styles from "@/styles/UserProfile.module.css";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserProfile = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [phone_number, setPhoneNumber] = useState('');
-    const [profileSuccessMessage, setProfileSuccessMessage] = useState('');
 
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
     const [error, setError] = useState('');
 
     // Utility function to check if the token has expired
@@ -54,29 +54,28 @@ const UserProfile = () => {
                 }
             });
             if (!response.ok) {
-                throw new Error('Failed to fetch profile data');
+                throw new Error('Failed To Fetch Profile Data');
             }
             const profileData = await response.json();
             setUsername(profileData.username);
             setEmail(profileData.email);
             setPhoneNumber(profileData.phone_number);
         } catch (error) {
-            console.error('Error fetching profile data:', error.message);
+            console.error('Error Fetching Profile Data:', error.message);
         }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setSuccessMessage('');
         setError('');
 
         if (!oldPassword || !newPassword || !confirmPassword) {
-            setError('All fields are required');
+            setError('All Fields Are Required');
             return;
         }
 
         if (newPassword !== confirmPassword) {
-            setError('New password and confirm password must match');
+            setError('New Password And Confirm Password Must Match');
             return;
         }
 
@@ -97,15 +96,18 @@ const UserProfile = () => {
             const data = await response.json();
 
             if (!response.ok) {
-                setError(data.error || 'Failed to change password');
+                // setError(data.error || 'Failed To Change Password');
+                toast.error(data.error || 'Failed To Change Password');
             } else {
-                setSuccessMessage(data.message);
+                // setSuccessMessage(data.message);
+                toast.success(data.message);
                 setOldPassword('');
                 setNewPassword('');
                 setConfirmPassword('');
             }
         } catch (error) {
-            setError('Failed to change password');
+            // setError('Failed To Change Password');
+            toast.error('Failed To Change Password');
         }
     };
 
@@ -128,18 +130,18 @@ const UserProfile = () => {
                 throw new Error('Failed to update profile');
             }
             const responseData = await response.json();
-            setProfileSuccessMessage(responseData.message);
-            console.log('Profile updated successfully:', responseData);
-            // Optionally, show success message or redirect to another page
+            toast.success('Profile Updated Successfully!');
+            // console.log('Profile updated successfully:', responseData);
         } catch (error) {
-            console.error('Error updating profile:', error.message);
-            // Handle error as needed (show error message to user, retry logic, etc.)
+            toast.error(`Error Updating Profile`);
+            // console.error('Error updating profile:', error.message);
         }
     };
 
     return (
         <>
             <Navbar />
+            <ToastContainer />
             <section className={styles.mainContentBigBox}>
                 <div className={styles.mainSidebarBox}>
                     <Link href="/user-panel/dashboard"><i className="fa-solid fa-chart-line"></i> Dashboard</Link>
@@ -163,7 +165,6 @@ const UserProfile = () => {
                             <div className={styles.formInnerBox1}>
                                 <button type="submit">Update <i class="fa-solid fa-arrow-right"></i></button>
                             </div>
-                            {profileSuccessMessage && <p className={styles.success}>{profileSuccessMessage}</p>}
                         </form>
                     </div>
 
@@ -181,7 +182,6 @@ const UserProfile = () => {
                             </div>
                         </form>
                         {error && <p className={styles.error}>{error}</p>}
-                        {successMessage && <p className={styles.success}>{successMessage}</p>}
                     </div>
                 </div>
             </section>

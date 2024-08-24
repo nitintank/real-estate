@@ -80,7 +80,7 @@ const PropertyList = () => {
 
             if (response.ok) {
                 setProperties(properties.filter(property => property.id !== propertyId));
-                console.log('Property deleted successfully');
+                console.log('Property Deleted Successfully');
             } else {
                 const errorData = await response.json();
                 console.error('Error:', errorData);
@@ -125,7 +125,11 @@ const PropertyList = () => {
                             <tbody>
                                 {properties.map(property => (
                                     <tr key={property.id}>
-                                        <td>{property.property_name}</td>
+                                        <td>
+                                            <Link href={`https://real-estate-gray-zeta.vercel.app/property?id=${property.id}`} target='_blank' className={styles.link_tag}>
+                                                {property.property_name}
+                                            </Link>
+                                        </td>
                                         <td>
                                             <Image
                                                 width={200}
