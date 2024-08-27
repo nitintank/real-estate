@@ -139,20 +139,22 @@ const ProjectDetails = () => {
                     <Link href="#units" scroll={false}><li>Units</li></Link>
                 </ul>
                 <div className={styles.amenitiesCardsBigBox}>
-                    {Projectdetails.project.amenities && Object.keys(Projectdetails.project.amenities).length > 0 ? (
-                        Object.keys(Projectdetails.project.amenities).map((key, index) => (
-                            <div key={index} className={styles.aminitiesCardsBox}>
-                                {Projectdetails.project.amenities[key].map((amenity, index) => (
-                                    <p key={index}>
-                                        <span><i className="fa-solid fa-bed"></i></span>
-                                        {amenity}
-                                    </p>
-                                ))}
-                            </div>
-                        ))
-                    ) : (
-                        <p>No amenities available.</p>
-                    )}
+                    <div className={styles.aminitiesCardsBox}>
+                        {Projectdetails.project.amenities && Object.keys(Projectdetails.project.amenities).length > 0 ? (
+                            Object.keys(Projectdetails.project.amenities).map((key, index) => (
+                                <>
+                                    {Projectdetails.project.amenities[key].map((amenity, index) => (
+                                        <p key={index}>
+                                            <span><i className="fa-solid fa-star"></i></span>
+                                            {amenity}
+                                        </p>
+                                    ))}
+                                </>
+                            ))
+                        ) : (
+                            <p>No amenities available.</p>
+                        )}
+                    </div>
                 </div>
             </section>
 

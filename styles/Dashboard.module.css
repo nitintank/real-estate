@@ -141,16 +141,16 @@
     }
 
     .mainContentBox h2 {
-        font-size: 25px;
+        font-size: 21px;
     }
 
     .gladPara {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .dashboardCardsBigBox {
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 5px;
     }
 
     .dashboardCardsBox {
@@ -159,10 +159,10 @@
     }
 
     .dashboardCardsBox img {
-        width: 40px;
+        width: 35px;
     }
 
     .dashboardCardsBox h3 {
-        font-size: 20px;
+        font-size: 18px;
     }
 }

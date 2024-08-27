@@ -78,6 +78,7 @@
     font-size: 16px;
     font-weight: 600;
     text-transform: capitalize;
+    margin-bottom: 5px;
 }
 
 .allReviews td h4 img{
@@ -86,6 +87,7 @@
 
 .reviewComment{
     font-size: 14px;
+    margin-bottom: 5px;
 }
 
 .replyText{
@@ -220,5 +222,13 @@
         padding-top: 5px;
         padding-bottom: 5px;
     }
-
+    .reviewComment{
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+    .allReviews td h4{
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    
 }

@@ -35,7 +35,7 @@
 
 .topIntroInnerBox1 h2 {
     color: white;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 500;
     line-height: 1;
 }
@@ -493,7 +493,7 @@
         text-align: center;
     }
     .topIntroInnerBox1 p{
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
     }
     .topIntroInnerBox2{
@@ -509,16 +509,25 @@
         flex-wrap: wrap;
         gap: 20px;
         height: auto;
-        bottom: -190px;
+        bottom: -170px;
     }
     .searchBiggerBox .formBox{
         width: 100%;
+    }
+    .selectBox__inputText{
+        font-size: 15px;
     }
 
     /* Latest Properties Section */
 
     .latestPropertiesSection{
-        padding: 200px 10px 20px 10px;
+        padding: 180px 10px 20px 10px;
+    }
+    .latestPropertiesSection p{
+        font-size: 14px;
+    }
+    .latestPropertiesSection h2{
+        font-size: 25px;
     }
     .latestPropertiesBigBox{
         gap: 20px;
@@ -529,6 +538,9 @@
     .latestPropertiesInnerBox img{
         height: 250px;
         border-radius: 5px 5px 0px 0px;
+    }
+    .latestPropertiesContentBox{
+        padding: 2px 15px 10px 15px;
     }
     .innerButtonBox{
         flex-wrap: wrap;

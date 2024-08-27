@@ -161,8 +161,15 @@
     }
 
     .mainContentBox h2{
-        font-size: 30px;
+        font-size: 25px;
         text-align: center;
+    }
+    .mainContentBox form label{
+        font-size: 14px;
+    }
+    .mainContentBox form input[type=file]{
+        border-radius: 5px;
+        padding: 5px;
     }
     .checkBoxBigBox{
         gap: 10px;
@@ -383,14 +390,46 @@
     .propertyTypeBox{
         width: 100%;
     }
+    .propertyTypeBox h3{
+        font-size: 18px;
+    }
     .propertyTypeBox2{
         width: 100%;
     }
+    .propertyTypeBox2 h3{
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .propertyFormBox h3{
+        font-size: 16px;
+    }
+    .propertyFormBox input{
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .propertyFormBox textarea{
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .propertyFormBox select{
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .propertyFormBox2 h3{
+        font-size: 16px;
+    }
+    .propertyFormBox2{
+        gap: 7px;
+    }
     .propertyFormBox2 input{
         width: 100%;
+        padding: 5px 10px;
+        border-radius: 5px;
     }
     .propertyFormBox2 select{
         width: 100%;
+        padding: 5px 10px;
+        border-radius: 5px;
     }
     .checkBoxDiv{
         width: 100%;

@@ -139,7 +139,8 @@
     }
 
     .mainContentBox h2 {
-        font-size: 25px;
+        font-size: 22px;
+        margin: 5px 0px;
     }
 
     .propertyList th{

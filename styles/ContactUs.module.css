@@ -130,10 +130,25 @@
         padding: 10px 15px;
     }
     .formContentBox h2{
-        font-size: 40px;
+        font-size: 25px;
         text-align: center;
+    }
+    .formContentBox form label{
+        font-size: 14px;
     }
     .formContentBox form input{
         border-radius: 5px;
+        padding: 5px 8px;
+        font-size: 14px;
+    }
+    .formContentBox form textarea{
+        border-radius: 5px;
+        padding: 5px 8px;
+        font-size: 14px;
+    }
+    .formContentBox form input[type=submit]{
+        font-size: 16px;
+        border-radius: 5px;
+        margin-top: 10px;
     }
 }

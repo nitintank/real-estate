@@ -18,7 +18,7 @@ const dashboard = () => {
             try {
                 const userId = localStorage.getItem('userId');
                 if (!userId) {
-                    throw new Error('User ID not found');
+                    throw new Error('User ID Not Found');
                 }
                 const response = await fetch(`https://a.khelogame.xyz/get-properties-user/${userId}`);
                 if (!response.ok) {

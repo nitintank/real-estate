@@ -319,6 +319,7 @@
 
 .propertyCategoryImgBox {
     width: 24%;
+    cursor: pointer;
 }
 
 .propertyCategoriesImagesBox img {
@@ -1341,8 +1342,9 @@
     }
 
     .propertyCategoriesSection h2 {
-        font-size: 25;
+        font-size: 20px;
         font-weight: 700;
+        margin-bottom: 15px;
     }
 
     .propertyCategoryImgBox img {
@@ -1365,11 +1367,11 @@
 
     /* Latest Properties Section */
     .latestPropertiesSection h2 {
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .latestPropertiesSection p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .innerPropertyContent p {
@@ -1414,6 +1416,15 @@
         border-radius: 15px;
     }
 
+    .popularAreasSection p{
+        font-size: 14px;
+    }
+
+    .popularAreasSection h2{
+        font-size: 21px;
+        margin-bottom: 15px;
+    }
+
     .popularAreasImageBox {
         width: 100%;
         margin: 10px auto 0px auto;
@@ -1428,7 +1439,7 @@
 
     .popularAreasImage2 {
         width: 48%;
-        height: 170px;
+        height: 150px;
         border-radius: 10px;
     }
 
@@ -1457,16 +1468,18 @@
 
     .glideSupportBox2 {
         width: 100%;
+        padding-top: 15px;
     }
 
     .glideSupportBox2 h2 {
-        font-size: 40px;
+        font-size: 28px;
         text-align: center;
+        margin-bottom: 15px;
     }
 
     .glideSupportBox2 p {
         width: 100%;
-        font-size: 18px;
+        font-size: 14px;
         text-align: center;
     }
 
@@ -1474,32 +1487,48 @@
         padding: 10px;
     }
 
+    .glideContentBox1 img{
+        width: 50px;
+    }
+
     .glideContentBox1 p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .glideContentBox2 {
         padding: 10px;
     }
 
+    .glideContentBox2 img{
+        width: 50px;
+    }
+
     .glideContentBox2 p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .glideContentBox3 {
         padding: 10px;
     }
 
+    .glideContentBox3 img{
+        width: 50px;
+    }
+
     .glideContentBox3 p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .glideContentBox4 {
         padding: 10px;
     }
 
+    .glideContentBox4 img{
+        width: 50px;
+    }
+
     .glideContentBox4 p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     /* Find Perfect Home Section */
@@ -1525,7 +1554,7 @@
     }
 
     .findPerfectHomeBox2 h2 {
-        font-size: 28px;
+        font-size: 25px;
         text-align: center;
         margin-bottom: 20px;
     }
@@ -1546,8 +1575,12 @@
         width: 40px;
     }
 
+    .prefectHomeContentBox h3 {
+        font-size: 18px;
+    }
+
     .prefectHomeContentBox h3 span {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .prefectHomeContentBox p {
@@ -1560,7 +1593,7 @@
     }
 
     .trustedAgentsSection h2 {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .agentsBigBox {
@@ -1571,6 +1604,32 @@
 
     .agentsCardsBox {
         width: 100%;
+        padding: 10px;
+    }
+
+    .agentsCardsBox h3{
+        font-size: 20px;
+    }
+
+    .agentsCardsBox ul li{
+        font-size: 15px;
+    }
+
+    .totalPropertyContentBox p{
+        font-size: 12px;
+    }
+
+    .totalPropertyContentBox h4{
+        font-size: 16px;
+    }
+
+    .agentsCardsBox img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .totalPropertyBox{
+        padding: 10px 0px 0px 0px;
     }
 
     .housingExpertPara {
@@ -1587,11 +1646,13 @@
     }
 
     .whatClientSaysSection h2 {
-        font-size: 35px;
+        font-size: 25px;
     }
 
     .whatClientSaysSection hr {
-        width: 75%;
+        width: 60%;
+        border: 1px solid black;
+        margin: 5px auto 10px auto;
     }
 
     .testimonialBigBox {
@@ -1608,10 +1669,11 @@
     .testimonialBox {
         width: 100%;
         padding: 60px 10px 10px 10px;
+        gap: 10px;
     }
 
     .testimonialBox h3 {
-        font-size: 25px;
+        font-size: 22px;
     }
 
     .testimonialBox p {
@@ -1633,7 +1695,10 @@
     }
 
     .downloadAndroidBox1 h3 {
-        font-size: 30px;
+        font-size: 25px;
+    }
+    .downloadAndroidBox1 p {
+        font-size: 14px;
     }
 
     .downloadAndroidBox2 {
@@ -1651,6 +1716,7 @@
 
     .downloadAndroidBox1 img {
         margin: 10px auto;
+        width: 160px;
     }
 
     /* Upper Footer Section */
@@ -1697,7 +1763,10 @@
 
     /* What Client Says Section */
     .testimonialUserImg {
-        width: 100px;
-        left: 35%;
+        width: 80px;
+        left: 38%;
+    }
+    .testimonialBox{
+        padding: 40px 10px 10px 10px;
     }
 }

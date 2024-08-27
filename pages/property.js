@@ -322,16 +322,18 @@ const property = () => {
                     <Link href="#locationSection" scroll={false}><li>Location</li></Link>
                 </ul>
                 <div className={styles.amenitiesCardsBigBox}>
-                    {propertyDetails.amenities && Object.keys(propertyDetails.amenities).map((category, index) => (
-                        <div key={index} className={styles.aminitiesCardsBox}>
-                            {propertyDetails.amenities[category].map((amenity, idx) => (
-                                <p key={idx}>
-                                    <span><i className="fa-solid fa-bed"></i></span>
-                                    {amenity.amenity}
-                                </p>
-                            ))}
-                        </div>
-                    ))}
+                    <div className={styles.aminitiesCardsBox}>
+                        {propertyDetails.amenities && Object.keys(propertyDetails.amenities).map((category, index) => (
+                            <>
+                                {propertyDetails.amenities[category].map((amenity, idx) => (
+                                    <p key={idx}>
+                                        <span><i className="fa-solid fa-star"></i></span>
+                                        {amenity.amenity}
+                                    </p>
+                                ))}
+                            </>
+                        ))}
+                    </div>
                 </div>
             </section>
 

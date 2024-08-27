@@ -228,11 +228,11 @@
         padding: 15px;
     }
     .topIntroInnerBox1 h2{
-        font-size: 45px;
+        font-size: 25px;
         text-align: center;
     }
     .topIntroInnerBox1 p{
-        font-size: 18px;
+        font-size: 14px;
         text-align: center;
     }
     .topIntroInnerBox2{
@@ -254,18 +254,20 @@
     }
     .whyUsSection h2{
         text-align: center;
+        font-size: 25px;
     }
     .whyUsSection p{
         width: 100%;
         text-align: center;
-        font-size: 16px;
+        font-size: 14px;
     }
     .whyCardBox{
         width: 48%;
         padding: 10px;
     }
     .whyCardBox img{
-        width: 100px;
+        width: 70px;
+        height: auto;
     }
     .whyCardBox h4{
         font-size: 14px;
@@ -280,6 +282,7 @@
     }
     .ourStorySection h2{
         text-align: center;
+        font-size: 30px;
     }
     .ourStoryBigBox{
         flex-wrap: wrap;
@@ -288,15 +291,25 @@
         width: 100%;
         padding: 5px;
     }
+    .ourStoryContentBox h3{
+        font-size: 20px;
+    }
+    .ourStoryContentBox p{
+        font-size: 14px;
+    }
     .orderM1{
         order: 1;
     }
+    /* Our Value Section */
     .ourValueSection{
        padding: 10px;
     }
+    .ourValueSection h2{
+        font-size: 25px;
+    }
     .ourValueSection p{
         width: 100%;
-        font-size: 16px;
+        font-size: 14px;
     }
     .popularAreasImageBox{
         width: 100%;
@@ -309,7 +322,7 @@
     }
     .popularAreasImage2{
         width: 48%;
-        height: 170px;
+        height: 150px;
         border-radius: 10px;
     }
 }

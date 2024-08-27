@@ -511,12 +511,12 @@
     }
 
     .topIntroInnerBox1 h2 {
-        font-size: 40px;
+        font-size: 25px;
         text-align: center;
     }
 
     .topIntroInnerBox1 p {
-        font-size: 18px;
+        font-size: 14px;
         text-align: center;
         margin: auto;
     }
@@ -550,7 +550,7 @@
     }
 
     .trustedAgentsSection h2 {
-        font-size: 32px;
+        font-size: 25px;
     }
 
     .agentsBigBox {
@@ -559,8 +559,25 @@
 
     .agentsCardsBox {
         width: 100%;
+        padding: 10px;
     }
 
+    .agentsCardsBox img{
+        width: 90px;
+        height: 90px;
+    }
+    .agentsCardsBox h3{
+        font-size: 20px;
+    }
+    .agentsCardsBox ul li{
+        font-size: 14px;
+    }
+    .totalPropertyContentBox p{
+        font-size: 14px;
+    }
+    .totalPropertyContentBox h4{
+        font-size: 16px;
+    }
     .housingExpertPara {
         top: -15px;
         left: 35%;

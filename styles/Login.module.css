@@ -108,6 +108,10 @@
 }
 
 .sendOtpBox{
+    gap: 5px;
+}
+
+.sendOtpBox{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -125,7 +129,7 @@
     margin-bottom: 0px;
     position: absolute;
     right: 10px;
-    bottom: 13px;
+    bottom: 10px;
     cursor: pointer;
 }
 
@@ -164,10 +168,10 @@
         order: 1;
     }
     .registerContentBox1 h2{
-        font-size: 35px;
+        font-size: 25px;
     }
     .registerContentBox1 p{
-        font-size: 18px;
+        font-size: 16px;
     }
     .registerContentBox1 img{
         width: 100%;
@@ -177,16 +181,23 @@
         padding: 10px 20px 20px 20px;
     }
     .registerContentBox2 h2{
-        font-size: 35px;
+        font-size: 25px;
     }
     .registerContentBox2 form{
         gap: 5px;
         margin-top: 10px;
     }
     .registerContentBox2 form label{
-        font-size: 16px;
+        font-size: 15px;
+        margin-bottom: 2px;
     }
     .registerContentBox2 p{
         font-size: 16px;
+    }
+    .registerContentBox2 form input{
+        font-size: 14px;
+    }
+    .registerContentBox2 form input[type=submit] {
+        margin-top: 5px;
     }
 }

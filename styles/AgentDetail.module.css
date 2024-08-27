@@ -539,19 +539,20 @@
         padding: 10px 15px;
     }
     .agentDetailBox1 img{
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
+        margin-bottom: 10px;
     }
     .agentDetailBox2 h3{
-        font-size: 32px;
+        font-size: 25px;
         text-align: center;
     }
     .agentDetailBox2 .agentAboutPara{
-        font-size: 20px;
+        font-size: 16px;
         text-align: center;
     }
     .agentOtherDetailsBox p{
-        font-size: 16px;
+        font-size: 14px;
     }
     .agentSocialMedia{
         width: 100%;
@@ -567,7 +568,7 @@
     }
 
     .agentAboutBox h3{
-        font-size: 35px;
+        font-size: 25px;
         text-align: center;
     }
 
@@ -578,11 +579,12 @@
     }
 
     .trackRecordSection h3{
+        font-size: 20px;
         text-align: center;
     }
     .trackRecordSection p{
         text-align: center;
-        font-size: 18px;
+        font-size: 16px;
     }
     .trackRecordContentBox{
         flex-wrap: wrap;
@@ -592,10 +594,10 @@
         width: 100%;
     }
     .trackRecordContent h4{
-        font-size: 32px;
+        font-size: 27px;
     }
     .trackRecordContent p{
-        font-size: 20px;
+        font-size: 16px;
     }
 
     /* Latest Properties Section */
@@ -604,8 +606,13 @@
         padding: 20px 10px 0px 10px;
     }
 
+    .latestPropertiesSection h2{
+        font-size: 25px;
+    }
+
     .latestPropertiesBigBox {
         gap: 20px;
+        padding: 20px 0px 10px 0px;
     }
 
     .latestPropertiesInnerBox {
@@ -638,6 +645,7 @@
         padding: 10px 15px;
         flex-wrap: wrap;
         gap: 10px;
+        border-radius: 10px;
     }
     .contactMeForm1{
         width: 100%;

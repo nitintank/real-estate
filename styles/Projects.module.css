@@ -483,11 +483,11 @@
         align-items: center;
     }
     .topIntroInnerBox1 h2{
-        font-size: 35px;
+        font-size: 25px;
         text-align: center;
     }
     .topIntroInnerBox1 p{
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
     }
     .topIntroInnerBox2{
@@ -505,7 +505,7 @@
         flex-wrap: wrap;
         height: auto;
         gap: 20px;
-        bottom: -350px;
+        bottom: -220px;
     }
 
     .searchBiggerBox .formBox {
@@ -535,6 +535,9 @@
     .innerButtonBox button{
         width: 100%;
     }
+    .latestPropertiesContentBox{
+        padding: 0px 15px 10px 15px;
+    }
     .latestPropertiesContentBox h3{
         font-size: 18px !important;
     }
@@ -542,7 +545,7 @@
     /* Main Section */
 
     .mainSection{
-        padding: 350px 10px 20px 10px;
+        padding: 220px 10px 20px 10px;
     }
     .mainSectionBox1{
         width: 100%;
@@ -553,13 +556,19 @@
         padding: 0px;
     }
     .mainSectionBox1 h3{
-        font-size: 30px;
+        font-size: 25px;
     }
     .mainSectionBox1 p{
         font-size: 12px;
     }
     .mainSectionBox2 img{
         margin-top: 10px;
+    }
+    .mainSectionBox2 h3{
+        font-size: 25px;
+    }
+    .mainSectionBox2 p{
+        font-size: 14px;
     }
     /* Download Android App Section */
     .downloadAndroidAppSection{
@@ -570,7 +579,7 @@
         padding: 10px 25px;
     }
     .downloadAndroidBox1 h3{
-        font-size: 30px;
+        font-size: 25px;
     }
     .downloadAndroidBox1 p{
         font-size: 14px;

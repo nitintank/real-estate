@@ -161,7 +161,7 @@
     display: block;
     margin: auto;
     background-color: #deeeff;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 .amenitiesContentBox a{
@@ -191,16 +191,17 @@
     display: flex;
 }
 
-.aminitiesCardsBox {
-    width: 33%;
+.aminitiesCardsBox{
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
     padding: 10px;
 }
 
 .aminitiesCardsBox p {
-    font-size: 18px;
+    width: 24%;
+    font-size: 16px;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -782,7 +783,7 @@
     }
 
     .latestPropertiesSection h2{
-        font-size: 25px;
+        font-size: 20px;
         text-align: center;
     }
 
@@ -870,6 +871,7 @@
         width: 98%;
         overflow-x: scroll;
         margin: 10px auto;
+        border-radius: 10px;
     }
 
     .amenitiesCardsBigBox{
@@ -885,9 +887,10 @@
     }
 
     .aminitiesCardsBox{
-        width: 49%;
+        width: 100%;
     }
     .aminitiesCardsBox p{
+        width: 48%;
         font-size: 14px;
         gap: 5px;
     }
@@ -904,7 +907,7 @@
         padding: 15px 10px;
     }
     .descriptionContentBox h3{
-        font-size: 25px;
+        font-size: 20px;
     }
     .descriptionContentBox p{
         font-size: 14px;
@@ -919,7 +922,8 @@
         flex-wrap: wrap;
     }
     .addressTopContent h2{
-        font-size: 25px;
+        font-size: 20px;
+        width: 100%;
     }
     .addressTopContent button{
         font-size: 14px;
@@ -935,7 +939,7 @@
         gap: 10px;
     }
     .addressBottomBox p{
-        font-size: 15px;
+        font-size: 14px;
     }
 
     /* Floor Plan Section */
@@ -944,7 +948,7 @@
         padding: 10px;
     }
     .floorPlanSection h2{
-        font-size: 25px;
+        font-size: 20px;
     }
     .floorPlanSection img{
         width: auto;
@@ -957,7 +961,7 @@
         padding: 10px;
     }
     .videosSection h3{
-        font-size: 25px;
+        font-size: 20px;
     }
     .videosSection video{
         width: auto;
@@ -970,7 +974,7 @@
         padding: 10px;
     }
     .googleMapsSection h2{
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .googleMapsSection iframe{
@@ -995,8 +999,19 @@
     .ownerDetailBox1 img{
         width: 100px;
     }
+
+    .ownerDetailBox1 button {
+        background-color: #1085FF;
+        color: white;
+        padding: 5px 15px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
     .ownerDetailBox2 h3{
-        font-size: 22px;
+        font-size: 20px;
         text-align: center;
         margin: 5px 0px;
     }
@@ -1004,6 +1019,11 @@
     .ownerDetailBox2 form{
         border-radius: 15px;
         padding: 10px;
+    }
+
+    .ownerDetailBox2 form input[type=submit] {
+        font-size: 16px;
+        margin-top: 10px;
     }
 
     /* Reviews Section */
@@ -1015,7 +1035,21 @@
     .addCommentBox form{
         margin: 10px auto;
     }
-
+    .addCommentBox form .commentLabel{
+        font-size: 14px;
+    }
+    .addCommentBox form input[type=text] {
+        font-size: 14px;
+        padding: 7px 10px;
+    }
+    .addCommentBox form textarea{
+        font-size: 14px;
+        padding: 7px 10px;
+    }
+    .addCommentBox form input[type=submit] {
+        font-size: 16px;
+        margin-top: 10px;
+    }
     .reviewsSection{
         padding: 10px 15px;
     }
